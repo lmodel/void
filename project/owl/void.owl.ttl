@@ -1,0 +1,278 @@
+@prefix EFO: <http://identifiers.org/efo/> .
+@prefix IAO: <http://purl.obolibrary.org/obo/IAO_> .
+@prefix SIO: <http://identifiers.org/sio/> .
+@prefix WIKIDATA: <https://www.wikidata.org/wiki/> .
+@prefix dctypes: <http://purl.org/dc/dcmitype/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix linkml: <https://w3id.org/linkml/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema1: <http://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix void1: <https://w3id.org/lmodel/void/> .
+
+linkml:SubsetDefinition a owl:Class .
+
+linkml:topValue a owl:DatatypeProperty ;
+    rdfs:label "value" .
+
+<https://w3id.org/lmodel/void> a owl:Ontology ;
+    rdfs:label "void" ;
+    IAO:0000700 void1:NamedThing ;
+    linkml:id "https://w3id.org/lmodel/void" ;
+    linkml:imports "linkml:types" .
+
+void1:DatasetDescription a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "dataset description" ;
+    rdfs:subClassOf void1:Document ;
+    skos:definition "A web resource whose foaf:primaryTopic or foaf:topics include void:Datasets." .
+
+void1:URI_space a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "URI space" ;
+    rdfs:domain void1:Dataset ;
+    rdfs:range void1:LiteralType ;
+    skos:definition "A URI that is a common string prefix of all the entity URIs in a void:Dataset." .
+
+void1:a_link_predicate a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "a link predicate" ;
+    rdfs:domain void1:Linkset ;
+    rdfs:range void1:NamedThing .
+
+void1:class_partition a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "class partition" ;
+    rdfs:domain void1:Dataset ;
+    rdfs:range void1:Dataset ;
+    rdfs:subPropertyOf void1:has_subset ;
+    skos:definition "A subset of a void:Dataset that contains only the entities of a certain rdfs:Class." .
+
+void1:classes a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "classes" ;
+    rdfs:domain void1:Dataset ;
+    rdfs:range linkml:Integer ;
+    skos:definition "The total number of distinct classes in a void:Dataset. In other words, the number of distinct resources occuring as objects of rdf:type triples in the dataset." .
+
+void1:data_dump a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "data dump" ;
+    rdfs:domain void1:Dataset ;
+    rdfs:range void1:Resource ;
+    skos:definition "An RDF dump, partial or complete, of a void:Dataset." .
+
+void1:distinct_objects a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "distinct objects" ;
+    rdfs:domain void1:Dataset ;
+    rdfs:range linkml:Integer ;
+    skos:definition "The total number of distinct objects in a void:Dataset. In other words, the number of distinct resources that occur in the object position of triples in the dataset. Literals are included in this count." .
+
+void1:distinct_subjects a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "distinct subjects" ;
+    rdfs:domain void1:Dataset ;
+    rdfs:range linkml:Integer ;
+    skos:definition "The total number of distinct subjects in a void:Dataset. In other words, the number of distinct resources that occur in the subject position of triples in the dataset" .
+
+void1:feature a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "feature" ;
+    rdfs:domain void1:Dataset ;
+    rdfs:range void1:TechnicalFeature ;
+    skos:definition "distinguishing feature" ;
+    skos:exactMatch WIKIDATA:Q1207505 .
+
+void1:has_a_SPARQL_endpoint_at a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "has a SPARQL endpoint at" ;
+    rdfs:domain void1:Dataset ;
+    rdfs:range linkml:String .
+
+void1:has_an_URI_look_up_endpoint_at a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "has an URI look-up endpoint at" ;
+    rdfs:domain void1:Dataset ;
+    rdfs:range linkml:String ;
+    skos:definition "Defines a simple URI look-up protocol for accessing a dataset." .
+
+void1:in_dataset a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "in dataset" ;
+    rdfs:domain void1:Document ;
+    rdfs:range void1:Dataset ;
+    skos:definition "Points to the void:Dataset that a document is a part of." .
+
+void1:number_of_documents a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "number of documents" ;
+    rdfs:domain void1:Dataset ;
+    rdfs:range linkml:Integer ;
+    skos:definition "The total number of documents, for datasets that are published as a set of individual documents, such as RDF/XML documents or RDFa-annotated web pages. Non-RDF documents, such as web pages in HTML or images, are usually not included in this count. This property is intended for datasets where the total number of triples or entities is hard to determine. void:triples or void:entities should be preferred where practical." .
+
+void1:number_of_entities a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "number of entities" ;
+    rdfs:domain void1:Dataset ;
+    rdfs:range linkml:Integer ;
+    skos:definition "The total number of entities that are described in a void:Dataset." .
+
+void1:number_of_properties a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "number of properties" ;
+    rdfs:domain void1:Dataset ;
+    rdfs:range linkml:Integer ;
+    skos:definition "The total number of distinct properties in a void:Dataset. In other words, the number of distinct resources that occur in the predicate position of triples in the dataset." .
+
+void1:number_of_triples a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "number of triples" ;
+    rdfs:domain void1:Dataset ;
+    rdfs:range linkml:Integer ;
+    skos:definition "The total number of triples contained in a void:Dataset." .
+
+void1:objects_target a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "objects target" ;
+    rdfs:domain void1:Linkset ;
+    rdfs:range void1:Dataset ;
+    rdfs:subPropertyOf void1:target ;
+    skos:definition "The dataset describing the objects of the triples contained in the linkset." .
+
+void1:open_search_description a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "open search description" ;
+    rdfs:domain void1:Dataset ;
+    rdfs:range void1:Document ;
+    skos:definition "An OpenSearch description document for a free-text search service over a void:Dataset." .
+
+void1:property_partition a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "property partition" ;
+    rdfs:domain void1:Dataset ;
+    rdfs:range void1:Dataset ;
+    rdfs:subPropertyOf void1:has_subset ;
+    skos:definition "A subset of a void:Dataset that contains only the triples of a certain rdf:Property." .
+
+void1:root_resource a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "root resource" ;
+    rdfs:domain void1:Dataset ;
+    rdfs:range linkml:String ;
+    skos:definition "A top concept or entry point for a void:Dataset that is structured in a tree-like fashion. All resources in a dataset can be reached by following links from its root resources in a small number of steps." .
+
+void1:subjects_target a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "subjects target" ;
+    rdfs:domain void1:Linkset ;
+    rdfs:range void1:Dataset ;
+    rdfs:subPropertyOf void1:target ;
+    skos:definition "The dataset describing the subjects of triples contained in the linkset." .
+
+void1:vocabulary a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "vocabulary" ;
+    rdfs:domain void1:Dataset ;
+    rdfs:range linkml:String ;
+    skos:definition "A vocabulary that is used in the dataset." ;
+    skos:exactMatch WIKIDATA:Q6499736 .
+
+rdf:Property a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "property" ;
+    rdfs:domain void1:Dataset ;
+    rdfs:range void1:NamedThing ;
+    skos:definition "The rdf:Property that is the predicate of all triples in a property-based partition." ;
+    skos:exactMatch rdf:Property .
+
+rdfs:Class a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "class" ;
+    rdfs:domain void1:Dataset ;
+    rdfs:range void1:NamedThing ;
+    skos:definition "The rdfs:Class that is the rdf:type of all entities in a class-based partition." ;
+    skos:exactMatch rdfs:Class,
+        WIKIDATA:Q16889133 .
+
+rdfs:resource a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "example resource of dataset" ;
+    rdfs:domain void1:Dataset ;
+    rdfs:range void1:Resource ;
+    skos:exactMatch rdfs:resource .
+
+linkml:TypeDefinition a owl:Class .
+
+void1:LiteralType a owl:Class,
+        linkml:TypeDefinition ;
+    rdfs:label "literal type" ;
+    rdfs:subClassOf linkml:String .
+
+void1:TechnicalFeature a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "technical feature" ;
+    rdfs:subClassOf void1:NamedThing ;
+    skos:definition "A technical feature of a void:Dataset, such as a supported RDF serialization format." .
+
+void1:Resource a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "resource" ;
+    rdfs:subClassOf void1:NamedThing ;
+    skos:definition """source or supply from which benefit is produced
+""" ;
+    skos:exactMatch rdfs:Resource,
+        WIKIDATA:Q1554231 .
+
+void1:has_subset a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "has subset" ;
+    rdfs:domain void1:Dataset ;
+    rdfs:range void1:Dataset .
+
+void1:target a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "target" ;
+    rdfs:domain void1:Linkset ;
+    rdfs:range void1:Dataset ;
+    skos:definition "One of the two datasets linked by the linkset." .
+
+void1:Document a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "document" ;
+    rdfs:subClassOf void1:NamedThing ;
+    skos:definition "Form for preservation of structured and identified information" ;
+    skos:exactMatch foaf:Document .
+
+void1:Linkset a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "linkset" ;
+    rdfs:subClassOf void1:Dataset ;
+    skos:definition "A collection of RDF links between two void:Datasets." .
+
+linkml:ClassDefinition a owl:Class .
+
+void1:NamedThing a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "named thing" ;
+    skos:definition "a databased entity or concept/class" ;
+    skos:exactMatch owl:Thing .
+
+linkml:SlotDefinition a owl:Class .
+
+void1:Dataset a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "dataset" ;
+    rdfs:subClassOf void1:NamedThing ;
+    skos:definition """A set of RDF triples that are published, maintained or aggregated by a single provider.
+""" ;
+    skos:exactMatch EFO:0004095,
+        SIO:000089,
+        IAO:0000100,
+        dctypes:Dataset,
+        schema1:Dataset,
+        WIKIDATA:Q1172284 .
+
+

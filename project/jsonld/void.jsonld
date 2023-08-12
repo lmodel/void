@@ -1,0 +1,868 @@
+{
+  "name": "void",
+  "description": "The Vocabulary of Interlinked Datasets (VoID) is an RDF Schema vocabulary for expressing metadata about RDF datasets. It is intended as a bridge between the publishers and users of RDF data, with applications ranging from data discovery to cataloging and archiving of datasets. This document provides a formal definition of the new RDF classes and properties introduced for VoID. It is a companion to the main specification document for VoID, Describing Linked Datasets with the VoID Vocabulary (http://www.w3.org/TR/void/).",
+  "title": "void",
+  "see_also": [
+    "http://vocab.deri.ie/void"
+  ],
+  "id": "https://w3id.org/lmodel/void",
+  "imports": [
+    "linkml:types"
+  ],
+  "license": "Apache Software License 2.0",
+  "prefixes": [
+    {
+      "prefix_prefix": "adms",
+      "prefix_reference": "http://www.w3.org/ns/adms#"
+    },
+    {
+      "prefix_prefix": "dctypes",
+      "prefix_reference": "http://purl.org/dc/dcmitype/"
+    },
+    {
+      "prefix_prefix": "EFO",
+      "prefix_reference": "http://identifiers.org/efo/"
+    },
+    {
+      "prefix_prefix": "IAO",
+      "prefix_reference": "http://purl.obolibrary.org/obo/IAO_"
+    },
+    {
+      "prefix_prefix": "linkml",
+      "prefix_reference": "https://w3id.org/linkml/"
+    },
+    {
+      "prefix_prefix": "prov",
+      "prefix_reference": "http://www.w3.org/ns/prov#"
+    },
+    {
+      "prefix_prefix": "PATO",
+      "prefix_reference": "http://purl.obolibrary.org/obo/PATO_"
+    },
+    {
+      "prefix_prefix": "schema",
+      "prefix_reference": "http://schema.org/"
+    },
+    {
+      "prefix_prefix": "SIO",
+      "prefix_reference": "http://identifiers.org/sio/"
+    },
+    {
+      "prefix_prefix": "skos",
+      "prefix_reference": "http://www.w3.org/2004/02/skos/core#"
+    },
+    {
+      "prefix_prefix": "vann",
+      "prefix_reference": "https://vocab.org/vann/"
+    },
+    {
+      "prefix_prefix": "void",
+      "prefix_reference": "https://w3id.org/lmodel/void/"
+    },
+    {
+      "prefix_prefix": "WIKIDATA",
+      "prefix_reference": "https://www.wikidata.org/wiki/"
+    }
+  ],
+  "default_curi_maps": [
+    "semweb_context"
+  ],
+  "default_prefix": "void",
+  "default_range": "string",
+  "subsets": [
+    {
+      "name": "object_properties",
+      "definition_uri": "https://w3id.org/lmodel/void/ObjectProperties",
+      "description": "",
+      "from_schema": "https://w3id.org/lmodel/void",
+      "@type": "SubsetDefinition"
+    },
+    {
+      "name": "datatype_properties",
+      "definition_uri": "https://w3id.org/lmodel/void/DatatypeProperties",
+      "description": "classes distinct objects distinct subjects number of documents number of entities number of properties number of triples URI space ",
+      "from_schema": "https://w3id.org/lmodel/void",
+      "@type": "SubsetDefinition"
+    },
+    {
+      "name": "functional_properties",
+      "definition_uri": "https://w3id.org/lmodel/void/FunctionalProperties",
+      "description": "class Objects Target property Subjects Target ",
+      "from_schema": "https://w3id.org/lmodel/void",
+      "@type": "SubsetDefinition"
+    }
+  ],
+  "types": [
+    {
+      "name": "literal_type",
+      "definition_uri": "https://w3id.org/lmodel/void/LiteralType",
+      "description": "Literals are used for values such as strings, numbers, and dates",
+      "from_schema": "https://w3id.org/lmodel/void",
+      "typeof": "string",
+      "base": "str",
+      "uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#literal",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "string",
+      "definition_uri": "https://w3id.org/linkml/String",
+      "description": "A character string",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Text"
+      ],
+      "base": "str",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "integer",
+      "definition_uri": "https://w3id.org/linkml/Integer",
+      "description": "An integer",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Integer"
+      ],
+      "base": "int",
+      "uri": "http://www.w3.org/2001/XMLSchema#integer",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "boolean",
+      "definition_uri": "https://w3id.org/linkml/Boolean",
+      "description": "A binary (true or false) value",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Boolean"
+      ],
+      "base": "Bool",
+      "uri": "http://www.w3.org/2001/XMLSchema#boolean",
+      "repr": "bool",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "float",
+      "definition_uri": "https://w3id.org/linkml/Float",
+      "description": "A real number that conforms to the xsd:float specification",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Float"
+      ],
+      "base": "float",
+      "uri": "http://www.w3.org/2001/XMLSchema#float",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "double",
+      "definition_uri": "https://w3id.org/linkml/Double",
+      "description": "A real number that conforms to the xsd:double specification",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "close_mappings": [
+        "schema:Float"
+      ],
+      "base": "float",
+      "uri": "http://www.w3.org/2001/XMLSchema#double",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "decimal",
+      "definition_uri": "https://w3id.org/linkml/Decimal",
+      "description": "A real number with arbitrary precision that conforms to the xsd:decimal specification",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "broad_mappings": [
+        "schema:Number"
+      ],
+      "base": "Decimal",
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "time",
+      "definition_uri": "https://w3id.org/linkml/Time",
+      "description": "A time object represents a (local) time of day, independent of any particular day",
+      "notes": [
+        "URI is dateTime because OWL reasoners do not work with straight date or time"
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Time"
+      ],
+      "base": "XSDTime",
+      "uri": "http://www.w3.org/2001/XMLSchema#time",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "date",
+      "definition_uri": "https://w3id.org/linkml/Date",
+      "description": "a date (year, month and day) in an idealized calendar",
+      "notes": [
+        "URI is dateTime because OWL reasoners don't work with straight date or time"
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Date"
+      ],
+      "base": "XSDDate",
+      "uri": "http://www.w3.org/2001/XMLSchema#date",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "datetime",
+      "definition_uri": "https://w3id.org/linkml/Datetime",
+      "description": "The combination of a date and time",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:DateTime"
+      ],
+      "base": "XSDDateTime",
+      "uri": "http://www.w3.org/2001/XMLSchema#dateTime",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "date_or_datetime",
+      "definition_uri": "https://w3id.org/linkml/DateOrDatetime",
+      "description": "Either a date or a datetime",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "str",
+      "uri": "https://w3id.org/linkml/DateOrDatetime",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "uriorcurie",
+      "definition_uri": "https://w3id.org/linkml/Uriorcurie",
+      "description": "a URI or a CURIE",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "URIorCURIE",
+      "uri": "http://www.w3.org/2001/XMLSchema#anyURI",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "curie",
+      "definition_uri": "https://w3id.org/linkml/Curie",
+      "conforms_to": "https://www.w3.org/TR/curie/",
+      "description": "a compact URI",
+      "comments": [
+        "in RDF serializations this MUST be expanded to a URI",
+        "in non-RDF serializations MAY be serialized as the compact representation"
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "Curie",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "uri",
+      "definition_uri": "https://w3id.org/linkml/Uri",
+      "conforms_to": "https://www.ietf.org/rfc/rfc3987.txt",
+      "description": "a complete URI",
+      "comments": [
+        "in RDF serializations a slot with range of uri is treated as a literal or type xsd:anyURI unless it is an identifier or a reference to an identifier, in which case it is translated directly to a node"
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "close_mappings": [
+        "schema:URL"
+      ],
+      "base": "URI",
+      "uri": "http://www.w3.org/2001/XMLSchema#anyURI",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "ncname",
+      "definition_uri": "https://w3id.org/linkml/Ncname",
+      "description": "Prefix part of CURIE",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "NCName",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "objectidentifier",
+      "definition_uri": "https://w3id.org/linkml/Objectidentifier",
+      "description": "A URI or CURIE that represents an object in the model.",
+      "comments": [
+        "Used for inheritance and type checking"
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "ElementIdentifier",
+      "uri": "http://www.w3.org/ns/shex#iri",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "nodeidentifier",
+      "definition_uri": "https://w3id.org/linkml/Nodeidentifier",
+      "description": "A URI, CURIE or BNODE that represents a node in a model.",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "NodeIdentifier",
+      "uri": "http://www.w3.org/ns/shex#nonLiteral",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "jsonpointer",
+      "definition_uri": "https://w3id.org/linkml/Jsonpointer",
+      "conforms_to": "https://datatracker.ietf.org/doc/html/rfc6901",
+      "description": "A string encoding a JSON Pointer. The value of the string MUST conform to JSON Point syntax and SHOULD dereference to a valid object within the current instance document when encoded in tree form.",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "str",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "jsonpath",
+      "definition_uri": "https://w3id.org/linkml/Jsonpath",
+      "conforms_to": "https://www.ietf.org/archive/id/draft-goessner-dispatch-jsonpath-00.html",
+      "description": "A string encoding a JSON Path. The value of the string MUST conform to JSON Point syntax and SHOULD dereference to zero or more valid objects within the current instance document when encoded in tree form.",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "str",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "sparqlpath",
+      "definition_uri": "https://w3id.org/linkml/Sparqlpath",
+      "conforms_to": "https://www.w3.org/TR/sparql11-query/#propertypaths",
+      "description": "A string encoding a SPARQL Property Path. The value of the string MUST conform to SPARQL syntax and SHOULD dereference to zero or more valid objects within the current instance document when encoded as RDF.",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "str",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    }
+  ],
+  "slots": [
+    {
+      "name": "class_partition",
+      "definition_uri": "https://w3id.org/lmodel/void/class_partition",
+      "description": "A subset of a void:Dataset that contains only the entities of a certain rdfs:Class.",
+      "in_subset": [
+        "object_properties"
+      ],
+      "from_schema": "https://w3id.org/lmodel/void",
+      "is_a": "has_subset",
+      "domain": "Dataset",
+      "slot_uri": "https://w3id.org/lmodel/void/class_partition",
+      "owner": "class_partition",
+      "range": "Dataset",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "data_dump",
+      "definition_uri": "https://w3id.org/lmodel/void/data_dump",
+      "description": "An RDF dump, partial or complete, of a void:Dataset.",
+      "in_subset": [
+        "object_properties"
+      ],
+      "from_schema": "https://w3id.org/lmodel/void",
+      "domain": "Dataset",
+      "slot_uri": "https://w3id.org/lmodel/void/data_dump",
+      "owner": "data_dump",
+      "range": "Resource",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "example_resource_of_dataset",
+      "definition_uri": "https://w3id.org/lmodel/void/example_resource_of_dataset",
+      "in_subset": [
+        "object_properties"
+      ],
+      "from_schema": "https://w3id.org/lmodel/void",
+      "mappings": [
+        "http://www.w3.org/2000/01/rdf-schema#resource"
+      ],
+      "domain": "Dataset",
+      "slot_uri": "http://www.w3.org/2000/01/rdf-schema#resource",
+      "owner": "example_resource_of_dataset",
+      "range": "Resource",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "feature",
+      "definition_uri": "https://w3id.org/lmodel/void/feature",
+      "description": "distinguishing feature",
+      "in_subset": [
+        "object_properties"
+      ],
+      "from_schema": "https://w3id.org/lmodel/void",
+      "exact_mappings": [
+        "https://www.wikidata.org/wiki/Q1207505"
+      ],
+      "domain": "Dataset",
+      "slot_uri": "https://w3id.org/lmodel/void/feature",
+      "owner": "feature",
+      "range": "TechnicalFeature",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "in_dataset",
+      "definition_uri": "https://w3id.org/lmodel/void/in_dataset",
+      "description": "Points to the void:Dataset that a document is a part of.",
+      "in_subset": [
+        "object_properties"
+      ],
+      "from_schema": "https://w3id.org/lmodel/void",
+      "domain": "Document",
+      "slot_uri": "https://w3id.org/lmodel/void/in_dataset",
+      "owner": "in_dataset",
+      "range": "Dataset",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "a_link_predicate",
+      "definition_uri": "https://w3id.org/lmodel/void/a_link_predicate",
+      "in_subset": [
+        "object_properties"
+      ],
+      "from_schema": "https://w3id.org/lmodel/void",
+      "domain": "Linkset",
+      "slot_uri": "https://w3id.org/lmodel/void/a_link_predicate",
+      "owner": "a_link_predicate",
+      "range": "NamedThing",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "open_search_description",
+      "definition_uri": "https://w3id.org/lmodel/void/open_search_description",
+      "description": "An OpenSearch description document for a free-text search service over a void:Dataset.",
+      "in_subset": [
+        "object_properties"
+      ],
+      "from_schema": "https://w3id.org/lmodel/void",
+      "domain": "Dataset",
+      "slot_uri": "https://w3id.org/lmodel/void/open_search_description",
+      "owner": "open_search_description",
+      "range": "Document",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "property_partition",
+      "definition_uri": "https://w3id.org/lmodel/void/property_partition",
+      "description": "A subset of a void:Dataset that contains only the triples of a certain rdf:Property.",
+      "in_subset": [
+        "object_properties"
+      ],
+      "from_schema": "https://w3id.org/lmodel/void",
+      "is_a": "has_subset",
+      "domain": "Dataset",
+      "slot_uri": "https://w3id.org/lmodel/void/property_partition",
+      "owner": "property_partition",
+      "range": "Dataset",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "root_resource",
+      "definition_uri": "https://w3id.org/lmodel/void/root_resource",
+      "description": "A top concept or entry point for a void:Dataset that is structured in a tree-like fashion. All resources in a dataset can be reached by following links from its root resources in a small number of steps.",
+      "in_subset": [
+        "object_properties"
+      ],
+      "from_schema": "https://w3id.org/lmodel/void",
+      "domain": "Dataset",
+      "slot_uri": "https://w3id.org/lmodel/void/root_resource",
+      "owner": "root_resource",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "has_a_SPARQL_endpoint_at",
+      "definition_uri": "https://w3id.org/lmodel/void/has_a_SPARQL_endpoint_at",
+      "in_subset": [
+        "object_properties"
+      ],
+      "from_schema": "https://w3id.org/lmodel/void",
+      "domain": "Dataset",
+      "slot_uri": "https://w3id.org/lmodel/void/has_a_SPARQL_endpoint_at",
+      "owner": "has_a_SPARQL_endpoint_at",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "has_subset",
+      "definition_uri": "https://w3id.org/lmodel/void/has_subset",
+      "in_subset": [
+        "object_properties"
+      ],
+      "from_schema": "https://w3id.org/lmodel/void",
+      "domain": "Dataset",
+      "slot_uri": "https://w3id.org/lmodel/void/has_subset",
+      "owner": "has_subset",
+      "range": "Dataset",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "target",
+      "definition_uri": "https://w3id.org/lmodel/void/target",
+      "description": "One of the two datasets linked by the linkset.",
+      "in_subset": [
+        "object_properties"
+      ],
+      "from_schema": "https://w3id.org/lmodel/void",
+      "domain": "Linkset",
+      "slot_uri": "https://w3id.org/lmodel/void/target",
+      "owner": "target",
+      "range": "Dataset",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "has_an_URI_look_up_endpoint_at",
+      "definition_uri": "https://w3id.org/lmodel/void/has_an_URI_look_up_endpoint_at",
+      "description": "Defines a simple URI look-up protocol for accessing a dataset.",
+      "in_subset": [
+        "object_properties"
+      ],
+      "from_schema": "https://w3id.org/lmodel/void",
+      "domain": "Dataset",
+      "slot_uri": "https://w3id.org/lmodel/void/has_an_URI_look_up_endpoint_at",
+      "owner": "has_an_URI_look_up_endpoint_at",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "vocabulary",
+      "definition_uri": "https://w3id.org/lmodel/void/vocabulary",
+      "description": "A vocabulary that is used in the dataset.",
+      "in_subset": [
+        "object_properties"
+      ],
+      "from_schema": "https://w3id.org/lmodel/void",
+      "exact_mappings": [
+        "https://www.wikidata.org/wiki/Q6499736"
+      ],
+      "domain": "Dataset",
+      "slot_uri": "https://w3id.org/lmodel/void/vocabulary",
+      "owner": "vocabulary",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "class",
+      "definition_uri": "https://w3id.org/lmodel/void/class",
+      "description": "The rdfs:Class that is the rdf:type of all entities in a class-based partition.",
+      "in_subset": [
+        "functional_properties"
+      ],
+      "from_schema": "https://w3id.org/lmodel/void",
+      "mappings": [
+        "http://www.w3.org/2000/01/rdf-schema#Class"
+      ],
+      "exact_mappings": [
+        "https://www.wikidata.org/wiki/Q16889133"
+      ],
+      "domain": "Dataset",
+      "slot_uri": "http://www.w3.org/2000/01/rdf-schema#Class",
+      "owner": "class",
+      "range": "NamedThing",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "objects_target",
+      "definition_uri": "https://w3id.org/lmodel/void/objects_target",
+      "description": "The dataset describing the objects of the triples contained in the linkset.",
+      "in_subset": [
+        "functional_properties"
+      ],
+      "from_schema": "https://w3id.org/lmodel/void",
+      "is_a": "target",
+      "domain": "Linkset",
+      "slot_uri": "https://w3id.org/lmodel/void/objects_target",
+      "owner": "objects_target",
+      "range": "Dataset",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "property",
+      "definition_uri": "https://w3id.org/lmodel/void/property",
+      "description": "The rdf:Property that is the predicate of all triples in a property-based partition.",
+      "in_subset": [
+        "functional_properties"
+      ],
+      "from_schema": "https://w3id.org/lmodel/void",
+      "mappings": [
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      ],
+      "domain": "Dataset",
+      "slot_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property",
+      "owner": "property",
+      "range": "NamedThing",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "subjects_target",
+      "definition_uri": "https://w3id.org/lmodel/void/subjects_target",
+      "description": "The dataset describing the subjects of triples contained in the linkset.",
+      "in_subset": [
+        "functional_properties"
+      ],
+      "from_schema": "https://w3id.org/lmodel/void",
+      "is_a": "target",
+      "domain": "Linkset",
+      "slot_uri": "https://w3id.org/lmodel/void/subjects_target",
+      "owner": "subjects_target",
+      "range": "Dataset",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "classes",
+      "definition_uri": "https://w3id.org/lmodel/void/classes",
+      "description": "The total number of distinct classes in a void:Dataset. In other words, the number of distinct resources occuring as objects of rdf:type triples in the dataset.",
+      "in_subset": [
+        "datatype_properties"
+      ],
+      "from_schema": "https://w3id.org/lmodel/void",
+      "domain": "Dataset",
+      "slot_uri": "https://w3id.org/lmodel/void/classes",
+      "owner": "classes",
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "distinct_objects",
+      "definition_uri": "https://w3id.org/lmodel/void/distinct_objects",
+      "description": "The total number of distinct objects in a void:Dataset. In other words, the number of distinct resources that occur in the object position of triples in the dataset. Literals are included in this count.",
+      "in_subset": [
+        "datatype_properties"
+      ],
+      "from_schema": "https://w3id.org/lmodel/void",
+      "domain": "Dataset",
+      "slot_uri": "https://w3id.org/lmodel/void/distinct_objects",
+      "owner": "distinct_objects",
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "distinct_subjects",
+      "definition_uri": "https://w3id.org/lmodel/void/distinct_subjects",
+      "description": "The total number of distinct subjects in a void:Dataset. In other words, the number of distinct resources that occur in the subject position of triples in the dataset",
+      "in_subset": [
+        "datatype_properties"
+      ],
+      "from_schema": "https://w3id.org/lmodel/void",
+      "domain": "Dataset",
+      "slot_uri": "https://w3id.org/lmodel/void/distinct_subjects",
+      "owner": "distinct_subjects",
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "number_of_documents",
+      "definition_uri": "https://w3id.org/lmodel/void/number_of_documents",
+      "description": "The total number of documents, for datasets that are published as a set of individual documents, such as RDF/XML documents or RDFa-annotated web pages. Non-RDF documents, such as web pages in HTML or images, are usually not included in this count. This property is intended for datasets where the total number of triples or entities is hard to determine. void:triples or void:entities should be preferred where practical.",
+      "in_subset": [
+        "datatype_properties"
+      ],
+      "from_schema": "https://w3id.org/lmodel/void",
+      "domain": "Dataset",
+      "slot_uri": "https://w3id.org/lmodel/void/number_of_documents",
+      "owner": "number_of_documents",
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "number_of_entities",
+      "definition_uri": "https://w3id.org/lmodel/void/number_of_entities",
+      "description": "The total number of entities that are described in a void:Dataset.",
+      "in_subset": [
+        "datatype_properties"
+      ],
+      "from_schema": "https://w3id.org/lmodel/void",
+      "domain": "Dataset",
+      "slot_uri": "https://w3id.org/lmodel/void/number_of_entities",
+      "owner": "number_of_entities",
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "number_of_properties",
+      "definition_uri": "https://w3id.org/lmodel/void/number_of_properties",
+      "description": "The total number of distinct properties in a void:Dataset. In other words, the number of distinct resources that occur in the predicate position of triples in the dataset.",
+      "in_subset": [
+        "datatype_properties"
+      ],
+      "from_schema": "https://w3id.org/lmodel/void",
+      "domain": "Dataset",
+      "slot_uri": "https://w3id.org/lmodel/void/number_of_properties",
+      "owner": "number_of_properties",
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "number_of_triples",
+      "definition_uri": "https://w3id.org/lmodel/void/number_of_triples",
+      "description": "The total number of triples contained in a void:Dataset.",
+      "in_subset": [
+        "datatype_properties"
+      ],
+      "from_schema": "https://w3id.org/lmodel/void",
+      "domain": "Dataset",
+      "slot_uri": "https://w3id.org/lmodel/void/number_of_triples",
+      "owner": "number_of_triples",
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "URI_space",
+      "definition_uri": "https://w3id.org/lmodel/void/URI_space",
+      "description": "A URI that is a common string prefix of all the entity URIs in a void:Dataset.",
+      "in_subset": [
+        "datatype_properties"
+      ],
+      "from_schema": "https://w3id.org/lmodel/void",
+      "domain": "Dataset",
+      "slot_uri": "https://w3id.org/lmodel/void/URI_space",
+      "owner": "URI_space",
+      "range": "literal_type",
+      "@type": "SlotDefinition"
+    }
+  ],
+  "classes": [
+    {
+      "name": "NamedThing",
+      "definition_uri": "https://w3id.org/lmodel/void/NamedThing",
+      "description": "a databased entity or concept/class",
+      "from_schema": "https://w3id.org/lmodel/void",
+      "mappings": [
+        "owl:Thing"
+      ],
+      "abstract": true,
+      "slot_usage": {},
+      "class_uri": "http://www.w3.org/2002/07/owl#Thing",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Resource",
+      "definition_uri": "https://w3id.org/lmodel/void/Resource",
+      "description": "source or supply from which benefit is produced\n",
+      "from_schema": "https://w3id.org/lmodel/void",
+      "mappings": [
+        "rdfs:Resource"
+      ],
+      "exact_mappings": [
+        "WIKIDATA:Q1554231"
+      ],
+      "is_a": "NamedThing",
+      "slot_usage": {},
+      "class_uri": "http://www.w3.org/2000/01/rdf-schema#Resource",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Dataset",
+      "definition_uri": "https://w3id.org/lmodel/void/Dataset",
+      "description": "A set of RDF triples that are published, maintained or aggregated by a single provider.\n",
+      "from_schema": "https://w3id.org/lmodel/void",
+      "mappings": [
+        "schema:Dataset"
+      ],
+      "exact_mappings": [
+        "IAO:0000100",
+        "dctypes:Dataset",
+        "EFO:0004095",
+        "schema:Dataset",
+        "SIO:000089",
+        "WIKIDATA:Q1172284"
+      ],
+      "is_a": "NamedThing",
+      "slot_usage": {},
+      "class_uri": "http://schema.org/Dataset",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Document",
+      "definition_uri": "https://w3id.org/lmodel/void/Document",
+      "description": "Form for preservation of structured and identified information",
+      "from_schema": "https://w3id.org/lmodel/void",
+      "mappings": [
+        "foaf:Document"
+      ],
+      "is_a": "NamedThing",
+      "slot_usage": {},
+      "class_uri": "http://xmlns.com/foaf/0.1/Document",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "DatasetDescription",
+      "definition_uri": "https://w3id.org/lmodel/void/DatasetDescription",
+      "description": "A web resource whose foaf:primaryTopic or foaf:topics include void:Datasets.",
+      "from_schema": "https://w3id.org/lmodel/void",
+      "is_a": "Document",
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/lmodel/void/DatasetDescription",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Linkset",
+      "definition_uri": "https://w3id.org/lmodel/void/Linkset",
+      "description": "A collection of RDF links between two void:Datasets.",
+      "from_schema": "https://w3id.org/lmodel/void",
+      "is_a": "Dataset",
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/lmodel/void/Linkset",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "TechnicalFeature",
+      "definition_uri": "https://w3id.org/lmodel/void/TechnicalFeature",
+      "description": "A technical feature of a void:Dataset, such as a supported RDF serialization format.",
+      "from_schema": "https://w3id.org/lmodel/void",
+      "is_a": "NamedThing",
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/lmodel/void/TechnicalFeature",
+      "@type": "ClassDefinition"
+    }
+  ],
+  "metamodel_version": "1.7.0",
+  "source_file": "void.yaml",
+  "source_file_date": "2023-08-13T00:12:51",
+  "source_file_size": 8915,
+  "generation_date": "2023-08-13T00:18:01",
+  "@type": "SchemaDefinition",
+  "@context": [
+    "project/jsonld/void.context.jsonld",
+    "https://w3id.org/linkml/types.context.jsonld",
+    {
+      "@base": "https://w3id.org/lmodel/void/"
+    }
+  ]
+}

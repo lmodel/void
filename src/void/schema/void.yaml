@@ -1,0 +1,321 @@
+---
+id: https://w3id.org/lmodel/void
+name: void
+title: void
+description: |-
+  The Vocabulary of Interlinked Datasets (VoID) is an RDF Schema vocabulary for expressing metadata about RDF datasets. It is intended as a bridge between the publishers and users of RDF data, with applications ranging from data discovery to cataloging and archiving of datasets. This document provides a formal definition of the new RDF classes and properties introduced for VoID. It is a companion to the main specification document for VoID, Describing Linked Datasets with the VoID Vocabulary (http://www.w3.org/TR/void/).
+license: Apache Software License 2.0
+see_also:
+  - http://vocab.deri.ie/void
+
+prefixes:
+  adms: http://www.w3.org/ns/adms#
+  dctypes: http://purl.org/dc/dcmitype/
+  EFO: http://identifiers.org/efo/
+  IAO: http://purl.obolibrary.org/obo/IAO_
+  linkml: https://w3id.org/linkml/
+  prov: http://www.w3.org/ns/prov#
+  PATO: http://purl.obolibrary.org/obo/PATO_
+  schema: http://schema.org/
+  SIO: http://identifiers.org/sio/
+  skos: http://www.w3.org/2004/02/skos/core#
+  vann: https://vocab.org/vann/
+  void: https://w3id.org/lmodel/void/
+  WIKIDATA: https://www.wikidata.org/wiki/
+
+default_prefix: void
+default_range: string
+default_curi_maps:
+  - semweb_context
+
+imports:
+  - linkml:types
+
+types:
+
+  literal type:
+    typeof: string
+    uri: rdf:literal
+    description: >-
+      Literals are used for values such as strings, numbers, and dates
+
+subsets:
+
+  object_properties:
+    description: >-
+
+  datatype_properties:
+    description: >-
+      classes distinct objects distinct subjects number of documents number of entities number of properties number of triples URI space 
+
+  functional_properties:
+    description: >-
+      class Objects Target property Subjects Target 
+  
+classes:
+
+  named thing:
+    class_uri: owl:Thing
+    description: a databased entity or concept/class
+    abstract: true
+
+  resource:
+    class_uri: rdfs:Resource
+    description: >
+      source or supply from which benefit is produced
+    is_a: named thing
+    exact_mappings:
+      - WIKIDATA:Q1554231
+
+  dataset:
+    class_uri: schema:Dataset
+    description: >
+      A set of RDF triples that are published, maintained or aggregated by a single provider.
+    is_a: named thing
+    exact_mappings:
+      - IAO:0000100
+      - dctypes:Dataset
+      - EFO:0004095     # data file
+      - schema:Dataset
+      - SIO:000089
+      - WIKIDATA:Q1172284
+
+  document:
+    class_uri: foaf:Document
+    is_a: named thing
+    description: >-
+      Form for preservation of structured and identified information
+    
+  dataset description:
+    description: >-
+      A web resource whose foaf:primaryTopic or foaf:topics include void:Datasets.
+    is_a: document
+
+  linkset:
+    description: >-
+      A collection of RDF links between two void:Datasets.
+    is_a: dataset
+
+  technical feature:
+    description: >-
+      A technical feature of a void:Dataset, such as a supported RDF serialization format.
+    is_a: named thing
+
+slots:
+
+  # Object properties
+
+  class partition:
+    description: >-
+      A subset of a void:Dataset that contains only the entities of a certain rdfs:Class.
+    is_a: has subset
+    domain: dataset
+    range: dataset
+    in_subset:
+      - object_properties
+
+  data dump:
+    description: >-
+      An RDF dump, partial or complete, of a void:Dataset.
+    domain: dataset
+    range: resource
+    in_subset:
+      - object_properties
+
+  example resource of dataset:
+    slot_uri: rdfs:resource
+    domain: dataset
+    range: resource
+    in_subset:
+      - object_properties
+
+  feature:
+    description: >-
+      distinguishing feature
+    domain: dataset
+    range: technical feature
+    in_subset:
+      - object_properties
+    exact_mappings:
+      - WIKIDATA:Q1207505
+
+  in dataset:
+    description: >-
+      Points to the void:Dataset that a document is a part of.
+    domain: document
+    range: dataset
+    in_subset:
+      - object_properties
+
+  a link predicate:
+    domain: linkset
+    range: named thing
+    in_subset:
+      - object_properties
+
+  open search description:
+    description: >-
+      An OpenSearch description document for a free-text search service over a void:Dataset.
+    domain: dataset
+    range: document
+    in_subset:
+      - object_properties
+
+  property partition:
+    description: >-
+      A subset of a void:Dataset that contains only the triples of a certain rdf:Property.
+    is_a: has subset
+    domain: dataset
+    range: dataset
+    in_subset:
+      - object_properties
+
+  root resource:
+    description: >-
+      A top concept or entry point for a void:Dataset that is structured in a tree-like fashion. All resources in a dataset can be reached by following links from its root resources in a small number of steps.
+    domain: dataset
+    in_subset:
+      - object_properties
+
+  has a SPARQL endpoint at:
+    domain: dataset
+    in_subset:
+      - object_properties
+
+  has subset:
+    domain: dataset
+    range: dataset
+    in_subset:
+      - object_properties
+
+  target:
+    description: >-
+      One of the two datasets linked by the linkset.
+    domain: linkset
+    range: dataset
+    in_subset:
+      - object_properties
+
+  has an URI look-up endpoint at:
+    description: >-
+      Defines a simple URI look-up protocol for accessing a dataset.
+    domain: dataset
+    in_subset:
+      - object_properties
+
+  vocabulary:
+    description: >-
+      A vocabulary that is used in the dataset.
+    domain: dataset
+    in_subset:
+      - object_properties
+    exact_mappings:
+      - WIKIDATA:Q6499736
+
+  # Functional Properties
+  
+  class:
+    slot_uri: rdfs:Class
+    description: >-
+      The rdfs:Class that is the rdf:type of all entities in a class-based partition.
+    domain: dataset
+    range: named thing
+    exact_mappings:
+      - WIKIDATA:Q16889133
+    in_subset:
+      functional_properties
+
+  objects target:
+    description: >-
+      The dataset describing the objects of the triples contained in the linkset.
+    is_a: target
+    domain: linkset
+    range: dataset
+    in_subset:
+      functional_properties
+
+  property:
+    slot_uri: rdf:Property
+    description: >-
+      The rdf:Property that is the predicate of all triples in a property-based partition.
+    domain: dataset
+    range: named thing
+    in_subset:
+      functional_properties
+
+  subjects target:
+    description: >-
+      The dataset describing the subjects of triples contained in the linkset.
+    is_a: target
+    domain: linkset
+    range: dataset
+    in_subset:
+      functional_properties
+
+  # Datatype Properties
+
+  classes:
+    description: >-
+      The total number of distinct classes in a void:Dataset. In other words, the number of distinct resources occuring as objects of rdf:type triples in the dataset.
+    in_subset:
+      - datatype_properties
+    domain: dataset
+    range: integer
+
+  distinct objects:
+    description: >-
+      The total number of distinct objects in a void:Dataset. In other words, the number of distinct resources that occur in the object position of triples in the dataset. Literals are included in this count.
+    in_subset:
+      - datatype_properties
+    domain: dataset
+    range: integer
+
+  distinct subjects:
+    description: >-
+      The total number of distinct subjects in a void:Dataset. In other words, the number of distinct resources that occur in the subject position of triples in the dataset
+    in_subset:
+      - datatype_properties
+    domain: dataset
+    range: integer
+
+  number of documents:
+    description: >-
+      The total number of documents, for datasets that are published as a set of individual documents, such as RDF/XML documents or RDFa-annotated web pages. Non-RDF documents, such as web pages in HTML or images, are usually not included in this count. This property is intended for datasets where the total number of triples or entities is hard to determine. void:triples or void:entities should be preferred where practical.
+    in_subset:
+      - datatype_properties
+    domain: dataset
+    range: integer
+
+  number of entities:
+    description: >-
+      The total number of entities that are described in a void:Dataset.
+    in_subset:
+      - datatype_properties
+    domain: dataset
+    range: integer
+
+  number of properties:
+    description: >-
+      The total number of distinct properties in a void:Dataset. In other words, the number of distinct resources that occur in the predicate position of triples in the dataset.
+    in_subset:
+      - datatype_properties
+    domain: dataset
+    range: integer
+
+  number of triples:
+    description: >-
+      The total number of triples contained in a void:Dataset.
+    in_subset:
+      - datatype_properties
+    domain: dataset
+    range: integer
+
+  URI space:
+    description: >-
+      A URI that is a common string prefix of all the entity URIs in a void:Dataset.
+    in_subset:
+      - datatype_properties
+    domain: dataset
+    range: literal type
+
+...

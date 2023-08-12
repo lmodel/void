@@ -1,0 +1,27 @@
+{
+  "template": "https://github.com/noelmcloughlin/linkml-project-cookiecutter",
+  "commit": "85e434fa7cac048edda9435d53efe13a12633755",
+  "checkout": null,
+  "context": {
+    "cookiecutter": {
+      "project_name": "void",
+      "__project_slug": "void",
+      "github_org": "lmodel",
+      "__source_path": "src/void/schema/void.yaml",
+      "project_description": "Vocabulary of Interlinked Datasets (VoID), as linkml model",
+      "full_name": "Noel McLoughlin",
+      "email": "noel.mcloughlin@gmail.com",
+      "__author": "Noel McLoughlin <noel.mcloughlin@gmail.com>",
+      "license": "Apache Software License 2.0",
+      "main_schema_class": "Person",
+      "create_python_classes": "Yes",
+      "use_schemasheets": "No",
+      "google_sheet_id": "1wVoaiFg47aT9YWNeRfTZ8tYHN8s8PAuDx5i2HUcDpvQ",
+      "google_sheet_tabs": "personinfo enums",
+      "__google_sheet_module": "personinfo_enums",
+      "github_token_for_pypi_deployment": "PYPI_PASSWORD",
+      "_template": "https://github.com/noelmcloughlin/linkml-project-cookiecutter"
+    }
+  },
+  "directory": null
+}

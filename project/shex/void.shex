@@ -1,0 +1,113 @@
+BASE <https://w3id.org/lmodel/void/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX linkml: <https://w3id.org/linkml/>
+PREFIX schema1: <http://schema.org/>
+
+
+<LiteralType> rdf:literal
+
+linkml:String xsd:string
+
+linkml:Integer xsd:integer
+
+linkml:Boolean xsd:boolean
+
+linkml:Float xsd:float
+
+linkml:Double xsd:double
+
+linkml:Decimal xsd:decimal
+
+linkml:Time xsd:time
+
+linkml:Date xsd:date
+
+linkml:Datetime xsd:dateTime
+
+linkml:DateOrDatetime linkml:DateOrDatetime
+
+linkml:Uriorcurie IRI
+
+linkml:Curie xsd:string
+
+linkml:Uri IRI
+
+linkml:Ncname xsd:string
+
+linkml:Objectidentifier IRI
+
+linkml:Nodeidentifier NONLITERAL
+
+linkml:Jsonpointer xsd:string
+
+linkml:Jsonpath xsd:string
+
+linkml:Sparqlpath xsd:string
+
+<Dataset>  (
+    CLOSED {
+       (  $<Dataset_tes> (  &<NamedThing_tes> ;
+             rdf:type [ owl:Thing ] ?
+          ) ;
+          rdf:type [ schema1:Dataset ] ?
+       )
+    } OR @<Linkset>
+)
+
+<DatasetDescription> CLOSED {
+    (  $<DatasetDescription_tes> (  &<Document_tes> ;
+          rdf:type [ foaf:Document ] ?
+       ) ;
+       rdf:type [ <DatasetDescription> ] ?
+    )
+}
+
+<Document>  (
+    CLOSED {
+       (  $<Document_tes> (  &<NamedThing_tes> ;
+             rdf:type [ owl:Thing ] ?
+          ) ;
+          rdf:type [ foaf:Document ] ?
+       )
+    } OR @<DatasetDescription>
+)
+
+<Linkset> CLOSED {
+    (  $<Linkset_tes> (  &<Dataset_tes> ;
+          rdf:type [ schema1:Dataset ] ?
+       ) ;
+       rdf:type [ <Linkset> ] ?
+    )
+}
+
+<NamedThing>  (
+    @<Dataset> OR @<Document> OR @<Resource> OR @<TechnicalFeature>
+)
+
+<NamedThing_struct> {
+    (  $<NamedThing_tes> rdf:type . * ;
+       rdf:type [ owl:Thing ] ?
+    )
+}
+
+<Resource> CLOSED {
+    (  $<Resource_tes> (  &<NamedThing_tes> ;
+          rdf:type [ owl:Thing ] ?
+       ) ;
+       rdf:type [ rdfs:Resource ] ?
+    )
+}
+
+<TechnicalFeature> CLOSED {
+    (  $<TechnicalFeature_tes> (  &<NamedThing_tes> ;
+          rdf:type [ owl:Thing ] ?
+       ) ;
+       rdf:type [ <TechnicalFeature> ] ?
+    )
+}
+
+

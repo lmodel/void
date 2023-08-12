@@ -1,0 +1,53 @@
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema1: <http://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix void1: <https://w3id.org/lmodel/void/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+schema1:Dataset a sh:NodeShape ;
+    sh:closed true ;
+    sh:description """A set of RDF triples that are published, maintained or aggregated by a single provider.
+""" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass schema1:Dataset .
+
+rdfs:Resource a sh:NodeShape ;
+    sh:closed true ;
+    sh:description """source or supply from which benefit is produced
+""" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass rdfs:Resource .
+
+owl:Thing a sh:NodeShape ;
+    sh:closed false ;
+    sh:description "a databased entity or concept/class" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass owl:Thing .
+
+foaf:Document a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "Form for preservation of structured and identified information" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass foaf:Document .
+
+void1:DatasetDescription a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A web resource whose foaf:primaryTopic or foaf:topics include void:Datasets." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass void1:DatasetDescription .
+
+void1:Linkset a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A collection of RDF links between two void:Datasets." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass void1:Linkset .
+
+void1:TechnicalFeature a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A technical feature of a void:Dataset, such as a supported RDF serialization format." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass void1:TechnicalFeature .
+

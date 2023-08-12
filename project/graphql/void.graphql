@@ -1,0 +1,28 @@
+type Dataset
+  {
+  }
+
+type DatasetDescription
+  {
+  }
+
+type Document
+  {
+  }
+
+type Linkset
+  {
+  }
+
+interface NamedThing
+  {
+  }
+
+type Resource
+  {
+  }
+
+type TechnicalFeature
+  {
+  }
+

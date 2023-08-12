@@ -1,0 +1,7 @@
+---
+name: void
+author: Noel McLoughlin <noel.mcloughlin@gmail.com>
+description: Vocabulary of Interlinked Datasets (VoID), as linkml model
+source_schema_path: src/void/schema/void.yaml
+google_sheet_id: 1wVoaiFg47aT9YWNeRfTZ8tYHN8s8PAuDx5i2HUcDpvQ
+google_sheet_tabs: personinfo enums
