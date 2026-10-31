@@ -1,0 +1,5 @@
+# Policies
+
+* [Security policy](security-policy.md) - How to report a vulnerability (GitHub's private vulnerability reporting), which release receives fixes (the latest), what executes in the repository and what holds each surface, the three assets a release carries, the ruleset on `main`, and the two repository settings not yet in force.
+* [Licence and attribution](license-and-attribution.md) - The repository's licences and what it may take from elsewhere: Apache-2.0 for the schema and code, CC BY 4.0 for the knowledge bundle, no text of the VoID Note (W3C Document License) or of the vocabulary file (no licence stated), the term lists' IRIs and facts, and the template's and KTL's notices.
+* [AI covenant](ai-covenant.md) - The rules for AI-assisted work on void: a contributor owns what they submit, an element must say what VoID says, no text of the Note or the vocabulary file, VoID's terms keep VoID's IRIs, and the scheduled librarian commits as a bot, through pull requests a person approves.
