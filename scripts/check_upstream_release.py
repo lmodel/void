@@ -44,9 +44,10 @@ editors add beside it, are reported for information only.
 
 Text a server chose, such as an address, a file name or an error message,
 is quoted as code on one line in the report, so the issue the workflow
-opens from it cannot mention anyone. Set ``GITHUB_TOKEN`` to raise the API
-rate limit. The token goes to api.github.com alone, never to W3C and never
-on to a redirect. Usage::
+opens from it cannot mention anyone. A redirect is followed only to an
+https address on www.w3.org or api.github.com. Set ``GITHUB_TOKEN`` to
+raise the API rate limit. The token goes to api.github.com alone, never to
+W3C and never on to a redirect. Usage::
 
     python scripts/check_upstream_release.py [--report FILE]
 """
@@ -61,12 +62,16 @@ import os
 import re
 import sys
 import urllib.error
+import urllib.parse
 import urllib.request
 from functools import cache
 from pathlib import Path
 
 USER_AGENT = "lmodel-void-watch"
 API_HOST = "https://api.github.com/"
+# The hosts a redirect may lead to: W3C's, which serves the Note's page, and
+# the GitHub API's.
+HOSTS = frozenset({"www.w3.org", "api.github.com"})
 API = f"{API_HOST}repos/cygri/void"
 
 # The most the script reads of one answer. The largest, the editors' file
@@ -105,6 +110,20 @@ LICENCE_LINK = re.compile(
 DATED_VERSION = re.compile(r"/TR/(\d{4})/[A-Z]+-void-(\d{4})(\d{2})(\d{2})/?$")
 
 
+class _ExpectedHostRedirect(urllib.request.HTTPRedirectHandler):
+    """Follow a redirect only to an https address on one of HOSTS."""
+
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        parts = urllib.parse.urlsplit(newurl)
+        if parts.scheme != "https" or parts.hostname not in HOSTS:
+            raise ValueError(f"a redirect leads off the expected hosts, to {newurl}")
+        return super().redirect_request(req, fp, code, msg, headers, newurl)
+
+
+# An opener in place of urlopen's, whose redirect handler follows any address.
+_open = urllib.request.build_opener(_ExpectedHostRedirect).open
+
+
 def _get(url: str) -> tuple[str, bytes]:
     """The address that answered, after any redirect, and the answer's body."""
     headers = {"User-Agent": USER_AGENT}
@@ -116,7 +135,7 @@ def _get(url: str) -> tuple[str, bytes]:
         # urllib copies ordinary headers onto a redirect, so the token goes in
         # an unredirected one and reaches api.github.com alone.
         req.add_unredirected_header("Authorization", f"Bearer {token}")
-    with urllib.request.urlopen(req, timeout=60) as resp:
+    with _open(req, timeout=60) as resp:
         body = resp.read(MAX_BYTES + 1)
         answered = resp.geturl()
     if len(body) > MAX_BYTES:

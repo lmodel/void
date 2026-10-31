@@ -261,11 +261,11 @@ def test_a_redirect_is_reported_and_quoted(watch, tmp_path):
     """The address that answered is named, as code, when it is not the one
     asked, and a backtick in it cannot end the quotation."""
     answers = _answers(watch)
-    answers[watch.LATEST] = ("https://example.org/@someone`x", PAGE)
+    answers[watch.LATEST] = ("https://www.w3.org/TR/@someone`x", PAGE)
     _stub(watch, answers)
     code, text = _run(watch, tmp_path)
     assert code == 0, text
-    assert "redirected to `https://example.org/@someone'x`." in text
+    assert "redirected to `https://www.w3.org/TR/@someone'x`." in text
 
 
 def test_text_the_server_chose_is_quoted(watch, tmp_path):
@@ -306,7 +306,7 @@ def test_the_token_goes_to_the_api_alone(watch, monkeypatch):
         sent[req.full_url] = (dict(req.header_items()), dict(req.unredirected_hdrs))
         return _Answer(req.full_url)
 
-    monkeypatch.setattr(watch.urllib.request, "urlopen", urlopen)
+    monkeypatch.setattr(watch, "_open", urlopen)
     watch._get(watch.API)
     watch._get(watch.LATEST)
     headers, unredirected = sent[watch.API]
@@ -324,9 +324,7 @@ def test_an_answer_over_the_cap_is_refused(watch, monkeypatch):
         def read(self, size):
             return b"x" * size
 
-    monkeypatch.setattr(
-        watch.urllib.request, "urlopen", lambda req, timeout: Big(req.full_url)
-    )
+    monkeypatch.setattr(watch, "_open", lambda req, timeout: Big(req.full_url))
     with pytest.raises(ValueError, match="larger than"):
         watch._get(watch.LATEST)
 
@@ -346,3 +344,44 @@ def test_server_text_stays_on_one_line(watch, tmp_path):
     code, text = _run(watch, tmp_path)
     assert code == 1
     assert "now states a licence, `MIT @someone 'x'`.**" in text
+
+
+def test_a_redirect_off_the_expected_hosts_is_refused(watch):
+    """A redirect is followed to W3C's and the GitHub API's hosts over https,
+    and to no other address."""
+    handlers = watch._open.__self__.handlers
+    assert any(isinstance(h, watch._ExpectedHostRedirect) for h in handlers)
+    handler = watch._ExpectedHostRedirect()
+    req = watch.urllib.request.Request(watch.LATEST)
+    for newurl in (
+        "https://example.org/TR/void/",
+        "http://www.w3.org/TR/void/",
+        "https://www.w3.org.example.org/TR/void/",
+        "https://raw.githubusercontent.com/cygri/void/master/rdfs/void.ttl",
+    ):
+        with pytest.raises(ValueError, match="leads off the expected hosts"):
+            handler.redirect_request(req, None, 302, "Found", {}, newurl)
+    for moved in (
+        "https://www.w3.org/TR/void-2/",
+        "https://api.github.com/repositories/1/license",
+    ):
+        assert (
+            handler.redirect_request(req, None, 301, "Moved", {}, moved).full_url
+            == moved
+        )
+
+
+def test_a_refused_redirect_could_not_finish(watch, tmp_path):
+    """A redirect the watch refuses stops that check, and the report quotes
+    the address it was sent to."""
+    answers = _answers(watch)
+    answers[watch.LATEST] = ValueError(
+        "a redirect leads off the expected hosts, to https://example.org/@someone"
+    )
+    _stub(watch, answers)
+    code, text = _run(watch, tmp_path)
+    assert code == 1
+    assert (
+        "**The edition check could not finish: `a redirect leads off the expected "
+        "hosts, to https://example.org/@someone`.**" in text
+    )
