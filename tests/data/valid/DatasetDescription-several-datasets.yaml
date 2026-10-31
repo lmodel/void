@@ -1,0 +1,8 @@
+# One VoID file for every dataset a site publishes, each of equal weight.
+id: http://data.example.org/.well-known/void
+title: The datasets of data.example.org
+topic:
+  - http://data.example.org/void.ttl#Lighthouses
+  - http://data.example.org/void.ttl#Harbours
+  - http://data.example.org/void.ttl#CoastalData
+inDataset: http://data.example.org/void.ttl#CoastalData

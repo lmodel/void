@@ -1,0 +1,8 @@
+# Fails at: /inDataset
+# A document points at one dataset, which may hold others as subsets.
+id: http://data.example.org/void.ttl
+topic:
+  - http://data.example.org/void.ttl#Lighthouses
+inDataset:
+  - http://data.example.org/void.ttl#Lighthouses
+  - http://data.example.org/void.ttl#Harbours

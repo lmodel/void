@@ -1,0 +1,4 @@
+# Fails at: /created
+# A date is written as a date.
+id: http://data.example.org/void.ttl#Lighthouses
+created: last spring

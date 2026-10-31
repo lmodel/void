@@ -1,0 +1,7 @@
+# A dataset published as many small RDF documents, counted by documents
+# where its triples are hard to count.
+id: http://clubs.example.org/void.ttl#SailingClubs
+title: Sailing Clubs
+documents: 1400
+feature:
+  - http://www.w3.org/ns/formats/RDFa

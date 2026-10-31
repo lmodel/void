@@ -1,0 +1,4 @@
+# Fails at: /triples
+# A count of triples is zero or more.
+id: http://data.example.org/void.ttl#Lighthouses
+triples: -5

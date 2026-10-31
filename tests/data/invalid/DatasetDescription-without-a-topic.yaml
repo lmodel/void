@@ -1,0 +1,4 @@
+# Fails at: /
+# A dataset description is about at least one dataset.
+id: http://data.example.org/void.ttl
+title: A VoID file about nothing in particular

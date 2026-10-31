@@ -1,0 +1,5 @@
+# Fails at: /sparqlEndpoint/0
+# An endpoint is an address.
+id: http://data.example.org/void.ttl#Lighthouses
+sparqlEndpoint:
+  - the endpoint on our server

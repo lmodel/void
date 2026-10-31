@@ -1,0 +1,9 @@
+# A linkset that names its two targets and also which holds the subjects and
+# which the objects, so the three slots name the same two datasets.
+id: http://data.example.org/void.ttl#LighthousesInHarbours
+target:
+  - http://data.example.org/void.ttl#Lighthouses
+  - http://data.example.org/void.ttl#Harbours
+subjectsTarget: http://data.example.org/void.ttl#Lighthouses
+objectsTarget: http://data.example.org/void.ttl#Harbours
+linkPredicate: http://purl.org/dc/terms/isPartOf

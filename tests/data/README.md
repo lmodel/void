@@ -1,14 +1,9 @@
 # Example data for void
 
-This folder contains example data for testing and demonstrating the datamodel`
-sorted in subfolders:
+This folder holds the examples the tests check, in subfolders:
 
-- `valid` for data conforming to the datamodel. Used to verify the datamodel.
-- `invalid` for data not conforming to the datamodel. Used to verify the validation.
-- `problem` for data which are not yet handled correctly in the current schema version,
-   again separated into valid/invalid.
+- `valid` for data that conforms to the schema.
+- `invalid` for counter-examples. The first line of each, `# Fails at: <pointer>`, names where the validator must report it.
+- `problem/valid` for valid data that the generated dataclasses cannot load under LinkML 1.12.1: a class partition's `class` key is a Python keyword. `tests/test_data.py` validates these examples and loads them through the Pydantic model; the example runner leaves them out.
 
-The filenames of all example data must conform to the scheme `classname-###.yaml`
-where classname must be a the name of a class from the schema. "###" can be a number
-or one or more other characters allowed in filenames. The classname is derived by
-splitting at the first "-" and taking the part before the "-".
+Each file name is `ClassName-anything.yaml`, and the part before the first `-` names the class the file is checked against.

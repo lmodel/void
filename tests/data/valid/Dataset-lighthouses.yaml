@@ -1,0 +1,50 @@
+# General, access and structural metadata about one dataset, as a VoID file
+# beside it would give them.
+id: http://data.example.org/void.ttl#Lighthouses
+title: Coastal Lighthouses
+description: Locations, heights and light patterns of the lighthouses on one stretch of coast.
+creator:
+  - http://data.example.org/org/harbour-trust
+contributor:
+  - http://data.example.org/people/ada
+  - http://data.example.org/people/bran
+publisher: http://data.example.org/org/harbour-trust
+source:
+  - http://records.example.org/registers/lights
+created: "2019-04-02"
+issued: "2019-05-01"
+modified: "2026-09-14"
+license: http://opendatacommons.org/licenses/by/1-0/
+subject:
+  - http://dbpedia.org/resource/Lighthouse
+homepage: http://data.example.org/lighthouses/
+page:
+  - http://catalogue.example.org/datasets/lighthouses
+feature:
+  - http://www.w3.org/ns/formats/Turtle
+  - http://www.w3.org/ns/formats/RDF_XML
+sparqlEndpoint:
+  - http://data.example.org/sparql
+dataDump:
+  - http://data.example.org/dumps/lighthouses.ttl.gz
+uriLookupEndpoint:
+  - http://data.example.org/lookup?uri=
+openSearchDescription:
+  - http://data.example.org/opensearch.xml
+rootResource:
+  - http://data.example.org/lighthouse/coast
+exampleResource:
+  - http://data.example.org/lighthouse/north-head
+  - http://data.example.org/lighthouse/gull-rock
+uriSpace: http://data.example.org/lighthouse/
+uriRegexPattern: "^http://data\\.example\\.org/lighthouse/"
+vocabulary:
+  - http://xmlns.com/foaf/0.1/
+  - http://purl.org/dc/terms/
+  - http://www.w3.org/2003/01/geo/wgs84_pos
+triples: 48200
+entities: 312
+classes: 4
+properties: 27
+distinctSubjects: 1650
+distinctObjects: 9100

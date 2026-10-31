@@ -1,0 +1,18 @@
+# Counts for the classes and properties a dataset uses, each given as a
+# partition inside the dataset. It sits under problem/valid because its
+# class key is a Python keyword, which the generated dataclasses cannot load
+# under LinkML 1.12.1; tests/test_data.py validates it.
+id: http://data.example.org/void.ttl#Lighthouses
+classPartition:
+  - class: http://data.example.org/def/Lighthouse
+    entities: 300
+    propertyPartition:
+      - property: http://www.w3.org/2003/01/geo/wgs84_pos#lat
+        triples: 300
+  - class: foaf:Organization
+    entities: 12
+propertyPartition:
+  - property: foaf:name
+    triples: 312
+  - property: rdf:type
+    triples: 312

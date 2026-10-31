@@ -1,0 +1,5 @@
+# Fails at: /propertyPartition/0
+# A property partition names its one property.
+id: http://data.example.org/void.ttl#Lighthouses
+propertyPartition:
+  - triples: 312

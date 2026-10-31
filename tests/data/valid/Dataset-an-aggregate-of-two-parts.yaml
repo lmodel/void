@@ -1,0 +1,10 @@
+# A dataset made of two parts, each a dataset with its own dump, named here
+# by its IRI and described in a record of its own.
+id: http://data.example.org/void.ttl#CoastalData
+title: Coastal Data
+description: The lighthouse and harbour datasets, served from one endpoint.
+sparqlEndpoint:
+  - http://data.example.org/sparql
+subset:
+  - http://data.example.org/void.ttl#Lighthouses
+  - http://data.example.org/void.ttl#Harbours

@@ -1,0 +1,7 @@
+# Fails at: /target
+# A linkset links two datasets, no more.
+id: http://data.example.org/void.ttl#LighthousesToPlaces
+target:
+  - http://data.example.org/void.ttl#Lighthouses
+  - http://geo.example.com/void.ttl#Places
+  - http://geo.example.com/void.ttl#Regions

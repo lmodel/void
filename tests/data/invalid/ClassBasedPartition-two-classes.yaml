@@ -1,0 +1,6 @@
+# Fails at: /class
+# A class partition is about one class.
+class:
+  - foaf:Person
+  - foaf:Organization
+entities: 12
