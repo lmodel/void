@@ -26,7 +26,7 @@ status: draft
 
 The schema and the code are under the Apache License 2.0, and the knowledge bundle in `.lokf/knowledge/` is under CC BY 4.0, as its `index.md` declares.[^readme.md]
 
-NOTICE says what the repository takes from VoID. The Note is under the W3C Document License, which allows a changed version only in software and its documentation. The vocabulary file and the editors' repository state no licence. So the repository copies no definition, comment, label or example from either. The schema names each term by its IRI and describes it in this project's own words, and the term lists hold IRIs and the facts the file states about them.[^notice] The other vocabularies the schema names, the DCMI Metadata Terms, FOAF, RDF Schema, the SPARQL Service Description and DCAT, are named by IRI only.
+NOTICE says what the repository takes from VoID. The Note is under the W3C Document License, which allows a changed version only in software and its documentation. The vocabulary file and the editors' repository state no licence. So the repository copies no definition, comment, label or example from either. The schema names each term by its IRI and describes it in this project's own words. The term lists hold IRIs and the facts the file states about them.[^notice] The schema names the other vocabularies (the DCMI Metadata Terms, FOAF, RDF Schema, the SPARQL Service Description and DCAT) by IRI only.
 
 NOTICE also carries the MIT licence of linkml-project-copier and the Apache-2.0 notice of the Knowledge Trust Ladder's sidecar and website templates.[^notice]
 

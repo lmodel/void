@@ -17,7 +17,7 @@ status: draft
 
 # AI covenant
 
-`AI_COVENANT.md` makes a contributor the author of whatever they submit, whatever tools helped. Its note for this project names two risks: a term or rule a model produced, presented as VoID's, and the Note's or the vocabulary file's text. So every element with a `void:` IRI names a term of the pinned vocabulary file, nothing copies or closely paraphrases either text, and VoID's terms keep VoID's IRIs while only the schema's additions sit under `void_linkml:`.[^covenant]
+`AI_COVENANT.md` makes a contributor the author of whatever they submit, whatever tools helped. Its note for this project names two risks: a term or rule a model produced, presented as VoID's, and copied text of the Note or the vocabulary file. So every element with a `void:` IRI names a term of the pinned vocabulary file, and nothing copies or closely paraphrases either text. VoID's terms keep VoID's IRIs, and only the schema's additions sit under `void_linkml:`.[^covenant]
 
 The scheduled `knowledge-librarian` agent commits as `knowledge-librarian[bot]`, opens a pull request a person must approve, holds no write token in its own job, and never writes a person's confirmation.[^covenant]
 

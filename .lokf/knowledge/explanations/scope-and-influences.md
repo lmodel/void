@@ -19,7 +19,7 @@ status: draft
 
 # Scope, influences and mappings
 
-The schema models VoID's four classes and 27 properties, the Dublin Core and FOAF terms the Note uses in a description, and the label, comment and see-also of a technical feature. It leaves out the agents a description names, which FOAF describes, the Waiver vocabulary's terms, the SPARQL Service Description's own terms and `dcterms:date`.[^readme.md] Its one influence beyond VoID is lmodel/slsa, whose release asset and governance files it follows.
+The schema models VoID's four classes and 27 properties, the Dublin Core and FOAF terms the Note uses in a description, and the label, comment and see-also of a technical feature. It leaves out the agents a description names (FOAF describes them), the Waiver vocabulary's terms, the SPARQL Service Description's own terms and `dcterms:date`.[^readme.md] Its one influence beyond VoID is lmodel/slsa, whose release asset and governance files it follows.
 
 The schema borrows from no other vocabulary, and its mappings say only what VoID or the meaning of the terms states:[^void.yaml]
 

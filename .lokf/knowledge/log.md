@@ -2,6 +2,7 @@
 
 ## 2026-10-31
 
+* **Prose**: reworded 8 concept bodies in plain English. No fact, link, number or frontmatter changed.
 * **Changed**: the linkset and partition entries' descriptions follow their bodies, in the schema's own words rather than the Note's.
 * **Changed**: the linkset and partition entries describe each term from the schema's own descriptions, which no longer follow the Note's wording.
 * **Changed**: the security policy says the upstream watch's token can write issues, as `upstream-watch.yaml` grants and SECURITY.md now says, not that it is read-only.

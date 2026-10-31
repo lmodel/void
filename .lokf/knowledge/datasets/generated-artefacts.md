@@ -37,7 +37,7 @@ status: draft
 
 `just gen-doc` writes the merged schema to `docs/schema/void.yaml` and a page per element to `docs/elements/`, which git ignores and the website shows under `schema/`. The generators' settings skip the Markdown generator in gen-project.[^generators.yaml]
 
-All of these are generated, so a change goes into the schema and the recipes run again. The OWL rendering in `project/owl/void.owl.ttl` is described on its own in [The schema's OWL rendering](owl-rendering.md).
+All of these are generated: change the schema, then run the recipes again. The OWL rendering in `project/owl/void.owl.ttl` is described on its own in [The schema's OWL rendering](owl-rendering.md).
 
 [^justfile]: justfile, the gen-project and gen-doc recipes
 [^generators.yaml]: .linkml/generators.yaml, the excludes and the generator arguments

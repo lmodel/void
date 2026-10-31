@@ -130,6 +130,6 @@ Each concept derived from a file or folder of this repository names it by its pa
 | `rdfs/void.ttl` in <https://github.com/cygri/void> | `references/void-vocabulary-file` | re-read it when the upstream watch reports a changed file |
 | the w3id.org rules for lmodel | the dump address in `datasets/owl-rendering` | re-read the OWL rule when the routes change |
 
-The paths under `exclusions` were looked at and left out, each for the reason it gives: governance text, tooling settings, template text, package plumbing, the pointer for agents, and the sidecar's files. Some of the sidecar's files are sources even so: the domain schema, the justfile's `schema :=` line and the `[tool.lokf]` table.
+The paths under `exclusions` are left out, each for the reason it gives: governance text, tooling settings, template text, package plumbing, the pointer for agents, and the sidecar's files. Some of the sidecar's files are sources even so: the domain schema, the justfile's `schema :=` line and the `[tool.lokf]` table.
 
 No concept here quotes the VoID Note or the vocabulary file, whose text the repository does not copy.

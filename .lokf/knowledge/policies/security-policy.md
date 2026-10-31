@@ -22,7 +22,7 @@ status: draft
 
 `SECURITY.md` asks for a vulnerability to be reported through GitHub's private vulnerability reporting, not in a public issue. One person maintains the repository, so a first reply takes days, and there is no bounty. Only the latest release receives fixes.[^security.md]
 
-A release carries the schema and the Python models generated from it. Nothing goes to PyPI. When the bundle or the schema changed, the knowledge release attaches three assets, each with its `.sha256` and a build-provenance attestation: the schema's adapt copy, the bundle as a zip and a Microsoft 365 Copilot skill zip. The upstream watch reads W3C's page of the Note and asks the GitHub API about the editors' repository, sending the workflow's token, which can write issues, to `api.github.com` alone.
+A release carries the schema and the Python models generated from it. Nothing goes to PyPI. When the bundle or the schema changed, the knowledge release attaches three assets, each with its `.sha256` and a build-provenance attestation: the schema's adapt copy, the bundle as a zip and a Microsoft 365 Copilot skill zip. The upstream watch reads W3C's page of the Note and asks the GitHub API about the editors' repository. It sends the workflow's token, which can write issues, to `api.github.com` alone.
 
 The policy's table names each workflow and what holds it:
 

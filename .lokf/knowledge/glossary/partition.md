@@ -17,6 +17,6 @@ status: draft
 
 # Partition
 
-A class-based partition is the slice of a dataset about the members of one class, and a property-based partition is the slice made of the triples whose predicate is one property. VoID counts each as a dataset in its own right, usually a blank node. VoID gives them no class of their own, so the schema writes each as a value inside its dataset, in `classPartition` or `propertyPartition`. Its classes `ClassBasedPartition` and `PropertyBasedPartition` sit under `void_linkml:`. Each names one `class` or one `property` and may carry the counts.[^void.yaml]
+A class-based partition is the slice of a dataset about the members of one class, and a property-based partition is the slice made of the triples whose predicate is one property. VoID counts each as a dataset in its own right, usually a blank node. VoID gives them no class of their own, so the schema writes each as a value inside its dataset, in `classPartition` or `propertyPartition`. The schema's classes `ClassBasedPartition` and `PropertyBasedPartition` sit under `void_linkml:`. Each names one `class` or one `property` and may carry the counts.[^void.yaml]
 
 [^void.yaml]: src/void/schema/void.yaml, the partition classes
