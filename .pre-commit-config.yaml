@@ -1,5 +1,22 @@
 ---
 # https://pre-commit.com/
+# No hook may rewrite a file this repository does not write by hand: what
+# the LinkML generators and `lokf adapt` write, which the next run would
+# rewrite back; the upstream term lists, which scripts/extract_void_terms.py
+# writes and tests hold to their checksums; the neighbours' released copies,
+# which tests hold to their checksums; npm's lockfile for the release tools;
+# and the KTL sidecar's scripts, which the weekly sync replaces.
+exclude: >-
+  (?x)^(
+    src/void/datamodel/|
+    project/|
+    docs/schema/|
+    \.lokf/(scripts|m365)/|
+    \.lokf/(lokf|void)\.yaml$|
+    \.github/release/package-lock\.json$|
+    tests/neighbours/|
+    tests/upstream/
+  )
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v6.0.0
