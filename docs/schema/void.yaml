@@ -23,6 +23,10 @@ comments:
   lists them, and the tests hold this schema to that list.
 - 'Neither the Note nor the vocabulary file is copied: every description here is this
   project''s own, and NOTICE says why.'
+- A slot whose value names a resource by its IRI or a CURIE, such as id, class, subset
+  or target, carries the pattern of a scheme or prefix, a colon and no space. LinkML
+  1.12.1 renders the uriorcurie type, and a reference to a class, as a JSON Schema
+  string with no format, so without it the validator would pass any text there.
 - 'Kept from the Note''s account of a description: the Dublin Core terms of its sections
   2.2, 2.4 and 2.5, FOAF''s homepage and page (2.1) and topic and primaryTopic (6.2),
   and the RDF Schema label, comment and seeAlso of a technical feature (2.6). Left
@@ -364,6 +368,7 @@ slots:
     - TechnicalFeature
     range: uriorcurie
     required: true
+    pattern: ^[A-Za-z_][A-Za-z0-9_.+-]*:[^\s]+$
   title:
     name: title
     definition_uri: https://w3id.org/lmodel/void/title
@@ -546,6 +551,7 @@ slots:
     domain_of:
     - DatasetDescription
     range: Dataset
+    pattern: ^[A-Za-z_][A-Za-z0-9_.+-]*:[^\s]+$
   topic:
     name: topic
     definition_uri: https://w3id.org/lmodel/void/topic
@@ -560,6 +566,7 @@ slots:
     - DatasetDescription
     range: Dataset
     multivalued: true
+    pattern: ^[A-Za-z_][A-Za-z0-9_.+-]*:[^\s]+$
   label:
     name: label
     definition_uri: https://w3id.org/lmodel/void/label
@@ -611,6 +618,7 @@ slots:
     - Dataset
     range: TechnicalFeature
     multivalued: true
+    pattern: ^[A-Za-z_][A-Za-z0-9_.+-]*:[^\s]+$
   sparqlEndpoint:
     name: sparqlEndpoint
     definition_uri: https://w3id.org/lmodel/void/sparqlEndpoint
@@ -757,6 +765,7 @@ slots:
     - Dataset
     range: Dataset
     multivalued: true
+    pattern: ^[A-Za-z_][A-Za-z0-9_.+-]*:[^\s]+$
   classPartition:
     name: classPartition
     definition_uri: https://w3id.org/lmodel/void/classPartition
@@ -807,6 +816,7 @@ slots:
     domain_of:
     - ClassBasedPartition
     range: uriorcurie
+    pattern: ^[A-Za-z_][A-Za-z0-9_.+-]*:[^\s]+$
   property:
     name: property
     definition_uri: https://w3id.org/lmodel/void/property
@@ -820,6 +830,7 @@ slots:
     domain_of:
     - PropertyBasedPartition
     range: uriorcurie
+    pattern: ^[A-Za-z_][A-Za-z0-9_.+-]*:[^\s]+$
   triples:
     name: triples
     definition_uri: https://w3id.org/lmodel/void/triples
@@ -946,6 +957,7 @@ slots:
     domain_of:
     - Linkset
     range: Dataset
+    pattern: ^[A-Za-z_][A-Za-z0-9_.+-]*:[^\s]+$
   subjectsTarget:
     name: subjectsTarget
     definition_uri: https://w3id.org/lmodel/void/subjectsTarget
@@ -960,6 +972,7 @@ slots:
     domain_of:
     - Linkset
     range: Dataset
+    pattern: ^[A-Za-z_][A-Za-z0-9_.+-]*:[^\s]+$
   objectsTarget:
     name: objectsTarget
     definition_uri: https://w3id.org/lmodel/void/objectsTarget
@@ -974,6 +987,7 @@ slots:
     domain_of:
     - Linkset
     range: Dataset
+    pattern: ^[A-Za-z_][A-Za-z0-9_.+-]*:[^\s]+$
   linkPredicate:
     name: linkPredicate
     definition_uri: https://w3id.org/lmodel/void/linkPredicate
@@ -989,6 +1003,7 @@ slots:
     domain_of:
     - Linkset
     range: uriorcurie
+    pattern: ^[A-Za-z_][A-Za-z0-9_.+-]*:[^\s]+$
   inDataset:
     name: inDataset
     definition_uri: https://w3id.org/lmodel/void/inDataset
@@ -1005,6 +1020,7 @@ slots:
     domain_of:
     - DatasetDescription
     range: Dataset
+    pattern: ^[A-Za-z_][A-Za-z0-9_.+-]*:[^\s]+$
   Linkset_target:
     name: Linkset_target
     definition_uri: https://w3id.org/lmodel/void/target
@@ -1026,6 +1042,7 @@ slots:
     usage_slot_name: target
     range: Dataset
     multivalued: true
+    pattern: ^[A-Za-z_][A-Za-z0-9_.+-]*:[^\s]+$
     minimum_cardinality: 2
     maximum_cardinality: 2
   ClassBasedPartition_class:
@@ -1047,6 +1064,7 @@ slots:
     usage_slot_name: class
     range: uriorcurie
     required: true
+    pattern: ^[A-Za-z_][A-Za-z0-9_.+-]*:[^\s]+$
   PropertyBasedPartition_property:
     name: PropertyBasedPartition_property
     definition_uri: https://w3id.org/lmodel/void/property
@@ -1066,6 +1084,7 @@ slots:
     usage_slot_name: property
     range: uriorcurie
     required: true
+    pattern: ^[A-Za-z_][A-Za-z0-9_.+-]*:[^\s]+$
 classes:
   Dataset:
     name: Dataset
@@ -1311,6 +1330,6 @@ classes:
     class_uri: void_linkml:PropertyBasedPartition
 metamodel_version: 1.12.0
 source_file: void.yaml
-source_file_date: '2026-10-31T17:59:26'
-source_file_size: 17571
+source_file_date: '2026-10-31T18:01:00'
+source_file_size: 18431
 

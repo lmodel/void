@@ -19,6 +19,7 @@
   "comments": [
     "The version is the date of the Note's edition, and the source its dated address. The schema renders every class and property that the vocabulary file declares, as its editors keep it at the commit the vocabulary_file annotation names; tests/upstream/void-terms.tsv lists them, and the tests hold this schema to that list.",
     "Neither the Note nor the vocabulary file is copied: every description here is this project's own, and NOTICE says why.",
+    "A slot whose value names a resource by its IRI or a CURIE, such as id, class, subset or target, carries the pattern of a scheme or prefix, a colon and no space. LinkML 1.12.1 renders the uriorcurie type, and a reference to a class, as a JSON Schema string with no format, so without it the validator would pass any text there.",
     "Kept from the Note's account of a description: the Dublin Core terms of its sections 2.2, 2.4 and 2.5, FOAF's homepage and page (2.1) and topic and primaryTopic (6.2), and the RDF Schema label, comment and seeAlso of a technical feature (2.6). Left out: dcterms:date, since a slot named date takes the name of LinkML's date type, and the generated Pydantic model then checks none of the dates, while created, issued and modified carry the dates the Note names; the agents a description names, which FOAF describes; the Waiver vocabulary's norms and waiver (2.4); and the SPARQL Service Description terms (6.5), which describe a service rather than a dataset."
   ],
   "source": "https://www.w3.org/TR/2011/NOTE-void-20110303/",
@@ -409,6 +410,7 @@
       ],
       "range": "uriorcurie",
       "required": true,
+      "pattern": "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$",
       "@type": "SlotDefinition"
     },
     {
@@ -643,6 +645,7 @@
         "DatasetDescription"
       ],
       "range": "Dataset",
+      "pattern": "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$",
       "@type": "SlotDefinition"
     },
     {
@@ -660,6 +663,7 @@
       ],
       "range": "Dataset",
       "multivalued": true,
+      "pattern": "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$",
       "@type": "SlotDefinition"
     },
     {
@@ -726,6 +730,7 @@
       ],
       "range": "TechnicalFeature",
       "multivalued": true,
+      "pattern": "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$",
       "@type": "SlotDefinition"
     },
     {
@@ -905,6 +910,7 @@
       ],
       "range": "Dataset",
       "multivalued": true,
+      "pattern": "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$",
       "@type": "SlotDefinition"
     },
     {
@@ -966,6 +972,7 @@
         "ClassBasedPartition"
       ],
       "range": "uriorcurie",
+      "pattern": "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$",
       "@type": "SlotDefinition"
     },
     {
@@ -982,6 +989,7 @@
         "PropertyBasedPartition"
       ],
       "range": "uriorcurie",
+      "pattern": "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$",
       "@type": "SlotDefinition"
     },
     {
@@ -1137,6 +1145,7 @@
         "Linkset"
       ],
       "range": "Dataset",
+      "pattern": "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$",
       "@type": "SlotDefinition"
     },
     {
@@ -1154,6 +1163,7 @@
         "Linkset"
       ],
       "range": "Dataset",
+      "pattern": "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$",
       "@type": "SlotDefinition"
     },
     {
@@ -1171,6 +1181,7 @@
         "Linkset"
       ],
       "range": "Dataset",
+      "pattern": "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$",
       "@type": "SlotDefinition"
     },
     {
@@ -1190,6 +1201,7 @@
         "Linkset"
       ],
       "range": "uriorcurie",
+      "pattern": "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$",
       "@type": "SlotDefinition"
     },
     {
@@ -1209,6 +1221,7 @@
         "DatasetDescription"
       ],
       "range": "Dataset",
+      "pattern": "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$",
       "@type": "SlotDefinition"
     },
     {
@@ -1234,6 +1247,7 @@
       "usage_slot_name": "target",
       "range": "Dataset",
       "multivalued": true,
+      "pattern": "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$",
       "minimum_cardinality": 2,
       "maximum_cardinality": 2,
       "@type": "SlotDefinition"
@@ -1258,6 +1272,7 @@
       "usage_slot_name": "class",
       "range": "uriorcurie",
       "required": true,
+      "pattern": "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$",
       "@type": "SlotDefinition"
     },
     {
@@ -1280,6 +1295,7 @@
       "usage_slot_name": "property",
       "range": "uriorcurie",
       "required": true,
+      "pattern": "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$",
       "@type": "SlotDefinition"
     }
   ],
@@ -1565,8 +1581,8 @@
   ],
   "metamodel_version": "1.12.0",
   "source_file": "void.yaml",
-  "source_file_date": "2026-10-31T17:59:26",
-  "source_file_size": 17571,
+  "source_file_date": "2026-10-31T18:01:00",
+  "source_file_size": 18431,
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/void.context.jsonld",

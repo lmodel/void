@@ -29,6 +29,11 @@ comments:
     Neither the Note nor the vocabulary file is copied: every description here is this project's own,
     and NOTICE says why.
   - >-
+    A slot whose value names a resource by its IRI or a CURIE, such as id, class, subset or target, carries
+    the pattern of a scheme or prefix, a colon and no space. LinkML 1.12.1 renders the uriorcurie type, and
+    a reference to a class, as a JSON Schema string with no format, so without it the validator would pass
+    any text there.
+  - >-
     Kept from the Note's account of a description: the Dublin Core terms of its sections 2.2, 2.4 and 2.5,
     FOAF's homepage and page (2.1) and topic and primaryTopic (6.2), and the RDF Schema label, comment and
     seeAlso of a technical feature (2.6). Left out: dcterms:date, since a slot named date takes the name
@@ -248,6 +253,7 @@ slots:
   id:
     identifier: true
     range: uriorcurie
+    pattern: "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$"
     description: The IRI of the dataset, document or feature, written in full or as a CURIE.
     comments:
       - VoID has no property for the IRI, which RDF writes as the subject, so the key lives in this schema's own namespace.
@@ -327,12 +333,14 @@ slots:
   primaryTopic:
     slot_uri: foaf:primaryTopic
     range: Dataset
+    pattern: "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$"
     description: The dataset a description is about, when it describes one.
 
   topic:
     slot_uri: foaf:topic
     range: Dataset
     multivalued: true
+    pattern: "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$"
     description: A dataset a description is about, when it describes several of equal weight.
 
   # RDF Schema terms the Note uses for a technical feature.
@@ -357,6 +365,7 @@ slots:
     slot_uri: void:feature
     range: TechnicalFeature
     multivalued: true
+    pattern: "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$"
     description: Something the dataset's server or files support, for instance an RDF syntax, named by its IRI.
 
   sparqlEndpoint:
@@ -429,6 +438,7 @@ slots:
     slot_uri: void:subset
     range: Dataset
     multivalued: true
+    pattern: "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$"
     description: Another dataset contained in this one, named by its IRI.
 
   classPartition:
@@ -454,11 +464,13 @@ slots:
   class:
     slot_uri: void:class
     range: uriorcurie
+    pattern: "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$"
     description: The class whose instances a class partition describes, named by its IRI, such as foaf:Person.
 
   property:
     slot_uri: void:property
     range: uriorcurie
+    pattern: "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$"
     description: The property whose triples a property partition holds, named by its IRI, such as foaf:name.
 
   # VoID's statistics: each a count of zero or more, which may be an estimate.
@@ -513,6 +525,7 @@ slots:
   target:
     slot_uri: void:target
     range: Dataset
+    pattern: "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$"
     description: Either dataset a linkset joins, named by its IRI.
     comments:
       - >-
@@ -534,6 +547,7 @@ slots:
   linkPredicate:
     slot_uri: void:linkPredicate
     range: uriorcurie
+    pattern: "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$"
     description: The property every link of a linkset has as its predicate, such as owl:sameAs.
     comments:
       - A linkset has one; links with two predicates make two linksets.
@@ -541,6 +555,7 @@ slots:
   inDataset:
     slot_uri: void:inDataset
     range: Dataset
+    pattern: "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$"
     description: The dataset that this document's triples belong to, named by its IRI.
     comments:
       - A document names one; a document in two datasets points at a dataset that holds both as subsets.

@@ -6,6 +6,7 @@
             "properties": {
                 "class": {
                     "description": "The class whose instances a class partition describes, named by its IRI, such as foaf:Person.",
+                    "pattern": "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$",
                     "type": "string"
                 },
                 "classes": {
@@ -197,6 +198,7 @@
                 "feature": {
                     "description": "Something the dataset's server or files support, for instance an RDF syntax, named by its IRI.",
                     "items": {
+                        "pattern": "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$",
                         "type": "string"
                     },
                     "type": [
@@ -214,6 +216,7 @@
                 },
                 "id": {
                     "description": "The IRI of the dataset, document or feature, written in full or as a CURIE.",
+                    "pattern": "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$",
                     "type": "string"
                 },
                 "issued": {
@@ -335,6 +338,7 @@
                 "subset": {
                     "description": "Another dataset contained in this one, named by its IRI.",
                     "items": {
+                        "pattern": "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$",
                         "type": "string"
                     },
                     "type": [
@@ -455,10 +459,12 @@
                 },
                 "id": {
                     "description": "The IRI of the dataset, document or feature, written in full or as a CURIE.",
+                    "pattern": "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$",
                     "type": "string"
                 },
                 "inDataset": {
                     "description": "The dataset that this document's triples belong to, named by its IRI.",
+                    "pattern": "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$",
                     "type": [
                         "string",
                         "null"
@@ -474,6 +480,7 @@
                 },
                 "primaryTopic": {
                     "description": "The dataset a description is about, when it describes one.",
+                    "pattern": "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$",
                     "type": [
                         "string",
                         "null"
@@ -489,6 +496,7 @@
                 "topic": {
                     "description": "A dataset a description is about, when it describes several of equal weight.",
                     "items": {
+                        "pattern": "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$",
                         "type": "string"
                     },
                     "type": [
@@ -639,6 +647,7 @@
                 "feature": {
                     "description": "Something the dataset's server or files support, for instance an RDF syntax, named by its IRI.",
                     "items": {
+                        "pattern": "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$",
                         "type": "string"
                     },
                     "type": [
@@ -656,6 +665,7 @@
                 },
                 "id": {
                     "description": "The IRI of the dataset, document or feature, written in full or as a CURIE.",
+                    "pattern": "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$",
                     "type": "string"
                 },
                 "issued": {
@@ -676,6 +686,7 @@
                 },
                 "linkPredicate": {
                     "description": "The property every link of a linkset has as its predicate, such as owl:sameAs.",
+                    "pattern": "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$",
                     "type": [
                         "string",
                         "null"
@@ -691,6 +702,7 @@
                 },
                 "objectsTarget": {
                     "description": "The dataset at the object end of every link in a linkset, named by its IRI.",
+                    "pattern": "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$",
                     "type": [
                         "string",
                         "null"
@@ -790,6 +802,7 @@
                 },
                 "subjectsTarget": {
                     "description": "The dataset at the subject end of every link in a linkset, named by its IRI.",
+                    "pattern": "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$",
                     "type": [
                         "string",
                         "null"
@@ -798,6 +811,7 @@
                 "subset": {
                     "description": "Another dataset contained in this one, named by its IRI.",
                     "items": {
+                        "pattern": "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$",
                         "type": "string"
                     },
                     "type": [
@@ -808,6 +822,7 @@
                 "target": {
                     "description": "Either dataset a linkset joins, named by its IRI.",
                     "items": {
+                        "pattern": "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$",
                         "type": "string"
                     },
                     "maxItems": 2,
@@ -931,6 +946,7 @@
                 },
                 "property": {
                     "description": "The property whose triples a property partition holds, named by its IRI, such as foaf:name.",
+                    "pattern": "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$",
                     "type": "string"
                 },
                 "triples": {
@@ -961,6 +977,7 @@
                 },
                 "id": {
                     "description": "The IRI of the dataset, document or feature, written in full or as a CURIE.",
+                    "pattern": "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$",
                     "type": "string"
                 },
                 "label": {
@@ -1107,6 +1124,7 @@
         "feature": {
             "description": "Something the dataset's server or files support, for instance an RDF syntax, named by its IRI.",
             "items": {
+                "pattern": "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$",
                 "type": "string"
             },
             "type": [
@@ -1124,6 +1142,7 @@
         },
         "id": {
             "description": "The IRI of the dataset, document or feature, written in full or as a CURIE.",
+            "pattern": "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$",
             "type": "string"
         },
         "issued": {
@@ -1245,6 +1264,7 @@
         "subset": {
             "description": "Another dataset contained in this one, named by its IRI.",
             "items": {
+                "pattern": "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$",
                 "type": "string"
             },
             "type": [

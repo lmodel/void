@@ -84,6 +84,12 @@ linkml_meta = LinkMLMeta({'annotations': {'upstream_license': {'tag': 'upstream_
                   'this schema to that list.',
                   'Neither the Note nor the vocabulary file is copied: every '
                   "description here is this project's own, and NOTICE says why.",
+                  'A slot whose value names a resource by its IRI or a CURIE, such '
+                  'as id, class, subset or target, carries the pattern of a scheme '
+                  'or prefix, a colon and no space. LinkML 1.12.1 renders the '
+                  'uriorcurie type, and a reference to a class, as a JSON Schema '
+                  'string with no format, so without it the validator would pass '
+                  'any text there.',
                   "Kept from the Note's account of a description: the Dublin Core "
                   "terms of its sections 2.2, 2.4 and 2.5, FOAF's homepage and "
                   'page (2.1) and topic and primaryTopic (6.2), and the RDF Schema '
@@ -216,6 +222,32 @@ class Dataset(ConfiguredBaseModel):
          'domain_of': ['Dataset', 'ClassBasedPartition', 'PropertyBasedPartition'],
          'slot_uri': 'void:documents'} })
 
+    @field_validator('id')
+    def pattern_id(cls, v):
+        pattern=re.compile(r"^[A-Za-z_][A-Za-z0-9_.+-]*:[^\s]+$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid id format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid id format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+    @field_validator('feature')
+    def pattern_feature(cls, v):
+        pattern=re.compile(r"^[A-Za-z_][A-Za-z0-9_.+-]*:[^\s]+$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid feature format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid feature format: {v}"
+            raise ValueError(err_msg)
+        return v
+
     @field_validator('uriSpace')
     def pattern_uriSpace(cls, v):
         pattern=re.compile(r"^[A-Za-z][A-Za-z0-9+.-]*:[^\s]*$")
@@ -239,6 +271,19 @@ class Dataset(ConfiguredBaseModel):
                     raise ValueError(err_msg)
         elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid vocabulary format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+    @field_validator('subset')
+    def pattern_subset(cls, v):
+        pattern=re.compile(r"^[A-Za-z_][A-Za-z0-9_.+-]*:[^\s]+$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid subset format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid subset format: {v}"
             raise ValueError(err_msg)
         return v
 
@@ -339,6 +384,84 @@ class Linkset(Dataset):
          'domain_of': ['Dataset', 'ClassBasedPartition', 'PropertyBasedPartition'],
          'slot_uri': 'void:documents'} })
 
+    @field_validator('target')
+    def pattern_target(cls, v):
+        pattern=re.compile(r"^[A-Za-z_][A-Za-z0-9_.+-]*:[^\s]+$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid target format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid target format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+    @field_validator('subjectsTarget')
+    def pattern_subjectsTarget(cls, v):
+        pattern=re.compile(r"^[A-Za-z_][A-Za-z0-9_.+-]*:[^\s]+$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid subjectsTarget format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid subjectsTarget format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+    @field_validator('objectsTarget')
+    def pattern_objectsTarget(cls, v):
+        pattern=re.compile(r"^[A-Za-z_][A-Za-z0-9_.+-]*:[^\s]+$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid objectsTarget format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid objectsTarget format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+    @field_validator('linkPredicate')
+    def pattern_linkPredicate(cls, v):
+        pattern=re.compile(r"^[A-Za-z_][A-Za-z0-9_.+-]*:[^\s]+$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid linkPredicate format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid linkPredicate format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+    @field_validator('id')
+    def pattern_id(cls, v):
+        pattern=re.compile(r"^[A-Za-z_][A-Za-z0-9_.+-]*:[^\s]+$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid id format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid id format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+    @field_validator('feature')
+    def pattern_feature(cls, v):
+        pattern=re.compile(r"^[A-Za-z_][A-Za-z0-9_.+-]*:[^\s]+$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid feature format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid feature format: {v}"
+            raise ValueError(err_msg)
+        return v
+
     @field_validator('uriSpace')
     def pattern_uriSpace(cls, v):
         pattern=re.compile(r"^[A-Za-z][A-Za-z0-9+.-]*:[^\s]*$")
@@ -362,6 +485,19 @@ class Linkset(Dataset):
                     raise ValueError(err_msg)
         elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid vocabulary format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+    @field_validator('subset')
+    def pattern_subset(cls, v):
+        pattern=re.compile(r"^[A-Za-z_][A-Za-z0-9_.+-]*:[^\s]+$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid subset format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid subset format: {v}"
             raise ValueError(err_msg)
         return v
 
@@ -398,6 +534,58 @@ class DatasetDescription(ConfiguredBaseModel):
          'domain_of': ['DatasetDescription'],
          'slot_uri': 'void:inDataset'} })
 
+    @field_validator('id')
+    def pattern_id(cls, v):
+        pattern=re.compile(r"^[A-Za-z_][A-Za-z0-9_.+-]*:[^\s]+$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid id format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid id format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+    @field_validator('primaryTopic')
+    def pattern_primaryTopic(cls, v):
+        pattern=re.compile(r"^[A-Za-z_][A-Za-z0-9_.+-]*:[^\s]+$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid primaryTopic format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid primaryTopic format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+    @field_validator('topic')
+    def pattern_topic(cls, v):
+        pattern=re.compile(r"^[A-Za-z_][A-Za-z0-9_.+-]*:[^\s]+$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid topic format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid topic format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+    @field_validator('inDataset')
+    def pattern_inDataset(cls, v):
+        pattern=re.compile(r"^[A-Za-z_][A-Za-z0-9_.+-]*:[^\s]+$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid inDataset format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid inDataset format: {v}"
+            raise ValueError(err_msg)
+        return v
+
 
 class TechnicalFeature(ConfiguredBaseModel):
     """
@@ -415,6 +603,19 @@ class TechnicalFeature(ConfiguredBaseModel):
     label: Optional[str] = Field(default=None, description="""A short name for the feature.""", json_schema_extra = { "linkml_meta": {'domain_of': ['TechnicalFeature'], 'slot_uri': 'rdfs:label'} })
     comment: Optional[str] = Field(default=None, description="""A sentence or two about the feature.""", json_schema_extra = { "linkml_meta": {'domain_of': ['TechnicalFeature'], 'slot_uri': 'rdfs:comment'} })
     seeAlso: Optional[list[str]] = Field(default=None, description="""A web page that tells more about the feature.""", json_schema_extra = { "linkml_meta": {'domain_of': ['TechnicalFeature'], 'slot_uri': 'rdfs:seeAlso'} })
+
+    @field_validator('id')
+    def pattern_id(cls, v):
+        pattern=re.compile(r"^[A-Za-z_][A-Za-z0-9_.+-]*:[^\s]+$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid id format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid id format: {v}"
+            raise ValueError(err_msg)
+        return v
 
 
 class ClassBasedPartition(ConfiguredBaseModel):
@@ -455,6 +656,19 @@ class ClassBasedPartition(ConfiguredBaseModel):
          'domain_of': ['Dataset', 'ClassBasedPartition'],
          'slot_uri': 'void:propertyPartition'} })
 
+    @field_validator('class_')
+    def pattern_class_(cls, v):
+        pattern=re.compile(r"^[A-Za-z_][A-Za-z0-9_.+-]*:[^\s]+$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid class_ format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid class_ format: {v}"
+            raise ValueError(err_msg)
+        return v
+
 
 class PropertyBasedPartition(ConfiguredBaseModel):
     """
@@ -484,6 +698,19 @@ class PropertyBasedPartition(ConfiguredBaseModel):
                       'entities say more where they can be given.'],
          'domain_of': ['Dataset', 'ClassBasedPartition', 'PropertyBasedPartition'],
          'slot_uri': 'void:documents'} })
+
+    @field_validator('property')
+    def pattern_property(cls, v):
+        pattern=re.compile(r"^[A-Za-z_][A-Za-z0-9_.+-]*:[^\s]+$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid property format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid property format: {v}"
+            raise ValueError(err_msg)
+        return v
 
 
 # Model rebuild

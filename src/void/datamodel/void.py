@@ -512,7 +512,8 @@ class slots:
     pass
 
 slots.id = Slot(uri=VOID_LINKML.id, name="id", curie=VOID_LINKML.curie('id'),
-                   model_uri=VOID_LINKML.id, domain=None, range=URIRef)
+                   model_uri=VOID_LINKML.id, domain=None, range=URIRef,
+                   pattern=re.compile(r'^[A-Za-z_][A-Za-z0-9_.+-]*:[^\s]+$'))
 
 slots.title = Slot(uri=DCTERMS.title, name="title", curie=DCTERMS.curie('title'),
                    model_uri=VOID_LINKML.title, domain=None, range=Optional[str])
@@ -554,10 +555,12 @@ slots.page = Slot(uri=FOAF.page, name="page", curie=FOAF.curie('page'),
                    model_uri=VOID_LINKML.page, domain=None, range=Optional[Union[Union[str, URI], list[Union[str, URI]]]])
 
 slots.primaryTopic = Slot(uri=FOAF.primaryTopic, name="primaryTopic", curie=FOAF.curie('primaryTopic'),
-                   model_uri=VOID_LINKML.primaryTopic, domain=None, range=Optional[Union[str, DatasetId]])
+                   model_uri=VOID_LINKML.primaryTopic, domain=None, range=Optional[Union[str, DatasetId]],
+                   pattern=re.compile(r'^[A-Za-z_][A-Za-z0-9_.+-]*:[^\s]+$'))
 
 slots.topic = Slot(uri=FOAF.topic, name="topic", curie=FOAF.curie('topic'),
-                   model_uri=VOID_LINKML.topic, domain=None, range=Optional[Union[Union[str, DatasetId], list[Union[str, DatasetId]]]])
+                   model_uri=VOID_LINKML.topic, domain=None, range=Optional[Union[Union[str, DatasetId], list[Union[str, DatasetId]]]],
+                   pattern=re.compile(r'^[A-Za-z_][A-Za-z0-9_.+-]*:[^\s]+$'))
 
 slots.label = Slot(uri=RDFS.label, name="label", curie=RDFS.curie('label'),
                    model_uri=VOID_LINKML.label, domain=None, range=Optional[str])
@@ -569,7 +572,8 @@ slots.seeAlso = Slot(uri=RDFS.seeAlso, name="seeAlso", curie=RDFS.curie('seeAlso
                    model_uri=VOID_LINKML.seeAlso, domain=None, range=Optional[Union[Union[str, URI], list[Union[str, URI]]]])
 
 slots.feature = Slot(uri=VOID.feature, name="feature", curie=VOID.curie('feature'),
-                   model_uri=VOID_LINKML.feature, domain=None, range=Optional[Union[Union[str, TechnicalFeatureId], list[Union[str, TechnicalFeatureId]]]])
+                   model_uri=VOID_LINKML.feature, domain=None, range=Optional[Union[Union[str, TechnicalFeatureId], list[Union[str, TechnicalFeatureId]]]],
+                   pattern=re.compile(r'^[A-Za-z_][A-Za-z0-9_.+-]*:[^\s]+$'))
 
 slots.sparqlEndpoint = Slot(uri=VOID.sparqlEndpoint, name="sparqlEndpoint", curie=VOID.curie('sparqlEndpoint'),
                    model_uri=VOID_LINKML.sparqlEndpoint, domain=None, range=Optional[Union[Union[str, URI], list[Union[str, URI]]]])
@@ -601,7 +605,8 @@ slots.vocabulary = Slot(uri=VOID.vocabulary, name="vocabulary", curie=VOID.curie
                    pattern=re.compile(r'[^#]$'))
 
 slots.subset = Slot(uri=VOID.subset, name="subset", curie=VOID.curie('subset'),
-                   model_uri=VOID_LINKML.subset, domain=None, range=Optional[Union[Union[str, DatasetId], list[Union[str, DatasetId]]]])
+                   model_uri=VOID_LINKML.subset, domain=None, range=Optional[Union[Union[str, DatasetId], list[Union[str, DatasetId]]]],
+                   pattern=re.compile(r'^[A-Za-z_][A-Za-z0-9_.+-]*:[^\s]+$'))
 
 slots.classPartition = Slot(uri=VOID.classPartition, name="classPartition", curie=VOID.curie('classPartition'),
                    model_uri=VOID_LINKML.classPartition, domain=None, range=Optional[Union[Union[dict, ClassBasedPartition], list[Union[dict, ClassBasedPartition]]]])
@@ -610,10 +615,12 @@ slots.propertyPartition = Slot(uri=VOID.propertyPartition, name="propertyPartiti
                    model_uri=VOID_LINKML.propertyPartition, domain=None, range=Optional[Union[Union[dict, PropertyBasedPartition], list[Union[dict, PropertyBasedPartition]]]])
 
 slots.class_ = Slot(uri=VOID['class'], name="class", curie=VOID.curie('class'),
-                   model_uri=VOID_LINKML.class_, domain=None, range=Optional[Union[str, URIorCURIE]])
+                   model_uri=VOID_LINKML.class_, domain=None, range=Optional[Union[str, URIorCURIE]],
+                   pattern=re.compile(r'^[A-Za-z_][A-Za-z0-9_.+-]*:[^\s]+$'))
 
 slots.property = Slot(uri=VOID.property, name="property", curie=VOID.curie('property'),
-                   model_uri=VOID_LINKML.property, domain=None, range=Optional[Union[str, URIorCURIE]])
+                   model_uri=VOID_LINKML.property, domain=None, range=Optional[Union[str, URIorCURIE]],
+                   pattern=re.compile(r'^[A-Za-z_][A-Za-z0-9_.+-]*:[^\s]+$'))
 
 slots.triples = Slot(uri=VOID.triples, name="triples", curie=VOID.curie('triples'),
                    model_uri=VOID_LINKML.triples, domain=None, range=Optional[int])
@@ -637,25 +644,33 @@ slots.documents = Slot(uri=VOID.documents, name="documents", curie=VOID.curie('d
                    model_uri=VOID_LINKML.documents, domain=None, range=Optional[int])
 
 slots.target = Slot(uri=VOID.target, name="target", curie=VOID.curie('target'),
-                   model_uri=VOID_LINKML.target, domain=None, range=Optional[Union[str, DatasetId]])
+                   model_uri=VOID_LINKML.target, domain=None, range=Optional[Union[str, DatasetId]],
+                   pattern=re.compile(r'^[A-Za-z_][A-Za-z0-9_.+-]*:[^\s]+$'))
 
 slots.subjectsTarget = Slot(uri=VOID.subjectsTarget, name="subjectsTarget", curie=VOID.curie('subjectsTarget'),
-                   model_uri=VOID_LINKML.subjectsTarget, domain=None, range=Optional[Union[str, DatasetId]])
+                   model_uri=VOID_LINKML.subjectsTarget, domain=None, range=Optional[Union[str, DatasetId]],
+                   pattern=re.compile(r'^[A-Za-z_][A-Za-z0-9_.+-]*:[^\s]+$'))
 
 slots.objectsTarget = Slot(uri=VOID.objectsTarget, name="objectsTarget", curie=VOID.curie('objectsTarget'),
-                   model_uri=VOID_LINKML.objectsTarget, domain=None, range=Optional[Union[str, DatasetId]])
+                   model_uri=VOID_LINKML.objectsTarget, domain=None, range=Optional[Union[str, DatasetId]],
+                   pattern=re.compile(r'^[A-Za-z_][A-Za-z0-9_.+-]*:[^\s]+$'))
 
 slots.linkPredicate = Slot(uri=VOID.linkPredicate, name="linkPredicate", curie=VOID.curie('linkPredicate'),
-                   model_uri=VOID_LINKML.linkPredicate, domain=None, range=Optional[Union[str, URIorCURIE]])
+                   model_uri=VOID_LINKML.linkPredicate, domain=None, range=Optional[Union[str, URIorCURIE]],
+                   pattern=re.compile(r'^[A-Za-z_][A-Za-z0-9_.+-]*:[^\s]+$'))
 
 slots.inDataset = Slot(uri=VOID.inDataset, name="inDataset", curie=VOID.curie('inDataset'),
-                   model_uri=VOID_LINKML.inDataset, domain=None, range=Optional[Union[str, DatasetId]])
+                   model_uri=VOID_LINKML.inDataset, domain=None, range=Optional[Union[str, DatasetId]],
+                   pattern=re.compile(r'^[A-Za-z_][A-Za-z0-9_.+-]*:[^\s]+$'))
 
 slots.Linkset_target = Slot(uri=VOID.target, name="Linkset_target", curie=VOID.curie('target'),
-                   model_uri=VOID_LINKML.Linkset_target, domain=Linkset, range=Optional[Union[Union[str, DatasetId], list[Union[str, DatasetId]]]])
+                   model_uri=VOID_LINKML.Linkset_target, domain=Linkset, range=Optional[Union[Union[str, DatasetId], list[Union[str, DatasetId]]]],
+                   pattern=re.compile(r'^[A-Za-z_][A-Za-z0-9_.+-]*:[^\s]+$'))
 
 slots.ClassBasedPartition_class = Slot(uri=VOID['class'], name="ClassBasedPartition_class", curie=VOID.curie('class'),
-                   model_uri=VOID_LINKML.ClassBasedPartition_class, domain=ClassBasedPartition, range=Union[str, URIorCURIE])
+                   model_uri=VOID_LINKML.ClassBasedPartition_class, domain=ClassBasedPartition, range=Union[str, URIorCURIE],
+                   pattern=re.compile(r'^[A-Za-z_][A-Za-z0-9_.+-]*:[^\s]+$'))
 
 slots.PropertyBasedPartition_property = Slot(uri=VOID.property, name="PropertyBasedPartition_property", curie=VOID.curie('property'),
-                   model_uri=VOID_LINKML.PropertyBasedPartition_property, domain=PropertyBasedPartition, range=Union[str, URIorCURIE])
+                   model_uri=VOID_LINKML.PropertyBasedPartition_property, domain=PropertyBasedPartition, range=Union[str, URIorCURIE],
+                   pattern=re.compile(r'^[A-Za-z_][A-Za-z0-9_.+-]*:[^\s]+$'))

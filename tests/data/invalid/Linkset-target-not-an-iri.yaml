@@ -1,0 +1,7 @@
+# Fails at: /target/1
+# A target is another dataset's IRI, not its title.
+id: http://data.example.org/void.ttl#LighthousesToPlaces
+target:
+  - http://data.example.org/void.ttl#Lighthouses
+  - Places of the coast
+linkPredicate: owl:sameAs

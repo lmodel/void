@@ -18,13 +18,13 @@
 	rdfs:label "void" ;
 	rdfs:seeAlso <https://lmodel.github.io/void> , <https://www.w3.org/TR/void/> ;
 	skos:definition "A LinkML rendering of the Vocabulary of Interlinked Datasets (VoID), the RDF vocabulary for describing datasets of linked data and the links between them, as the W3C Interest Group Note of 3 March 2011 explains it. Every VoID class and property keeps its VoID IRI, and the Dublin Core, FOAF and RDF Schema terms the Note uses in a description keep theirs." ;
-	skos:note "Kept from the Note's account of a description: the Dublin Core terms of its sections 2.2, 2.4 and 2.5, FOAF's homepage and page (2.1) and topic and primaryTopic (6.2), and the RDF Schema label, comment and seeAlso of a technical feature (2.6). Left out: dcterms:date, since a slot named date takes the name of LinkML's date type, and the generated Pydantic model then checks none of the dates, while created, issued and modified carry the dates the Note names; the agents a description names, which FOAF describes; the Waiver vocabulary's norms and waiver (2.4); and the SPARQL Service Description terms (6.5), which describe a service rather than a dataset." , "Neither the Note nor the vocabulary file is copied: every description here is this project's own, and NOTICE says why." , "The version is the date of the Note's edition, and the source its dated address. The schema renders every class and property that the vocabulary file declares, as its editors keep it at the commit the vocabulary_file annotation names; tests/upstream/void-terms.tsv lists them, and the tests hold this schema to that list." ;
+	skos:note "A slot whose value names a resource by its IRI or a CURIE, such as id, class, subset or target, carries the pattern of a scheme or prefix, a colon and no space. LinkML 1.12.1 renders the uriorcurie type, and a reference to a class, as a JSON Schema string with no format, so without it the validator would pass any text there." , "Kept from the Note's account of a description: the Dublin Core terms of its sections 2.2, 2.4 and 2.5, FOAF's homepage and page (2.1) and topic and primaryTopic (6.2), and the RDF Schema label, comment and seeAlso of a technical feature (2.6). Left out: dcterms:date, since a slot named date takes the name of LinkML's date type, and the generated Pydantic model then checks none of the dates, while created, issued and modified carry the dates the Note names; the agents a description names, which FOAF describes; the Waiver vocabulary's norms and waiver (2.4); and the SPARQL Service Description terms (6.5), which describe a service rather than a dataset." , "Neither the Note nor the vocabulary file is copied: every description here is this project's own, and NOTICE says why." , "The version is the date of the Note's edition, and the source its dated address. The schema renders every class and property that the vocabulary file declares, as its editors keep it at the commit the vocabulary_file annotation names; tests/upstream/void-terms.tsv lists them, and the tests hold this schema to that list." ;
 	void_linkml:upstream_license "The Note is under the W3C Document License (https://www.w3.org/Consortium/Legal/copyright-documents); the vocabulary file states no licence." ;
 	void_linkml:vocabulary_file "https://github.com/cygri/void/blob/5b2ca68b7897c2613d4269fd725f1812dce21267/rdfs/void.ttl" ;
 	void_linkml:vocabulary_modified "2011-03-06" .
 void_linkml:ClassBasedPartition a owl:Class ;
 	rdfs:label "ClassBasedPartition" ;
-	rdfs:subClassOf _:c14n106 , _:c14n117 , _:c14n123 , _:c14n134 , _:c14n135 , _:c14n136 , _:c14n139 , _:c14n14 , _:c14n154 , _:c14n185 , _:c14n197 , _:c14n29 , _:c14n3 , _:c14n31 , _:c14n34 , _:c14n42 , _:c14n46 , _:c14n51 , _:c14n6 , _:c14n64 , _:c14n67 , _:c14n70 , _:c14n73 , _:c14n74 , _:c14n82 , _:c14n99 ;
+	rdfs:subClassOf _:c14n103 , _:c14n111 , _:c14n121 , _:c14n128 , _:c14n139 , _:c14n140 , _:c14n141 , _:c14n144 , _:c14n148 , _:c14n15 , _:c14n163 , _:c14n195 , _:c14n207 , _:c14n3 , _:c14n31 , _:c14n33 , _:c14n37 , _:c14n45 , _:c14n49 , _:c14n53 , _:c14n67 , _:c14n7 , _:c14n71 , _:c14n76 , _:c14n77 , _:c14n85 ;
 	skos:broadMatch void:Dataset ;
 	skos:definition "The slice of a dataset about the members of one class, written inside that dataset, most often to give counts for it." ;
 	skos:exactMatch void_linkml:ClassBasedPartition ;
@@ -32,7 +32,7 @@ void_linkml:ClassBasedPartition a owl:Class ;
 	skos:note "VoID gives a partition no class of its own: it is a dataset, usually a blank node. This schema writes it as a value inside its dataset, so it has no IRI, and its class lives in this schema's own namespace. The name follows VoID's phrase for it and differs from the classPartition slot's by more than case, so that their pages are two files on a filesystem that ignores case." .
 void_linkml:Dataset a owl:Class ;
 	rdfs:label "Dataset" ;
-	rdfs:subClassOf _:c14n0 , _:c14n10 , _:c14n100 , _:c14n103 , _:c14n107 , _:c14n109 , _:c14n112 , _:c14n113 , _:c14n116 , _:c14n118 , _:c14n119 , _:c14n120 , _:c14n125 , _:c14n127 , _:c14n132 , _:c14n133 , _:c14n137 , _:c14n138 , _:c14n140 , _:c14n143 , _:c14n148 , _:c14n149 , _:c14n150 , _:c14n151 , _:c14n153 , _:c14n156 , _:c14n157 , _:c14n16 , _:c14n161 , _:c14n163 , _:c14n164 , _:c14n165 , _:c14n167 , _:c14n17 , _:c14n171 , _:c14n172 , _:c14n174 , _:c14n176 , _:c14n178 , _:c14n180 , _:c14n181 , _:c14n182 , _:c14n184 , _:c14n186 , _:c14n187 , _:c14n189 , _:c14n19 , _:c14n190 , _:c14n193 , _:c14n195 , _:c14n196 , _:c14n198 , _:c14n199 , _:c14n200 , _:c14n201 , _:c14n23 , _:c14n24 , _:c14n25 , _:c14n27 , _:c14n28 , _:c14n35 , _:c14n38 , _:c14n41 , _:c14n43 , _:c14n47 , _:c14n53 , _:c14n60 , _:c14n61 , _:c14n63 , _:c14n65 , _:c14n66 , _:c14n68 , _:c14n72 , _:c14n78 , _:c14n79 , _:c14n83 , _:c14n85 , _:c14n88 , _:c14n89 , _:c14n9 , _:c14n90 , _:c14n91 , _:c14n93 , _:c14n94 , _:c14n97 , _:c14n98 ;
+	rdfs:subClassOf _:c14n0 , _:c14n10 , _:c14n101 , _:c14n102 , _:c14n104 , _:c14n107 , _:c14n11 , _:c14n112 , _:c14n114 , _:c14n116 , _:c14n117 , _:c14n120 , _:c14n122 , _:c14n123 , _:c14n124 , _:c14n130 , _:c14n132 , _:c14n137 , _:c14n138 , _:c14n142 , _:c14n143 , _:c14n145 , _:c14n150 , _:c14n155 , _:c14n156 , _:c14n157 , _:c14n159 , _:c14n160 , _:c14n162 , _:c14n165 , _:c14n166 , _:c14n17 , _:c14n170 , _:c14n174 , _:c14n175 , _:c14n177 , _:c14n18 , _:c14n181 , _:c14n182 , _:c14n184 , _:c14n186 , _:c14n188 , _:c14n190 , _:c14n191 , _:c14n192 , _:c14n194 , _:c14n196 , _:c14n197 , _:c14n199 , _:c14n20 , _:c14n200 , _:c14n203 , _:c14n205 , _:c14n206 , _:c14n208 , _:c14n209 , _:c14n210 , _:c14n212 , _:c14n25 , _:c14n26 , _:c14n27 , _:c14n29 , _:c14n30 , _:c14n38 , _:c14n41 , _:c14n44 , _:c14n46 , _:c14n50 , _:c14n55 , _:c14n63 , _:c14n64 , _:c14n66 , _:c14n68 , _:c14n70 , _:c14n72 , _:c14n75 , _:c14n81 , _:c14n82 , _:c14n86 , _:c14n88 , _:c14n91 , _:c14n93 , _:c14n94 , _:c14n95 , _:c14n96 , _:c14n97 ;
 	skos:broadMatch dcat:Dataset ;
 	skos:definition "RDF triples from one provider, gathered under an IRI so that a description can speak of them as a whole." ;
 	skos:editorialNote "The narrow mappings are the Note's own statement (section 6.5) that a SPARQL service description's datasets and graphs are VoID datasets. The broad mapping follows DCAT 3 (sections 1 and 6.2.1), which offers VoID's properties for the statistics of a DCAT dataset whose data is RDF: a DCAT dataset may hold data in any format, and a VoID dataset holds RDF alone." ;
@@ -42,7 +42,7 @@ void_linkml:Dataset a owl:Class ;
 	skos:note "A dataset is named by an IRI, and the IRI of another dataset is how a subset, a linkset's target or a description refers to it." .
 void_linkml:DatasetDescription a owl:Class ;
 	rdfs:label "DatasetDescription" ;
-	rdfs:subClassOf _:c14n101 , _:c14n102 , _:c14n114 , _:c14n12 , _:c14n124 , _:c14n130 , _:c14n147 , _:c14n15 , _:c14n152 , _:c14n158 , _:c14n169 , _:c14n173 , _:c14n18 , _:c14n20 , _:c14n32 , _:c14n33 , _:c14n36 , _:c14n4 , _:c14n44 , _:c14n48 , _:c14n5 , _:c14n57 , _:c14n69 , _:c14n77 , _:c14n80 , _:c14n84 ;
+	rdfs:subClassOf _:c14n105 , _:c14n106 , _:c14n109 , _:c14n118 , _:c14n129 , _:c14n13 , _:c14n135 , _:c14n154 , _:c14n16 , _:c14n161 , _:c14n167 , _:c14n179 , _:c14n183 , _:c14n19 , _:c14n21 , _:c14n35 , _:c14n36 , _:c14n39 , _:c14n47 , _:c14n5 , _:c14n51 , _:c14n59 , _:c14n6 , _:c14n80 , _:c14n83 , _:c14n87 ;
 	skos:broadMatch foaf:Document ;
 	skos:definition "A web document, such as a void.ttl file published beside a dataset, that describes one or more datasets." ;
 	skos:editorialNote "The broad mapping is the vocabulary file's own statement that a dataset description is a FOAF document." ;
@@ -50,14 +50,14 @@ void_linkml:DatasetDescription a owl:Class ;
 	skos:inScheme <https://w3id.org/lmodel/void> .
 void_linkml:Linkset a owl:Class ;
 	rdfs:label "Linkset" ;
-	rdfs:subClassOf void_linkml:Dataset , _:c14n105 , _:c14n111 , _:c14n122 , _:c14n126 , _:c14n129 , _:c14n142 , _:c14n145 , _:c14n170 , _:c14n188 , _:c14n56 , _:c14n58 , _:c14n95 , _:c14n96 ;
+	rdfs:subClassOf void_linkml:Dataset , _:c14n100 , _:c14n110 , _:c14n126 , _:c14n131 , _:c14n134 , _:c14n146 , _:c14n149 , _:c14n152 , _:c14n180 , _:c14n198 , _:c14n58 , _:c14n60 , _:c14n99 ;
 	skos:definition "A dataset of triples that join two datasets: each triple's subject belongs to one of them and its object to the other." ;
 	skos:exactMatch void:Linkset ;
 	skos:inScheme <https://w3id.org/lmodel/void> ;
 	skos:note "A linkset links exactly two distinct datasets: the targets, the subjects' target and the objects' target together name two. The validator checks that two are named; tests/test_data.py checks that they differ." .
 void_linkml:PropertyBasedPartition a owl:Class ;
 	rdfs:label "PropertyBasedPartition" ;
-	rdfs:subClassOf _:c14n104 , _:c14n110 , _:c14n115 , _:c14n128 , _:c14n131 , _:c14n144 , _:c14n146 , _:c14n155 , _:c14n166 , _:c14n168 , _:c14n192 , _:c14n2 , _:c14n21 , _:c14n26 , _:c14n45 , _:c14n49 , _:c14n50 , _:c14n52 , _:c14n59 , _:c14n62 , _:c14n7 , _:c14n75 , _:c14n86 , _:c14n87 ;
+	rdfs:subClassOf _:c14n108 , _:c14n115 , _:c14n119 , _:c14n133 , _:c14n136 , _:c14n151 , _:c14n153 , _:c14n164 , _:c14n176 , _:c14n178 , _:c14n2 , _:c14n202 , _:c14n23 , _:c14n28 , _:c14n34 , _:c14n48 , _:c14n52 , _:c14n54 , _:c14n61 , _:c14n65 , _:c14n78 , _:c14n8 , _:c14n89 , _:c14n90 ;
 	skos:broadMatch void:Dataset ;
 	skos:definition "The slice of a dataset made of the triples whose predicate is one property, written inside that dataset, most often to give counts for it." ;
 	skos:exactMatch void_linkml:PropertyBasedPartition ;
@@ -65,14 +65,14 @@ void_linkml:PropertyBasedPartition a owl:Class ;
 	skos:note "As for a class partition, VoID gives it no class of its own, and this schema writes it as a value inside its dataset." .
 void_linkml:TechnicalFeature a owl:Class ;
 	rdfs:label "TechnicalFeature" ;
-	rdfs:subClassOf _:c14n108 , _:c14n13 , _:c14n141 , _:c14n160 , _:c14n183 , _:c14n202 , _:c14n30 , _:c14n37 , _:c14n8 , _:c14n81 , _:c14n92 ;
+	rdfs:subClassOf _:c14n113 , _:c14n14 , _:c14n147 , _:c14n169 , _:c14n193 , _:c14n213 , _:c14n32 , _:c14n40 , _:c14n69 , _:c14n84 , _:c14n9 ;
 	skos:definition "A technical property of how a dataset is served, such as an RDF syntax it can be read in or an HTTP feature its server supports." ;
 	skos:exactMatch void:TechnicalFeature ;
 	skos:inScheme <https://w3id.org/lmodel/void> ;
 	skos:note "W3C names the RDF syntaxes under http://www.w3.org/ns/formats/, such as http://www.w3.org/ns/formats/Turtle; a feature of another kind takes an IRI of its publisher's own." .
 void_linkml:class a owl:DatatypeProperty ;
 	rdfs:label "class" ;
-	rdfs:range xsd:anyURI ;
+	rdfs:range _:c14n172 ;
 	skos:definition "The class whose instances a class partition describes, named by its IRI, such as foaf:Person." ;
 	skos:inScheme <https://w3id.org/lmodel/void> .
 void_linkml:classPartition a owl:ObjectProperty ;
@@ -83,7 +83,7 @@ void_linkml:classPartition a owl:ObjectProperty ;
 	skos:note "VoID makes it a narrower subset; here it is a value, so it does not inherit subset's range." .
 void_linkml:classes a owl:DatatypeProperty ;
 	rdfs:label "classes" ;
-	rdfs:range _:c14n121 ;
+	rdfs:range _:c14n125 ;
 	skos:definition "How many distinct classes the dataset's rdf:type triples name." ;
 	skos:inScheme <https://w3id.org/lmodel/void> .
 void_linkml:comment a owl:DatatypeProperty ;
@@ -117,12 +117,12 @@ void_linkml:description a owl:DatatypeProperty ;
 	skos:inScheme <https://w3id.org/lmodel/void> .
 void_linkml:distinctObjects a owl:DatatypeProperty ;
 	rdfs:label "distinctObjects" ;
-	rdfs:range _:c14n194 ;
+	rdfs:range _:c14n204 ;
 	skos:definition "How many distinct IRIs, blank nodes and literals the dataset's triples have as objects." ;
 	skos:inScheme <https://w3id.org/lmodel/void> .
 void_linkml:distinctSubjects a owl:DatatypeProperty ;
 	rdfs:label "distinctSubjects" ;
-	rdfs:range _:c14n39 ;
+	rdfs:range _:c14n42 ;
 	skos:definition "How many distinct IRIs and blank nodes the dataset's triples have as subjects." ;
 	skos:inScheme <https://w3id.org/lmodel/void> .
 void_linkml:documents a owl:DatatypeProperty ;
@@ -133,7 +133,7 @@ void_linkml:documents a owl:DatatypeProperty ;
 	skos:note "Use it where the triples are hard to count; triples and entities say more where they can be given." .
 void_linkml:entities a owl:DatatypeProperty ;
 	rdfs:label "entities" ;
-	rdfs:range _:c14n162 ;
+	rdfs:range _:c14n171 ;
 	skos:definition "How many entities, resources with an IRI, the dataset describes." ;
 	skos:inScheme <https://w3id.org/lmodel/void> .
 void_linkml:exampleResource a owl:DatatypeProperty ;
@@ -143,7 +143,7 @@ void_linkml:exampleResource a owl:DatatypeProperty ;
 	skos:inScheme <https://w3id.org/lmodel/void> .
 void_linkml:feature a owl:ObjectProperty ;
 	rdfs:label "feature" ;
-	rdfs:range void_linkml:TechnicalFeature ;
+	rdfs:range _:c14n211 ;
 	skos:definition "Something the dataset's server or files support, for instance an RDF syntax, named by its IRI." ;
 	skos:inScheme <https://w3id.org/lmodel/void> .
 void_linkml:homepage a owl:DatatypeProperty ;
@@ -153,13 +153,13 @@ void_linkml:homepage a owl:DatatypeProperty ;
 	skos:inScheme <https://w3id.org/lmodel/void> .
 void_linkml:id a owl:DatatypeProperty ;
 	rdfs:label "id" ;
-	rdfs:range xsd:anyURI ;
+	rdfs:range _:c14n127 ;
 	skos:definition "The IRI of the dataset, document or feature, written in full or as a CURIE." ;
 	skos:inScheme <https://w3id.org/lmodel/void> ;
 	skos:note "VoID has no property for the IRI, which RDF writes as the subject, so the key lives in this schema's own namespace." .
 void_linkml:inDataset a owl:ObjectProperty ;
 	rdfs:label "inDataset" ;
-	rdfs:range void_linkml:Dataset ;
+	rdfs:range _:c14n158 ;
 	skos:definition "The dataset that this document's triples belong to, named by its IRI." ;
 	skos:inScheme <https://w3id.org/lmodel/void> ;
 	skos:note "A document names one; a document in two datasets points at a dataset that holds both as subsets." .
@@ -179,7 +179,7 @@ void_linkml:license a owl:DatatypeProperty ;
 	skos:inScheme <https://w3id.org/lmodel/void> .
 void_linkml:linkPredicate a owl:DatatypeProperty ;
 	rdfs:label "linkPredicate" ;
-	rdfs:range xsd:anyURI ;
+	rdfs:range _:c14n92 ;
 	skos:definition "The property every link of a linkset has as its predicate, such as owl:sameAs." ;
 	skos:inScheme <https://w3id.org/lmodel/void> ;
 	skos:note "A linkset has one; links with two predicates make two linksets." .
@@ -206,17 +206,17 @@ void_linkml:page a owl:DatatypeProperty ;
 	skos:inScheme <https://w3id.org/lmodel/void> .
 void_linkml:primaryTopic a owl:ObjectProperty ;
 	rdfs:label "primaryTopic" ;
-	rdfs:range void_linkml:Dataset ;
+	rdfs:range _:c14n98 ;
 	skos:definition "The dataset a description is about, when it describes one." ;
 	skos:inScheme <https://w3id.org/lmodel/void> .
 void_linkml:properties a owl:DatatypeProperty ;
 	rdfs:label "properties" ;
-	rdfs:range _:c14n55 ;
+	rdfs:range _:c14n57 ;
 	skos:definition "How many distinct properties the dataset's triples use as predicates." ;
 	skos:inScheme <https://w3id.org/lmodel/void> .
 void_linkml:property a owl:DatatypeProperty ;
 	rdfs:label "property" ;
-	rdfs:range xsd:anyURI ;
+	rdfs:range _:c14n4 ;
 	skos:definition "The property whose triples a property partition holds, named by its IRI, such as foaf:name." ;
 	skos:inScheme <https://w3id.org/lmodel/void> .
 void_linkml:propertyPartition a owl:ObjectProperty ;
@@ -263,12 +263,12 @@ void_linkml:subjectsTarget a owl:ObjectProperty ;
 	skos:inScheme <https://w3id.org/lmodel/void> .
 void_linkml:subset a owl:ObjectProperty ;
 	rdfs:label "subset" ;
-	rdfs:range void_linkml:Dataset ;
+	rdfs:range _:c14n173 ;
 	skos:definition "Another dataset contained in this one, named by its IRI." ;
 	skos:inScheme <https://w3id.org/lmodel/void> .
 void_linkml:target a owl:ObjectProperty ;
 	rdfs:label "target" ;
-	rdfs:range void_linkml:Dataset ;
+	rdfs:range _:c14n22 ;
 	skos:definition "Either dataset a linkset joins, named by its IRI." ;
 	skos:inScheme <https://w3id.org/lmodel/void> ;
 	skos:note "Linkset makes it a list of two. The slot itself stays single-valued, so that subjectsTarget and objectsTarget, its narrower slots, inherit one value each." .
@@ -278,12 +278,12 @@ void_linkml:title a owl:DatatypeProperty ;
 	skos:inScheme <https://w3id.org/lmodel/void> .
 void_linkml:topic a owl:ObjectProperty ;
 	rdfs:label "topic" ;
-	rdfs:range void_linkml:Dataset ;
+	rdfs:range _:c14n73 ;
 	skos:definition "A dataset a description is about, when it describes several of equal weight." ;
 	skos:inScheme <https://w3id.org/lmodel/void> .
 void_linkml:triples a owl:DatatypeProperty ;
 	rdfs:label "triples" ;
-	rdfs:range _:c14n177 ;
+	rdfs:range _:c14n187 ;
 	skos:definition "How many triples the dataset holds; for a linkset, how many links." ;
 	skos:inScheme <https://w3id.org/lmodel/void> .
 void_linkml:uriLookupEndpoint a owl:DatatypeProperty ;
@@ -298,967 +298,1153 @@ void_linkml:uriRegexPattern a owl:DatatypeProperty ;
 	skos:note "The validator checks no regular expression's syntax; tests/test_data.py compiles each one in the examples." .
 void_linkml:uriSpace a owl:DatatypeProperty ;
 	rdfs:label "uriSpace" ;
-	rdfs:range _:c14n191 ;
+	rdfs:range _:c14n201 ;
 	skos:definition "The string every entity IRI in the dataset starts with, such as http://example.org/resource/." ;
 	skos:inScheme <https://w3id.org/lmodel/void> ;
 	skos:note "VoID writes it as a literal, not as an IRI, so the range is a string, held to the form of an IRI's start." .
 void_linkml:vocabulary a owl:DatatypeProperty ;
 	rdfs:label "vocabulary" ;
-	rdfs:range _:c14n159 ;
+	rdfs:range _:c14n168 ;
 	skos:definition "The namespace IRI of a vocabulary the dataset uses, as a term's IRI reads without its local name and without a final hash, such as http://xmlns.com/foaf/0.1/." ;
 	skos:inScheme <https://w3id.org/lmodel/void> .
 _:c14n0 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty void_linkml:homepage .
 _:c14n1 a rdfs:Datatype ;
-	owl:intersectionOf _:c14n280 .
+	owl:intersectionOf _:c14n381 .
 _:c14n10 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty void_linkml:homepage .
+	owl:allValuesFrom _:c14n79 ;
+	owl:onProperty void_linkml:uriSpace .
 _:c14n100 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty void_linkml:uriRegexPattern .
+	owl:minCardinality 2 ;
+	owl:onProperty void_linkml:target .
 _:c14n101 a owl:Restriction ;
 	owl:allValuesFrom xsd:date ;
-	owl:onProperty void_linkml:created .
+	owl:onProperty void_linkml:modified .
 _:c14n102 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty void_linkml:classes .
+_:c14n103 a owl:Restriction ;
+	owl:allValuesFrom _:c14n371 ;
+	owl:onProperty void_linkml:properties .
+_:c14n104 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty void_linkml:uriRegexPattern .
+_:c14n105 a owl:Restriction ;
+	owl:allValuesFrom xsd:date ;
+	owl:onProperty void_linkml:created .
+_:c14n106 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty void_linkml:creator .
-_:c14n103 a owl:Restriction ;
+_:c14n107 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty void_linkml:publisher .
-_:c14n104 a owl:Restriction ;
+_:c14n108 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty void_linkml:distinctObjects .
-_:c14n105 owl:unionOf _:c14n377 .
-_:c14n106 a owl:Restriction ;
-	owl:allValuesFrom _:c14n297 ;
+_:c14n109 a owl:Restriction ;
+	owl:allValuesFrom _:c14n275 ;
+	owl:onProperty void_linkml:id .
+_:c14n11 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty void_linkml:homepage .
+_:c14n110 owl:unionOf _:c14n471 .
+_:c14n111 a owl:Restriction ;
+	owl:allValuesFrom _:c14n335 ;
 	owl:onProperty void_linkml:distinctSubjects .
-_:c14n107 a owl:Restriction ;
-	owl:allValuesFrom _:c14n286 ;
+_:c14n112 a owl:Restriction ;
+	owl:allValuesFrom _:c14n313 ;
 	owl:onProperty void_linkml:classes .
-_:c14n108 a owl:Restriction ;
+_:c14n113 a owl:Restriction ;
 	owl:allValuesFrom xsd:anyURI ;
 	owl:onProperty void_linkml:seeAlso .
-_:c14n109 a owl:Restriction ;
+_:c14n114 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty void_linkml:entities .
-_:c14n11 a owl:Restriction ;
-	owl:allValuesFrom owl:Thing ;
-	owl:onProperty void_linkml:topic .
-_:c14n110 a owl:Restriction ;
+_:c14n115 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty void_linkml:classes .
-_:c14n111 a owl:Restriction ;
-	owl:allValuesFrom xsd:anyURI ;
-	owl:onProperty void_linkml:linkPredicate .
-_:c14n112 a owl:Restriction ;
+_:c14n116 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty void_linkml:modified .
-_:c14n113 a owl:Restriction ;
+_:c14n117 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty void_linkml:sparqlEndpoint .
-_:c14n114 a owl:Restriction ;
+_:c14n118 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty void_linkml:modified .
-_:c14n115 a owl:Restriction ;
+_:c14n119 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty void_linkml:properties .
-_:c14n116 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty void_linkml:title .
-_:c14n117 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty void_linkml:distinctObjects .
-_:c14n118 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty void_linkml:issued .
-_:c14n119 a owl:Restriction ;
-	owl:allValuesFrom xsd:string ;
-	owl:onProperty void_linkml:uriRegexPattern .
 _:c14n12 a owl:Restriction ;
-	owl:minCardinality 0 ;
+	owl:allValuesFrom owl:Thing ;
 	owl:onProperty void_linkml:topic .
 _:c14n120 a owl:Restriction ;
-	owl:allValuesFrom _:c14n356 ;
-	owl:onProperty void_linkml:documents .
-_:c14n121 a rdfs:Datatype ;
-	owl:intersectionOf _:c14n320 .
+	owl:minCardinality 0 ;
+	owl:onProperty void_linkml:title .
+_:c14n121 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty void_linkml:distinctObjects .
 _:c14n122 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty void_linkml:objectsTarget .
+	owl:onProperty void_linkml:issued .
 _:c14n123 a owl:Restriction ;
+	owl:allValuesFrom xsd:string ;
+	owl:onProperty void_linkml:uriRegexPattern .
+_:c14n124 a owl:Restriction ;
+	owl:allValuesFrom _:c14n387 ;
+	owl:onProperty void_linkml:documents .
+_:c14n125 a rdfs:Datatype ;
+	owl:intersectionOf _:c14n398 .
+_:c14n126 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty void_linkml:objectsTarget .
+_:c14n127 a rdfs:Datatype ;
+	owl:intersectionOf _:c14n258 .
+_:c14n128 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty void_linkml:distinctSubjects .
-_:c14n124 a owl:Restriction ;
-	owl:allValuesFrom void_linkml:Dataset ;
-	owl:onProperty void_linkml:inDataset .
-_:c14n125 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty void_linkml:distinctObjects .
-_:c14n126 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty void_linkml:subjectsTarget .
-_:c14n127 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty void_linkml:propertyPartition .
-_:c14n128 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty void_linkml:triples .
 _:c14n129 a owl:Restriction ;
 	owl:allValuesFrom void_linkml:Dataset ;
-	owl:onProperty void_linkml:target .
+	owl:onProperty void_linkml:inDataset .
 _:c14n13 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty void_linkml:comment .
+	owl:onProperty void_linkml:topic .
 _:c14n130 a owl:Restriction ;
 	owl:maxCardinality 1 ;
-	owl:onProperty void_linkml:primaryTopic .
+	owl:onProperty void_linkml:distinctObjects .
 _:c14n131 a owl:Restriction ;
 	owl:maxCardinality 1 ;
-	owl:onProperty void_linkml:distinctObjects .
-_:c14n132 a owl:Restriction ;
-	owl:allValuesFrom void_linkml:TechnicalFeature ;
-	owl:onProperty void_linkml:feature .
-_:c14n133 a owl:Restriction ;
-	owl:allValuesFrom xsd:date ;
-	owl:onProperty void_linkml:created .
-_:c14n134 a owl:Restriction ;
-	owl:allValuesFrom _:c14n309 ;
-	owl:onProperty void_linkml:distinctObjects .
-_:c14n135 a owl:Restriction ;
-	owl:allValuesFrom _:c14n326 ;
-	owl:onProperty void_linkml:triples .
-_:c14n136 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty void_linkml:triples .
-_:c14n137 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty void_linkml:license .
-_:c14n138 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty void_linkml:uriLookupEndpoint .
-_:c14n139 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty void_linkml:entities .
-_:c14n14 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty void_linkml:documents .
-_:c14n140 a owl:Restriction ;
-	owl:allValuesFrom xsd:anyURI ;
-	owl:onProperty void_linkml:contributor .
-_:c14n141 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty void_linkml:seeAlso .
-_:c14n142 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty void_linkml:linkPredicate .
-_:c14n143 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty void_linkml:documents .
-_:c14n144 a owl:Restriction ;
-	owl:allValuesFrom _:c14n245 ;
-	owl:onProperty void_linkml:documents .
-_:c14n145 a owl:Restriction ;
-	owl:allValuesFrom void_linkml:Dataset ;
 	owl:onProperty void_linkml:subjectsTarget .
-_:c14n146 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty void_linkml:entities .
-_:c14n147 a owl:Restriction ;
-	owl:allValuesFrom void_linkml:Dataset ;
-	owl:onProperty void_linkml:topic .
-_:c14n148 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty void_linkml:distinctObjects .
-_:c14n149 a owl:Restriction ;
-	owl:allValuesFrom void_linkml:ClassBasedPartition ;
-	owl:onProperty void_linkml:classPartition .
-_:c14n15 owl:unionOf _:c14n375 .
-_:c14n150 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty void_linkml:distinctSubjects .
-_:c14n151 a owl:Restriction ;
-	owl:allValuesFrom xsd:anyURI ;
-	owl:onProperty void_linkml:homepage .
-_:c14n152 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty void_linkml:title .
-_:c14n153 a owl:Restriction ;
-	owl:minCardinality 1 ;
-	owl:onProperty void_linkml:id .
-_:c14n154 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty void_linkml:distinctSubjects .
-_:c14n155 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty void_linkml:documents .
-_:c14n156 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty void_linkml:triples .
-_:c14n157 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty void_linkml:classes .
-_:c14n158 a owl:Restriction ;
-	owl:allValuesFrom xsd:date ;
-	owl:onProperty void_linkml:modified .
-_:c14n159 a rdfs:Datatype ;
-	owl:intersectionOf _:c14n211 .
-_:c14n16 a owl:Restriction ;
-	owl:allValuesFrom _:c14n239 ;
-	owl:onProperty void_linkml:entities .
-_:c14n160 a owl:Restriction ;
-	owl:allValuesFrom xsd:string ;
-	owl:onProperty void_linkml:label .
-_:c14n161 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty void_linkml:license .
-_:c14n162 a rdfs:Datatype ;
-	owl:intersectionOf _:c14n372 .
-_:c14n163 a owl:Restriction ;
-	owl:allValuesFrom xsd:anyURI ;
-	owl:onProperty void_linkml:id .
-_:c14n164 a owl:Restriction ;
-	owl:allValuesFrom _:c14n332 ;
-	owl:onProperty void_linkml:distinctObjects .
-_:c14n165 a owl:Restriction ;
-	owl:allValuesFrom xsd:anyURI ;
-	owl:onProperty void_linkml:license .
-_:c14n166 a owl:Restriction ;
-	owl:allValuesFrom _:c14n362 ;
-	owl:onProperty void_linkml:distinctObjects .
-_:c14n167 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty void_linkml:publisher .
-_:c14n168 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty void_linkml:distinctSubjects .
-_:c14n169 a owl:Restriction ;
-	owl:allValuesFrom void_linkml:Dataset ;
-	owl:onProperty void_linkml:primaryTopic .
-_:c14n17 a owl:Restriction ;
-	owl:allValuesFrom _:c14n303 ;
-	owl:onProperty void_linkml:distinctSubjects .
-_:c14n170 a owl:Restriction ;
-	owl:allValuesFrom void_linkml:Dataset ;
-	owl:onProperty void_linkml:objectsTarget .
-_:c14n171 a owl:Restriction ;
-	owl:allValuesFrom void_linkml:Dataset ;
-	owl:onProperty void_linkml:subset .
-_:c14n172 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty void_linkml:uriSpace .
-_:c14n173 a owl:Restriction ;
-	owl:allValuesFrom xsd:anyURI ;
-	owl:onProperty void_linkml:creator .
-_:c14n174 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty void_linkml:created .
-_:c14n175 a owl:Restriction ;
-	owl:allValuesFrom owl:Thing ;
-	owl:onProperty void_linkml:target .
-_:c14n176 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty void_linkml:id .
-_:c14n177 a rdfs:Datatype ;
-	owl:intersectionOf _:c14n291 .
-_:c14n178 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty void_linkml:rootResource .
-_:c14n179 owl:intersectionOf _:c14n71 .
-_:c14n18 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty void_linkml:modified .
-_:c14n180 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty void_linkml:vocabulary .
-_:c14n181 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty void_linkml:documents .
-_:c14n182 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty void_linkml:distinctSubjects .
-_:c14n183 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty void_linkml:label .
-_:c14n184 a owl:Restriction ;
-	owl:allValuesFrom xsd:anyURI ;
-	owl:onProperty void_linkml:source .
-_:c14n185 a owl:Restriction ;
+_:c14n132 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty void_linkml:propertyPartition .
-_:c14n186 a owl:Restriction ;
+_:c14n133 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty void_linkml:subject .
-_:c14n187 a owl:Restriction ;
-	owl:allValuesFrom _:c14n222 ;
-	owl:onProperty void_linkml:properties .
-_:c14n188 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty void_linkml:subjectsTarget .
-_:c14n189 a owl:Restriction ;
-	owl:allValuesFrom xsd:anyURI ;
-	owl:onProperty void_linkml:page .
-_:c14n19 a owl:Restriction ;
-	owl:allValuesFrom xsd:date ;
-	owl:onProperty void_linkml:issued .
-_:c14n190 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty void_linkml:contributor .
-_:c14n191 a rdfs:Datatype ;
-	owl:onDatatype xsd:string ;
-	owl:withRestrictions _:c14n383 .
-_:c14n192 a owl:Restriction ;
-	owl:minCardinality 1 ;
-	owl:onProperty void_linkml:property .
-_:c14n193 a owl:Restriction ;
+	owl:onProperty void_linkml:triples .
+_:c14n134 a owl:Restriction ;
+	owl:allValuesFrom void_linkml:Dataset ;
+	owl:onProperty void_linkml:target .
+_:c14n135 a owl:Restriction ;
 	owl:maxCardinality 1 ;
-	owl:onProperty void_linkml:entities .
-_:c14n194 a rdfs:Datatype ;
-	owl:intersectionOf _:c14n227 .
-_:c14n195 a owl:Restriction ;
-	owl:allValuesFrom xsd:anyURI ;
-	owl:onProperty void_linkml:dataDump .
-_:c14n196 a owl:Restriction ;
+	owl:onProperty void_linkml:primaryTopic .
+_:c14n136 a owl:Restriction ;
 	owl:maxCardinality 1 ;
-	owl:onProperty void_linkml:properties .
-_:c14n197 a owl:Restriction ;
-	owl:allValuesFrom _:c14n233 ;
-	owl:onProperty void_linkml:classes .
-_:c14n198 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty void_linkml:modified .
-_:c14n199 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty void_linkml:source .
-_:c14n2 a owl:Restriction ;
-	owl:allValuesFrom _:c14n257 ;
-	owl:onProperty void_linkml:classes .
-_:c14n20 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty void_linkml:id .
-_:c14n200 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty void_linkml:issued .
-_:c14n201 a owl:Restriction ;
-	owl:allValuesFrom xsd:anyURI ;
-	owl:onProperty void_linkml:sparqlEndpoint .
-_:c14n202 a owl:Restriction ;
-	owl:allValuesFrom xsd:string ;
-	owl:onProperty void_linkml:comment .
-_:c14n203 a rdfs:Datatype ;
-	owl:onDatatype xsd:string ;
-	owl:withRestrictions _:c14n207 .
-_:c14n204 rdf:first _:c14n203 ;
-	rdf:rest rdf:nil .
-_:c14n205 rdf:first xsd:anyURI ;
-	rdf:rest _:c14n204 .
-_:c14n206 a rdfs:Datatype ;
-	owl:intersectionOf _:c14n205 .
-_:c14n207 rdf:first _:c14n208 ;
-	rdf:rest rdf:nil .
-_:c14n208 xsd:pattern "[^#]$" .
-_:c14n209 a rdfs:Datatype ;
-	owl:onDatatype xsd:string ;
-	owl:withRestrictions _:c14n212 .
-_:c14n21 a owl:Restriction ;
-	owl:allValuesFrom _:c14n269 ;
-	owl:onProperty void_linkml:entities .
-_:c14n210 rdf:first _:c14n209 ;
-	rdf:rest rdf:nil .
-_:c14n211 rdf:first xsd:anyURI ;
-	rdf:rest _:c14n210 .
-_:c14n212 rdf:first _:c14n213 ;
-	rdf:rest rdf:nil .
-_:c14n213 xsd:pattern "[^#]$" .
-_:c14n214 a rdfs:Datatype ;
-	owl:onDatatype xsd:integer ;
-	owl:withRestrictions _:c14n217 .
-_:c14n215 rdf:first _:c14n214 ;
-	rdf:rest rdf:nil .
-_:c14n216 rdf:first xsd:integer ;
-	rdf:rest _:c14n215 .
-_:c14n217 rdf:first _:c14n218 ;
-	rdf:rest rdf:nil .
-_:c14n218 xsd:minInclusive 0 .
-_:c14n219 a rdfs:Datatype ;
-	owl:onDatatype xsd:integer ;
-	owl:withRestrictions _:c14n223 .
-_:c14n22 a owl:Restriction ;
-	owl:allValuesFrom owl:Thing ;
-	owl:onProperty void_linkml:objectsTarget .
-_:c14n220 rdf:first _:c14n219 ;
-	rdf:rest rdf:nil .
-_:c14n221 rdf:first xsd:integer ;
-	rdf:rest _:c14n220 .
-_:c14n222 a rdfs:Datatype ;
-	owl:intersectionOf _:c14n221 .
-_:c14n223 rdf:first _:c14n224 ;
-	rdf:rest rdf:nil .
-_:c14n224 xsd:minInclusive 0 .
-_:c14n225 a rdfs:Datatype ;
-	owl:onDatatype xsd:integer ;
-	owl:withRestrictions _:c14n228 .
-_:c14n226 rdf:first _:c14n225 ;
-	rdf:rest rdf:nil .
-_:c14n227 rdf:first xsd:integer ;
-	rdf:rest _:c14n226 .
-_:c14n228 rdf:first _:c14n229 ;
-	rdf:rest rdf:nil .
-_:c14n229 xsd:minInclusive 0 .
-_:c14n23 a owl:Restriction ;
-	owl:minCardinality 0 ;
+	owl:onProperty void_linkml:distinctObjects .
+_:c14n137 a owl:Restriction ;
+	owl:allValuesFrom void_linkml:TechnicalFeature ;
 	owl:onProperty void_linkml:feature .
-_:c14n230 a rdfs:Datatype ;
-	owl:onDatatype xsd:integer ;
-	owl:withRestrictions _:c14n234 .
-_:c14n231 rdf:first _:c14n230 ;
-	rdf:rest rdf:nil .
-_:c14n232 rdf:first xsd:integer ;
-	rdf:rest _:c14n231 .
-_:c14n233 a rdfs:Datatype ;
-	owl:intersectionOf _:c14n232 .
-_:c14n234 rdf:first _:c14n235 ;
-	rdf:rest rdf:nil .
-_:c14n235 xsd:minInclusive 0 .
-_:c14n236 a rdfs:Datatype ;
-	owl:onDatatype xsd:integer ;
-	owl:withRestrictions _:c14n240 .
-_:c14n237 rdf:first _:c14n236 ;
-	rdf:rest rdf:nil .
-_:c14n238 rdf:first xsd:integer ;
-	rdf:rest _:c14n237 .
-_:c14n239 a rdfs:Datatype ;
-	owl:intersectionOf _:c14n238 .
-_:c14n24 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty void_linkml:uriRegexPattern .
-_:c14n240 rdf:first _:c14n241 ;
-	rdf:rest rdf:nil .
-_:c14n241 xsd:minInclusive 0 .
-_:c14n242 a rdfs:Datatype ;
-	owl:onDatatype xsd:integer ;
-	owl:withRestrictions _:c14n246 .
-_:c14n243 rdf:first _:c14n242 ;
-	rdf:rest rdf:nil .
-_:c14n244 rdf:first xsd:integer ;
-	rdf:rest _:c14n243 .
-_:c14n245 a rdfs:Datatype ;
-	owl:intersectionOf _:c14n244 .
-_:c14n246 rdf:first _:c14n247 ;
-	rdf:rest rdf:nil .
-_:c14n247 xsd:minInclusive 0 .
-_:c14n248 a rdfs:Datatype ;
-	owl:onDatatype xsd:integer ;
-	owl:withRestrictions _:c14n252 .
-_:c14n249 rdf:first _:c14n248 ;
-	rdf:rest rdf:nil .
-_:c14n25 a owl:Restriction ;
-	owl:maxCardinality 1 ;
+_:c14n138 a owl:Restriction ;
+	owl:allValuesFrom xsd:date ;
 	owl:onProperty void_linkml:created .
-_:c14n250 rdf:first xsd:integer ;
-	rdf:rest _:c14n249 .
-_:c14n251 a rdfs:Datatype ;
-	owl:intersectionOf _:c14n250 .
-_:c14n252 rdf:first _:c14n253 ;
-	rdf:rest rdf:nil .
-_:c14n253 xsd:minInclusive 0 .
-_:c14n254 a rdfs:Datatype ;
-	owl:onDatatype xsd:integer ;
-	owl:withRestrictions _:c14n258 .
-_:c14n255 rdf:first _:c14n254 ;
-	rdf:rest rdf:nil .
-_:c14n256 rdf:first xsd:integer ;
-	rdf:rest _:c14n255 .
-_:c14n257 a rdfs:Datatype ;
-	owl:intersectionOf _:c14n256 .
-_:c14n258 rdf:first _:c14n259 ;
-	rdf:rest rdf:nil .
-_:c14n259 xsd:minInclusive 0 .
-_:c14n26 a owl:Restriction ;
+_:c14n139 a owl:Restriction ;
+	owl:allValuesFrom _:c14n393 ;
+	owl:onProperty void_linkml:distinctObjects .
+_:c14n14 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty void_linkml:comment .
+_:c14n140 a owl:Restriction ;
+	owl:allValuesFrom _:c14n433 ;
+	owl:onProperty void_linkml:triples .
+_:c14n141 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty void_linkml:triples .
+_:c14n142 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty void_linkml:license .
+_:c14n143 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty void_linkml:uriLookupEndpoint .
+_:c14n144 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty void_linkml:entities .
+_:c14n145 a owl:Restriction ;
+	owl:allValuesFrom xsd:anyURI ;
+	owl:onProperty void_linkml:contributor .
+_:c14n146 a owl:Restriction ;
+	owl:allValuesFrom _:c14n248 ;
+	owl:onProperty void_linkml:linkPredicate .
+_:c14n147 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty void_linkml:seeAlso .
+_:c14n148 a owl:Restriction ;
+	owl:allValuesFrom _:c14n291 ;
+	owl:onProperty void_linkml:class .
+_:c14n149 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty void_linkml:linkPredicate .
+_:c14n15 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty void_linkml:documents .
+_:c14n150 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty void_linkml:documents .
+_:c14n151 a owl:Restriction ;
+	owl:allValuesFrom _:c14n324 ;
+	owl:onProperty void_linkml:documents .
+_:c14n152 a owl:Restriction ;
+	owl:allValuesFrom void_linkml:Dataset ;
+	owl:onProperty void_linkml:subjectsTarget .
+_:c14n153 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty void_linkml:entities .
+_:c14n154 a owl:Restriction ;
+	owl:allValuesFrom void_linkml:Dataset ;
+	owl:onProperty void_linkml:topic .
+_:c14n155 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty void_linkml:distinctObjects .
+_:c14n156 a owl:Restriction ;
+	owl:allValuesFrom _:c14n285 ;
+	owl:onProperty void_linkml:id .
+_:c14n157 a owl:Restriction ;
+	owl:allValuesFrom void_linkml:ClassBasedPartition ;
+	owl:onProperty void_linkml:classPartition .
+_:c14n158 owl:intersectionOf _:c14n224 .
+_:c14n159 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty void_linkml:distinctSubjects .
-_:c14n260 a rdfs:Datatype ;
-	owl:onDatatype xsd:integer ;
-	owl:withRestrictions _:c14n264 .
-_:c14n261 rdf:first _:c14n260 ;
+_:c14n16 owl:unionOf _:c14n473 .
+_:c14n160 a owl:Restriction ;
+	owl:allValuesFrom xsd:anyURI ;
+	owl:onProperty void_linkml:homepage .
+_:c14n161 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty void_linkml:title .
+_:c14n162 a owl:Restriction ;
+	owl:minCardinality 1 ;
+	owl:onProperty void_linkml:id .
+_:c14n163 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty void_linkml:distinctSubjects .
+_:c14n164 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty void_linkml:documents .
+_:c14n165 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty void_linkml:triples .
+_:c14n166 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty void_linkml:classes .
+_:c14n167 a owl:Restriction ;
+	owl:allValuesFrom xsd:date ;
+	owl:onProperty void_linkml:modified .
+_:c14n168 a rdfs:Datatype ;
+	owl:intersectionOf _:c14n263 .
+_:c14n169 a owl:Restriction ;
+	owl:allValuesFrom xsd:string ;
+	owl:onProperty void_linkml:label .
+_:c14n17 a owl:Restriction ;
+	owl:allValuesFrom _:c14n415 ;
+	owl:onProperty void_linkml:entities .
+_:c14n170 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty void_linkml:license .
+_:c14n171 a rdfs:Datatype ;
+	owl:intersectionOf _:c14n376 .
+_:c14n172 a rdfs:Datatype ;
+	owl:intersectionOf _:c14n253 .
+_:c14n173 owl:intersectionOf _:c14n234 .
+_:c14n174 a owl:Restriction ;
+	owl:allValuesFrom _:c14n347 ;
+	owl:onProperty void_linkml:distinctObjects .
+_:c14n175 a owl:Restriction ;
+	owl:allValuesFrom xsd:anyURI ;
+	owl:onProperty void_linkml:license .
+_:c14n176 a owl:Restriction ;
+	owl:allValuesFrom _:c14n450 ;
+	owl:onProperty void_linkml:distinctObjects .
+_:c14n177 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty void_linkml:publisher .
+_:c14n178 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty void_linkml:distinctSubjects .
+_:c14n179 a owl:Restriction ;
+	owl:allValuesFrom void_linkml:Dataset ;
+	owl:onProperty void_linkml:primaryTopic .
+_:c14n18 a owl:Restriction ;
+	owl:allValuesFrom _:c14n427 ;
+	owl:onProperty void_linkml:distinctSubjects .
+_:c14n180 a owl:Restriction ;
+	owl:allValuesFrom void_linkml:Dataset ;
+	owl:onProperty void_linkml:objectsTarget .
+_:c14n181 a owl:Restriction ;
+	owl:allValuesFrom void_linkml:Dataset ;
+	owl:onProperty void_linkml:subset .
+_:c14n182 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty void_linkml:uriSpace .
+_:c14n183 a owl:Restriction ;
+	owl:allValuesFrom xsd:anyURI ;
+	owl:onProperty void_linkml:creator .
+_:c14n184 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty void_linkml:created .
+_:c14n185 a owl:Restriction ;
+	owl:allValuesFrom owl:Thing ;
+	owl:onProperty void_linkml:target .
+_:c14n186 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty void_linkml:id .
+_:c14n187 a rdfs:Datatype ;
+	owl:intersectionOf _:c14n318 .
+_:c14n188 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty void_linkml:rootResource .
+_:c14n189 owl:intersectionOf _:c14n74 .
+_:c14n19 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty void_linkml:modified .
+_:c14n190 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty void_linkml:vocabulary .
+_:c14n191 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty void_linkml:documents .
+_:c14n192 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty void_linkml:distinctSubjects .
+_:c14n193 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty void_linkml:label .
+_:c14n194 a owl:Restriction ;
+	owl:allValuesFrom xsd:anyURI ;
+	owl:onProperty void_linkml:source .
+_:c14n195 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty void_linkml:propertyPartition .
+_:c14n196 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty void_linkml:subject .
+_:c14n197 a owl:Restriction ;
+	owl:allValuesFrom _:c14n359 ;
+	owl:onProperty void_linkml:properties .
+_:c14n198 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty void_linkml:subjectsTarget .
+_:c14n199 a owl:Restriction ;
+	owl:allValuesFrom xsd:anyURI ;
+	owl:onProperty void_linkml:page .
+_:c14n2 a owl:Restriction ;
+	owl:allValuesFrom _:c14n365 ;
+	owl:onProperty void_linkml:classes .
+_:c14n20 a owl:Restriction ;
+	owl:allValuesFrom xsd:date ;
+	owl:onProperty void_linkml:issued .
+_:c14n200 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty void_linkml:contributor .
+_:c14n201 a rdfs:Datatype ;
+	owl:onDatatype xsd:string ;
+	owl:withRestrictions _:c14n479 .
+_:c14n202 a owl:Restriction ;
+	owl:minCardinality 1 ;
+	owl:onProperty void_linkml:property .
+_:c14n203 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty void_linkml:entities .
+_:c14n204 a rdfs:Datatype ;
+	owl:intersectionOf _:c14n444 .
+_:c14n205 a owl:Restriction ;
+	owl:allValuesFrom xsd:anyURI ;
+	owl:onProperty void_linkml:dataDump .
+_:c14n206 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty void_linkml:properties .
+_:c14n207 a owl:Restriction ;
+	owl:allValuesFrom _:c14n421 ;
+	owl:onProperty void_linkml:classes .
+_:c14n208 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty void_linkml:modified .
+_:c14n209 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty void_linkml:source .
+_:c14n21 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty void_linkml:id .
+_:c14n210 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty void_linkml:issued .
+_:c14n211 owl:intersectionOf _:c14n62 .
+_:c14n212 a owl:Restriction ;
+	owl:allValuesFrom xsd:anyURI ;
+	owl:onProperty void_linkml:sparqlEndpoint .
+_:c14n213 a owl:Restriction ;
+	owl:allValuesFrom xsd:string ;
+	owl:onProperty void_linkml:comment .
+_:c14n214 rdf:first void_linkml:Dataset ;
+	rdf:rest _:c14n215 .
+_:c14n215 rdf:first _:c14n216 ;
 	rdf:rest rdf:nil .
-_:c14n262 rdf:first xsd:integer ;
-	rdf:rest _:c14n261 .
-_:c14n263 a rdfs:Datatype ;
-	owl:intersectionOf _:c14n262 .
+_:c14n216 a rdfs:Datatype ;
+	owl:onDatatype xsd:string ;
+	owl:withRestrictions _:c14n217 .
+_:c14n217 rdf:first _:c14n218 ;
+	rdf:rest rdf:nil .
+_:c14n218 xsd:pattern "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$" .
+_:c14n219 rdf:first void_linkml:Dataset ;
+	rdf:rest _:c14n220 .
+_:c14n22 owl:intersectionOf _:c14n219 .
+_:c14n220 rdf:first _:c14n221 ;
+	rdf:rest rdf:nil .
+_:c14n221 a rdfs:Datatype ;
+	owl:onDatatype xsd:string ;
+	owl:withRestrictions _:c14n222 .
+_:c14n222 rdf:first _:c14n223 ;
+	rdf:rest rdf:nil .
+_:c14n223 xsd:pattern "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$" .
+_:c14n224 rdf:first void_linkml:Dataset ;
+	rdf:rest _:c14n225 .
+_:c14n225 rdf:first _:c14n226 ;
+	rdf:rest rdf:nil .
+_:c14n226 a rdfs:Datatype ;
+	owl:onDatatype xsd:string ;
+	owl:withRestrictions _:c14n227 .
+_:c14n227 rdf:first _:c14n228 ;
+	rdf:rest rdf:nil .
+_:c14n228 xsd:pattern "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$" .
+_:c14n229 rdf:first void_linkml:Dataset ;
+	rdf:rest _:c14n230 .
+_:c14n23 a owl:Restriction ;
+	owl:allValuesFrom _:c14n341 ;
+	owl:onProperty void_linkml:entities .
+_:c14n230 rdf:first _:c14n231 ;
+	rdf:rest rdf:nil .
+_:c14n231 a rdfs:Datatype ;
+	owl:onDatatype xsd:string ;
+	owl:withRestrictions _:c14n232 .
+_:c14n232 rdf:first _:c14n233 ;
+	rdf:rest rdf:nil .
+_:c14n233 xsd:pattern "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$" .
+_:c14n234 rdf:first void_linkml:Dataset ;
+	rdf:rest _:c14n235 .
+_:c14n235 rdf:first _:c14n236 ;
+	rdf:rest rdf:nil .
+_:c14n236 a rdfs:Datatype ;
+	owl:onDatatype xsd:string ;
+	owl:withRestrictions _:c14n237 .
+_:c14n237 rdf:first _:c14n238 ;
+	rdf:rest rdf:nil .
+_:c14n238 xsd:pattern "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$" .
+_:c14n239 a rdfs:Datatype ;
+	owl:onDatatype xsd:string ;
+	owl:withRestrictions _:c14n243 .
+_:c14n24 a owl:Restriction ;
+	owl:allValuesFrom owl:Thing ;
+	owl:onProperty void_linkml:objectsTarget .
+_:c14n240 rdf:first _:c14n239 ;
+	rdf:rest rdf:nil .
+_:c14n241 rdf:first xsd:anyURI ;
+	rdf:rest _:c14n240 .
+_:c14n242 a rdfs:Datatype ;
+	owl:intersectionOf _:c14n241 .
+_:c14n243 rdf:first _:c14n244 ;
+	rdf:rest rdf:nil .
+_:c14n244 xsd:pattern "[^#]$" .
+_:c14n245 a rdfs:Datatype ;
+	owl:onDatatype xsd:string ;
+	owl:withRestrictions _:c14n249 .
+_:c14n246 rdf:first _:c14n245 ;
+	rdf:rest rdf:nil .
+_:c14n247 rdf:first xsd:anyURI ;
+	rdf:rest _:c14n246 .
+_:c14n248 a rdfs:Datatype ;
+	owl:intersectionOf _:c14n247 .
+_:c14n249 rdf:first _:c14n250 ;
+	rdf:rest rdf:nil .
+_:c14n25 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty void_linkml:feature .
+_:c14n250 xsd:pattern "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$" .
+_:c14n251 a rdfs:Datatype ;
+	owl:onDatatype xsd:string ;
+	owl:withRestrictions _:c14n254 .
+_:c14n252 rdf:first _:c14n251 ;
+	rdf:rest rdf:nil .
+_:c14n253 rdf:first xsd:anyURI ;
+	rdf:rest _:c14n252 .
+_:c14n254 rdf:first _:c14n255 ;
+	rdf:rest rdf:nil .
+_:c14n255 xsd:pattern "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$" .
+_:c14n256 a rdfs:Datatype ;
+	owl:onDatatype xsd:string ;
+	owl:withRestrictions _:c14n259 .
+_:c14n257 rdf:first _:c14n256 ;
+	rdf:rest rdf:nil .
+_:c14n258 rdf:first xsd:anyURI ;
+	rdf:rest _:c14n257 .
+_:c14n259 rdf:first _:c14n260 ;
+	rdf:rest rdf:nil .
+_:c14n26 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty void_linkml:uriRegexPattern .
+_:c14n260 xsd:pattern "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$" .
+_:c14n261 a rdfs:Datatype ;
+	owl:onDatatype xsd:string ;
+	owl:withRestrictions _:c14n264 .
+_:c14n262 rdf:first _:c14n261 ;
+	rdf:rest rdf:nil .
+_:c14n263 rdf:first xsd:anyURI ;
+	rdf:rest _:c14n262 .
 _:c14n264 rdf:first _:c14n265 ;
 	rdf:rest rdf:nil .
-_:c14n265 xsd:minInclusive 0 .
+_:c14n265 xsd:pattern "[^#]$" .
 _:c14n266 a rdfs:Datatype ;
-	owl:onDatatype xsd:integer ;
+	owl:onDatatype xsd:string ;
 	owl:withRestrictions _:c14n270 .
 _:c14n267 rdf:first _:c14n266 ;
 	rdf:rest rdf:nil .
-_:c14n268 rdf:first xsd:integer ;
+_:c14n268 rdf:first xsd:anyURI ;
 	rdf:rest _:c14n267 .
 _:c14n269 a rdfs:Datatype ;
 	owl:intersectionOf _:c14n268 .
 _:c14n27 a owl:Restriction ;
-	owl:allValuesFrom _:c14n206 ;
-	owl:onProperty void_linkml:vocabulary .
+	owl:maxCardinality 1 ;
+	owl:onProperty void_linkml:created .
 _:c14n270 rdf:first _:c14n271 ;
 	rdf:rest rdf:nil .
-_:c14n271 xsd:minInclusive 0 .
+_:c14n271 xsd:pattern "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$" .
 _:c14n272 a rdfs:Datatype ;
-	owl:onDatatype xsd:integer ;
+	owl:onDatatype xsd:string ;
 	owl:withRestrictions _:c14n276 .
 _:c14n273 rdf:first _:c14n272 ;
 	rdf:rest rdf:nil .
-_:c14n274 rdf:first xsd:integer ;
+_:c14n274 rdf:first xsd:anyURI ;
 	rdf:rest _:c14n273 .
 _:c14n275 a rdfs:Datatype ;
 	owl:intersectionOf _:c14n274 .
 _:c14n276 rdf:first _:c14n277 ;
 	rdf:rest rdf:nil .
-_:c14n277 xsd:minInclusive 0 .
+_:c14n277 xsd:pattern "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$" .
 _:c14n278 a rdfs:Datatype ;
-	owl:onDatatype xsd:integer ;
-	owl:withRestrictions _:c14n281 .
+	owl:onDatatype xsd:string ;
+	owl:withRestrictions _:c14n280 .
 _:c14n279 rdf:first _:c14n278 ;
 	rdf:rest rdf:nil .
 _:c14n28 a owl:Restriction ;
-	owl:allValuesFrom xsd:anyURI ;
-	owl:onProperty void_linkml:creator .
-_:c14n280 rdf:first xsd:integer ;
-	rdf:rest _:c14n279 .
-_:c14n281 rdf:first _:c14n282 ;
-	rdf:rest rdf:nil .
-_:c14n282 xsd:minInclusive 0 .
-_:c14n283 a rdfs:Datatype ;
-	owl:onDatatype xsd:integer ;
-	owl:withRestrictions _:c14n287 .
-_:c14n284 rdf:first _:c14n283 ;
-	rdf:rest rdf:nil .
-_:c14n285 rdf:first xsd:integer ;
-	rdf:rest _:c14n284 .
-_:c14n286 a rdfs:Datatype ;
-	owl:intersectionOf _:c14n285 .
-_:c14n287 rdf:first _:c14n288 ;
-	rdf:rest rdf:nil .
-_:c14n288 xsd:minInclusive 0 .
-_:c14n289 a rdfs:Datatype ;
-	owl:onDatatype xsd:integer ;
-	owl:withRestrictions _:c14n292 .
-_:c14n29 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty void_linkml:triples .
-_:c14n290 rdf:first _:c14n289 ;
+	owl:onProperty void_linkml:distinctSubjects .
+_:c14n280 rdf:first _:c14n281 ;
 	rdf:rest rdf:nil .
-_:c14n291 rdf:first xsd:integer ;
-	rdf:rest _:c14n290 .
+_:c14n281 xsd:pattern "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$" .
+_:c14n282 a rdfs:Datatype ;
+	owl:onDatatype xsd:string ;
+	owl:withRestrictions _:c14n286 .
+_:c14n283 rdf:first _:c14n282 ;
+	rdf:rest rdf:nil .
+_:c14n284 rdf:first xsd:anyURI ;
+	rdf:rest _:c14n283 .
+_:c14n285 a rdfs:Datatype ;
+	owl:intersectionOf _:c14n284 .
+_:c14n286 rdf:first _:c14n287 ;
+	rdf:rest rdf:nil .
+_:c14n287 xsd:pattern "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$" .
+_:c14n288 a rdfs:Datatype ;
+	owl:onDatatype xsd:string ;
+	owl:withRestrictions _:c14n292 .
+_:c14n289 rdf:first _:c14n288 ;
+	rdf:rest rdf:nil .
+_:c14n29 a owl:Restriction ;
+	owl:allValuesFrom _:c14n242 ;
+	owl:onProperty void_linkml:vocabulary .
+_:c14n290 rdf:first xsd:anyURI ;
+	rdf:rest _:c14n289 .
+_:c14n291 a rdfs:Datatype ;
+	owl:intersectionOf _:c14n290 .
 _:c14n292 rdf:first _:c14n293 ;
 	rdf:rest rdf:nil .
-_:c14n293 xsd:minInclusive 0 .
+_:c14n293 xsd:pattern "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$" .
 _:c14n294 a rdfs:Datatype ;
-	owl:onDatatype xsd:integer ;
+	owl:onDatatype xsd:string ;
 	owl:withRestrictions _:c14n298 .
 _:c14n295 rdf:first _:c14n294 ;
 	rdf:rest rdf:nil .
-_:c14n296 rdf:first xsd:integer ;
+_:c14n296 rdf:first xsd:anyURI ;
 	rdf:rest _:c14n295 .
 _:c14n297 a rdfs:Datatype ;
 	owl:intersectionOf _:c14n296 .
 _:c14n298 rdf:first _:c14n299 ;
 	rdf:rest rdf:nil .
-_:c14n299 xsd:minInclusive 0 .
+_:c14n299 xsd:pattern "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$" .
 _:c14n3 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty void_linkml:entities .
 _:c14n30 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty void_linkml:id .
+	owl:allValuesFrom xsd:anyURI ;
+	owl:onProperty void_linkml:creator .
 _:c14n300 a rdfs:Datatype ;
-	owl:onDatatype xsd:integer ;
-	owl:withRestrictions _:c14n304 .
+	owl:onDatatype xsd:string ;
+	owl:withRestrictions _:c14n303 .
 _:c14n301 rdf:first _:c14n300 ;
 	rdf:rest rdf:nil .
-_:c14n302 rdf:first xsd:integer ;
+_:c14n302 rdf:first xsd:anyURI ;
 	rdf:rest _:c14n301 .
-_:c14n303 a rdfs:Datatype ;
-	owl:intersectionOf _:c14n302 .
-_:c14n304 rdf:first _:c14n305 ;
+_:c14n303 rdf:first _:c14n304 ;
 	rdf:rest rdf:nil .
-_:c14n305 xsd:minInclusive 0 .
-_:c14n306 a rdfs:Datatype ;
-	owl:onDatatype xsd:integer ;
-	owl:withRestrictions _:c14n310 .
-_:c14n307 rdf:first _:c14n306 ;
+_:c14n304 xsd:pattern "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$" .
+_:c14n305 a rdfs:Datatype ;
+	owl:onDatatype xsd:string ;
+	owl:withRestrictions _:c14n308 .
+_:c14n306 rdf:first _:c14n305 ;
 	rdf:rest rdf:nil .
-_:c14n308 rdf:first xsd:integer ;
-	rdf:rest _:c14n307 .
-_:c14n309 a rdfs:Datatype ;
-	owl:intersectionOf _:c14n308 .
+_:c14n307 rdf:first xsd:anyURI ;
+	rdf:rest _:c14n306 .
+_:c14n308 rdf:first _:c14n309 ;
+	rdf:rest rdf:nil .
+_:c14n309 xsd:pattern "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$" .
 _:c14n31 a owl:Restriction ;
-	owl:minCardinality 1 ;
-	owl:onProperty void_linkml:class .
-_:c14n310 rdf:first _:c14n311 ;
-	rdf:rest rdf:nil .
-_:c14n311 xsd:minInclusive 0 .
-_:c14n312 a rdfs:Datatype ;
+	owl:minCardinality 0 ;
+	owl:onProperty void_linkml:triples .
+_:c14n310 a rdfs:Datatype ;
 	owl:onDatatype xsd:integer ;
-	owl:withRestrictions _:c14n316 .
-_:c14n313 rdf:first _:c14n312 ;
+	owl:withRestrictions _:c14n314 .
+_:c14n311 rdf:first _:c14n310 ;
 	rdf:rest rdf:nil .
-_:c14n314 rdf:first xsd:integer ;
-	rdf:rest _:c14n313 .
-_:c14n315 a rdfs:Datatype ;
-	owl:intersectionOf _:c14n314 .
-_:c14n316 rdf:first _:c14n317 ;
+_:c14n312 rdf:first xsd:integer ;
+	rdf:rest _:c14n311 .
+_:c14n313 a rdfs:Datatype ;
+	owl:intersectionOf _:c14n312 .
+_:c14n314 rdf:first _:c14n315 ;
 	rdf:rest rdf:nil .
-_:c14n317 xsd:minInclusive 0 .
-_:c14n318 a rdfs:Datatype ;
+_:c14n315 xsd:minInclusive 0 .
+_:c14n316 a rdfs:Datatype ;
 	owl:onDatatype xsd:integer ;
-	owl:withRestrictions _:c14n321 .
-_:c14n319 rdf:first _:c14n318 ;
+	owl:withRestrictions _:c14n319 .
+_:c14n317 rdf:first _:c14n316 ;
+	rdf:rest rdf:nil .
+_:c14n318 rdf:first xsd:integer ;
+	rdf:rest _:c14n317 .
+_:c14n319 rdf:first _:c14n320 ;
 	rdf:rest rdf:nil .
 _:c14n32 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty void_linkml:created .
-_:c14n320 rdf:first xsd:integer ;
-	rdf:rest _:c14n319 .
-_:c14n321 rdf:first _:c14n322 ;
-	rdf:rest rdf:nil .
-_:c14n322 xsd:minInclusive 0 .
-_:c14n323 a rdfs:Datatype ;
+	owl:maxCardinality 1 ;
+	owl:onProperty void_linkml:id .
+_:c14n320 xsd:minInclusive 0 .
+_:c14n321 a rdfs:Datatype ;
 	owl:onDatatype xsd:integer ;
-	owl:withRestrictions _:c14n327 .
-_:c14n324 rdf:first _:c14n323 ;
+	owl:withRestrictions _:c14n325 .
+_:c14n322 rdf:first _:c14n321 ;
 	rdf:rest rdf:nil .
-_:c14n325 rdf:first xsd:integer ;
-	rdf:rest _:c14n324 .
-_:c14n326 a rdfs:Datatype ;
-	owl:intersectionOf _:c14n325 .
-_:c14n327 rdf:first _:c14n328 ;
+_:c14n323 rdf:first xsd:integer ;
+	rdf:rest _:c14n322 .
+_:c14n324 a rdfs:Datatype ;
+	owl:intersectionOf _:c14n323 .
+_:c14n325 rdf:first _:c14n326 ;
 	rdf:rest rdf:nil .
-_:c14n328 xsd:minInclusive 0 .
-_:c14n329 a rdfs:Datatype ;
+_:c14n326 xsd:minInclusive 0 .
+_:c14n327 a rdfs:Datatype ;
 	owl:onDatatype xsd:integer ;
-	owl:withRestrictions _:c14n333 .
+	owl:withRestrictions _:c14n330 .
+_:c14n328 rdf:first _:c14n327 ;
+	rdf:rest rdf:nil .
+_:c14n329 rdf:first xsd:integer ;
+	rdf:rest _:c14n328 .
 _:c14n33 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty void_linkml:primaryTopic .
-_:c14n330 rdf:first _:c14n329 ;
+	owl:minCardinality 1 ;
+	owl:onProperty void_linkml:class .
+_:c14n330 rdf:first _:c14n331 ;
 	rdf:rest rdf:nil .
-_:c14n331 rdf:first xsd:integer ;
-	rdf:rest _:c14n330 .
+_:c14n331 xsd:minInclusive 0 .
 _:c14n332 a rdfs:Datatype ;
-	owl:intersectionOf _:c14n331 .
-_:c14n333 rdf:first _:c14n334 ;
-	rdf:rest rdf:nil .
-_:c14n334 xsd:minInclusive 0 .
-_:c14n335 a rdfs:Datatype ;
 	owl:onDatatype xsd:integer ;
-	owl:withRestrictions _:c14n339 .
-_:c14n336 rdf:first _:c14n335 ;
+	owl:withRestrictions _:c14n336 .
+_:c14n333 rdf:first _:c14n332 ;
 	rdf:rest rdf:nil .
-_:c14n337 rdf:first xsd:integer ;
-	rdf:rest _:c14n336 .
+_:c14n334 rdf:first xsd:integer ;
+	rdf:rest _:c14n333 .
+_:c14n335 a rdfs:Datatype ;
+	owl:intersectionOf _:c14n334 .
+_:c14n336 rdf:first _:c14n337 ;
+	rdf:rest rdf:nil .
+_:c14n337 xsd:minInclusive 0 .
 _:c14n338 a rdfs:Datatype ;
-	owl:intersectionOf _:c14n337 .
-_:c14n339 rdf:first _:c14n340 ;
+	owl:onDatatype xsd:integer ;
+	owl:withRestrictions _:c14n342 .
+_:c14n339 rdf:first _:c14n338 ;
 	rdf:rest rdf:nil .
 _:c14n34 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty void_linkml:distinctObjects .
-_:c14n340 xsd:minInclusive 0 .
+	owl:allValuesFrom _:c14n297 ;
+	owl:onProperty void_linkml:property .
+_:c14n340 rdf:first xsd:integer ;
+	rdf:rest _:c14n339 .
 _:c14n341 a rdfs:Datatype ;
-	owl:onDatatype xsd:integer ;
-	owl:withRestrictions _:c14n345 .
-_:c14n342 rdf:first _:c14n341 ;
+	owl:intersectionOf _:c14n340 .
+_:c14n342 rdf:first _:c14n343 ;
 	rdf:rest rdf:nil .
-_:c14n343 rdf:first xsd:integer ;
-	rdf:rest _:c14n342 .
+_:c14n343 xsd:minInclusive 0 .
 _:c14n344 a rdfs:Datatype ;
-	owl:intersectionOf _:c14n343 .
-_:c14n345 rdf:first _:c14n346 ;
+	owl:onDatatype xsd:integer ;
+	owl:withRestrictions _:c14n348 .
+_:c14n345 rdf:first _:c14n344 ;
 	rdf:rest rdf:nil .
-_:c14n346 xsd:minInclusive 0 .
+_:c14n346 rdf:first xsd:integer ;
+	rdf:rest _:c14n345 .
 _:c14n347 a rdfs:Datatype ;
-	owl:onDatatype xsd:integer ;
-	owl:withRestrictions _:c14n351 .
-_:c14n348 rdf:first _:c14n347 ;
+	owl:intersectionOf _:c14n346 .
+_:c14n348 rdf:first _:c14n349 ;
 	rdf:rest rdf:nil .
-_:c14n349 rdf:first xsd:integer ;
-	rdf:rest _:c14n348 .
+_:c14n349 xsd:minInclusive 0 .
 _:c14n35 a owl:Restriction ;
-	owl:allValuesFrom xsd:anyURI ;
-	owl:onProperty void_linkml:publisher .
+	owl:minCardinality 0 ;
+	owl:onProperty void_linkml:created .
 _:c14n350 a rdfs:Datatype ;
-	owl:intersectionOf _:c14n349 .
-_:c14n351 rdf:first _:c14n352 ;
+	owl:onDatatype xsd:integer ;
+	owl:withRestrictions _:c14n354 .
+_:c14n351 rdf:first _:c14n350 ;
 	rdf:rest rdf:nil .
-_:c14n352 xsd:minInclusive 0 .
+_:c14n352 rdf:first xsd:integer ;
+	rdf:rest _:c14n351 .
 _:c14n353 a rdfs:Datatype ;
-	owl:onDatatype xsd:integer ;
-	owl:withRestrictions _:c14n357 .
-_:c14n354 rdf:first _:c14n353 ;
+	owl:intersectionOf _:c14n352 .
+_:c14n354 rdf:first _:c14n355 ;
 	rdf:rest rdf:nil .
-_:c14n355 rdf:first xsd:integer ;
-	rdf:rest _:c14n354 .
+_:c14n355 xsd:minInclusive 0 .
 _:c14n356 a rdfs:Datatype ;
-	owl:intersectionOf _:c14n355 .
-_:c14n357 rdf:first _:c14n358 ;
+	owl:onDatatype xsd:integer ;
+	owl:withRestrictions _:c14n360 .
+_:c14n357 rdf:first _:c14n356 ;
 	rdf:rest rdf:nil .
-_:c14n358 xsd:minInclusive 0 .
+_:c14n358 rdf:first xsd:integer ;
+	rdf:rest _:c14n357 .
 _:c14n359 a rdfs:Datatype ;
-	owl:onDatatype xsd:integer ;
-	owl:withRestrictions _:c14n363 .
+	owl:intersectionOf _:c14n358 .
 _:c14n36 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty void_linkml:description .
-_:c14n360 rdf:first _:c14n359 ;
+	owl:minCardinality 0 ;
+	owl:onProperty void_linkml:primaryTopic .
+_:c14n360 rdf:first _:c14n361 ;
 	rdf:rest rdf:nil .
-_:c14n361 rdf:first xsd:integer ;
-	rdf:rest _:c14n360 .
+_:c14n361 xsd:minInclusive 0 .
 _:c14n362 a rdfs:Datatype ;
-	owl:intersectionOf _:c14n361 .
-_:c14n363 rdf:first _:c14n364 ;
-	rdf:rest rdf:nil .
-_:c14n364 xsd:minInclusive 0 .
-_:c14n365 a rdfs:Datatype ;
 	owl:onDatatype xsd:integer ;
-	owl:withRestrictions _:c14n368 .
-_:c14n366 rdf:first _:c14n365 ;
+	owl:withRestrictions _:c14n366 .
+_:c14n363 rdf:first _:c14n362 ;
 	rdf:rest rdf:nil .
-_:c14n367 rdf:first xsd:integer ;
-	rdf:rest _:c14n366 .
-_:c14n368 rdf:first _:c14n369 ;
+_:c14n364 rdf:first xsd:integer ;
+	rdf:rest _:c14n363 .
+_:c14n365 a rdfs:Datatype ;
+	owl:intersectionOf _:c14n364 .
+_:c14n366 rdf:first _:c14n367 ;
 	rdf:rest rdf:nil .
-_:c14n369 xsd:minInclusive 0 .
+_:c14n367 xsd:minInclusive 0 .
+_:c14n368 a rdfs:Datatype ;
+	owl:onDatatype xsd:integer ;
+	owl:withRestrictions _:c14n372 .
+_:c14n369 rdf:first _:c14n368 ;
+	rdf:rest rdf:nil .
 _:c14n37 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty void_linkml:label .
-_:c14n370 a rdfs:Datatype ;
+	owl:onProperty void_linkml:distinctObjects .
+_:c14n370 rdf:first xsd:integer ;
+	rdf:rest _:c14n369 .
+_:c14n371 a rdfs:Datatype ;
+	owl:intersectionOf _:c14n370 .
+_:c14n372 rdf:first _:c14n373 ;
+	rdf:rest rdf:nil .
+_:c14n373 xsd:minInclusive 0 .
+_:c14n374 a rdfs:Datatype ;
 	owl:onDatatype xsd:integer ;
-	owl:withRestrictions _:c14n373 .
-_:c14n371 rdf:first _:c14n370 ;
+	owl:withRestrictions _:c14n377 .
+_:c14n375 rdf:first _:c14n374 ;
 	rdf:rest rdf:nil .
-_:c14n372 rdf:first xsd:integer ;
-	rdf:rest _:c14n371 .
-_:c14n373 rdf:first _:c14n374 ;
+_:c14n376 rdf:first xsd:integer ;
+	rdf:rest _:c14n375 .
+_:c14n377 rdf:first _:c14n378 ;
 	rdf:rest rdf:nil .
-_:c14n374 xsd:minInclusive 0 .
-_:c14n375 rdf:first _:c14n40 ;
-	rdf:rest _:c14n376 .
-_:c14n376 rdf:first _:c14n11 ;
-	rdf:rest rdf:nil .
-_:c14n377 rdf:first _:c14n175 ;
-	rdf:rest _:c14n378 .
-_:c14n378 rdf:first _:c14n179 ;
-	rdf:rest rdf:nil .
-_:c14n379 rdf:first _:c14n54 ;
-	rdf:rest rdf:nil .
+_:c14n378 xsd:minInclusive 0 .
+_:c14n379 a rdfs:Datatype ;
+	owl:onDatatype xsd:integer ;
+	owl:withRestrictions _:c14n382 .
 _:c14n38 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty void_linkml:classPartition .
-_:c14n380 xsd:pattern "^[A-Za-z][A-Za-z0-9+.-]*:[^\\s]*$" .
-_:c14n381 rdf:first _:c14n380 ;
+	owl:allValuesFrom xsd:anyURI ;
+	owl:onProperty void_linkml:publisher .
+_:c14n380 rdf:first _:c14n379 ;
 	rdf:rest rdf:nil .
-_:c14n382 xsd:pattern "^[A-Za-z][A-Za-z0-9+.-]*:[^\\s]*$" .
-_:c14n383 rdf:first _:c14n382 ;
+_:c14n381 rdf:first xsd:integer ;
+	rdf:rest _:c14n380 .
+_:c14n382 rdf:first _:c14n383 ;
 	rdf:rest rdf:nil .
-_:c14n39 a rdfs:Datatype ;
-	owl:intersectionOf _:c14n216 .
-_:c14n4 a owl:Restriction ;
+_:c14n383 xsd:minInclusive 0 .
+_:c14n384 a rdfs:Datatype ;
+	owl:onDatatype xsd:integer ;
+	owl:withRestrictions _:c14n388 .
+_:c14n385 rdf:first _:c14n384 ;
+	rdf:rest rdf:nil .
+_:c14n386 rdf:first xsd:integer ;
+	rdf:rest _:c14n385 .
+_:c14n387 a rdfs:Datatype ;
+	owl:intersectionOf _:c14n386 .
+_:c14n388 rdf:first _:c14n389 ;
+	rdf:rest rdf:nil .
+_:c14n389 xsd:minInclusive 0 .
+_:c14n39 a owl:Restriction ;
 	owl:maxCardinality 1 ;
-	owl:onProperty void_linkml:created .
+	owl:onProperty void_linkml:description .
+_:c14n390 a rdfs:Datatype ;
+	owl:onDatatype xsd:integer ;
+	owl:withRestrictions _:c14n394 .
+_:c14n391 rdf:first _:c14n390 ;
+	rdf:rest rdf:nil .
+_:c14n392 rdf:first xsd:integer ;
+	rdf:rest _:c14n391 .
+_:c14n393 a rdfs:Datatype ;
+	owl:intersectionOf _:c14n392 .
+_:c14n394 rdf:first _:c14n395 ;
+	rdf:rest rdf:nil .
+_:c14n395 xsd:minInclusive 0 .
+_:c14n396 a rdfs:Datatype ;
+	owl:onDatatype xsd:integer ;
+	owl:withRestrictions _:c14n399 .
+_:c14n397 rdf:first _:c14n396 ;
+	rdf:rest rdf:nil .
+_:c14n398 rdf:first xsd:integer ;
+	rdf:rest _:c14n397 .
+_:c14n399 rdf:first _:c14n400 ;
+	rdf:rest rdf:nil .
+_:c14n4 a rdfs:Datatype ;
+	owl:intersectionOf _:c14n307 .
 _:c14n40 a owl:Restriction ;
-	owl:allValuesFrom owl:Thing ;
-	owl:onProperty void_linkml:primaryTopic .
+	owl:minCardinality 0 ;
+	owl:onProperty void_linkml:label .
+_:c14n400 xsd:minInclusive 0 .
+_:c14n401 a rdfs:Datatype ;
+	owl:onDatatype xsd:integer ;
+	owl:withRestrictions _:c14n405 .
+_:c14n402 rdf:first _:c14n401 ;
+	rdf:rest rdf:nil .
+_:c14n403 rdf:first xsd:integer ;
+	rdf:rest _:c14n402 .
+_:c14n404 a rdfs:Datatype ;
+	owl:intersectionOf _:c14n403 .
+_:c14n405 rdf:first _:c14n406 ;
+	rdf:rest rdf:nil .
+_:c14n406 xsd:minInclusive 0 .
+_:c14n407 a rdfs:Datatype ;
+	owl:onDatatype xsd:integer ;
+	owl:withRestrictions _:c14n410 .
+_:c14n408 rdf:first _:c14n407 ;
+	rdf:rest rdf:nil .
+_:c14n409 rdf:first xsd:integer ;
+	rdf:rest _:c14n408 .
 _:c14n41 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty void_linkml:dataDump .
-_:c14n42 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty void_linkml:classes .
+	owl:onProperty void_linkml:classPartition .
+_:c14n410 rdf:first _:c14n411 ;
+	rdf:rest rdf:nil .
+_:c14n411 xsd:minInclusive 0 .
+_:c14n412 a rdfs:Datatype ;
+	owl:onDatatype xsd:integer ;
+	owl:withRestrictions _:c14n416 .
+_:c14n413 rdf:first _:c14n412 ;
+	rdf:rest rdf:nil .
+_:c14n414 rdf:first xsd:integer ;
+	rdf:rest _:c14n413 .
+_:c14n415 a rdfs:Datatype ;
+	owl:intersectionOf _:c14n414 .
+_:c14n416 rdf:first _:c14n417 ;
+	rdf:rest rdf:nil .
+_:c14n417 xsd:minInclusive 0 .
+_:c14n418 a rdfs:Datatype ;
+	owl:onDatatype xsd:integer ;
+	owl:withRestrictions _:c14n422 .
+_:c14n419 rdf:first _:c14n418 ;
+	rdf:rest rdf:nil .
+_:c14n42 a rdfs:Datatype ;
+	owl:intersectionOf _:c14n409 .
+_:c14n420 rdf:first xsd:integer ;
+	rdf:rest _:c14n419 .
+_:c14n421 a rdfs:Datatype ;
+	owl:intersectionOf _:c14n420 .
+_:c14n422 rdf:first _:c14n423 ;
+	rdf:rest rdf:nil .
+_:c14n423 xsd:minInclusive 0 .
+_:c14n424 a rdfs:Datatype ;
+	owl:onDatatype xsd:integer ;
+	owl:withRestrictions _:c14n428 .
+_:c14n425 rdf:first _:c14n424 ;
+	rdf:rest rdf:nil .
+_:c14n426 rdf:first xsd:integer ;
+	rdf:rest _:c14n425 .
+_:c14n427 a rdfs:Datatype ;
+	owl:intersectionOf _:c14n426 .
+_:c14n428 rdf:first _:c14n429 ;
+	rdf:rest rdf:nil .
+_:c14n429 xsd:minInclusive 0 .
 _:c14n43 a owl:Restriction ;
-	owl:allValuesFrom xsd:anyURI ;
-	owl:onProperty void_linkml:uriLookupEndpoint .
+	owl:allValuesFrom owl:Thing ;
+	owl:onProperty void_linkml:primaryTopic .
+_:c14n430 a rdfs:Datatype ;
+	owl:onDatatype xsd:integer ;
+	owl:withRestrictions _:c14n434 .
+_:c14n431 rdf:first _:c14n430 ;
+	rdf:rest rdf:nil .
+_:c14n432 rdf:first xsd:integer ;
+	rdf:rest _:c14n431 .
+_:c14n433 a rdfs:Datatype ;
+	owl:intersectionOf _:c14n432 .
+_:c14n434 rdf:first _:c14n435 ;
+	rdf:rest rdf:nil .
+_:c14n435 xsd:minInclusive 0 .
+_:c14n436 a rdfs:Datatype ;
+	owl:onDatatype xsd:integer ;
+	owl:withRestrictions _:c14n440 .
+_:c14n437 rdf:first _:c14n436 ;
+	rdf:rest rdf:nil .
+_:c14n438 rdf:first xsd:integer ;
+	rdf:rest _:c14n437 .
+_:c14n439 a rdfs:Datatype ;
+	owl:intersectionOf _:c14n438 .
 _:c14n44 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty void_linkml:description .
+	owl:onProperty void_linkml:dataDump .
+_:c14n440 rdf:first _:c14n441 ;
+	rdf:rest rdf:nil .
+_:c14n441 xsd:minInclusive 0 .
+_:c14n442 a rdfs:Datatype ;
+	owl:onDatatype xsd:integer ;
+	owl:withRestrictions _:c14n445 .
+_:c14n443 rdf:first _:c14n442 ;
+	rdf:rest rdf:nil .
+_:c14n444 rdf:first xsd:integer ;
+	rdf:rest _:c14n443 .
+_:c14n445 rdf:first _:c14n446 ;
+	rdf:rest rdf:nil .
+_:c14n446 xsd:minInclusive 0 .
+_:c14n447 a rdfs:Datatype ;
+	owl:onDatatype xsd:integer ;
+	owl:withRestrictions _:c14n451 .
+_:c14n448 rdf:first _:c14n447 ;
+	rdf:rest rdf:nil .
+_:c14n449 rdf:first xsd:integer ;
+	rdf:rest _:c14n448 .
 _:c14n45 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty void_linkml:documents .
-_:c14n46 a owl:Restriction ;
-	owl:minCardinality 0 ;
+	owl:maxCardinality 1 ;
 	owl:onProperty void_linkml:classes .
+_:c14n450 a rdfs:Datatype ;
+	owl:intersectionOf _:c14n449 .
+_:c14n451 rdf:first _:c14n452 ;
+	rdf:rest rdf:nil .
+_:c14n452 xsd:minInclusive 0 .
+_:c14n453 a rdfs:Datatype ;
+	owl:onDatatype xsd:integer ;
+	owl:withRestrictions _:c14n457 .
+_:c14n454 rdf:first _:c14n453 ;
+	rdf:rest rdf:nil .
+_:c14n455 rdf:first xsd:integer ;
+	rdf:rest _:c14n454 .
+_:c14n456 a rdfs:Datatype ;
+	owl:intersectionOf _:c14n455 .
+_:c14n457 rdf:first _:c14n458 ;
+	rdf:rest rdf:nil .
+_:c14n458 xsd:minInclusive 0 .
+_:c14n459 a rdfs:Datatype ;
+	owl:onDatatype xsd:integer ;
+	owl:withRestrictions _:c14n463 .
+_:c14n46 a owl:Restriction ;
+	owl:allValuesFrom xsd:anyURI ;
+	owl:onProperty void_linkml:uriLookupEndpoint .
+_:c14n460 rdf:first _:c14n459 ;
+	rdf:rest rdf:nil .
+_:c14n461 rdf:first xsd:integer ;
+	rdf:rest _:c14n460 .
+_:c14n462 a rdfs:Datatype ;
+	owl:intersectionOf _:c14n461 .
+_:c14n463 rdf:first _:c14n464 ;
+	rdf:rest rdf:nil .
+_:c14n464 xsd:minInclusive 0 .
+_:c14n465 a rdfs:Datatype ;
+	owl:onDatatype xsd:integer ;
+	owl:withRestrictions _:c14n469 .
+_:c14n466 rdf:first _:c14n465 ;
+	rdf:rest rdf:nil .
+_:c14n467 rdf:first xsd:integer ;
+	rdf:rest _:c14n466 .
+_:c14n468 a rdfs:Datatype ;
+	owl:intersectionOf _:c14n467 .
+_:c14n469 rdf:first _:c14n470 ;
+	rdf:rest rdf:nil .
 _:c14n47 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty void_linkml:properties .
+	owl:onProperty void_linkml:description .
+_:c14n470 xsd:minInclusive 0 .
+_:c14n471 rdf:first _:c14n185 ;
+	rdf:rest _:c14n472 .
+_:c14n472 rdf:first _:c14n189 ;
+	rdf:rest rdf:nil .
+_:c14n473 rdf:first _:c14n43 ;
+	rdf:rest _:c14n474 .
+_:c14n474 rdf:first _:c14n12 ;
+	rdf:rest rdf:nil .
+_:c14n475 rdf:first _:c14n56 ;
+	rdf:rest rdf:nil .
+_:c14n476 xsd:pattern "^[A-Za-z][A-Za-z0-9+.-]*:[^\\s]*$" .
+_:c14n477 rdf:first _:c14n476 ;
+	rdf:rest rdf:nil .
+_:c14n478 xsd:pattern "^[A-Za-z][A-Za-z0-9+.-]*:[^\\s]*$" .
+_:c14n479 rdf:first _:c14n478 ;
+	rdf:rest rdf:nil .
 _:c14n48 a owl:Restriction ;
-	owl:minCardinality 1 ;
-	owl:onProperty void_linkml:id .
-_:c14n49 a owl:Restriction ;
-	owl:allValuesFrom xsd:anyURI ;
-	owl:onProperty void_linkml:property .
-_:c14n5 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty void_linkml:title .
+	owl:onProperty void_linkml:documents .
+_:c14n49 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty void_linkml:classes .
+_:c14n5 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty void_linkml:created .
 _:c14n50 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty void_linkml:properties .
 _:c14n51 a owl:Restriction ;
-	owl:allValuesFrom _:c14n350 ;
-	owl:onProperty void_linkml:documents .
-_:c14n52 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty void_linkml:entities .
-_:c14n53 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty void_linkml:exampleResource .
-_:c14n54 a owl:Restriction ;
-	owl:allValuesFrom owl:Thing ;
-	owl:onProperty void_linkml:subjectsTarget .
-_:c14n55 a rdfs:Datatype ;
-	owl:intersectionOf _:c14n367 .
-_:c14n56 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty void_linkml:objectsTarget .
-_:c14n57 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty void_linkml:inDataset .
-_:c14n58 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty void_linkml:linkPredicate .
-_:c14n59 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty void_linkml:triples .
-_:c14n6 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty void_linkml:properties .
-_:c14n60 a owl:Restriction ;
-	owl:allValuesFrom xsd:string ;
-	owl:onProperty void_linkml:description .
-_:c14n61 a owl:Restriction ;
-	owl:allValuesFrom xsd:anyURI ;
-	owl:onProperty void_linkml:exampleResource .
-_:c14n62 a owl:Restriction ;
-	owl:allValuesFrom _:c14n251 ;
-	owl:onProperty void_linkml:distinctSubjects .
-_:c14n63 a owl:Restriction ;
-	owl:allValuesFrom xsd:anyURI ;
-	owl:onProperty void_linkml:subject .
-_:c14n64 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty void_linkml:class .
-_:c14n65 a owl:Restriction ;
-	owl:allValuesFrom void_linkml:PropertyBasedPartition ;
-	owl:onProperty void_linkml:propertyPartition .
-_:c14n66 a owl:Restriction ;
-	owl:allValuesFrom xsd:anyURI ;
-	owl:onProperty void_linkml:openSearchDescription .
-_:c14n67 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty void_linkml:properties .
-_:c14n68 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty void_linkml:uriSpace .
-_:c14n69 a owl:Restriction ;
-	owl:allValuesFrom xsd:anyURI ;
-	owl:onProperty void_linkml:id .
-_:c14n7 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty void_linkml:property .
-_:c14n70 a owl:Restriction ;
-	owl:allValuesFrom xsd:anyURI ;
-	owl:onProperty void_linkml:class .
-_:c14n71 rdf:first _:c14n22 ;
-	rdf:rest _:c14n379 .
-_:c14n72 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty void_linkml:subset .
-_:c14n73 a owl:Restriction ;
-	owl:allValuesFrom void_linkml:PropertyBasedPartition ;
-	owl:onProperty void_linkml:propertyPartition .
-_:c14n74 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty void_linkml:documents .
-_:c14n75 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty void_linkml:classes .
-_:c14n76 a rdfs:Datatype ;
-	owl:onDatatype xsd:string ;
-	owl:withRestrictions _:c14n381 .
-_:c14n77 a owl:Restriction ;
-	owl:allValuesFrom xsd:string ;
-	owl:onProperty void_linkml:description .
-_:c14n78 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty void_linkml:title .
-_:c14n79 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty void_linkml:triples .
-_:c14n8 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty void_linkml:comment .
-_:c14n80 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty void_linkml:inDataset .
-_:c14n81 a owl:Restriction ;
 	owl:minCardinality 1 ;
 	owl:onProperty void_linkml:id .
-_:c14n82 a owl:Restriction ;
-	owl:allValuesFrom _:c14n263 ;
-	owl:onProperty void_linkml:entities .
-_:c14n83 a owl:Restriction ;
-	owl:allValuesFrom xsd:string ;
-	owl:onProperty void_linkml:title .
-_:c14n84 a owl:Restriction ;
-	owl:allValuesFrom xsd:string ;
-	owl:onProperty void_linkml:title .
-_:c14n85 a owl:Restriction ;
+_:c14n52 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty void_linkml:openSearchDescription .
-_:c14n86 a owl:Restriction ;
-	owl:allValuesFrom _:c14n275 ;
-	owl:onProperty void_linkml:triples .
-_:c14n87 a owl:Restriction ;
-	owl:allValuesFrom _:c14n344 ;
 	owl:onProperty void_linkml:properties .
-_:c14n88 a owl:Restriction ;
-	owl:allValuesFrom _:c14n315 ;
-	owl:onProperty void_linkml:triples .
-_:c14n89 a owl:Restriction ;
-	owl:allValuesFrom xsd:anyURI ;
-	owl:onProperty void_linkml:rootResource .
-_:c14n9 a owl:Restriction ;
-	owl:allValuesFrom _:c14n76 ;
-	owl:onProperty void_linkml:uriSpace .
-_:c14n90 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty void_linkml:page .
-_:c14n91 a owl:Restriction ;
+_:c14n53 a owl:Restriction ;
+	owl:allValuesFrom _:c14n404 ;
+	owl:onProperty void_linkml:documents .
+_:c14n54 a owl:Restriction ;
 	owl:maxCardinality 1 ;
+	owl:onProperty void_linkml:entities .
+_:c14n55 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty void_linkml:exampleResource .
+_:c14n56 a owl:Restriction ;
+	owl:allValuesFrom owl:Thing ;
+	owl:onProperty void_linkml:subjectsTarget .
+_:c14n57 a rdfs:Datatype ;
+	owl:intersectionOf _:c14n329 .
+_:c14n58 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty void_linkml:objectsTarget .
+_:c14n59 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty void_linkml:inDataset .
+_:c14n6 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty void_linkml:title .
+_:c14n60 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty void_linkml:linkPredicate .
+_:c14n61 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty void_linkml:triples .
+_:c14n62 rdf:first void_linkml:TechnicalFeature ;
+	rdf:rest _:c14n279 .
+_:c14n63 a owl:Restriction ;
+	owl:allValuesFrom xsd:string ;
 	owl:onProperty void_linkml:description .
-_:c14n92 a owl:Restriction ;
+_:c14n64 a owl:Restriction ;
 	owl:allValuesFrom xsd:anyURI ;
+	owl:onProperty void_linkml:exampleResource .
+_:c14n65 a owl:Restriction ;
+	owl:allValuesFrom _:c14n353 ;
+	owl:onProperty void_linkml:distinctSubjects .
+_:c14n66 a owl:Restriction ;
+	owl:allValuesFrom xsd:anyURI ;
+	owl:onProperty void_linkml:subject .
+_:c14n67 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty void_linkml:class .
+_:c14n68 a owl:Restriction ;
+	owl:allValuesFrom void_linkml:PropertyBasedPartition ;
+	owl:onProperty void_linkml:propertyPartition .
+_:c14n69 a owl:Restriction ;
+	owl:allValuesFrom _:c14n269 ;
 	owl:onProperty void_linkml:id .
-_:c14n93 a owl:Restriction ;
+_:c14n7 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty void_linkml:description .
-_:c14n94 a owl:Restriction ;
+	owl:onProperty void_linkml:properties .
+_:c14n70 a owl:Restriction ;
+	owl:allValuesFrom xsd:anyURI ;
+	owl:onProperty void_linkml:openSearchDescription .
+_:c14n71 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty void_linkml:properties .
+_:c14n72 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty void_linkml:creator .
-_:c14n95 a owl:Restriction ;
-	owl:maxCardinality 2 ;
-	owl:onProperty void_linkml:target .
-_:c14n96 a owl:Restriction ;
-	owl:minCardinality 2 ;
-	owl:onProperty void_linkml:target .
-_:c14n97 a owl:Restriction ;
-	owl:allValuesFrom xsd:date ;
-	owl:onProperty void_linkml:modified .
-_:c14n98 a owl:Restriction ;
+	owl:onProperty void_linkml:uriSpace .
+_:c14n73 owl:intersectionOf _:c14n214 .
+_:c14n74 rdf:first _:c14n24 ;
+	rdf:rest _:c14n475 .
+_:c14n75 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty void_linkml:subset .
+_:c14n76 a owl:Restriction ;
+	owl:allValuesFrom void_linkml:PropertyBasedPartition ;
+	owl:onProperty void_linkml:propertyPartition .
+_:c14n77 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty void_linkml:documents .
+_:c14n78 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty void_linkml:classes .
-_:c14n99 a owl:Restriction ;
-	owl:allValuesFrom _:c14n338 ;
+_:c14n79 a rdfs:Datatype ;
+	owl:onDatatype xsd:string ;
+	owl:withRestrictions _:c14n477 .
+_:c14n8 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty void_linkml:property .
+_:c14n80 a owl:Restriction ;
+	owl:allValuesFrom xsd:string ;
+	owl:onProperty void_linkml:description .
+_:c14n81 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty void_linkml:title .
+_:c14n82 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty void_linkml:triples .
+_:c14n83 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty void_linkml:inDataset .
+_:c14n84 a owl:Restriction ;
+	owl:minCardinality 1 ;
+	owl:onProperty void_linkml:id .
+_:c14n85 a owl:Restriction ;
+	owl:allValuesFrom _:c14n468 ;
+	owl:onProperty void_linkml:entities .
+_:c14n86 a owl:Restriction ;
+	owl:allValuesFrom xsd:string ;
+	owl:onProperty void_linkml:title .
+_:c14n87 a owl:Restriction ;
+	owl:allValuesFrom xsd:string ;
+	owl:onProperty void_linkml:title .
+_:c14n88 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty void_linkml:openSearchDescription .
+_:c14n89 a owl:Restriction ;
+	owl:allValuesFrom _:c14n456 ;
+	owl:onProperty void_linkml:triples .
+_:c14n9 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty void_linkml:comment .
+_:c14n90 a owl:Restriction ;
+	owl:allValuesFrom _:c14n439 ;
 	owl:onProperty void_linkml:properties .
+_:c14n91 a owl:Restriction ;
+	owl:allValuesFrom _:c14n462 ;
+	owl:onProperty void_linkml:triples .
+_:c14n92 a rdfs:Datatype ;
+	owl:intersectionOf _:c14n302 .
+_:c14n93 a owl:Restriction ;
+	owl:allValuesFrom xsd:anyURI ;
+	owl:onProperty void_linkml:rootResource .
+_:c14n94 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty void_linkml:page .
+_:c14n95 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty void_linkml:description .
+_:c14n96 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty void_linkml:description .
+_:c14n97 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty void_linkml:creator .
+_:c14n98 owl:intersectionOf _:c14n229 .
+_:c14n99 a owl:Restriction ;
+	owl:maxCardinality 2 ;
+	owl:onProperty void_linkml:target .
 

@@ -1,0 +1,4 @@
+# Fails at: /class
+# A class partition names its class by an IRI or a CURIE.
+class: Lighthouse
+entities: 300
