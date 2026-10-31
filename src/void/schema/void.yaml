@@ -34,6 +34,10 @@ comments:
     a reference to a class, as a JSON Schema string with no format, so without it the validator would pass
     any text there.
   - >-
+    Each class and slot names, in its note_section annotation, the section of the Note that explains it.
+    The class names are VoID's own, with no prefix of this schema's: no record carries a class name, and
+    the adapt copy renames Dataset, which LOKF also defines, to VoidDataset.
+  - >-
     Kept from the Note's account of a description: the Dublin Core terms of its sections 2.2, 2.4 and 2.5,
     FOAF's homepage and page (2.1) and topic and primaryTopic (6.2), and the RDF Schema label, comment and
     seeAlso of a technical feature (2.6). Left out: dcterms:date, since a slot named date takes the name
@@ -119,6 +123,8 @@ classes:
       - distinctSubjects
       - distinctObjects
       - documents
+    annotations:
+      note_section: "1.3"
 
   Linkset:
     is_a: Dataset
@@ -152,6 +158,8 @@ classes:
         A linkset links exactly two distinct datasets: the targets, the subjects' target and the objects'
         target together name two. The validator checks that two are named; tests/test_data.py checks that
         they differ.
+    annotations:
+      note_section: "1.4"
 
   DatasetDescription:
     class_uri: void:DatasetDescription
@@ -181,6 +189,8 @@ classes:
         slot_conditions:
           topic:
             required: true
+    annotations:
+      note_section: "6.2"
 
   TechnicalFeature:
     class_uri: void:TechnicalFeature
@@ -196,6 +206,8 @@ classes:
       - label
       - comment
       - seeAlso
+    annotations:
+      note_section: "2.6"
 
   ClassBasedPartition:
     class_uri: void_linkml:ClassBasedPartition
@@ -223,6 +235,8 @@ classes:
     slot_usage:
       class:
         required: true
+    annotations:
+      note_section: "4.5"
 
   PropertyBasedPartition:
     class_uri: void_linkml:PropertyBasedPartition
@@ -247,6 +261,8 @@ classes:
     slot_usage:
       property:
         required: true
+    annotations:
+      note_section: "4.5"
 
 slots:
 
@@ -257,65 +273,89 @@ slots:
     description: The IRI of the dataset, document or feature, written in full or as a CURIE.
     comments:
       - VoID has no property for the IRI, which RDF writes as the subject, so the key lives in this schema's own namespace.
+    annotations:
+      note_section: "6.1"
 
   # Dublin Core terms the Note uses for a dataset's general metadata.
 
   title:
     slot_uri: dcterms:title
     description: A human-readable name for the dataset or document.
+    annotations:
+      note_section: "2.2"
 
   description:
     slot_uri: dcterms:description
     description: A few sentences of prose saying what the dataset or document contains.
+    annotations:
+      note_section: "2.2"
 
   creator:
     slot_uri: dcterms:creator
     range: uri
     multivalued: true
     description: The IRI of the agent, human or not, that chiefly made the dataset or document.
+    annotations:
+      note_section: "2.2"
 
   contributor:
     slot_uri: dcterms:contributor
     range: uri
     multivalued: true
     description: The IRI of an agent that added to the dataset without being its main maker.
+    annotations:
+      note_section: "2.2"
 
   publisher:
     slot_uri: dcterms:publisher
     range: uri
     description: The IRI of the agent that releases the dataset for others to use.
+    annotations:
+      note_section: "2.2"
 
   source:
     slot_uri: dcterms:source
     range: uri
     multivalued: true
     description: The IRI of an earlier resource whose content the dataset draws on.
+    annotations:
+      note_section: "2.2"
 
   created:
     slot_uri: dcterms:created
     range: date
     description: The date the dataset or document was made.
+    annotations:
+      note_section: "2.2"
 
   issued:
     slot_uri: dcterms:issued
     range: date
     description: The date the dataset was first published.
+    annotations:
+      note_section: "2.2"
 
   modified:
     slot_uri: dcterms:modified
     range: date
     description: The date the dataset or document last changed.
+    annotations:
+      note_section: "2.2"
 
   license:
     slot_uri: dcterms:license
     range: uri
     description: The IRI of the licence that sets the terms for using the dataset.
+    annotations:
+      note_section: "2.4"
 
   subject:
     slot_uri: dcterms:subject
     range: uri
     multivalued: true
     description: The IRI of a topic the dataset covers, such as a DBpedia resource or a SKOS concept.
+    annotations:
+      note_section: "2.5"
 
   # FOAF terms the Note uses for web pages and for what a description is about.
 
@@ -323,18 +363,24 @@ slots:
     slot_uri: foaf:homepage
     range: uri
     description: The web page about the dataset itself.
+    annotations:
+      note_section: "2.1"
 
   page:
     slot_uri: foaf:page
     range: uri
     multivalued: true
     description: Any further web page with information on the dataset, for instance its download page or its catalogue entry.
+    annotations:
+      note_section: "2.1"
 
   primaryTopic:
     slot_uri: foaf:primaryTopic
     range: Dataset
     pattern: "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$"
     description: The dataset a description is about, when it describes one.
+    annotations:
+      note_section: "6.2"
 
   topic:
     slot_uri: foaf:topic
@@ -342,22 +388,30 @@ slots:
     multivalued: true
     pattern: "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$"
     description: A dataset a description is about, when it describes several of equal weight.
+    annotations:
+      note_section: "6.2"
 
   # RDF Schema terms the Note uses for a technical feature.
 
   label:
     slot_uri: rdfs:label
     description: A short name for the feature.
+    annotations:
+      note_section: "2.6"
 
   comment:
     slot_uri: rdfs:comment
     description: A sentence or two about the feature.
+    annotations:
+      note_section: "2.6"
 
   seeAlso:
     slot_uri: rdfs:seeAlso
     range: uri
     multivalued: true
     description: A web page that tells more about the feature.
+    annotations:
+      note_section: "2.6"
 
   # VoID's properties: access to a dataset.
 
@@ -367,12 +421,16 @@ slots:
     multivalued: true
     pattern: "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$"
     description: Something the dataset's server or files support, for instance an RDF syntax, named by its IRI.
+    annotations:
+      note_section: "2.6"
 
   sparqlEndpoint:
     slot_uri: void:sparqlEndpoint
     range: uri
     multivalued: true
     description: A SPARQL service whose default graph holds the dataset, for running queries on it.
+    annotations:
+      note_section: "3.2"
 
   dataDump:
     slot_uri: void:dataDump
@@ -381,6 +439,8 @@ slots:
     description: A downloadable RDF file holding all of the dataset or a share of it.
     comments:
       - A page that links to downloads is not a dump; give it as a page instead.
+    annotations:
+      note_section: "3.3"
 
   uriLookupEndpoint:
     slot_uri: void:uriLookupEndpoint
@@ -389,12 +449,16 @@ slots:
     description: >-
       A web address that, with an entity's percent-encoded IRI added to its end, answers an HTTP GET with
       RDF about that entity.
+    annotations:
+      note_section: "3.5"
 
   openSearchDescription:
     slot_uri: void:openSearchDescription
     range: uri
     multivalued: true
     description: An OpenSearch file telling a client how to run keyword searches over the dataset.
+    annotations:
+      note_section: "3.6"
 
   rootResource:
     slot_uri: void:rootResource
@@ -403,12 +467,16 @@ slots:
     description: >-
       The IRI of a starting point for crawling the dataset: a resource from which links lead, within a
       few hops, to all the others.
+    annotations:
+      note_section: "3.4"
 
   exampleResource:
     slot_uri: void:exampleResource
     range: uri
     multivalued: true
     description: The IRI of an entity typical of the dataset, for a reader to look up.
+    annotations:
+      note_section: "4.1"
 
   # VoID's properties: the structure of a dataset.
 
@@ -418,12 +486,16 @@ slots:
     pattern: "^[A-Za-z][A-Za-z0-9+.-]*:[^\\s]*$"
     comments:
       - VoID writes it as a literal, not as an IRI, so the range is a string, held to the form of an IRI's start.
+    annotations:
+      note_section: "4.2"
 
   uriRegexPattern:
     slot_uri: void:uriRegexPattern
     description: A regular expression in SPARQL's syntax that each entity IRI of the dataset satisfies.
     comments:
       - The validator checks no regular expression's syntax; tests/test_data.py compiles each one in the examples.
+    annotations:
+      note_section: "4.2"
 
   vocabulary:
     slot_uri: void:vocabulary
@@ -433,6 +505,8 @@ slots:
     description: >-
       The namespace IRI of a vocabulary the dataset uses, as a term's IRI reads without its local name and
       without a final hash, such as http://xmlns.com/foaf/0.1/.
+    annotations:
+      note_section: "4.3"
 
   subset:
     slot_uri: void:subset
@@ -440,6 +514,8 @@ slots:
     multivalued: true
     pattern: "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$"
     description: Another dataset contained in this one, named by its IRI.
+    annotations:
+      note_section: "4.4"
 
   classPartition:
     slot_uri: void:classPartition
@@ -450,6 +526,8 @@ slots:
     description: The dataset's slice for one class, given inside it.
     comments:
       - VoID makes it a narrower subset; here it is a value, so it does not inherit subset's range.
+    annotations:
+      note_section: "4.5"
 
   propertyPartition:
     slot_uri: void:propertyPartition
@@ -460,18 +538,24 @@ slots:
     description: The dataset's slice for one property, given inside it.
     comments:
       - VoID makes it a narrower subset; here it is a value, so it does not inherit subset's range.
+    annotations:
+      note_section: "4.5"
 
   class:
     slot_uri: void:class
     range: uriorcurie
     pattern: "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$"
     description: The class whose instances a class partition describes, named by its IRI, such as foaf:Person.
+    annotations:
+      note_section: "4.5"
 
   property:
     slot_uri: void:property
     range: uriorcurie
     pattern: "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$"
     description: The property whose triples a property partition holds, named by its IRI, such as foaf:name.
+    annotations:
+      note_section: "4.5"
 
   # VoID's statistics: each a count of zero or more, which may be an estimate.
 
@@ -480,36 +564,48 @@ slots:
     range: integer
     minimum_value: 0
     description: How many triples the dataset holds; for a linkset, how many links.
+    annotations:
+      note_section: "4.6"
 
   entities:
     slot_uri: void:entities
     range: integer
     minimum_value: 0
     description: How many entities, resources with an IRI, the dataset describes.
+    annotations:
+      note_section: "4.6"
 
   classes:
     slot_uri: void:classes
     range: integer
     minimum_value: 0
     description: How many distinct classes the dataset's rdf:type triples name.
+    annotations:
+      note_section: "4.6"
 
   properties:
     slot_uri: void:properties
     range: integer
     minimum_value: 0
     description: How many distinct properties the dataset's triples use as predicates.
+    annotations:
+      note_section: "4.6"
 
   distinctSubjects:
     slot_uri: void:distinctSubjects
     range: integer
     minimum_value: 0
     description: How many distinct IRIs and blank nodes the dataset's triples have as subjects.
+    annotations:
+      note_section: "4.6"
 
   distinctObjects:
     slot_uri: void:distinctObjects
     range: integer
     minimum_value: 0
     description: How many distinct IRIs, blank nodes and literals the dataset's triples have as objects.
+    annotations:
+      note_section: "4.6"
 
   documents:
     slot_uri: void:documents
@@ -519,6 +615,8 @@ slots:
       How many RDF documents together carry the dataset, for example RDFa web pages.
     comments:
       - Use it where the triples are hard to count; triples and entities say more where they can be given.
+    annotations:
+      note_section: "4.6"
 
   # VoID's properties: linksets and documents.
 
@@ -531,18 +629,24 @@ slots:
       - >-
         Linkset makes it a list of two. The slot itself stays single-valued, so that subjectsTarget and
         objectsTarget, its narrower slots, inherit one value each.
+    annotations:
+      note_section: "5.1"
 
   subjectsTarget:
     slot_uri: void:subjectsTarget
     is_a: target
     range: Dataset
     description: The dataset at the subject end of every link in a linkset, named by its IRI.
+    annotations:
+      note_section: "5.1"
 
   objectsTarget:
     slot_uri: void:objectsTarget
     is_a: target
     range: Dataset
     description: The dataset at the object end of every link in a linkset, named by its IRI.
+    annotations:
+      note_section: "5.1"
 
   linkPredicate:
     slot_uri: void:linkPredicate
@@ -551,6 +655,8 @@ slots:
     description: The property every link of a linkset has as its predicate, such as owl:sameAs.
     comments:
       - A linkset has one; links with two predicates make two linksets.
+    annotations:
+      note_section: "5.3"
 
   inDataset:
     slot_uri: void:inDataset
@@ -559,3 +665,5 @@ slots:
     description: The dataset that this document's triples belong to, named by its IRI.
     comments:
       - A document names one; a document in two datasets points at a dataset that holds both as subsets.
+    annotations:
+      note_section: "6.3"

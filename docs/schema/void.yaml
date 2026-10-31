@@ -27,6 +27,10 @@ comments:
   or target, carries the pattern of a scheme or prefix, a colon and no space. LinkML
   1.12.1 renders the uriorcurie type, and a reference to a class, as a JSON Schema
   string with no format, so without it the validator would pass any text there.
+- 'Each class and slot names, in its note_section annotation, the section of the Note
+  that explains it. The class names are VoID''s own, with no prefix of this schema''s:
+  no record carries a class name, and the adapt copy renames Dataset, which LOKF also
+  defines, to VoidDataset.'
 - 'Kept from the Note''s account of a description: the Dublin Core terms of its sections
   2.2, 2.4 and 2.5, FOAF''s homepage and page (2.1) and topic and primaryTopic (6.2),
   and the RDF Schema label, comment and seeAlso of a technical feature (2.6). Left
@@ -353,6 +357,10 @@ slots:
   id:
     name: id
     definition_uri: https://w3id.org/lmodel/void/id
+    annotations:
+      note_section:
+        tag: note_section
+        value: '6.1'
     description: The IRI of the dataset, document or feature, written in full or as
       a CURIE.
     comments:
@@ -372,6 +380,10 @@ slots:
   title:
     name: title
     definition_uri: https://w3id.org/lmodel/void/title
+    annotations:
+      note_section:
+        tag: note_section
+        value: '2.2'
     description: A human-readable name for the dataset or document.
     from_schema: https://w3id.org/lmodel/void
     mappings:
@@ -385,6 +397,10 @@ slots:
   description:
     name: description
     definition_uri: https://w3id.org/lmodel/void/description
+    annotations:
+      note_section:
+        tag: note_section
+        value: '2.2'
     description: A few sentences of prose saying what the dataset or document contains.
     from_schema: https://w3id.org/lmodel/void
     mappings:
@@ -398,6 +414,10 @@ slots:
   creator:
     name: creator
     definition_uri: https://w3id.org/lmodel/void/creator
+    annotations:
+      note_section:
+        tag: note_section
+        value: '2.2'
     description: The IRI of the agent, human or not, that chiefly made the dataset
       or document.
     from_schema: https://w3id.org/lmodel/void
@@ -413,6 +433,10 @@ slots:
   contributor:
     name: contributor
     definition_uri: https://w3id.org/lmodel/void/contributor
+    annotations:
+      note_section:
+        tag: note_section
+        value: '2.2'
     description: The IRI of an agent that added to the dataset without being its main
       maker.
     from_schema: https://w3id.org/lmodel/void
@@ -427,6 +451,10 @@ slots:
   publisher:
     name: publisher
     definition_uri: https://w3id.org/lmodel/void/publisher
+    annotations:
+      note_section:
+        tag: note_section
+        value: '2.2'
     description: The IRI of the agent that releases the dataset for others to use.
     from_schema: https://w3id.org/lmodel/void
     mappings:
@@ -439,6 +467,10 @@ slots:
   source:
     name: source
     definition_uri: https://w3id.org/lmodel/void/source
+    annotations:
+      note_section:
+        tag: note_section
+        value: '2.2'
     description: The IRI of an earlier resource whose content the dataset draws on.
     from_schema: https://w3id.org/lmodel/void
     mappings:
@@ -452,6 +484,10 @@ slots:
   created:
     name: created
     definition_uri: https://w3id.org/lmodel/void/created
+    annotations:
+      note_section:
+        tag: note_section
+        value: '2.2'
     description: The date the dataset or document was made.
     from_schema: https://w3id.org/lmodel/void
     mappings:
@@ -465,6 +501,10 @@ slots:
   issued:
     name: issued
     definition_uri: https://w3id.org/lmodel/void/issued
+    annotations:
+      note_section:
+        tag: note_section
+        value: '2.2'
     description: The date the dataset was first published.
     from_schema: https://w3id.org/lmodel/void
     mappings:
@@ -477,6 +517,10 @@ slots:
   modified:
     name: modified
     definition_uri: https://w3id.org/lmodel/void/modified
+    annotations:
+      note_section:
+        tag: note_section
+        value: '2.2'
     description: The date the dataset or document last changed.
     from_schema: https://w3id.org/lmodel/void
     mappings:
@@ -490,6 +534,10 @@ slots:
   license:
     name: license
     definition_uri: https://w3id.org/lmodel/void/license
+    annotations:
+      note_section:
+        tag: note_section
+        value: '2.4'
     description: The IRI of the licence that sets the terms for using the dataset.
     from_schema: https://w3id.org/lmodel/void
     mappings:
@@ -502,6 +550,10 @@ slots:
   subject:
     name: subject
     definition_uri: https://w3id.org/lmodel/void/subject
+    annotations:
+      note_section:
+        tag: note_section
+        value: '2.5'
     description: The IRI of a topic the dataset covers, such as a DBpedia resource
       or a SKOS concept.
     from_schema: https://w3id.org/lmodel/void
@@ -516,6 +568,10 @@ slots:
   homepage:
     name: homepage
     definition_uri: https://w3id.org/lmodel/void/homepage
+    annotations:
+      note_section:
+        tag: note_section
+        value: '2.1'
     description: The web page about the dataset itself.
     from_schema: https://w3id.org/lmodel/void
     mappings:
@@ -528,6 +584,10 @@ slots:
   page:
     name: page
     definition_uri: https://w3id.org/lmodel/void/page
+    annotations:
+      note_section:
+        tag: note_section
+        value: '2.1'
     description: Any further web page with information on the dataset, for instance
       its download page or its catalogue entry.
     from_schema: https://w3id.org/lmodel/void
@@ -542,6 +602,10 @@ slots:
   primaryTopic:
     name: primaryTopic
     definition_uri: https://w3id.org/lmodel/void/primaryTopic
+    annotations:
+      note_section:
+        tag: note_section
+        value: '6.2'
     description: The dataset a description is about, when it describes one.
     from_schema: https://w3id.org/lmodel/void
     mappings:
@@ -555,6 +619,10 @@ slots:
   topic:
     name: topic
     definition_uri: https://w3id.org/lmodel/void/topic
+    annotations:
+      note_section:
+        tag: note_section
+        value: '6.2'
     description: A dataset a description is about, when it describes several of equal
       weight.
     from_schema: https://w3id.org/lmodel/void
@@ -570,6 +638,10 @@ slots:
   label:
     name: label
     definition_uri: https://w3id.org/lmodel/void/label
+    annotations:
+      note_section:
+        tag: note_section
+        value: '2.6'
     description: A short name for the feature.
     from_schema: https://w3id.org/lmodel/void
     mappings:
@@ -582,6 +654,10 @@ slots:
   comment:
     name: comment
     definition_uri: https://w3id.org/lmodel/void/comment
+    annotations:
+      note_section:
+        tag: note_section
+        value: '2.6'
     description: A sentence or two about the feature.
     from_schema: https://w3id.org/lmodel/void
     mappings:
@@ -594,6 +670,10 @@ slots:
   seeAlso:
     name: seeAlso
     definition_uri: https://w3id.org/lmodel/void/seeAlso
+    annotations:
+      note_section:
+        tag: note_section
+        value: '2.6'
     description: A web page that tells more about the feature.
     from_schema: https://w3id.org/lmodel/void
     mappings:
@@ -607,6 +687,10 @@ slots:
   feature:
     name: feature
     definition_uri: https://w3id.org/lmodel/void/feature
+    annotations:
+      note_section:
+        tag: note_section
+        value: '2.6'
     description: Something the dataset's server or files support, for instance an
       RDF syntax, named by its IRI.
     from_schema: https://w3id.org/lmodel/void
@@ -622,6 +706,10 @@ slots:
   sparqlEndpoint:
     name: sparqlEndpoint
     definition_uri: https://w3id.org/lmodel/void/sparqlEndpoint
+    annotations:
+      note_section:
+        tag: note_section
+        value: '3.2'
     description: A SPARQL service whose default graph holds the dataset, for running
       queries on it.
     from_schema: https://w3id.org/lmodel/void
@@ -636,6 +724,10 @@ slots:
   dataDump:
     name: dataDump
     definition_uri: https://w3id.org/lmodel/void/dataDump
+    annotations:
+      note_section:
+        tag: note_section
+        value: '3.3'
     description: A downloadable RDF file holding all of the dataset or a share of
       it.
     comments:
@@ -652,6 +744,10 @@ slots:
   uriLookupEndpoint:
     name: uriLookupEndpoint
     definition_uri: https://w3id.org/lmodel/void/uriLookupEndpoint
+    annotations:
+      note_section:
+        tag: note_section
+        value: '3.5'
     description: A web address that, with an entity's percent-encoded IRI added to
       its end, answers an HTTP GET with RDF about that entity.
     from_schema: https://w3id.org/lmodel/void
@@ -666,6 +762,10 @@ slots:
   openSearchDescription:
     name: openSearchDescription
     definition_uri: https://w3id.org/lmodel/void/openSearchDescription
+    annotations:
+      note_section:
+        tag: note_section
+        value: '3.6'
     description: An OpenSearch file telling a client how to run keyword searches over
       the dataset.
     from_schema: https://w3id.org/lmodel/void
@@ -680,6 +780,10 @@ slots:
   rootResource:
     name: rootResource
     definition_uri: https://w3id.org/lmodel/void/rootResource
+    annotations:
+      note_section:
+        tag: note_section
+        value: '3.4'
     description: 'The IRI of a starting point for crawling the dataset: a resource
       from which links lead, within a few hops, to all the others.'
     from_schema: https://w3id.org/lmodel/void
@@ -694,6 +798,10 @@ slots:
   exampleResource:
     name: exampleResource
     definition_uri: https://w3id.org/lmodel/void/exampleResource
+    annotations:
+      note_section:
+        tag: note_section
+        value: '4.1'
     description: The IRI of an entity typical of the dataset, for a reader to look
       up.
     from_schema: https://w3id.org/lmodel/void
@@ -708,6 +816,10 @@ slots:
   uriSpace:
     name: uriSpace
     definition_uri: https://w3id.org/lmodel/void/uriSpace
+    annotations:
+      note_section:
+        tag: note_section
+        value: '4.2'
     description: The string every entity IRI in the dataset starts with, such as http://example.org/resource/.
     comments:
     - VoID writes it as a literal, not as an IRI, so the range is a string, held to
@@ -724,6 +836,10 @@ slots:
   uriRegexPattern:
     name: uriRegexPattern
     definition_uri: https://w3id.org/lmodel/void/uriRegexPattern
+    annotations:
+      note_section:
+        tag: note_section
+        value: '4.2'
     description: A regular expression in SPARQL's syntax that each entity IRI of the
       dataset satisfies.
     comments:
@@ -740,6 +856,10 @@ slots:
   vocabulary:
     name: vocabulary
     definition_uri: https://w3id.org/lmodel/void/vocabulary
+    annotations:
+      note_section:
+        tag: note_section
+        value: '4.3'
     description: The namespace IRI of a vocabulary the dataset uses, as a term's IRI
       reads without its local name and without a final hash, such as http://xmlns.com/foaf/0.1/.
     from_schema: https://w3id.org/lmodel/void
@@ -755,6 +875,10 @@ slots:
   subset:
     name: subset
     definition_uri: https://w3id.org/lmodel/void/subset
+    annotations:
+      note_section:
+        tag: note_section
+        value: '4.4'
     description: Another dataset contained in this one, named by its IRI.
     from_schema: https://w3id.org/lmodel/void
     mappings:
@@ -769,6 +893,10 @@ slots:
   classPartition:
     name: classPartition
     definition_uri: https://w3id.org/lmodel/void/classPartition
+    annotations:
+      note_section:
+        tag: note_section
+        value: '4.5'
     description: The dataset's slice for one class, given inside it.
     comments:
     - VoID makes it a narrower subset; here it is a value, so it does not inherit
@@ -787,6 +915,10 @@ slots:
   propertyPartition:
     name: propertyPartition
     definition_uri: https://w3id.org/lmodel/void/propertyPartition
+    annotations:
+      note_section:
+        tag: note_section
+        value: '4.5'
     description: The dataset's slice for one property, given inside it.
     comments:
     - VoID makes it a narrower subset; here it is a value, so it does not inherit
@@ -806,6 +938,10 @@ slots:
   class:
     name: class
     definition_uri: https://w3id.org/lmodel/void/class
+    annotations:
+      note_section:
+        tag: note_section
+        value: '4.5'
     description: The class whose instances a class partition describes, named by its
       IRI, such as foaf:Person.
     from_schema: https://w3id.org/lmodel/void
@@ -820,6 +956,10 @@ slots:
   property:
     name: property
     definition_uri: https://w3id.org/lmodel/void/property
+    annotations:
+      note_section:
+        tag: note_section
+        value: '4.5'
     description: The property whose triples a property partition holds, named by its
       IRI, such as foaf:name.
     from_schema: https://w3id.org/lmodel/void
@@ -834,6 +974,10 @@ slots:
   triples:
     name: triples
     definition_uri: https://w3id.org/lmodel/void/triples
+    annotations:
+      note_section:
+        tag: note_section
+        value: '4.6'
     description: How many triples the dataset holds; for a linkset, how many links.
     from_schema: https://w3id.org/lmodel/void
     mappings:
@@ -849,6 +993,10 @@ slots:
   entities:
     name: entities
     definition_uri: https://w3id.org/lmodel/void/entities
+    annotations:
+      note_section:
+        tag: note_section
+        value: '4.6'
     description: How many entities, resources with an IRI, the dataset describes.
     from_schema: https://w3id.org/lmodel/void
     mappings:
@@ -864,6 +1012,10 @@ slots:
   classes:
     name: classes
     definition_uri: https://w3id.org/lmodel/void/classes
+    annotations:
+      note_section:
+        tag: note_section
+        value: '4.6'
     description: How many distinct classes the dataset's rdf:type triples name.
     from_schema: https://w3id.org/lmodel/void
     mappings:
@@ -879,6 +1031,10 @@ slots:
   properties:
     name: properties
     definition_uri: https://w3id.org/lmodel/void/properties
+    annotations:
+      note_section:
+        tag: note_section
+        value: '4.6'
     description: How many distinct properties the dataset's triples use as predicates.
     from_schema: https://w3id.org/lmodel/void
     mappings:
@@ -894,6 +1050,10 @@ slots:
   distinctSubjects:
     name: distinctSubjects
     definition_uri: https://w3id.org/lmodel/void/distinctSubjects
+    annotations:
+      note_section:
+        tag: note_section
+        value: '4.6'
     description: How many distinct IRIs and blank nodes the dataset's triples have
       as subjects.
     from_schema: https://w3id.org/lmodel/void
@@ -910,6 +1070,10 @@ slots:
   distinctObjects:
     name: distinctObjects
     definition_uri: https://w3id.org/lmodel/void/distinctObjects
+    annotations:
+      note_section:
+        tag: note_section
+        value: '4.6'
     description: How many distinct IRIs, blank nodes and literals the dataset's triples
       have as objects.
     from_schema: https://w3id.org/lmodel/void
@@ -926,6 +1090,10 @@ slots:
   documents:
     name: documents
     definition_uri: https://w3id.org/lmodel/void/documents
+    annotations:
+      note_section:
+        tag: note_section
+        value: '4.6'
     description: How many RDF documents together carry the dataset, for example RDFa
       web pages.
     comments:
@@ -945,6 +1113,10 @@ slots:
   target:
     name: target
     definition_uri: https://w3id.org/lmodel/void/target
+    annotations:
+      note_section:
+        tag: note_section
+        value: '5.1'
     description: Either dataset a linkset joins, named by its IRI.
     comments:
     - Linkset makes it a list of two. The slot itself stays single-valued, so that
@@ -961,6 +1133,10 @@ slots:
   subjectsTarget:
     name: subjectsTarget
     definition_uri: https://w3id.org/lmodel/void/subjectsTarget
+    annotations:
+      note_section:
+        tag: note_section
+        value: '5.1'
     description: The dataset at the subject end of every link in a linkset, named
       by its IRI.
     from_schema: https://w3id.org/lmodel/void
@@ -976,6 +1152,10 @@ slots:
   objectsTarget:
     name: objectsTarget
     definition_uri: https://w3id.org/lmodel/void/objectsTarget
+    annotations:
+      note_section:
+        tag: note_section
+        value: '5.1'
     description: The dataset at the object end of every link in a linkset, named by
       its IRI.
     from_schema: https://w3id.org/lmodel/void
@@ -991,6 +1171,10 @@ slots:
   linkPredicate:
     name: linkPredicate
     definition_uri: https://w3id.org/lmodel/void/linkPredicate
+    annotations:
+      note_section:
+        tag: note_section
+        value: '5.3'
     description: The property every link of a linkset has as its predicate, such as
       owl:sameAs.
     comments:
@@ -1007,6 +1191,10 @@ slots:
   inDataset:
     name: inDataset
     definition_uri: https://w3id.org/lmodel/void/inDataset
+    annotations:
+      note_section:
+        tag: note_section
+        value: '6.3'
     description: The dataset that this document's triples belong to, named by its
       IRI.
     comments:
@@ -1024,6 +1212,10 @@ slots:
   Linkset_target:
     name: Linkset_target
     definition_uri: https://w3id.org/lmodel/void/target
+    annotations:
+      note_section:
+        tag: note_section
+        value: '5.1'
     description: Either dataset a linkset joins, named by its IRI.
     comments:
     - Linkset makes it a list of two. The slot itself stays single-valued, so that
@@ -1048,6 +1240,10 @@ slots:
   ClassBasedPartition_class:
     name: ClassBasedPartition_class
     definition_uri: https://w3id.org/lmodel/void/class
+    annotations:
+      note_section:
+        tag: note_section
+        value: '4.5'
     description: The class whose instances a class partition describes, named by its
       IRI, such as foaf:Person.
     from_schema: https://w3id.org/lmodel/void
@@ -1068,6 +1264,10 @@ slots:
   PropertyBasedPartition_property:
     name: PropertyBasedPartition_property
     definition_uri: https://w3id.org/lmodel/void/property
+    annotations:
+      note_section:
+        tag: note_section
+        value: '4.5'
     description: The property whose triples a property partition holds, named by its
       IRI, such as foaf:name.
     from_schema: https://w3id.org/lmodel/void
@@ -1089,6 +1289,10 @@ classes:
   Dataset:
     name: Dataset
     definition_uri: https://w3id.org/lmodel/void/Dataset
+    annotations:
+      note_section:
+        tag: note_section
+        value: '1.3'
     description: RDF triples from one provider, gathered under an IRI so that a description
       can speak of them as a whole.
     notes:
@@ -1148,6 +1352,10 @@ classes:
   Linkset:
     name: Linkset
     definition_uri: https://w3id.org/lmodel/void/Linkset
+    annotations:
+      note_section:
+        tag: note_section
+        value: '1.4'
     description: 'A dataset of triples that join two datasets: each triple''s subject
       belongs to one of them and its object to the other.'
     comments:
@@ -1221,6 +1429,10 @@ classes:
   DatasetDescription:
     name: DatasetDescription
     definition_uri: https://w3id.org/lmodel/void/DatasetDescription
+    annotations:
+      note_section:
+        tag: note_section
+        value: '6.2'
     description: A web document, such as a void.ttl file published beside a dataset,
       that describes one or more datasets.
     notes:
@@ -1256,6 +1468,10 @@ classes:
   TechnicalFeature:
     name: TechnicalFeature
     definition_uri: https://w3id.org/lmodel/void/TechnicalFeature
+    annotations:
+      note_section:
+        tag: note_section
+        value: '2.6'
     description: A technical property of how a dataset is served, such as an RDF syntax
       it can be read in or an HTTP feature its server supports.
     comments:
@@ -1273,6 +1489,10 @@ classes:
   ClassBasedPartition:
     name: ClassBasedPartition
     definition_uri: https://w3id.org/lmodel/void/ClassBasedPartition
+    annotations:
+      note_section:
+        tag: note_section
+        value: '4.5'
     description: The slice of a dataset about the members of one class, written inside
       that dataset, most often to give counts for it.
     comments:
@@ -1304,6 +1524,10 @@ classes:
   PropertyBasedPartition:
     name: PropertyBasedPartition
     definition_uri: https://w3id.org/lmodel/void/PropertyBasedPartition
+    annotations:
+      note_section:
+        tag: note_section
+        value: '4.5'
     description: The slice of a dataset made of the triples whose predicate is one
       property, written inside that dataset, most often to give counts for it.
     comments:
@@ -1330,6 +1554,6 @@ classes:
     class_uri: void_linkml:PropertyBasedPartition
 metamodel_version: 1.12.0
 source_file: void.yaml
-source_file_date: '2026-10-31T18:01:00'
-source_file_size: 18431
+source_file_date: '2026-10-31T18:04:28'
+source_file_size: 20961
 

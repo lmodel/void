@@ -90,6 +90,11 @@ linkml_meta = LinkMLMeta({'annotations': {'upstream_license': {'tag': 'upstream_
                   'uriorcurie type, and a reference to a class, as a JSON Schema '
                   'string with no format, so without it the validator would pass '
                   'any text there.',
+                  'Each class and slot names, in its note_section annotation, the '
+                  'section of the Note that explains it. The class names are '
+                  "VoID's own, with no prefix of this schema's: no record carries "
+                  'a class name, and the adapt copy renames Dataset, which LOKF '
+                  'also defines, to VoidDataset.',
                   "Kept from the Note's account of a description: the Dublin Core "
                   "terms of its sections 2.2, 2.4 and 2.5, FOAF's homepage and "
                   'page (2.1) and topic and primaryTopic (6.2), and the RDF Schema '
@@ -145,7 +150,8 @@ class Dataset(ConfiguredBaseModel):
     """
     RDF triples from one provider, gathered under an IRI so that a description can speak of them as a whole.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'broad_mappings': ['dcat:Dataset'],
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'note_section': {'tag': 'note_section', 'value': '1.3'}},
+         'broad_mappings': ['dcat:Dataset'],
          'class_uri': 'void:Dataset',
          'comments': ['A dataset is named by an IRI, and the IRI of another dataset is '
                       "how a subset, a linkset's target or a description refers to "
@@ -160,64 +166,118 @@ class Dataset(ConfiguredBaseModel):
                    'format, and a VoID dataset holds RDF alone.'],
          'tree_root': True})
 
-    id: str = Field(default=..., description="""The IRI of the dataset, document or feature, written in full or as a CURIE.""", json_schema_extra = { "linkml_meta": {'comments': ['VoID has no property for the IRI, which RDF writes as the '
+    id: str = Field(default=..., description="""The IRI of the dataset, document or feature, written in full or as a CURIE.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '6.1'}},
+         'comments': ['VoID has no property for the IRI, which RDF writes as the '
                       "subject, so the key lives in this schema's own namespace."],
          'domain_of': ['Dataset', 'DatasetDescription', 'TechnicalFeature']} })
-    title: Optional[str] = Field(default=None, description="""A human-readable name for the dataset or document.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset', 'DatasetDescription'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, description="""A few sentences of prose saying what the dataset or document contains.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset', 'DatasetDescription'],
+    title: Optional[str] = Field(default=None, description="""A human-readable name for the dataset or document.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '2.2'}},
+         'domain_of': ['Dataset', 'DatasetDescription'],
+         'slot_uri': 'dcterms:title'} })
+    description: Optional[str] = Field(default=None, description="""A few sentences of prose saying what the dataset or document contains.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '2.2'}},
+         'domain_of': ['Dataset', 'DatasetDescription'],
          'slot_uri': 'dcterms:description'} })
-    creator: Optional[list[str]] = Field(default=None, description="""The IRI of the agent, human or not, that chiefly made the dataset or document.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset', 'DatasetDescription'], 'slot_uri': 'dcterms:creator'} })
-    contributor: Optional[list[str]] = Field(default=None, description="""The IRI of an agent that added to the dataset without being its main maker.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset'], 'slot_uri': 'dcterms:contributor'} })
-    publisher: Optional[str] = Field(default=None, description="""The IRI of the agent that releases the dataset for others to use.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset'], 'slot_uri': 'dcterms:publisher'} })
-    source: Optional[list[str]] = Field(default=None, description="""The IRI of an earlier resource whose content the dataset draws on.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset'], 'slot_uri': 'dcterms:source'} })
-    created: Optional[date] = Field(default=None, description="""The date the dataset or document was made.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset', 'DatasetDescription'], 'slot_uri': 'dcterms:created'} })
-    issued: Optional[date] = Field(default=None, description="""The date the dataset was first published.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset'], 'slot_uri': 'dcterms:issued'} })
-    modified: Optional[date] = Field(default=None, description="""The date the dataset or document last changed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset', 'DatasetDescription'], 'slot_uri': 'dcterms:modified'} })
-    license: Optional[str] = Field(default=None, description="""The IRI of the licence that sets the terms for using the dataset.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset'], 'slot_uri': 'dcterms:license'} })
-    subject: Optional[list[str]] = Field(default=None, description="""The IRI of a topic the dataset covers, such as a DBpedia resource or a SKOS concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset'], 'slot_uri': 'dcterms:subject'} })
-    homepage: Optional[str] = Field(default=None, description="""The web page about the dataset itself.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset'], 'slot_uri': 'foaf:homepage'} })
-    page: Optional[list[str]] = Field(default=None, description="""Any further web page with information on the dataset, for instance its download page or its catalogue entry.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset'], 'slot_uri': 'foaf:page'} })
-    feature: Optional[list[str]] = Field(default=None, description="""Something the dataset's server or files support, for instance an RDF syntax, named by its IRI.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset'], 'slot_uri': 'void:feature'} })
-    sparqlEndpoint: Optional[list[str]] = Field(default=None, description="""A SPARQL service whose default graph holds the dataset, for running queries on it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset'], 'slot_uri': 'void:sparqlEndpoint'} })
-    dataDump: Optional[list[str]] = Field(default=None, description="""A downloadable RDF file holding all of the dataset or a share of it.""", json_schema_extra = { "linkml_meta": {'comments': ['A page that links to downloads is not a dump; give it as a page '
+    creator: Optional[list[str]] = Field(default=None, description="""The IRI of the agent, human or not, that chiefly made the dataset or document.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '2.2'}},
+         'domain_of': ['Dataset', 'DatasetDescription'],
+         'slot_uri': 'dcterms:creator'} })
+    contributor: Optional[list[str]] = Field(default=None, description="""The IRI of an agent that added to the dataset without being its main maker.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '2.2'}},
+         'domain_of': ['Dataset'],
+         'slot_uri': 'dcterms:contributor'} })
+    publisher: Optional[str] = Field(default=None, description="""The IRI of the agent that releases the dataset for others to use.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '2.2'}},
+         'domain_of': ['Dataset'],
+         'slot_uri': 'dcterms:publisher'} })
+    source: Optional[list[str]] = Field(default=None, description="""The IRI of an earlier resource whose content the dataset draws on.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '2.2'}},
+         'domain_of': ['Dataset'],
+         'slot_uri': 'dcterms:source'} })
+    created: Optional[date] = Field(default=None, description="""The date the dataset or document was made.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '2.2'}},
+         'domain_of': ['Dataset', 'DatasetDescription'],
+         'slot_uri': 'dcterms:created'} })
+    issued: Optional[date] = Field(default=None, description="""The date the dataset was first published.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '2.2'}},
+         'domain_of': ['Dataset'],
+         'slot_uri': 'dcterms:issued'} })
+    modified: Optional[date] = Field(default=None, description="""The date the dataset or document last changed.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '2.2'}},
+         'domain_of': ['Dataset', 'DatasetDescription'],
+         'slot_uri': 'dcterms:modified'} })
+    license: Optional[str] = Field(default=None, description="""The IRI of the licence that sets the terms for using the dataset.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '2.4'}},
+         'domain_of': ['Dataset'],
+         'slot_uri': 'dcterms:license'} })
+    subject: Optional[list[str]] = Field(default=None, description="""The IRI of a topic the dataset covers, such as a DBpedia resource or a SKOS concept.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '2.5'}},
+         'domain_of': ['Dataset'],
+         'slot_uri': 'dcterms:subject'} })
+    homepage: Optional[str] = Field(default=None, description="""The web page about the dataset itself.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '2.1'}},
+         'domain_of': ['Dataset'],
+         'slot_uri': 'foaf:homepage'} })
+    page: Optional[list[str]] = Field(default=None, description="""Any further web page with information on the dataset, for instance its download page or its catalogue entry.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '2.1'}},
+         'domain_of': ['Dataset'],
+         'slot_uri': 'foaf:page'} })
+    feature: Optional[list[str]] = Field(default=None, description="""Something the dataset's server or files support, for instance an RDF syntax, named by its IRI.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '2.6'}},
+         'domain_of': ['Dataset'],
+         'slot_uri': 'void:feature'} })
+    sparqlEndpoint: Optional[list[str]] = Field(default=None, description="""A SPARQL service whose default graph holds the dataset, for running queries on it.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '3.2'}},
+         'domain_of': ['Dataset'],
+         'slot_uri': 'void:sparqlEndpoint'} })
+    dataDump: Optional[list[str]] = Field(default=None, description="""A downloadable RDF file holding all of the dataset or a share of it.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '3.3'}},
+         'comments': ['A page that links to downloads is not a dump; give it as a page '
                       'instead.'],
          'domain_of': ['Dataset'],
          'slot_uri': 'void:dataDump'} })
-    uriLookupEndpoint: Optional[list[str]] = Field(default=None, description="""A web address that, with an entity's percent-encoded IRI added to its end, answers an HTTP GET with RDF about that entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset'], 'slot_uri': 'void:uriLookupEndpoint'} })
-    openSearchDescription: Optional[list[str]] = Field(default=None, description="""An OpenSearch file telling a client how to run keyword searches over the dataset.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset'], 'slot_uri': 'void:openSearchDescription'} })
-    rootResource: Optional[list[str]] = Field(default=None, description="""The IRI of a starting point for crawling the dataset: a resource from which links lead, within a few hops, to all the others.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset'], 'slot_uri': 'void:rootResource'} })
-    exampleResource: Optional[list[str]] = Field(default=None, description="""The IRI of an entity typical of the dataset, for a reader to look up.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset'], 'slot_uri': 'void:exampleResource'} })
-    uriSpace: Optional[str] = Field(default=None, description="""The string every entity IRI in the dataset starts with, such as http://example.org/resource/.""", json_schema_extra = { "linkml_meta": {'comments': ['VoID writes it as a literal, not as an IRI, so the range is a '
+    uriLookupEndpoint: Optional[list[str]] = Field(default=None, description="""A web address that, with an entity's percent-encoded IRI added to its end, answers an HTTP GET with RDF about that entity.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '3.5'}},
+         'domain_of': ['Dataset'],
+         'slot_uri': 'void:uriLookupEndpoint'} })
+    openSearchDescription: Optional[list[str]] = Field(default=None, description="""An OpenSearch file telling a client how to run keyword searches over the dataset.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '3.6'}},
+         'domain_of': ['Dataset'],
+         'slot_uri': 'void:openSearchDescription'} })
+    rootResource: Optional[list[str]] = Field(default=None, description="""The IRI of a starting point for crawling the dataset: a resource from which links lead, within a few hops, to all the others.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '3.4'}},
+         'domain_of': ['Dataset'],
+         'slot_uri': 'void:rootResource'} })
+    exampleResource: Optional[list[str]] = Field(default=None, description="""The IRI of an entity typical of the dataset, for a reader to look up.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '4.1'}},
+         'domain_of': ['Dataset'],
+         'slot_uri': 'void:exampleResource'} })
+    uriSpace: Optional[str] = Field(default=None, description="""The string every entity IRI in the dataset starts with, such as http://example.org/resource/.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '4.2'}},
+         'comments': ['VoID writes it as a literal, not as an IRI, so the range is a '
                       "string, held to the form of an IRI's start."],
          'domain_of': ['Dataset'],
          'slot_uri': 'void:uriSpace'} })
-    uriRegexPattern: Optional[str] = Field(default=None, description="""A regular expression in SPARQL's syntax that each entity IRI of the dataset satisfies.""", json_schema_extra = { "linkml_meta": {'comments': ["The validator checks no regular expression's syntax; "
+    uriRegexPattern: Optional[str] = Field(default=None, description="""A regular expression in SPARQL's syntax that each entity IRI of the dataset satisfies.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '4.2'}},
+         'comments': ["The validator checks no regular expression's syntax; "
                       'tests/test_data.py compiles each one in the examples.'],
          'domain_of': ['Dataset'],
          'slot_uri': 'void:uriRegexPattern'} })
-    vocabulary: Optional[list[str]] = Field(default=None, description="""The namespace IRI of a vocabulary the dataset uses, as a term's IRI reads without its local name and without a final hash, such as http://xmlns.com/foaf/0.1/.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset'], 'slot_uri': 'void:vocabulary'} })
-    subset: Optional[list[str]] = Field(default=None, description="""Another dataset contained in this one, named by its IRI.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset'], 'slot_uri': 'void:subset'} })
-    classPartition: Optional[list[ClassBasedPartition]] = Field(default=None, description="""The dataset's slice for one class, given inside it.""", json_schema_extra = { "linkml_meta": {'comments': ['VoID makes it a narrower subset; here it is a value, so it does '
+    vocabulary: Optional[list[str]] = Field(default=None, description="""The namespace IRI of a vocabulary the dataset uses, as a term's IRI reads without its local name and without a final hash, such as http://xmlns.com/foaf/0.1/.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '4.3'}},
+         'domain_of': ['Dataset'],
+         'slot_uri': 'void:vocabulary'} })
+    subset: Optional[list[str]] = Field(default=None, description="""Another dataset contained in this one, named by its IRI.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '4.4'}},
+         'domain_of': ['Dataset'],
+         'slot_uri': 'void:subset'} })
+    classPartition: Optional[list[ClassBasedPartition]] = Field(default=None, description="""The dataset's slice for one class, given inside it.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '4.5'}},
+         'comments': ['VoID makes it a narrower subset; here it is a value, so it does '
                       "not inherit subset's range."],
          'domain_of': ['Dataset'],
          'slot_uri': 'void:classPartition'} })
-    propertyPartition: Optional[list[PropertyBasedPartition]] = Field(default=None, description="""The dataset's slice for one property, given inside it.""", json_schema_extra = { "linkml_meta": {'comments': ['VoID makes it a narrower subset; here it is a value, so it does '
+    propertyPartition: Optional[list[PropertyBasedPartition]] = Field(default=None, description="""The dataset's slice for one property, given inside it.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '4.5'}},
+         'comments': ['VoID makes it a narrower subset; here it is a value, so it does '
                       "not inherit subset's range."],
          'domain_of': ['Dataset', 'ClassBasedPartition'],
          'slot_uri': 'void:propertyPartition'} })
-    triples: Optional[int] = Field(default=None, description="""How many triples the dataset holds; for a linkset, how many links.""", ge=0, json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset', 'ClassBasedPartition', 'PropertyBasedPartition'],
+    triples: Optional[int] = Field(default=None, description="""How many triples the dataset holds; for a linkset, how many links.""", ge=0, json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '4.6'}},
+         'domain_of': ['Dataset', 'ClassBasedPartition', 'PropertyBasedPartition'],
          'slot_uri': 'void:triples'} })
-    entities: Optional[int] = Field(default=None, description="""How many entities, resources with an IRI, the dataset describes.""", ge=0, json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset', 'ClassBasedPartition', 'PropertyBasedPartition'],
+    entities: Optional[int] = Field(default=None, description="""How many entities, resources with an IRI, the dataset describes.""", ge=0, json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '4.6'}},
+         'domain_of': ['Dataset', 'ClassBasedPartition', 'PropertyBasedPartition'],
          'slot_uri': 'void:entities'} })
-    classes: Optional[int] = Field(default=None, description="""How many distinct classes the dataset's rdf:type triples name.""", ge=0, json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset', 'ClassBasedPartition', 'PropertyBasedPartition'],
+    classes: Optional[int] = Field(default=None, description="""How many distinct classes the dataset's rdf:type triples name.""", ge=0, json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '4.6'}},
+         'domain_of': ['Dataset', 'ClassBasedPartition', 'PropertyBasedPartition'],
          'slot_uri': 'void:classes'} })
-    properties: Optional[int] = Field(default=None, description="""How many distinct properties the dataset's triples use as predicates.""", ge=0, json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset', 'ClassBasedPartition', 'PropertyBasedPartition'],
+    properties: Optional[int] = Field(default=None, description="""How many distinct properties the dataset's triples use as predicates.""", ge=0, json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '4.6'}},
+         'domain_of': ['Dataset', 'ClassBasedPartition', 'PropertyBasedPartition'],
          'slot_uri': 'void:properties'} })
-    distinctSubjects: Optional[int] = Field(default=None, description="""How many distinct IRIs and blank nodes the dataset's triples have as subjects.""", ge=0, json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset', 'ClassBasedPartition', 'PropertyBasedPartition'],
+    distinctSubjects: Optional[int] = Field(default=None, description="""How many distinct IRIs and blank nodes the dataset's triples have as subjects.""", ge=0, json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '4.6'}},
+         'domain_of': ['Dataset', 'ClassBasedPartition', 'PropertyBasedPartition'],
          'slot_uri': 'void:distinctSubjects'} })
-    distinctObjects: Optional[int] = Field(default=None, description="""How many distinct IRIs, blank nodes and literals the dataset's triples have as objects.""", ge=0, json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset', 'ClassBasedPartition', 'PropertyBasedPartition'],
+    distinctObjects: Optional[int] = Field(default=None, description="""How many distinct IRIs, blank nodes and literals the dataset's triples have as objects.""", ge=0, json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '4.6'}},
+         'domain_of': ['Dataset', 'ClassBasedPartition', 'PropertyBasedPartition'],
          'slot_uri': 'void:distinctObjects'} })
-    documents: Optional[int] = Field(default=None, description="""How many RDF documents together carry the dataset, for example RDFa web pages.""", ge=0, json_schema_extra = { "linkml_meta": {'comments': ['Use it where the triples are hard to count; triples and '
+    documents: Optional[int] = Field(default=None, description="""How many RDF documents together carry the dataset, for example RDFa web pages.""", ge=0, json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '4.6'}},
+         'comments': ['Use it where the triples are hard to count; triples and '
                       'entities say more where they can be given.'],
          'domain_of': ['Dataset', 'ClassBasedPartition', 'PropertyBasedPartition'],
          'slot_uri': 'void:documents'} })
@@ -292,7 +352,8 @@ class Linkset(Dataset):
     """
     A dataset of triples that join two datasets: each triple's subject belongs to one of them and its object to the other.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'any_of': [{'description': 'Two targets, named with target.',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'note_section': {'tag': 'note_section', 'value': '1.4'}},
+         'any_of': [{'description': 'Two targets, named with target.',
                      'slot_conditions': {'target': {'name': 'target',
                                                     'required': True}}},
                     {'description': "The subjects' target and the objects' target.",
@@ -311,75 +372,137 @@ class Linkset(Dataset):
                                    'multivalued': True,
                                    'name': 'target'}}})
 
-    target: Optional[list[str]] = Field(default=None, description="""Either dataset a linkset joins, named by its IRI.""", min_length=2, max_length=2, json_schema_extra = { "linkml_meta": {'comments': ['Linkset makes it a list of two. The slot itself stays '
+    target: Optional[list[str]] = Field(default=None, description="""Either dataset a linkset joins, named by its IRI.""", min_length=2, max_length=2, json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '5.1'}},
+         'comments': ['Linkset makes it a list of two. The slot itself stays '
                       'single-valued, so that subjectsTarget and objectsTarget, its '
                       'narrower slots, inherit one value each.'],
          'domain_of': ['Linkset'],
          'slot_uri': 'void:target'} })
-    subjectsTarget: Optional[str] = Field(default=None, description="""The dataset at the subject end of every link in a linkset, named by its IRI.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Linkset'], 'is_a': 'target', 'slot_uri': 'void:subjectsTarget'} })
-    objectsTarget: Optional[str] = Field(default=None, description="""The dataset at the object end of every link in a linkset, named by its IRI.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Linkset'], 'is_a': 'target', 'slot_uri': 'void:objectsTarget'} })
-    linkPredicate: Optional[str] = Field(default=None, description="""The property every link of a linkset has as its predicate, such as owl:sameAs.""", json_schema_extra = { "linkml_meta": {'comments': ['A linkset has one; links with two predicates make two '
+    subjectsTarget: Optional[str] = Field(default=None, description="""The dataset at the subject end of every link in a linkset, named by its IRI.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '5.1'}},
+         'domain_of': ['Linkset'],
+         'is_a': 'target',
+         'slot_uri': 'void:subjectsTarget'} })
+    objectsTarget: Optional[str] = Field(default=None, description="""The dataset at the object end of every link in a linkset, named by its IRI.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '5.1'}},
+         'domain_of': ['Linkset'],
+         'is_a': 'target',
+         'slot_uri': 'void:objectsTarget'} })
+    linkPredicate: Optional[str] = Field(default=None, description="""The property every link of a linkset has as its predicate, such as owl:sameAs.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '5.3'}},
+         'comments': ['A linkset has one; links with two predicates make two '
                       'linksets.'],
          'domain_of': ['Linkset'],
          'slot_uri': 'void:linkPredicate'} })
-    id: str = Field(default=..., description="""The IRI of the dataset, document or feature, written in full or as a CURIE.""", json_schema_extra = { "linkml_meta": {'comments': ['VoID has no property for the IRI, which RDF writes as the '
+    id: str = Field(default=..., description="""The IRI of the dataset, document or feature, written in full or as a CURIE.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '6.1'}},
+         'comments': ['VoID has no property for the IRI, which RDF writes as the '
                       "subject, so the key lives in this schema's own namespace."],
          'domain_of': ['Dataset', 'DatasetDescription', 'TechnicalFeature']} })
-    title: Optional[str] = Field(default=None, description="""A human-readable name for the dataset or document.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset', 'DatasetDescription'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, description="""A few sentences of prose saying what the dataset or document contains.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset', 'DatasetDescription'],
+    title: Optional[str] = Field(default=None, description="""A human-readable name for the dataset or document.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '2.2'}},
+         'domain_of': ['Dataset', 'DatasetDescription'],
+         'slot_uri': 'dcterms:title'} })
+    description: Optional[str] = Field(default=None, description="""A few sentences of prose saying what the dataset or document contains.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '2.2'}},
+         'domain_of': ['Dataset', 'DatasetDescription'],
          'slot_uri': 'dcterms:description'} })
-    creator: Optional[list[str]] = Field(default=None, description="""The IRI of the agent, human or not, that chiefly made the dataset or document.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset', 'DatasetDescription'], 'slot_uri': 'dcterms:creator'} })
-    contributor: Optional[list[str]] = Field(default=None, description="""The IRI of an agent that added to the dataset without being its main maker.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset'], 'slot_uri': 'dcterms:contributor'} })
-    publisher: Optional[str] = Field(default=None, description="""The IRI of the agent that releases the dataset for others to use.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset'], 'slot_uri': 'dcterms:publisher'} })
-    source: Optional[list[str]] = Field(default=None, description="""The IRI of an earlier resource whose content the dataset draws on.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset'], 'slot_uri': 'dcterms:source'} })
-    created: Optional[date] = Field(default=None, description="""The date the dataset or document was made.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset', 'DatasetDescription'], 'slot_uri': 'dcterms:created'} })
-    issued: Optional[date] = Field(default=None, description="""The date the dataset was first published.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset'], 'slot_uri': 'dcterms:issued'} })
-    modified: Optional[date] = Field(default=None, description="""The date the dataset or document last changed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset', 'DatasetDescription'], 'slot_uri': 'dcterms:modified'} })
-    license: Optional[str] = Field(default=None, description="""The IRI of the licence that sets the terms for using the dataset.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset'], 'slot_uri': 'dcterms:license'} })
-    subject: Optional[list[str]] = Field(default=None, description="""The IRI of a topic the dataset covers, such as a DBpedia resource or a SKOS concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset'], 'slot_uri': 'dcterms:subject'} })
-    homepage: Optional[str] = Field(default=None, description="""The web page about the dataset itself.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset'], 'slot_uri': 'foaf:homepage'} })
-    page: Optional[list[str]] = Field(default=None, description="""Any further web page with information on the dataset, for instance its download page or its catalogue entry.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset'], 'slot_uri': 'foaf:page'} })
-    feature: Optional[list[str]] = Field(default=None, description="""Something the dataset's server or files support, for instance an RDF syntax, named by its IRI.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset'], 'slot_uri': 'void:feature'} })
-    sparqlEndpoint: Optional[list[str]] = Field(default=None, description="""A SPARQL service whose default graph holds the dataset, for running queries on it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset'], 'slot_uri': 'void:sparqlEndpoint'} })
-    dataDump: Optional[list[str]] = Field(default=None, description="""A downloadable RDF file holding all of the dataset or a share of it.""", json_schema_extra = { "linkml_meta": {'comments': ['A page that links to downloads is not a dump; give it as a page '
+    creator: Optional[list[str]] = Field(default=None, description="""The IRI of the agent, human or not, that chiefly made the dataset or document.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '2.2'}},
+         'domain_of': ['Dataset', 'DatasetDescription'],
+         'slot_uri': 'dcterms:creator'} })
+    contributor: Optional[list[str]] = Field(default=None, description="""The IRI of an agent that added to the dataset without being its main maker.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '2.2'}},
+         'domain_of': ['Dataset'],
+         'slot_uri': 'dcterms:contributor'} })
+    publisher: Optional[str] = Field(default=None, description="""The IRI of the agent that releases the dataset for others to use.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '2.2'}},
+         'domain_of': ['Dataset'],
+         'slot_uri': 'dcterms:publisher'} })
+    source: Optional[list[str]] = Field(default=None, description="""The IRI of an earlier resource whose content the dataset draws on.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '2.2'}},
+         'domain_of': ['Dataset'],
+         'slot_uri': 'dcterms:source'} })
+    created: Optional[date] = Field(default=None, description="""The date the dataset or document was made.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '2.2'}},
+         'domain_of': ['Dataset', 'DatasetDescription'],
+         'slot_uri': 'dcterms:created'} })
+    issued: Optional[date] = Field(default=None, description="""The date the dataset was first published.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '2.2'}},
+         'domain_of': ['Dataset'],
+         'slot_uri': 'dcterms:issued'} })
+    modified: Optional[date] = Field(default=None, description="""The date the dataset or document last changed.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '2.2'}},
+         'domain_of': ['Dataset', 'DatasetDescription'],
+         'slot_uri': 'dcterms:modified'} })
+    license: Optional[str] = Field(default=None, description="""The IRI of the licence that sets the terms for using the dataset.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '2.4'}},
+         'domain_of': ['Dataset'],
+         'slot_uri': 'dcterms:license'} })
+    subject: Optional[list[str]] = Field(default=None, description="""The IRI of a topic the dataset covers, such as a DBpedia resource or a SKOS concept.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '2.5'}},
+         'domain_of': ['Dataset'],
+         'slot_uri': 'dcterms:subject'} })
+    homepage: Optional[str] = Field(default=None, description="""The web page about the dataset itself.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '2.1'}},
+         'domain_of': ['Dataset'],
+         'slot_uri': 'foaf:homepage'} })
+    page: Optional[list[str]] = Field(default=None, description="""Any further web page with information on the dataset, for instance its download page or its catalogue entry.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '2.1'}},
+         'domain_of': ['Dataset'],
+         'slot_uri': 'foaf:page'} })
+    feature: Optional[list[str]] = Field(default=None, description="""Something the dataset's server or files support, for instance an RDF syntax, named by its IRI.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '2.6'}},
+         'domain_of': ['Dataset'],
+         'slot_uri': 'void:feature'} })
+    sparqlEndpoint: Optional[list[str]] = Field(default=None, description="""A SPARQL service whose default graph holds the dataset, for running queries on it.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '3.2'}},
+         'domain_of': ['Dataset'],
+         'slot_uri': 'void:sparqlEndpoint'} })
+    dataDump: Optional[list[str]] = Field(default=None, description="""A downloadable RDF file holding all of the dataset or a share of it.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '3.3'}},
+         'comments': ['A page that links to downloads is not a dump; give it as a page '
                       'instead.'],
          'domain_of': ['Dataset'],
          'slot_uri': 'void:dataDump'} })
-    uriLookupEndpoint: Optional[list[str]] = Field(default=None, description="""A web address that, with an entity's percent-encoded IRI added to its end, answers an HTTP GET with RDF about that entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset'], 'slot_uri': 'void:uriLookupEndpoint'} })
-    openSearchDescription: Optional[list[str]] = Field(default=None, description="""An OpenSearch file telling a client how to run keyword searches over the dataset.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset'], 'slot_uri': 'void:openSearchDescription'} })
-    rootResource: Optional[list[str]] = Field(default=None, description="""The IRI of a starting point for crawling the dataset: a resource from which links lead, within a few hops, to all the others.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset'], 'slot_uri': 'void:rootResource'} })
-    exampleResource: Optional[list[str]] = Field(default=None, description="""The IRI of an entity typical of the dataset, for a reader to look up.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset'], 'slot_uri': 'void:exampleResource'} })
-    uriSpace: Optional[str] = Field(default=None, description="""The string every entity IRI in the dataset starts with, such as http://example.org/resource/.""", json_schema_extra = { "linkml_meta": {'comments': ['VoID writes it as a literal, not as an IRI, so the range is a '
+    uriLookupEndpoint: Optional[list[str]] = Field(default=None, description="""A web address that, with an entity's percent-encoded IRI added to its end, answers an HTTP GET with RDF about that entity.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '3.5'}},
+         'domain_of': ['Dataset'],
+         'slot_uri': 'void:uriLookupEndpoint'} })
+    openSearchDescription: Optional[list[str]] = Field(default=None, description="""An OpenSearch file telling a client how to run keyword searches over the dataset.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '3.6'}},
+         'domain_of': ['Dataset'],
+         'slot_uri': 'void:openSearchDescription'} })
+    rootResource: Optional[list[str]] = Field(default=None, description="""The IRI of a starting point for crawling the dataset: a resource from which links lead, within a few hops, to all the others.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '3.4'}},
+         'domain_of': ['Dataset'],
+         'slot_uri': 'void:rootResource'} })
+    exampleResource: Optional[list[str]] = Field(default=None, description="""The IRI of an entity typical of the dataset, for a reader to look up.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '4.1'}},
+         'domain_of': ['Dataset'],
+         'slot_uri': 'void:exampleResource'} })
+    uriSpace: Optional[str] = Field(default=None, description="""The string every entity IRI in the dataset starts with, such as http://example.org/resource/.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '4.2'}},
+         'comments': ['VoID writes it as a literal, not as an IRI, so the range is a '
                       "string, held to the form of an IRI's start."],
          'domain_of': ['Dataset'],
          'slot_uri': 'void:uriSpace'} })
-    uriRegexPattern: Optional[str] = Field(default=None, description="""A regular expression in SPARQL's syntax that each entity IRI of the dataset satisfies.""", json_schema_extra = { "linkml_meta": {'comments': ["The validator checks no regular expression's syntax; "
+    uriRegexPattern: Optional[str] = Field(default=None, description="""A regular expression in SPARQL's syntax that each entity IRI of the dataset satisfies.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '4.2'}},
+         'comments': ["The validator checks no regular expression's syntax; "
                       'tests/test_data.py compiles each one in the examples.'],
          'domain_of': ['Dataset'],
          'slot_uri': 'void:uriRegexPattern'} })
-    vocabulary: Optional[list[str]] = Field(default=None, description="""The namespace IRI of a vocabulary the dataset uses, as a term's IRI reads without its local name and without a final hash, such as http://xmlns.com/foaf/0.1/.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset'], 'slot_uri': 'void:vocabulary'} })
-    subset: Optional[list[str]] = Field(default=None, description="""Another dataset contained in this one, named by its IRI.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset'], 'slot_uri': 'void:subset'} })
-    classPartition: Optional[list[ClassBasedPartition]] = Field(default=None, description="""The dataset's slice for one class, given inside it.""", json_schema_extra = { "linkml_meta": {'comments': ['VoID makes it a narrower subset; here it is a value, so it does '
+    vocabulary: Optional[list[str]] = Field(default=None, description="""The namespace IRI of a vocabulary the dataset uses, as a term's IRI reads without its local name and without a final hash, such as http://xmlns.com/foaf/0.1/.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '4.3'}},
+         'domain_of': ['Dataset'],
+         'slot_uri': 'void:vocabulary'} })
+    subset: Optional[list[str]] = Field(default=None, description="""Another dataset contained in this one, named by its IRI.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '4.4'}},
+         'domain_of': ['Dataset'],
+         'slot_uri': 'void:subset'} })
+    classPartition: Optional[list[ClassBasedPartition]] = Field(default=None, description="""The dataset's slice for one class, given inside it.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '4.5'}},
+         'comments': ['VoID makes it a narrower subset; here it is a value, so it does '
                       "not inherit subset's range."],
          'domain_of': ['Dataset'],
          'slot_uri': 'void:classPartition'} })
-    propertyPartition: Optional[list[PropertyBasedPartition]] = Field(default=None, description="""The dataset's slice for one property, given inside it.""", json_schema_extra = { "linkml_meta": {'comments': ['VoID makes it a narrower subset; here it is a value, so it does '
+    propertyPartition: Optional[list[PropertyBasedPartition]] = Field(default=None, description="""The dataset's slice for one property, given inside it.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '4.5'}},
+         'comments': ['VoID makes it a narrower subset; here it is a value, so it does '
                       "not inherit subset's range."],
          'domain_of': ['Dataset', 'ClassBasedPartition'],
          'slot_uri': 'void:propertyPartition'} })
-    triples: Optional[int] = Field(default=None, description="""How many triples the dataset holds; for a linkset, how many links.""", ge=0, json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset', 'ClassBasedPartition', 'PropertyBasedPartition'],
+    triples: Optional[int] = Field(default=None, description="""How many triples the dataset holds; for a linkset, how many links.""", ge=0, json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '4.6'}},
+         'domain_of': ['Dataset', 'ClassBasedPartition', 'PropertyBasedPartition'],
          'slot_uri': 'void:triples'} })
-    entities: Optional[int] = Field(default=None, description="""How many entities, resources with an IRI, the dataset describes.""", ge=0, json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset', 'ClassBasedPartition', 'PropertyBasedPartition'],
+    entities: Optional[int] = Field(default=None, description="""How many entities, resources with an IRI, the dataset describes.""", ge=0, json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '4.6'}},
+         'domain_of': ['Dataset', 'ClassBasedPartition', 'PropertyBasedPartition'],
          'slot_uri': 'void:entities'} })
-    classes: Optional[int] = Field(default=None, description="""How many distinct classes the dataset's rdf:type triples name.""", ge=0, json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset', 'ClassBasedPartition', 'PropertyBasedPartition'],
+    classes: Optional[int] = Field(default=None, description="""How many distinct classes the dataset's rdf:type triples name.""", ge=0, json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '4.6'}},
+         'domain_of': ['Dataset', 'ClassBasedPartition', 'PropertyBasedPartition'],
          'slot_uri': 'void:classes'} })
-    properties: Optional[int] = Field(default=None, description="""How many distinct properties the dataset's triples use as predicates.""", ge=0, json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset', 'ClassBasedPartition', 'PropertyBasedPartition'],
+    properties: Optional[int] = Field(default=None, description="""How many distinct properties the dataset's triples use as predicates.""", ge=0, json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '4.6'}},
+         'domain_of': ['Dataset', 'ClassBasedPartition', 'PropertyBasedPartition'],
          'slot_uri': 'void:properties'} })
-    distinctSubjects: Optional[int] = Field(default=None, description="""How many distinct IRIs and blank nodes the dataset's triples have as subjects.""", ge=0, json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset', 'ClassBasedPartition', 'PropertyBasedPartition'],
+    distinctSubjects: Optional[int] = Field(default=None, description="""How many distinct IRIs and blank nodes the dataset's triples have as subjects.""", ge=0, json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '4.6'}},
+         'domain_of': ['Dataset', 'ClassBasedPartition', 'PropertyBasedPartition'],
          'slot_uri': 'void:distinctSubjects'} })
-    distinctObjects: Optional[int] = Field(default=None, description="""How many distinct IRIs, blank nodes and literals the dataset's triples have as objects.""", ge=0, json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset', 'ClassBasedPartition', 'PropertyBasedPartition'],
+    distinctObjects: Optional[int] = Field(default=None, description="""How many distinct IRIs, blank nodes and literals the dataset's triples have as objects.""", ge=0, json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '4.6'}},
+         'domain_of': ['Dataset', 'ClassBasedPartition', 'PropertyBasedPartition'],
          'slot_uri': 'void:distinctObjects'} })
-    documents: Optional[int] = Field(default=None, description="""How many RDF documents together carry the dataset, for example RDFa web pages.""", ge=0, json_schema_extra = { "linkml_meta": {'comments': ['Use it where the triples are hard to count; triples and '
+    documents: Optional[int] = Field(default=None, description="""How many RDF documents together carry the dataset, for example RDFa web pages.""", ge=0, json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '4.6'}},
+         'comments': ['Use it where the triples are hard to count; triples and '
                       'entities say more where they can be given.'],
          'domain_of': ['Dataset', 'ClassBasedPartition', 'PropertyBasedPartition'],
          'slot_uri': 'void:documents'} })
@@ -506,7 +629,8 @@ class DatasetDescription(ConfiguredBaseModel):
     """
     A web document, such as a void.ttl file published beside a dataset, that describes one or more datasets.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'any_of': [{'description': 'The one dataset the description is about.',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'note_section': {'tag': 'note_section', 'value': '6.2'}},
+         'any_of': [{'description': 'The one dataset the description is about.',
                      'slot_conditions': {'primaryTopic': {'name': 'primaryTopic',
                                                           'required': True}}},
                     {'description': 'The datasets the description is about.',
@@ -518,18 +642,33 @@ class DatasetDescription(ConfiguredBaseModel):
          'notes': ["The broad mapping is the vocabulary file's own statement that a "
                    'dataset description is a FOAF document.']})
 
-    id: str = Field(default=..., description="""The IRI of the dataset, document or feature, written in full or as a CURIE.""", json_schema_extra = { "linkml_meta": {'comments': ['VoID has no property for the IRI, which RDF writes as the '
+    id: str = Field(default=..., description="""The IRI of the dataset, document or feature, written in full or as a CURIE.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '6.1'}},
+         'comments': ['VoID has no property for the IRI, which RDF writes as the '
                       "subject, so the key lives in this schema's own namespace."],
          'domain_of': ['Dataset', 'DatasetDescription', 'TechnicalFeature']} })
-    title: Optional[str] = Field(default=None, description="""A human-readable name for the dataset or document.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset', 'DatasetDescription'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, description="""A few sentences of prose saying what the dataset or document contains.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset', 'DatasetDescription'],
+    title: Optional[str] = Field(default=None, description="""A human-readable name for the dataset or document.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '2.2'}},
+         'domain_of': ['Dataset', 'DatasetDescription'],
+         'slot_uri': 'dcterms:title'} })
+    description: Optional[str] = Field(default=None, description="""A few sentences of prose saying what the dataset or document contains.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '2.2'}},
+         'domain_of': ['Dataset', 'DatasetDescription'],
          'slot_uri': 'dcterms:description'} })
-    creator: Optional[list[str]] = Field(default=None, description="""The IRI of the agent, human or not, that chiefly made the dataset or document.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset', 'DatasetDescription'], 'slot_uri': 'dcterms:creator'} })
-    created: Optional[date] = Field(default=None, description="""The date the dataset or document was made.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset', 'DatasetDescription'], 'slot_uri': 'dcterms:created'} })
-    modified: Optional[date] = Field(default=None, description="""The date the dataset or document last changed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset', 'DatasetDescription'], 'slot_uri': 'dcterms:modified'} })
-    primaryTopic: Optional[str] = Field(default=None, description="""The dataset a description is about, when it describes one.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DatasetDescription'], 'slot_uri': 'foaf:primaryTopic'} })
-    topic: Optional[list[str]] = Field(default=None, description="""A dataset a description is about, when it describes several of equal weight.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DatasetDescription'], 'slot_uri': 'foaf:topic'} })
-    inDataset: Optional[str] = Field(default=None, description="""The dataset that this document's triples belong to, named by its IRI.""", json_schema_extra = { "linkml_meta": {'comments': ['A document names one; a document in two datasets points at a '
+    creator: Optional[list[str]] = Field(default=None, description="""The IRI of the agent, human or not, that chiefly made the dataset or document.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '2.2'}},
+         'domain_of': ['Dataset', 'DatasetDescription'],
+         'slot_uri': 'dcterms:creator'} })
+    created: Optional[date] = Field(default=None, description="""The date the dataset or document was made.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '2.2'}},
+         'domain_of': ['Dataset', 'DatasetDescription'],
+         'slot_uri': 'dcterms:created'} })
+    modified: Optional[date] = Field(default=None, description="""The date the dataset or document last changed.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '2.2'}},
+         'domain_of': ['Dataset', 'DatasetDescription'],
+         'slot_uri': 'dcterms:modified'} })
+    primaryTopic: Optional[str] = Field(default=None, description="""The dataset a description is about, when it describes one.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '6.2'}},
+         'domain_of': ['DatasetDescription'],
+         'slot_uri': 'foaf:primaryTopic'} })
+    topic: Optional[list[str]] = Field(default=None, description="""A dataset a description is about, when it describes several of equal weight.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '6.2'}},
+         'domain_of': ['DatasetDescription'],
+         'slot_uri': 'foaf:topic'} })
+    inDataset: Optional[str] = Field(default=None, description="""The dataset that this document's triples belong to, named by its IRI.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '6.3'}},
+         'comments': ['A document names one; a document in two datasets points at a '
                       'dataset that holds both as subsets.'],
          'domain_of': ['DatasetDescription'],
          'slot_uri': 'void:inDataset'} })
@@ -591,18 +730,26 @@ class TechnicalFeature(ConfiguredBaseModel):
     """
     A technical property of how a dataset is served, such as an RDF syntax it can be read in or an HTTP feature its server supports.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'void:TechnicalFeature',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'note_section': {'tag': 'note_section', 'value': '2.6'}},
+         'class_uri': 'void:TechnicalFeature',
          'comments': ['W3C names the RDF syntaxes under http://www.w3.org/ns/formats/, '
                       'such as http://www.w3.org/ns/formats/Turtle; a feature of '
                       "another kind takes an IRI of its publisher's own."],
          'from_schema': 'https://w3id.org/lmodel/void'})
 
-    id: str = Field(default=..., description="""The IRI of the dataset, document or feature, written in full or as a CURIE.""", json_schema_extra = { "linkml_meta": {'comments': ['VoID has no property for the IRI, which RDF writes as the '
+    id: str = Field(default=..., description="""The IRI of the dataset, document or feature, written in full or as a CURIE.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '6.1'}},
+         'comments': ['VoID has no property for the IRI, which RDF writes as the '
                       "subject, so the key lives in this schema's own namespace."],
          'domain_of': ['Dataset', 'DatasetDescription', 'TechnicalFeature']} })
-    label: Optional[str] = Field(default=None, description="""A short name for the feature.""", json_schema_extra = { "linkml_meta": {'domain_of': ['TechnicalFeature'], 'slot_uri': 'rdfs:label'} })
-    comment: Optional[str] = Field(default=None, description="""A sentence or two about the feature.""", json_schema_extra = { "linkml_meta": {'domain_of': ['TechnicalFeature'], 'slot_uri': 'rdfs:comment'} })
-    seeAlso: Optional[list[str]] = Field(default=None, description="""A web page that tells more about the feature.""", json_schema_extra = { "linkml_meta": {'domain_of': ['TechnicalFeature'], 'slot_uri': 'rdfs:seeAlso'} })
+    label: Optional[str] = Field(default=None, description="""A short name for the feature.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '2.6'}},
+         'domain_of': ['TechnicalFeature'],
+         'slot_uri': 'rdfs:label'} })
+    comment: Optional[str] = Field(default=None, description="""A sentence or two about the feature.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '2.6'}},
+         'domain_of': ['TechnicalFeature'],
+         'slot_uri': 'rdfs:comment'} })
+    seeAlso: Optional[list[str]] = Field(default=None, description="""A web page that tells more about the feature.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '2.6'}},
+         'domain_of': ['TechnicalFeature'],
+         'slot_uri': 'rdfs:seeAlso'} })
 
     @field_validator('id')
     def pattern_id(cls, v):
@@ -622,7 +769,8 @@ class ClassBasedPartition(ConfiguredBaseModel):
     """
     The slice of a dataset about the members of one class, written inside that dataset, most often to give counts for it.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'broad_mappings': ['void:Dataset'],
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'note_section': {'tag': 'note_section', 'value': '4.5'}},
+         'broad_mappings': ['void:Dataset'],
          'class_uri': 'void_linkml:ClassBasedPartition',
          'comments': ['VoID gives a partition no class of its own: it is a dataset, '
                       'usually a blank node. This schema writes it as a value inside '
@@ -634,24 +782,34 @@ class ClassBasedPartition(ConfiguredBaseModel):
          'from_schema': 'https://w3id.org/lmodel/void',
          'slot_usage': {'class': {'name': 'class', 'required': True}}})
 
-    class_: str = Field(default=..., alias="class", description="""The class whose instances a class partition describes, named by its IRI, such as foaf:Person.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClassBasedPartition'], 'slot_uri': 'void:class'} })
-    triples: Optional[int] = Field(default=None, description="""How many triples the dataset holds; for a linkset, how many links.""", ge=0, json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset', 'ClassBasedPartition', 'PropertyBasedPartition'],
+    class_: str = Field(default=..., alias="class", description="""The class whose instances a class partition describes, named by its IRI, such as foaf:Person.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '4.5'}},
+         'domain_of': ['ClassBasedPartition'],
+         'slot_uri': 'void:class'} })
+    triples: Optional[int] = Field(default=None, description="""How many triples the dataset holds; for a linkset, how many links.""", ge=0, json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '4.6'}},
+         'domain_of': ['Dataset', 'ClassBasedPartition', 'PropertyBasedPartition'],
          'slot_uri': 'void:triples'} })
-    entities: Optional[int] = Field(default=None, description="""How many entities, resources with an IRI, the dataset describes.""", ge=0, json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset', 'ClassBasedPartition', 'PropertyBasedPartition'],
+    entities: Optional[int] = Field(default=None, description="""How many entities, resources with an IRI, the dataset describes.""", ge=0, json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '4.6'}},
+         'domain_of': ['Dataset', 'ClassBasedPartition', 'PropertyBasedPartition'],
          'slot_uri': 'void:entities'} })
-    classes: Optional[int] = Field(default=None, description="""How many distinct classes the dataset's rdf:type triples name.""", ge=0, json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset', 'ClassBasedPartition', 'PropertyBasedPartition'],
+    classes: Optional[int] = Field(default=None, description="""How many distinct classes the dataset's rdf:type triples name.""", ge=0, json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '4.6'}},
+         'domain_of': ['Dataset', 'ClassBasedPartition', 'PropertyBasedPartition'],
          'slot_uri': 'void:classes'} })
-    properties: Optional[int] = Field(default=None, description="""How many distinct properties the dataset's triples use as predicates.""", ge=0, json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset', 'ClassBasedPartition', 'PropertyBasedPartition'],
+    properties: Optional[int] = Field(default=None, description="""How many distinct properties the dataset's triples use as predicates.""", ge=0, json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '4.6'}},
+         'domain_of': ['Dataset', 'ClassBasedPartition', 'PropertyBasedPartition'],
          'slot_uri': 'void:properties'} })
-    distinctSubjects: Optional[int] = Field(default=None, description="""How many distinct IRIs and blank nodes the dataset's triples have as subjects.""", ge=0, json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset', 'ClassBasedPartition', 'PropertyBasedPartition'],
+    distinctSubjects: Optional[int] = Field(default=None, description="""How many distinct IRIs and blank nodes the dataset's triples have as subjects.""", ge=0, json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '4.6'}},
+         'domain_of': ['Dataset', 'ClassBasedPartition', 'PropertyBasedPartition'],
          'slot_uri': 'void:distinctSubjects'} })
-    distinctObjects: Optional[int] = Field(default=None, description="""How many distinct IRIs, blank nodes and literals the dataset's triples have as objects.""", ge=0, json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset', 'ClassBasedPartition', 'PropertyBasedPartition'],
+    distinctObjects: Optional[int] = Field(default=None, description="""How many distinct IRIs, blank nodes and literals the dataset's triples have as objects.""", ge=0, json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '4.6'}},
+         'domain_of': ['Dataset', 'ClassBasedPartition', 'PropertyBasedPartition'],
          'slot_uri': 'void:distinctObjects'} })
-    documents: Optional[int] = Field(default=None, description="""How many RDF documents together carry the dataset, for example RDFa web pages.""", ge=0, json_schema_extra = { "linkml_meta": {'comments': ['Use it where the triples are hard to count; triples and '
+    documents: Optional[int] = Field(default=None, description="""How many RDF documents together carry the dataset, for example RDFa web pages.""", ge=0, json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '4.6'}},
+         'comments': ['Use it where the triples are hard to count; triples and '
                       'entities say more where they can be given.'],
          'domain_of': ['Dataset', 'ClassBasedPartition', 'PropertyBasedPartition'],
          'slot_uri': 'void:documents'} })
-    propertyPartition: Optional[list[PropertyBasedPartition]] = Field(default=None, description="""The dataset's slice for one property, given inside it.""", json_schema_extra = { "linkml_meta": {'comments': ['VoID makes it a narrower subset; here it is a value, so it does '
+    propertyPartition: Optional[list[PropertyBasedPartition]] = Field(default=None, description="""The dataset's slice for one property, given inside it.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '4.5'}},
+         'comments': ['VoID makes it a narrower subset; here it is a value, so it does '
                       "not inherit subset's range."],
          'domain_of': ['Dataset', 'ClassBasedPartition'],
          'slot_uri': 'void:propertyPartition'} })
@@ -674,27 +832,37 @@ class PropertyBasedPartition(ConfiguredBaseModel):
     """
     The slice of a dataset made of the triples whose predicate is one property, written inside that dataset, most often to give counts for it.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'broad_mappings': ['void:Dataset'],
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'note_section': {'tag': 'note_section', 'value': '4.5'}},
+         'broad_mappings': ['void:Dataset'],
          'class_uri': 'void_linkml:PropertyBasedPartition',
          'comments': ['As for a class partition, VoID gives it no class of its own, '
                       'and this schema writes it as a value inside its dataset.'],
          'from_schema': 'https://w3id.org/lmodel/void',
          'slot_usage': {'property': {'name': 'property', 'required': True}}})
 
-    property: str = Field(default=..., description="""The property whose triples a property partition holds, named by its IRI, such as foaf:name.""", json_schema_extra = { "linkml_meta": {'domain_of': ['PropertyBasedPartition'], 'slot_uri': 'void:property'} })
-    triples: Optional[int] = Field(default=None, description="""How many triples the dataset holds; for a linkset, how many links.""", ge=0, json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset', 'ClassBasedPartition', 'PropertyBasedPartition'],
+    property: str = Field(default=..., description="""The property whose triples a property partition holds, named by its IRI, such as foaf:name.""", json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '4.5'}},
+         'domain_of': ['PropertyBasedPartition'],
+         'slot_uri': 'void:property'} })
+    triples: Optional[int] = Field(default=None, description="""How many triples the dataset holds; for a linkset, how many links.""", ge=0, json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '4.6'}},
+         'domain_of': ['Dataset', 'ClassBasedPartition', 'PropertyBasedPartition'],
          'slot_uri': 'void:triples'} })
-    entities: Optional[int] = Field(default=None, description="""How many entities, resources with an IRI, the dataset describes.""", ge=0, json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset', 'ClassBasedPartition', 'PropertyBasedPartition'],
+    entities: Optional[int] = Field(default=None, description="""How many entities, resources with an IRI, the dataset describes.""", ge=0, json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '4.6'}},
+         'domain_of': ['Dataset', 'ClassBasedPartition', 'PropertyBasedPartition'],
          'slot_uri': 'void:entities'} })
-    classes: Optional[int] = Field(default=None, description="""How many distinct classes the dataset's rdf:type triples name.""", ge=0, json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset', 'ClassBasedPartition', 'PropertyBasedPartition'],
+    classes: Optional[int] = Field(default=None, description="""How many distinct classes the dataset's rdf:type triples name.""", ge=0, json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '4.6'}},
+         'domain_of': ['Dataset', 'ClassBasedPartition', 'PropertyBasedPartition'],
          'slot_uri': 'void:classes'} })
-    properties: Optional[int] = Field(default=None, description="""How many distinct properties the dataset's triples use as predicates.""", ge=0, json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset', 'ClassBasedPartition', 'PropertyBasedPartition'],
+    properties: Optional[int] = Field(default=None, description="""How many distinct properties the dataset's triples use as predicates.""", ge=0, json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '4.6'}},
+         'domain_of': ['Dataset', 'ClassBasedPartition', 'PropertyBasedPartition'],
          'slot_uri': 'void:properties'} })
-    distinctSubjects: Optional[int] = Field(default=None, description="""How many distinct IRIs and blank nodes the dataset's triples have as subjects.""", ge=0, json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset', 'ClassBasedPartition', 'PropertyBasedPartition'],
+    distinctSubjects: Optional[int] = Field(default=None, description="""How many distinct IRIs and blank nodes the dataset's triples have as subjects.""", ge=0, json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '4.6'}},
+         'domain_of': ['Dataset', 'ClassBasedPartition', 'PropertyBasedPartition'],
          'slot_uri': 'void:distinctSubjects'} })
-    distinctObjects: Optional[int] = Field(default=None, description="""How many distinct IRIs, blank nodes and literals the dataset's triples have as objects.""", ge=0, json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset', 'ClassBasedPartition', 'PropertyBasedPartition'],
+    distinctObjects: Optional[int] = Field(default=None, description="""How many distinct IRIs, blank nodes and literals the dataset's triples have as objects.""", ge=0, json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '4.6'}},
+         'domain_of': ['Dataset', 'ClassBasedPartition', 'PropertyBasedPartition'],
          'slot_uri': 'void:distinctObjects'} })
-    documents: Optional[int] = Field(default=None, description="""How many RDF documents together carry the dataset, for example RDFa web pages.""", ge=0, json_schema_extra = { "linkml_meta": {'comments': ['Use it where the triples are hard to count; triples and '
+    documents: Optional[int] = Field(default=None, description="""How many RDF documents together carry the dataset, for example RDFa web pages.""", ge=0, json_schema_extra = { "linkml_meta": {'annotations': {'note_section': {'tag': 'note_section', 'value': '4.6'}},
+         'comments': ['Use it where the triples are hard to count; triples and '
                       'entities say more where they can be given.'],
          'domain_of': ['Dataset', 'ClassBasedPartition', 'PropertyBasedPartition'],
          'slot_uri': 'void:documents'} })

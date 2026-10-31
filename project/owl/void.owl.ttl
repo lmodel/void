@@ -18,7 +18,7 @@
 	rdfs:label "void" ;
 	rdfs:seeAlso <https://lmodel.github.io/void> , <https://www.w3.org/TR/void/> ;
 	skos:definition "A LinkML rendering of the Vocabulary of Interlinked Datasets (VoID), the RDF vocabulary for describing datasets of linked data and the links between them, as the W3C Interest Group Note of 3 March 2011 explains it. Every VoID class and property keeps its VoID IRI, and the Dublin Core, FOAF and RDF Schema terms the Note uses in a description keep theirs." ;
-	skos:note "A slot whose value names a resource by its IRI or a CURIE, such as id, class, subset or target, carries the pattern of a scheme or prefix, a colon and no space. LinkML 1.12.1 renders the uriorcurie type, and a reference to a class, as a JSON Schema string with no format, so without it the validator would pass any text there." , "Kept from the Note's account of a description: the Dublin Core terms of its sections 2.2, 2.4 and 2.5, FOAF's homepage and page (2.1) and topic and primaryTopic (6.2), and the RDF Schema label, comment and seeAlso of a technical feature (2.6). Left out: dcterms:date, since a slot named date takes the name of LinkML's date type, and the generated Pydantic model then checks none of the dates, while created, issued and modified carry the dates the Note names; the agents a description names, which FOAF describes; the Waiver vocabulary's norms and waiver (2.4); and the SPARQL Service Description terms (6.5), which describe a service rather than a dataset." , "Neither the Note nor the vocabulary file is copied: every description here is this project's own, and NOTICE says why." , "The version is the date of the Note's edition, and the source its dated address. The schema renders every class and property that the vocabulary file declares, as its editors keep it at the commit the vocabulary_file annotation names; tests/upstream/void-terms.tsv lists them, and the tests hold this schema to that list." ;
+	skos:note "A slot whose value names a resource by its IRI or a CURIE, such as id, class, subset or target, carries the pattern of a scheme or prefix, a colon and no space. LinkML 1.12.1 renders the uriorcurie type, and a reference to a class, as a JSON Schema string with no format, so without it the validator would pass any text there." , "Each class and slot names, in its note_section annotation, the section of the Note that explains it. The class names are VoID's own, with no prefix of this schema's: no record carries a class name, and the adapt copy renames Dataset, which LOKF also defines, to VoidDataset." , "Kept from the Note's account of a description: the Dublin Core terms of its sections 2.2, 2.4 and 2.5, FOAF's homepage and page (2.1) and topic and primaryTopic (6.2), and the RDF Schema label, comment and seeAlso of a technical feature (2.6). Left out: dcterms:date, since a slot named date takes the name of LinkML's date type, and the generated Pydantic model then checks none of the dates, while created, issued and modified carry the dates the Note names; the agents a description names, which FOAF describes; the Waiver vocabulary's norms and waiver (2.4); and the SPARQL Service Description terms (6.5), which describe a service rather than a dataset." , "Neither the Note nor the vocabulary file is copied: every description here is this project's own, and NOTICE says why." , "The version is the date of the Note's edition, and the source its dated address. The schema renders every class and property that the vocabulary file declares, as its editors keep it at the commit the vocabulary_file annotation names; tests/upstream/void-terms.tsv lists them, and the tests hold this schema to that list." ;
 	void_linkml:upstream_license "The Note is under the W3C Document License (https://www.w3.org/Consortium/Legal/copyright-documents); the vocabulary file states no licence." ;
 	void_linkml:vocabulary_file "https://github.com/cygri/void/blob/5b2ca68b7897c2613d4269fd725f1812dce21267/rdfs/void.ttl" ;
 	void_linkml:vocabulary_modified "2011-03-06" .
@@ -29,7 +29,8 @@ void_linkml:ClassBasedPartition a owl:Class ;
 	skos:definition "The slice of a dataset about the members of one class, written inside that dataset, most often to give counts for it." ;
 	skos:exactMatch void_linkml:ClassBasedPartition ;
 	skos:inScheme <https://w3id.org/lmodel/void> ;
-	skos:note "VoID gives a partition no class of its own: it is a dataset, usually a blank node. This schema writes it as a value inside its dataset, so it has no IRI, and its class lives in this schema's own namespace. The name follows VoID's phrase for it and differs from the classPartition slot's by more than case, so that their pages are two files on a filesystem that ignores case." .
+	skos:note "VoID gives a partition no class of its own: it is a dataset, usually a blank node. This schema writes it as a value inside its dataset, so it has no IRI, and its class lives in this schema's own namespace. The name follows VoID's phrase for it and differs from the classPartition slot's by more than case, so that their pages are two files on a filesystem that ignores case." ;
+	void_linkml:note_section "4.5" .
 void_linkml:Dataset a owl:Class ;
 	rdfs:label "Dataset" ;
 	rdfs:subClassOf _:c14n0 , _:c14n10 , _:c14n101 , _:c14n102 , _:c14n104 , _:c14n107 , _:c14n11 , _:c14n112 , _:c14n114 , _:c14n116 , _:c14n117 , _:c14n120 , _:c14n122 , _:c14n123 , _:c14n124 , _:c14n130 , _:c14n132 , _:c14n137 , _:c14n138 , _:c14n142 , _:c14n143 , _:c14n145 , _:c14n150 , _:c14n155 , _:c14n156 , _:c14n157 , _:c14n159 , _:c14n160 , _:c14n162 , _:c14n165 , _:c14n166 , _:c14n17 , _:c14n170 , _:c14n174 , _:c14n175 , _:c14n177 , _:c14n18 , _:c14n181 , _:c14n182 , _:c14n184 , _:c14n186 , _:c14n188 , _:c14n190 , _:c14n191 , _:c14n192 , _:c14n194 , _:c14n196 , _:c14n197 , _:c14n199 , _:c14n20 , _:c14n200 , _:c14n203 , _:c14n205 , _:c14n206 , _:c14n208 , _:c14n209 , _:c14n210 , _:c14n212 , _:c14n25 , _:c14n26 , _:c14n27 , _:c14n29 , _:c14n30 , _:c14n38 , _:c14n41 , _:c14n44 , _:c14n46 , _:c14n50 , _:c14n55 , _:c14n63 , _:c14n64 , _:c14n66 , _:c14n68 , _:c14n70 , _:c14n72 , _:c14n75 , _:c14n81 , _:c14n82 , _:c14n86 , _:c14n88 , _:c14n91 , _:c14n93 , _:c14n94 , _:c14n95 , _:c14n96 , _:c14n97 ;
@@ -39,7 +40,8 @@ void_linkml:Dataset a owl:Class ;
 	skos:exactMatch void:Dataset ;
 	skos:inScheme <https://w3id.org/lmodel/void> ;
 	skos:narrowMatch sd:Dataset , sd:Graph ;
-	skos:note "A dataset is named by an IRI, and the IRI of another dataset is how a subset, a linkset's target or a description refers to it." .
+	skos:note "A dataset is named by an IRI, and the IRI of another dataset is how a subset, a linkset's target or a description refers to it." ;
+	void_linkml:note_section "1.3" .
 void_linkml:DatasetDescription a owl:Class ;
 	rdfs:label "DatasetDescription" ;
 	rdfs:subClassOf _:c14n105 , _:c14n106 , _:c14n109 , _:c14n118 , _:c14n129 , _:c14n13 , _:c14n135 , _:c14n154 , _:c14n16 , _:c14n161 , _:c14n167 , _:c14n179 , _:c14n183 , _:c14n19 , _:c14n21 , _:c14n35 , _:c14n36 , _:c14n39 , _:c14n47 , _:c14n5 , _:c14n51 , _:c14n59 , _:c14n6 , _:c14n80 , _:c14n83 , _:c14n87 ;
@@ -47,14 +49,16 @@ void_linkml:DatasetDescription a owl:Class ;
 	skos:definition "A web document, such as a void.ttl file published beside a dataset, that describes one or more datasets." ;
 	skos:editorialNote "The broad mapping is the vocabulary file's own statement that a dataset description is a FOAF document." ;
 	skos:exactMatch void:DatasetDescription ;
-	skos:inScheme <https://w3id.org/lmodel/void> .
+	skos:inScheme <https://w3id.org/lmodel/void> ;
+	void_linkml:note_section "6.2" .
 void_linkml:Linkset a owl:Class ;
 	rdfs:label "Linkset" ;
 	rdfs:subClassOf void_linkml:Dataset , _:c14n100 , _:c14n110 , _:c14n126 , _:c14n131 , _:c14n134 , _:c14n146 , _:c14n149 , _:c14n152 , _:c14n180 , _:c14n198 , _:c14n58 , _:c14n60 , _:c14n99 ;
 	skos:definition "A dataset of triples that join two datasets: each triple's subject belongs to one of them and its object to the other." ;
 	skos:exactMatch void:Linkset ;
 	skos:inScheme <https://w3id.org/lmodel/void> ;
-	skos:note "A linkset links exactly two distinct datasets: the targets, the subjects' target and the objects' target together name two. The validator checks that two are named; tests/test_data.py checks that they differ." .
+	skos:note "A linkset links exactly two distinct datasets: the targets, the subjects' target and the objects' target together name two. The validator checks that two are named; tests/test_data.py checks that they differ." ;
+	void_linkml:note_section "1.4" .
 void_linkml:PropertyBasedPartition a owl:Class ;
 	rdfs:label "PropertyBasedPartition" ;
 	rdfs:subClassOf _:c14n108 , _:c14n115 , _:c14n119 , _:c14n133 , _:c14n136 , _:c14n151 , _:c14n153 , _:c14n164 , _:c14n176 , _:c14n178 , _:c14n2 , _:c14n202 , _:c14n23 , _:c14n28 , _:c14n34 , _:c14n48 , _:c14n52 , _:c14n54 , _:c14n61 , _:c14n65 , _:c14n78 , _:c14n8 , _:c14n89 , _:c14n90 ;
@@ -62,251 +66,299 @@ void_linkml:PropertyBasedPartition a owl:Class ;
 	skos:definition "The slice of a dataset made of the triples whose predicate is one property, written inside that dataset, most often to give counts for it." ;
 	skos:exactMatch void_linkml:PropertyBasedPartition ;
 	skos:inScheme <https://w3id.org/lmodel/void> ;
-	skos:note "As for a class partition, VoID gives it no class of its own, and this schema writes it as a value inside its dataset." .
+	skos:note "As for a class partition, VoID gives it no class of its own, and this schema writes it as a value inside its dataset." ;
+	void_linkml:note_section "4.5" .
 void_linkml:TechnicalFeature a owl:Class ;
 	rdfs:label "TechnicalFeature" ;
 	rdfs:subClassOf _:c14n113 , _:c14n14 , _:c14n147 , _:c14n169 , _:c14n193 , _:c14n213 , _:c14n32 , _:c14n40 , _:c14n69 , _:c14n84 , _:c14n9 ;
 	skos:definition "A technical property of how a dataset is served, such as an RDF syntax it can be read in or an HTTP feature its server supports." ;
 	skos:exactMatch void:TechnicalFeature ;
 	skos:inScheme <https://w3id.org/lmodel/void> ;
-	skos:note "W3C names the RDF syntaxes under http://www.w3.org/ns/formats/, such as http://www.w3.org/ns/formats/Turtle; a feature of another kind takes an IRI of its publisher's own." .
+	skos:note "W3C names the RDF syntaxes under http://www.w3.org/ns/formats/, such as http://www.w3.org/ns/formats/Turtle; a feature of another kind takes an IRI of its publisher's own." ;
+	void_linkml:note_section "2.6" .
 void_linkml:class a owl:DatatypeProperty ;
 	rdfs:label "class" ;
 	rdfs:range _:c14n172 ;
 	skos:definition "The class whose instances a class partition describes, named by its IRI, such as foaf:Person." ;
-	skos:inScheme <https://w3id.org/lmodel/void> .
+	skos:inScheme <https://w3id.org/lmodel/void> ;
+	void_linkml:note_section "4.5" .
 void_linkml:classPartition a owl:ObjectProperty ;
 	rdfs:label "classPartition" ;
 	rdfs:range void_linkml:ClassBasedPartition ;
 	skos:definition "The dataset's slice for one class, given inside it." ;
 	skos:inScheme <https://w3id.org/lmodel/void> ;
-	skos:note "VoID makes it a narrower subset; here it is a value, so it does not inherit subset's range." .
+	skos:note "VoID makes it a narrower subset; here it is a value, so it does not inherit subset's range." ;
+	void_linkml:note_section "4.5" .
 void_linkml:classes a owl:DatatypeProperty ;
 	rdfs:label "classes" ;
 	rdfs:range _:c14n125 ;
 	skos:definition "How many distinct classes the dataset's rdf:type triples name." ;
-	skos:inScheme <https://w3id.org/lmodel/void> .
+	skos:inScheme <https://w3id.org/lmodel/void> ;
+	void_linkml:note_section "4.6" .
 void_linkml:comment a owl:DatatypeProperty ;
 	rdfs:label "comment" ;
 	skos:definition "A sentence or two about the feature." ;
-	skos:inScheme <https://w3id.org/lmodel/void> .
+	skos:inScheme <https://w3id.org/lmodel/void> ;
+	void_linkml:note_section "2.6" .
 void_linkml:contributor a owl:DatatypeProperty ;
 	rdfs:label "contributor" ;
 	rdfs:range xsd:anyURI ;
 	skos:definition "The IRI of an agent that added to the dataset without being its main maker." ;
-	skos:inScheme <https://w3id.org/lmodel/void> .
+	skos:inScheme <https://w3id.org/lmodel/void> ;
+	void_linkml:note_section "2.2" .
 void_linkml:created a owl:DatatypeProperty ;
 	rdfs:label "created" ;
 	rdfs:range xsd:date ;
 	skos:definition "The date the dataset or document was made." ;
-	skos:inScheme <https://w3id.org/lmodel/void> .
+	skos:inScheme <https://w3id.org/lmodel/void> ;
+	void_linkml:note_section "2.2" .
 void_linkml:creator a owl:DatatypeProperty ;
 	rdfs:label "creator" ;
 	rdfs:range xsd:anyURI ;
 	skos:definition "The IRI of the agent, human or not, that chiefly made the dataset or document." ;
-	skos:inScheme <https://w3id.org/lmodel/void> .
+	skos:inScheme <https://w3id.org/lmodel/void> ;
+	void_linkml:note_section "2.2" .
 void_linkml:dataDump a owl:DatatypeProperty ;
 	rdfs:label "dataDump" ;
 	rdfs:range xsd:anyURI ;
 	skos:definition "A downloadable RDF file holding all of the dataset or a share of it." ;
 	skos:inScheme <https://w3id.org/lmodel/void> ;
-	skos:note "A page that links to downloads is not a dump; give it as a page instead." .
+	skos:note "A page that links to downloads is not a dump; give it as a page instead." ;
+	void_linkml:note_section "3.3" .
 void_linkml:description a owl:DatatypeProperty ;
 	rdfs:label "description" ;
 	skos:definition "A few sentences of prose saying what the dataset or document contains." ;
-	skos:inScheme <https://w3id.org/lmodel/void> .
+	skos:inScheme <https://w3id.org/lmodel/void> ;
+	void_linkml:note_section "2.2" .
 void_linkml:distinctObjects a owl:DatatypeProperty ;
 	rdfs:label "distinctObjects" ;
 	rdfs:range _:c14n204 ;
 	skos:definition "How many distinct IRIs, blank nodes and literals the dataset's triples have as objects." ;
-	skos:inScheme <https://w3id.org/lmodel/void> .
+	skos:inScheme <https://w3id.org/lmodel/void> ;
+	void_linkml:note_section "4.6" .
 void_linkml:distinctSubjects a owl:DatatypeProperty ;
 	rdfs:label "distinctSubjects" ;
 	rdfs:range _:c14n42 ;
 	skos:definition "How many distinct IRIs and blank nodes the dataset's triples have as subjects." ;
-	skos:inScheme <https://w3id.org/lmodel/void> .
+	skos:inScheme <https://w3id.org/lmodel/void> ;
+	void_linkml:note_section "4.6" .
 void_linkml:documents a owl:DatatypeProperty ;
 	rdfs:label "documents" ;
 	rdfs:range _:c14n1 ;
 	skos:definition "How many RDF documents together carry the dataset, for example RDFa web pages." ;
 	skos:inScheme <https://w3id.org/lmodel/void> ;
-	skos:note "Use it where the triples are hard to count; triples and entities say more where they can be given." .
+	skos:note "Use it where the triples are hard to count; triples and entities say more where they can be given." ;
+	void_linkml:note_section "4.6" .
 void_linkml:entities a owl:DatatypeProperty ;
 	rdfs:label "entities" ;
 	rdfs:range _:c14n171 ;
 	skos:definition "How many entities, resources with an IRI, the dataset describes." ;
-	skos:inScheme <https://w3id.org/lmodel/void> .
+	skos:inScheme <https://w3id.org/lmodel/void> ;
+	void_linkml:note_section "4.6" .
 void_linkml:exampleResource a owl:DatatypeProperty ;
 	rdfs:label "exampleResource" ;
 	rdfs:range xsd:anyURI ;
 	skos:definition "The IRI of an entity typical of the dataset, for a reader to look up." ;
-	skos:inScheme <https://w3id.org/lmodel/void> .
+	skos:inScheme <https://w3id.org/lmodel/void> ;
+	void_linkml:note_section "4.1" .
 void_linkml:feature a owl:ObjectProperty ;
 	rdfs:label "feature" ;
 	rdfs:range _:c14n211 ;
 	skos:definition "Something the dataset's server or files support, for instance an RDF syntax, named by its IRI." ;
-	skos:inScheme <https://w3id.org/lmodel/void> .
+	skos:inScheme <https://w3id.org/lmodel/void> ;
+	void_linkml:note_section "2.6" .
 void_linkml:homepage a owl:DatatypeProperty ;
 	rdfs:label "homepage" ;
 	rdfs:range xsd:anyURI ;
 	skos:definition "The web page about the dataset itself." ;
-	skos:inScheme <https://w3id.org/lmodel/void> .
+	skos:inScheme <https://w3id.org/lmodel/void> ;
+	void_linkml:note_section "2.1" .
 void_linkml:id a owl:DatatypeProperty ;
 	rdfs:label "id" ;
 	rdfs:range _:c14n127 ;
 	skos:definition "The IRI of the dataset, document or feature, written in full or as a CURIE." ;
 	skos:inScheme <https://w3id.org/lmodel/void> ;
-	skos:note "VoID has no property for the IRI, which RDF writes as the subject, so the key lives in this schema's own namespace." .
+	skos:note "VoID has no property for the IRI, which RDF writes as the subject, so the key lives in this schema's own namespace." ;
+	void_linkml:note_section "6.1" .
 void_linkml:inDataset a owl:ObjectProperty ;
 	rdfs:label "inDataset" ;
 	rdfs:range _:c14n158 ;
 	skos:definition "The dataset that this document's triples belong to, named by its IRI." ;
 	skos:inScheme <https://w3id.org/lmodel/void> ;
-	skos:note "A document names one; a document in two datasets points at a dataset that holds both as subsets." .
+	skos:note "A document names one; a document in two datasets points at a dataset that holds both as subsets." ;
+	void_linkml:note_section "6.3" .
 void_linkml:issued a owl:DatatypeProperty ;
 	rdfs:label "issued" ;
 	rdfs:range xsd:date ;
 	skos:definition "The date the dataset was first published." ;
-	skos:inScheme <https://w3id.org/lmodel/void> .
+	skos:inScheme <https://w3id.org/lmodel/void> ;
+	void_linkml:note_section "2.2" .
 void_linkml:label a owl:DatatypeProperty ;
 	rdfs:label "label" ;
 	skos:definition "A short name for the feature." ;
-	skos:inScheme <https://w3id.org/lmodel/void> .
+	skos:inScheme <https://w3id.org/lmodel/void> ;
+	void_linkml:note_section "2.6" .
 void_linkml:license a owl:DatatypeProperty ;
 	rdfs:label "license" ;
 	rdfs:range xsd:anyURI ;
 	skos:definition "The IRI of the licence that sets the terms for using the dataset." ;
-	skos:inScheme <https://w3id.org/lmodel/void> .
+	skos:inScheme <https://w3id.org/lmodel/void> ;
+	void_linkml:note_section "2.4" .
 void_linkml:linkPredicate a owl:DatatypeProperty ;
 	rdfs:label "linkPredicate" ;
 	rdfs:range _:c14n92 ;
 	skos:definition "The property every link of a linkset has as its predicate, such as owl:sameAs." ;
 	skos:inScheme <https://w3id.org/lmodel/void> ;
-	skos:note "A linkset has one; links with two predicates make two linksets." .
+	skos:note "A linkset has one; links with two predicates make two linksets." ;
+	void_linkml:note_section "5.3" .
 void_linkml:modified a owl:DatatypeProperty ;
 	rdfs:label "modified" ;
 	rdfs:range xsd:date ;
 	skos:definition "The date the dataset or document last changed." ;
-	skos:inScheme <https://w3id.org/lmodel/void> .
+	skos:inScheme <https://w3id.org/lmodel/void> ;
+	void_linkml:note_section "2.2" .
 void_linkml:objectsTarget a owl:ObjectProperty ;
 	rdfs:label "objectsTarget" ;
 	rdfs:range void_linkml:Dataset ;
 	rdfs:subPropertyOf void_linkml:target ;
 	skos:definition "The dataset at the object end of every link in a linkset, named by its IRI." ;
-	skos:inScheme <https://w3id.org/lmodel/void> .
+	skos:inScheme <https://w3id.org/lmodel/void> ;
+	void_linkml:note_section "5.1" .
 void_linkml:openSearchDescription a owl:DatatypeProperty ;
 	rdfs:label "openSearchDescription" ;
 	rdfs:range xsd:anyURI ;
 	skos:definition "An OpenSearch file telling a client how to run keyword searches over the dataset." ;
-	skos:inScheme <https://w3id.org/lmodel/void> .
+	skos:inScheme <https://w3id.org/lmodel/void> ;
+	void_linkml:note_section "3.6" .
 void_linkml:page a owl:DatatypeProperty ;
 	rdfs:label "page" ;
 	rdfs:range xsd:anyURI ;
 	skos:definition "Any further web page with information on the dataset, for instance its download page or its catalogue entry." ;
-	skos:inScheme <https://w3id.org/lmodel/void> .
+	skos:inScheme <https://w3id.org/lmodel/void> ;
+	void_linkml:note_section "2.1" .
 void_linkml:primaryTopic a owl:ObjectProperty ;
 	rdfs:label "primaryTopic" ;
 	rdfs:range _:c14n98 ;
 	skos:definition "The dataset a description is about, when it describes one." ;
-	skos:inScheme <https://w3id.org/lmodel/void> .
+	skos:inScheme <https://w3id.org/lmodel/void> ;
+	void_linkml:note_section "6.2" .
 void_linkml:properties a owl:DatatypeProperty ;
 	rdfs:label "properties" ;
 	rdfs:range _:c14n57 ;
 	skos:definition "How many distinct properties the dataset's triples use as predicates." ;
-	skos:inScheme <https://w3id.org/lmodel/void> .
+	skos:inScheme <https://w3id.org/lmodel/void> ;
+	void_linkml:note_section "4.6" .
 void_linkml:property a owl:DatatypeProperty ;
 	rdfs:label "property" ;
 	rdfs:range _:c14n4 ;
 	skos:definition "The property whose triples a property partition holds, named by its IRI, such as foaf:name." ;
-	skos:inScheme <https://w3id.org/lmodel/void> .
+	skos:inScheme <https://w3id.org/lmodel/void> ;
+	void_linkml:note_section "4.5" .
 void_linkml:propertyPartition a owl:ObjectProperty ;
 	rdfs:label "propertyPartition" ;
 	rdfs:range void_linkml:PropertyBasedPartition ;
 	skos:definition "The dataset's slice for one property, given inside it." ;
 	skos:inScheme <https://w3id.org/lmodel/void> ;
-	skos:note "VoID makes it a narrower subset; here it is a value, so it does not inherit subset's range." .
+	skos:note "VoID makes it a narrower subset; here it is a value, so it does not inherit subset's range." ;
+	void_linkml:note_section "4.5" .
 void_linkml:publisher a owl:DatatypeProperty ;
 	rdfs:label "publisher" ;
 	rdfs:range xsd:anyURI ;
 	skos:definition "The IRI of the agent that releases the dataset for others to use." ;
-	skos:inScheme <https://w3id.org/lmodel/void> .
+	skos:inScheme <https://w3id.org/lmodel/void> ;
+	void_linkml:note_section "2.2" .
 void_linkml:rootResource a owl:DatatypeProperty ;
 	rdfs:label "rootResource" ;
 	rdfs:range xsd:anyURI ;
 	skos:definition "The IRI of a starting point for crawling the dataset: a resource from which links lead, within a few hops, to all the others." ;
-	skos:inScheme <https://w3id.org/lmodel/void> .
+	skos:inScheme <https://w3id.org/lmodel/void> ;
+	void_linkml:note_section "3.4" .
 void_linkml:seeAlso a owl:DatatypeProperty ;
 	rdfs:label "seeAlso" ;
 	rdfs:range xsd:anyURI ;
 	skos:definition "A web page that tells more about the feature." ;
-	skos:inScheme <https://w3id.org/lmodel/void> .
+	skos:inScheme <https://w3id.org/lmodel/void> ;
+	void_linkml:note_section "2.6" .
 void_linkml:source a owl:DatatypeProperty ;
 	rdfs:label "source" ;
 	rdfs:range xsd:anyURI ;
 	skos:definition "The IRI of an earlier resource whose content the dataset draws on." ;
-	skos:inScheme <https://w3id.org/lmodel/void> .
+	skos:inScheme <https://w3id.org/lmodel/void> ;
+	void_linkml:note_section "2.2" .
 void_linkml:sparqlEndpoint a owl:DatatypeProperty ;
 	rdfs:label "sparqlEndpoint" ;
 	rdfs:range xsd:anyURI ;
 	skos:definition "A SPARQL service whose default graph holds the dataset, for running queries on it." ;
-	skos:inScheme <https://w3id.org/lmodel/void> .
+	skos:inScheme <https://w3id.org/lmodel/void> ;
+	void_linkml:note_section "3.2" .
 void_linkml:subject a owl:DatatypeProperty ;
 	rdfs:label "subject" ;
 	rdfs:range xsd:anyURI ;
 	skos:definition "The IRI of a topic the dataset covers, such as a DBpedia resource or a SKOS concept." ;
-	skos:inScheme <https://w3id.org/lmodel/void> .
+	skos:inScheme <https://w3id.org/lmodel/void> ;
+	void_linkml:note_section "2.5" .
 void_linkml:subjectsTarget a owl:ObjectProperty ;
 	rdfs:label "subjectsTarget" ;
 	rdfs:range void_linkml:Dataset ;
 	rdfs:subPropertyOf void_linkml:target ;
 	skos:definition "The dataset at the subject end of every link in a linkset, named by its IRI." ;
-	skos:inScheme <https://w3id.org/lmodel/void> .
+	skos:inScheme <https://w3id.org/lmodel/void> ;
+	void_linkml:note_section "5.1" .
 void_linkml:subset a owl:ObjectProperty ;
 	rdfs:label "subset" ;
 	rdfs:range _:c14n173 ;
 	skos:definition "Another dataset contained in this one, named by its IRI." ;
-	skos:inScheme <https://w3id.org/lmodel/void> .
+	skos:inScheme <https://w3id.org/lmodel/void> ;
+	void_linkml:note_section "4.4" .
 void_linkml:target a owl:ObjectProperty ;
 	rdfs:label "target" ;
 	rdfs:range _:c14n22 ;
 	skos:definition "Either dataset a linkset joins, named by its IRI." ;
 	skos:inScheme <https://w3id.org/lmodel/void> ;
-	skos:note "Linkset makes it a list of two. The slot itself stays single-valued, so that subjectsTarget and objectsTarget, its narrower slots, inherit one value each." .
+	skos:note "Linkset makes it a list of two. The slot itself stays single-valued, so that subjectsTarget and objectsTarget, its narrower slots, inherit one value each." ;
+	void_linkml:note_section "5.1" .
 void_linkml:title a owl:DatatypeProperty ;
 	rdfs:label "title" ;
 	skos:definition "A human-readable name for the dataset or document." ;
-	skos:inScheme <https://w3id.org/lmodel/void> .
+	skos:inScheme <https://w3id.org/lmodel/void> ;
+	void_linkml:note_section "2.2" .
 void_linkml:topic a owl:ObjectProperty ;
 	rdfs:label "topic" ;
 	rdfs:range _:c14n73 ;
 	skos:definition "A dataset a description is about, when it describes several of equal weight." ;
-	skos:inScheme <https://w3id.org/lmodel/void> .
+	skos:inScheme <https://w3id.org/lmodel/void> ;
+	void_linkml:note_section "6.2" .
 void_linkml:triples a owl:DatatypeProperty ;
 	rdfs:label "triples" ;
 	rdfs:range _:c14n187 ;
 	skos:definition "How many triples the dataset holds; for a linkset, how many links." ;
-	skos:inScheme <https://w3id.org/lmodel/void> .
+	skos:inScheme <https://w3id.org/lmodel/void> ;
+	void_linkml:note_section "4.6" .
 void_linkml:uriLookupEndpoint a owl:DatatypeProperty ;
 	rdfs:label "uriLookupEndpoint" ;
 	rdfs:range xsd:anyURI ;
 	skos:definition "A web address that, with an entity's percent-encoded IRI added to its end, answers an HTTP GET with RDF about that entity." ;
-	skos:inScheme <https://w3id.org/lmodel/void> .
+	skos:inScheme <https://w3id.org/lmodel/void> ;
+	void_linkml:note_section "3.5" .
 void_linkml:uriRegexPattern a owl:DatatypeProperty ;
 	rdfs:label "uriRegexPattern" ;
 	skos:definition "A regular expression in SPARQL's syntax that each entity IRI of the dataset satisfies." ;
 	skos:inScheme <https://w3id.org/lmodel/void> ;
-	skos:note "The validator checks no regular expression's syntax; tests/test_data.py compiles each one in the examples." .
+	skos:note "The validator checks no regular expression's syntax; tests/test_data.py compiles each one in the examples." ;
+	void_linkml:note_section "4.2" .
 void_linkml:uriSpace a owl:DatatypeProperty ;
 	rdfs:label "uriSpace" ;
 	rdfs:range _:c14n201 ;
 	skos:definition "The string every entity IRI in the dataset starts with, such as http://example.org/resource/." ;
 	skos:inScheme <https://w3id.org/lmodel/void> ;
-	skos:note "VoID writes it as a literal, not as an IRI, so the range is a string, held to the form of an IRI's start." .
+	skos:note "VoID writes it as a literal, not as an IRI, so the range is a string, held to the form of an IRI's start." ;
+	void_linkml:note_section "4.2" .
 void_linkml:vocabulary a owl:DatatypeProperty ;
 	rdfs:label "vocabulary" ;
 	rdfs:range _:c14n168 ;
 	skos:definition "The namespace IRI of a vocabulary the dataset uses, as a term's IRI reads without its local name and without a final hash, such as http://xmlns.com/foaf/0.1/." ;
-	skos:inScheme <https://w3id.org/lmodel/void> .
+	skos:inScheme <https://w3id.org/lmodel/void> ;
+	void_linkml:note_section "4.3" .
 _:c14n0 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty void_linkml:homepage .

@@ -227,6 +227,23 @@ def test_each_property_keeps_its_domain_range_and_cardinality(term):
         assert slot.is_a is None, term
 
 
+# The sections of the Note, which a class or slot cites in its note_section
+# annotation.
+NOTE_SECTIONS = {
+    f"{chapter}.{n}"
+    for chapter, count in ((1, 4), (2, 6), (3, 6), (4, 6), (5, 3), (6, 5), (7, 2))
+    for n in range(1, count + 1)
+}
+
+
+def test_each_element_cites_a_section_of_the_note():
+    """Every class and slot names the section of the Note that explains it."""
+    for element in list(SV.all_classes().values()) + list(SV.all_slots().values()):
+        annotation = element.annotations.get("note_section")
+        assert annotation is not None, element.name
+        assert annotation.value in NOTE_SECTIONS, (element.name, annotation.value)
+
+
 def _mapping_iris(element):
     for key in (
         "exact_mappings",

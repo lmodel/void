@@ -20,6 +20,7 @@
     "The version is the date of the Note's edition, and the source its dated address. The schema renders every class and property that the vocabulary file declares, as its editors keep it at the commit the vocabulary_file annotation names; tests/upstream/void-terms.tsv lists them, and the tests hold this schema to that list.",
     "Neither the Note nor the vocabulary file is copied: every description here is this project's own, and NOTICE says why.",
     "A slot whose value names a resource by its IRI or a CURIE, such as id, class, subset or target, carries the pattern of a scheme or prefix, a colon and no space. LinkML 1.12.1 renders the uriorcurie type, and a reference to a class, as a JSON Schema string with no format, so without it the validator would pass any text there.",
+    "Each class and slot names, in its note_section annotation, the section of the Note that explains it. The class names are VoID's own, with no prefix of this schema's: no record carries a class name, and the adapt copy renames Dataset, which LOKF also defines, to VoidDataset.",
     "Kept from the Note's account of a description: the Dublin Core terms of its sections 2.2, 2.4 and 2.5, FOAF's homepage and page (2.1) and topic and primaryTopic (6.2), and the RDF Schema label, comment and seeAlso of a technical feature (2.6). Left out: dcterms:date, since a slot named date takes the name of LinkML's date type, and the generated Pydantic model then checks none of the dates, while created, issued and modified carry the dates the Note names; the agents a description names, which FOAF describes; the Waiver vocabulary's norms and waiver (2.4); and the SPARQL Service Description terms (6.5), which describe a service rather than a dataset."
   ],
   "source": "https://www.w3.org/TR/2011/NOTE-void-20110303/",
@@ -395,6 +396,13 @@
     {
       "name": "id",
       "definition_uri": "https://w3id.org/lmodel/void/id",
+      "annotations": [
+        {
+          "tag": "note_section",
+          "value": "6.1",
+          "@type": "Annotation"
+        }
+      ],
       "description": "The IRI of the dataset, document or feature, written in full or as a CURIE.",
       "comments": [
         "VoID has no property for the IRI, which RDF writes as the subject, so the key lives in this schema's own namespace."
@@ -416,6 +424,13 @@
     {
       "name": "title",
       "definition_uri": "https://w3id.org/lmodel/void/title",
+      "annotations": [
+        {
+          "tag": "note_section",
+          "value": "2.2",
+          "@type": "Annotation"
+        }
+      ],
       "description": "A human-readable name for the dataset or document.",
       "from_schema": "https://w3id.org/lmodel/void",
       "mappings": [
@@ -433,6 +448,13 @@
     {
       "name": "description",
       "definition_uri": "https://w3id.org/lmodel/void/description",
+      "annotations": [
+        {
+          "tag": "note_section",
+          "value": "2.2",
+          "@type": "Annotation"
+        }
+      ],
       "description": "A few sentences of prose saying what the dataset or document contains.",
       "from_schema": "https://w3id.org/lmodel/void",
       "mappings": [
@@ -450,6 +472,13 @@
     {
       "name": "creator",
       "definition_uri": "https://w3id.org/lmodel/void/creator",
+      "annotations": [
+        {
+          "tag": "note_section",
+          "value": "2.2",
+          "@type": "Annotation"
+        }
+      ],
       "description": "The IRI of the agent, human or not, that chiefly made the dataset or document.",
       "from_schema": "https://w3id.org/lmodel/void",
       "mappings": [
@@ -468,6 +497,13 @@
     {
       "name": "contributor",
       "definition_uri": "https://w3id.org/lmodel/void/contributor",
+      "annotations": [
+        {
+          "tag": "note_section",
+          "value": "2.2",
+          "@type": "Annotation"
+        }
+      ],
       "description": "The IRI of an agent that added to the dataset without being its main maker.",
       "from_schema": "https://w3id.org/lmodel/void",
       "mappings": [
@@ -485,6 +521,13 @@
     {
       "name": "publisher",
       "definition_uri": "https://w3id.org/lmodel/void/publisher",
+      "annotations": [
+        {
+          "tag": "note_section",
+          "value": "2.2",
+          "@type": "Annotation"
+        }
+      ],
       "description": "The IRI of the agent that releases the dataset for others to use.",
       "from_schema": "https://w3id.org/lmodel/void",
       "mappings": [
@@ -501,6 +544,13 @@
     {
       "name": "source",
       "definition_uri": "https://w3id.org/lmodel/void/source",
+      "annotations": [
+        {
+          "tag": "note_section",
+          "value": "2.2",
+          "@type": "Annotation"
+        }
+      ],
       "description": "The IRI of an earlier resource whose content the dataset draws on.",
       "from_schema": "https://w3id.org/lmodel/void",
       "mappings": [
@@ -518,6 +568,13 @@
     {
       "name": "created",
       "definition_uri": "https://w3id.org/lmodel/void/created",
+      "annotations": [
+        {
+          "tag": "note_section",
+          "value": "2.2",
+          "@type": "Annotation"
+        }
+      ],
       "description": "The date the dataset or document was made.",
       "from_schema": "https://w3id.org/lmodel/void",
       "mappings": [
@@ -535,6 +592,13 @@
     {
       "name": "issued",
       "definition_uri": "https://w3id.org/lmodel/void/issued",
+      "annotations": [
+        {
+          "tag": "note_section",
+          "value": "2.2",
+          "@type": "Annotation"
+        }
+      ],
       "description": "The date the dataset was first published.",
       "from_schema": "https://w3id.org/lmodel/void",
       "mappings": [
@@ -551,6 +615,13 @@
     {
       "name": "modified",
       "definition_uri": "https://w3id.org/lmodel/void/modified",
+      "annotations": [
+        {
+          "tag": "note_section",
+          "value": "2.2",
+          "@type": "Annotation"
+        }
+      ],
       "description": "The date the dataset or document last changed.",
       "from_schema": "https://w3id.org/lmodel/void",
       "mappings": [
@@ -568,6 +639,13 @@
     {
       "name": "license",
       "definition_uri": "https://w3id.org/lmodel/void/license",
+      "annotations": [
+        {
+          "tag": "note_section",
+          "value": "2.4",
+          "@type": "Annotation"
+        }
+      ],
       "description": "The IRI of the licence that sets the terms for using the dataset.",
       "from_schema": "https://w3id.org/lmodel/void",
       "mappings": [
@@ -584,6 +662,13 @@
     {
       "name": "subject",
       "definition_uri": "https://w3id.org/lmodel/void/subject",
+      "annotations": [
+        {
+          "tag": "note_section",
+          "value": "2.5",
+          "@type": "Annotation"
+        }
+      ],
       "description": "The IRI of a topic the dataset covers, such as a DBpedia resource or a SKOS concept.",
       "from_schema": "https://w3id.org/lmodel/void",
       "mappings": [
@@ -601,6 +686,13 @@
     {
       "name": "homepage",
       "definition_uri": "https://w3id.org/lmodel/void/homepage",
+      "annotations": [
+        {
+          "tag": "note_section",
+          "value": "2.1",
+          "@type": "Annotation"
+        }
+      ],
       "description": "The web page about the dataset itself.",
       "from_schema": "https://w3id.org/lmodel/void",
       "mappings": [
@@ -617,6 +709,13 @@
     {
       "name": "page",
       "definition_uri": "https://w3id.org/lmodel/void/page",
+      "annotations": [
+        {
+          "tag": "note_section",
+          "value": "2.1",
+          "@type": "Annotation"
+        }
+      ],
       "description": "Any further web page with information on the dataset, for instance its download page or its catalogue entry.",
       "from_schema": "https://w3id.org/lmodel/void",
       "mappings": [
@@ -634,6 +733,13 @@
     {
       "name": "primaryTopic",
       "definition_uri": "https://w3id.org/lmodel/void/primaryTopic",
+      "annotations": [
+        {
+          "tag": "note_section",
+          "value": "6.2",
+          "@type": "Annotation"
+        }
+      ],
       "description": "The dataset a description is about, when it describes one.",
       "from_schema": "https://w3id.org/lmodel/void",
       "mappings": [
@@ -651,6 +757,13 @@
     {
       "name": "topic",
       "definition_uri": "https://w3id.org/lmodel/void/topic",
+      "annotations": [
+        {
+          "tag": "note_section",
+          "value": "6.2",
+          "@type": "Annotation"
+        }
+      ],
       "description": "A dataset a description is about, when it describes several of equal weight.",
       "from_schema": "https://w3id.org/lmodel/void",
       "mappings": [
@@ -669,6 +782,13 @@
     {
       "name": "label",
       "definition_uri": "https://w3id.org/lmodel/void/label",
+      "annotations": [
+        {
+          "tag": "note_section",
+          "value": "2.6",
+          "@type": "Annotation"
+        }
+      ],
       "description": "A short name for the feature.",
       "from_schema": "https://w3id.org/lmodel/void",
       "mappings": [
@@ -685,6 +805,13 @@
     {
       "name": "comment",
       "definition_uri": "https://w3id.org/lmodel/void/comment",
+      "annotations": [
+        {
+          "tag": "note_section",
+          "value": "2.6",
+          "@type": "Annotation"
+        }
+      ],
       "description": "A sentence or two about the feature.",
       "from_schema": "https://w3id.org/lmodel/void",
       "mappings": [
@@ -701,6 +828,13 @@
     {
       "name": "seeAlso",
       "definition_uri": "https://w3id.org/lmodel/void/seeAlso",
+      "annotations": [
+        {
+          "tag": "note_section",
+          "value": "2.6",
+          "@type": "Annotation"
+        }
+      ],
       "description": "A web page that tells more about the feature.",
       "from_schema": "https://w3id.org/lmodel/void",
       "mappings": [
@@ -718,6 +852,13 @@
     {
       "name": "feature",
       "definition_uri": "https://w3id.org/lmodel/void/feature",
+      "annotations": [
+        {
+          "tag": "note_section",
+          "value": "2.6",
+          "@type": "Annotation"
+        }
+      ],
       "description": "Something the dataset's server or files support, for instance an RDF syntax, named by its IRI.",
       "from_schema": "https://w3id.org/lmodel/void",
       "mappings": [
@@ -736,6 +877,13 @@
     {
       "name": "sparqlEndpoint",
       "definition_uri": "https://w3id.org/lmodel/void/sparqlEndpoint",
+      "annotations": [
+        {
+          "tag": "note_section",
+          "value": "3.2",
+          "@type": "Annotation"
+        }
+      ],
       "description": "A SPARQL service whose default graph holds the dataset, for running queries on it.",
       "from_schema": "https://w3id.org/lmodel/void",
       "mappings": [
@@ -753,6 +901,13 @@
     {
       "name": "dataDump",
       "definition_uri": "https://w3id.org/lmodel/void/dataDump",
+      "annotations": [
+        {
+          "tag": "note_section",
+          "value": "3.3",
+          "@type": "Annotation"
+        }
+      ],
       "description": "A downloadable RDF file holding all of the dataset or a share of it.",
       "comments": [
         "A page that links to downloads is not a dump; give it as a page instead."
@@ -773,6 +928,13 @@
     {
       "name": "uriLookupEndpoint",
       "definition_uri": "https://w3id.org/lmodel/void/uriLookupEndpoint",
+      "annotations": [
+        {
+          "tag": "note_section",
+          "value": "3.5",
+          "@type": "Annotation"
+        }
+      ],
       "description": "A web address that, with an entity's percent-encoded IRI added to its end, answers an HTTP GET with RDF about that entity.",
       "from_schema": "https://w3id.org/lmodel/void",
       "mappings": [
@@ -790,6 +952,13 @@
     {
       "name": "openSearchDescription",
       "definition_uri": "https://w3id.org/lmodel/void/openSearchDescription",
+      "annotations": [
+        {
+          "tag": "note_section",
+          "value": "3.6",
+          "@type": "Annotation"
+        }
+      ],
       "description": "An OpenSearch file telling a client how to run keyword searches over the dataset.",
       "from_schema": "https://w3id.org/lmodel/void",
       "mappings": [
@@ -807,6 +976,13 @@
     {
       "name": "rootResource",
       "definition_uri": "https://w3id.org/lmodel/void/rootResource",
+      "annotations": [
+        {
+          "tag": "note_section",
+          "value": "3.4",
+          "@type": "Annotation"
+        }
+      ],
       "description": "The IRI of a starting point for crawling the dataset: a resource from which links lead, within a few hops, to all the others.",
       "from_schema": "https://w3id.org/lmodel/void",
       "mappings": [
@@ -824,6 +1000,13 @@
     {
       "name": "exampleResource",
       "definition_uri": "https://w3id.org/lmodel/void/exampleResource",
+      "annotations": [
+        {
+          "tag": "note_section",
+          "value": "4.1",
+          "@type": "Annotation"
+        }
+      ],
       "description": "The IRI of an entity typical of the dataset, for a reader to look up.",
       "from_schema": "https://w3id.org/lmodel/void",
       "mappings": [
@@ -841,6 +1024,13 @@
     {
       "name": "uriSpace",
       "definition_uri": "https://w3id.org/lmodel/void/uriSpace",
+      "annotations": [
+        {
+          "tag": "note_section",
+          "value": "4.2",
+          "@type": "Annotation"
+        }
+      ],
       "description": "The string every entity IRI in the dataset starts with, such as http://example.org/resource/.",
       "comments": [
         "VoID writes it as a literal, not as an IRI, so the range is a string, held to the form of an IRI's start."
@@ -861,6 +1051,13 @@
     {
       "name": "uriRegexPattern",
       "definition_uri": "https://w3id.org/lmodel/void/uriRegexPattern",
+      "annotations": [
+        {
+          "tag": "note_section",
+          "value": "4.2",
+          "@type": "Annotation"
+        }
+      ],
       "description": "A regular expression in SPARQL's syntax that each entity IRI of the dataset satisfies.",
       "comments": [
         "The validator checks no regular expression's syntax; tests/test_data.py compiles each one in the examples."
@@ -880,6 +1077,13 @@
     {
       "name": "vocabulary",
       "definition_uri": "https://w3id.org/lmodel/void/vocabulary",
+      "annotations": [
+        {
+          "tag": "note_section",
+          "value": "4.3",
+          "@type": "Annotation"
+        }
+      ],
       "description": "The namespace IRI of a vocabulary the dataset uses, as a term's IRI reads without its local name and without a final hash, such as http://xmlns.com/foaf/0.1/.",
       "from_schema": "https://w3id.org/lmodel/void",
       "mappings": [
@@ -898,6 +1102,13 @@
     {
       "name": "subset",
       "definition_uri": "https://w3id.org/lmodel/void/subset",
+      "annotations": [
+        {
+          "tag": "note_section",
+          "value": "4.4",
+          "@type": "Annotation"
+        }
+      ],
       "description": "Another dataset contained in this one, named by its IRI.",
       "from_schema": "https://w3id.org/lmodel/void",
       "mappings": [
@@ -916,6 +1127,13 @@
     {
       "name": "classPartition",
       "definition_uri": "https://w3id.org/lmodel/void/classPartition",
+      "annotations": [
+        {
+          "tag": "note_section",
+          "value": "4.5",
+          "@type": "Annotation"
+        }
+      ],
       "description": "The dataset's slice for one class, given inside it.",
       "comments": [
         "VoID makes it a narrower subset; here it is a value, so it does not inherit subset's range."
@@ -938,6 +1156,13 @@
     {
       "name": "propertyPartition",
       "definition_uri": "https://w3id.org/lmodel/void/propertyPartition",
+      "annotations": [
+        {
+          "tag": "note_section",
+          "value": "4.5",
+          "@type": "Annotation"
+        }
+      ],
       "description": "The dataset's slice for one property, given inside it.",
       "comments": [
         "VoID makes it a narrower subset; here it is a value, so it does not inherit subset's range."
@@ -961,6 +1186,13 @@
     {
       "name": "class",
       "definition_uri": "https://w3id.org/lmodel/void/class",
+      "annotations": [
+        {
+          "tag": "note_section",
+          "value": "4.5",
+          "@type": "Annotation"
+        }
+      ],
       "description": "The class whose instances a class partition describes, named by its IRI, such as foaf:Person.",
       "from_schema": "https://w3id.org/lmodel/void",
       "mappings": [
@@ -978,6 +1210,13 @@
     {
       "name": "property",
       "definition_uri": "https://w3id.org/lmodel/void/property",
+      "annotations": [
+        {
+          "tag": "note_section",
+          "value": "4.5",
+          "@type": "Annotation"
+        }
+      ],
       "description": "The property whose triples a property partition holds, named by its IRI, such as foaf:name.",
       "from_schema": "https://w3id.org/lmodel/void",
       "mappings": [
@@ -995,6 +1234,13 @@
     {
       "name": "triples",
       "definition_uri": "https://w3id.org/lmodel/void/triples",
+      "annotations": [
+        {
+          "tag": "note_section",
+          "value": "4.6",
+          "@type": "Annotation"
+        }
+      ],
       "description": "How many triples the dataset holds; for a linkset, how many links.",
       "from_schema": "https://w3id.org/lmodel/void",
       "mappings": [
@@ -1014,6 +1260,13 @@
     {
       "name": "entities",
       "definition_uri": "https://w3id.org/lmodel/void/entities",
+      "annotations": [
+        {
+          "tag": "note_section",
+          "value": "4.6",
+          "@type": "Annotation"
+        }
+      ],
       "description": "How many entities, resources with an IRI, the dataset describes.",
       "from_schema": "https://w3id.org/lmodel/void",
       "mappings": [
@@ -1033,6 +1286,13 @@
     {
       "name": "classes",
       "definition_uri": "https://w3id.org/lmodel/void/classes",
+      "annotations": [
+        {
+          "tag": "note_section",
+          "value": "4.6",
+          "@type": "Annotation"
+        }
+      ],
       "description": "How many distinct classes the dataset's rdf:type triples name.",
       "from_schema": "https://w3id.org/lmodel/void",
       "mappings": [
@@ -1052,6 +1312,13 @@
     {
       "name": "properties",
       "definition_uri": "https://w3id.org/lmodel/void/properties",
+      "annotations": [
+        {
+          "tag": "note_section",
+          "value": "4.6",
+          "@type": "Annotation"
+        }
+      ],
       "description": "How many distinct properties the dataset's triples use as predicates.",
       "from_schema": "https://w3id.org/lmodel/void",
       "mappings": [
@@ -1071,6 +1338,13 @@
     {
       "name": "distinctSubjects",
       "definition_uri": "https://w3id.org/lmodel/void/distinctSubjects",
+      "annotations": [
+        {
+          "tag": "note_section",
+          "value": "4.6",
+          "@type": "Annotation"
+        }
+      ],
       "description": "How many distinct IRIs and blank nodes the dataset's triples have as subjects.",
       "from_schema": "https://w3id.org/lmodel/void",
       "mappings": [
@@ -1090,6 +1364,13 @@
     {
       "name": "distinctObjects",
       "definition_uri": "https://w3id.org/lmodel/void/distinctObjects",
+      "annotations": [
+        {
+          "tag": "note_section",
+          "value": "4.6",
+          "@type": "Annotation"
+        }
+      ],
       "description": "How many distinct IRIs, blank nodes and literals the dataset's triples have as objects.",
       "from_schema": "https://w3id.org/lmodel/void",
       "mappings": [
@@ -1109,6 +1390,13 @@
     {
       "name": "documents",
       "definition_uri": "https://w3id.org/lmodel/void/documents",
+      "annotations": [
+        {
+          "tag": "note_section",
+          "value": "4.6",
+          "@type": "Annotation"
+        }
+      ],
       "description": "How many RDF documents together carry the dataset, for example RDFa web pages.",
       "comments": [
         "Use it where the triples are hard to count; triples and entities say more where they can be given."
@@ -1131,6 +1419,13 @@
     {
       "name": "target",
       "definition_uri": "https://w3id.org/lmodel/void/target",
+      "annotations": [
+        {
+          "tag": "note_section",
+          "value": "5.1",
+          "@type": "Annotation"
+        }
+      ],
       "description": "Either dataset a linkset joins, named by its IRI.",
       "comments": [
         "Linkset makes it a list of two. The slot itself stays single-valued, so that subjectsTarget and objectsTarget, its narrower slots, inherit one value each."
@@ -1151,6 +1446,13 @@
     {
       "name": "subjectsTarget",
       "definition_uri": "https://w3id.org/lmodel/void/subjectsTarget",
+      "annotations": [
+        {
+          "tag": "note_section",
+          "value": "5.1",
+          "@type": "Annotation"
+        }
+      ],
       "description": "The dataset at the subject end of every link in a linkset, named by its IRI.",
       "from_schema": "https://w3id.org/lmodel/void",
       "mappings": [
@@ -1169,6 +1471,13 @@
     {
       "name": "objectsTarget",
       "definition_uri": "https://w3id.org/lmodel/void/objectsTarget",
+      "annotations": [
+        {
+          "tag": "note_section",
+          "value": "5.1",
+          "@type": "Annotation"
+        }
+      ],
       "description": "The dataset at the object end of every link in a linkset, named by its IRI.",
       "from_schema": "https://w3id.org/lmodel/void",
       "mappings": [
@@ -1187,6 +1496,13 @@
     {
       "name": "linkPredicate",
       "definition_uri": "https://w3id.org/lmodel/void/linkPredicate",
+      "annotations": [
+        {
+          "tag": "note_section",
+          "value": "5.3",
+          "@type": "Annotation"
+        }
+      ],
       "description": "The property every link of a linkset has as its predicate, such as owl:sameAs.",
       "comments": [
         "A linkset has one; links with two predicates make two linksets."
@@ -1207,6 +1523,13 @@
     {
       "name": "inDataset",
       "definition_uri": "https://w3id.org/lmodel/void/inDataset",
+      "annotations": [
+        {
+          "tag": "note_section",
+          "value": "6.3",
+          "@type": "Annotation"
+        }
+      ],
       "description": "The dataset that this document's triples belong to, named by its IRI.",
       "comments": [
         "A document names one; a document in two datasets points at a dataset that holds both as subsets."
@@ -1227,6 +1550,14 @@
     {
       "name": "Linkset_target",
       "definition_uri": "https://w3id.org/lmodel/void/target",
+      "annotations": {
+        "note_section": {
+          "tag": "note_section",
+          "value": "5.1",
+          "extensions": {},
+          "annotations": {}
+        }
+      },
       "description": "Either dataset a linkset joins, named by its IRI.",
       "comments": [
         "Linkset makes it a list of two. The slot itself stays single-valued, so that subjectsTarget and objectsTarget, its narrower slots, inherit one value each."
@@ -1255,6 +1586,14 @@
     {
       "name": "ClassBasedPartition_class",
       "definition_uri": "https://w3id.org/lmodel/void/class",
+      "annotations": {
+        "note_section": {
+          "tag": "note_section",
+          "value": "4.5",
+          "extensions": {},
+          "annotations": {}
+        }
+      },
       "description": "The class whose instances a class partition describes, named by its IRI, such as foaf:Person.",
       "from_schema": "https://w3id.org/lmodel/void",
       "mappings": [
@@ -1278,6 +1617,14 @@
     {
       "name": "PropertyBasedPartition_property",
       "definition_uri": "https://w3id.org/lmodel/void/property",
+      "annotations": {
+        "note_section": {
+          "tag": "note_section",
+          "value": "4.5",
+          "extensions": {},
+          "annotations": {}
+        }
+      },
       "description": "The property whose triples a property partition holds, named by its IRI, such as foaf:name.",
       "from_schema": "https://w3id.org/lmodel/void",
       "mappings": [
@@ -1303,6 +1650,13 @@
     {
       "name": "Dataset",
       "definition_uri": "https://w3id.org/lmodel/void/Dataset",
+      "annotations": [
+        {
+          "tag": "note_section",
+          "value": "1.3",
+          "@type": "Annotation"
+        }
+      ],
       "description": "RDF triples from one provider, gathered under an IRI so that a description can speak of them as a whole.",
       "notes": [
         "The narrow mappings are the Note's own statement (section 6.5) that a SPARQL service description's datasets and graphs are VoID datasets. The broad mapping follows DCAT 3 (sections 1 and 6.2.1), which offers VoID's properties for the statistics of a DCAT dataset whose data is RDF: a DCAT dataset may hold data in any format, and a VoID dataset holds RDF alone."
@@ -1365,6 +1719,13 @@
     {
       "name": "Linkset",
       "definition_uri": "https://w3id.org/lmodel/void/Linkset",
+      "annotations": [
+        {
+          "tag": "note_section",
+          "value": "1.4",
+          "@type": "Annotation"
+        }
+      ],
       "description": "A dataset of triples that join two datasets: each triple's subject belongs to one of them and its object to the other.",
       "comments": [
         "A linkset links exactly two distinct datasets: the targets, the subjects' target and the objects' target together name two. The validator checks that two are named; tests/test_data.py checks that they differ."
@@ -1450,6 +1811,13 @@
     {
       "name": "DatasetDescription",
       "definition_uri": "https://w3id.org/lmodel/void/DatasetDescription",
+      "annotations": [
+        {
+          "tag": "note_section",
+          "value": "6.2",
+          "@type": "Annotation"
+        }
+      ],
       "description": "A web document, such as a void.ttl file published beside a dataset, that describes one or more datasets.",
       "notes": [
         "The broad mapping is the vocabulary file's own statement that a dataset description is a FOAF document."
@@ -1503,6 +1871,13 @@
     {
       "name": "TechnicalFeature",
       "definition_uri": "https://w3id.org/lmodel/void/TechnicalFeature",
+      "annotations": [
+        {
+          "tag": "note_section",
+          "value": "2.6",
+          "@type": "Annotation"
+        }
+      ],
       "description": "A technical property of how a dataset is served, such as an RDF syntax it can be read in or an HTTP feature its server supports.",
       "comments": [
         "W3C names the RDF syntaxes under http://www.w3.org/ns/formats/, such as http://www.w3.org/ns/formats/Turtle; a feature of another kind takes an IRI of its publisher's own."
@@ -1524,6 +1899,13 @@
     {
       "name": "ClassBasedPartition",
       "definition_uri": "https://w3id.org/lmodel/void/ClassBasedPartition",
+      "annotations": [
+        {
+          "tag": "note_section",
+          "value": "4.5",
+          "@type": "Annotation"
+        }
+      ],
       "description": "The slice of a dataset about the members of one class, written inside that dataset, most often to give counts for it.",
       "comments": [
         "VoID gives a partition no class of its own: it is a dataset, usually a blank node. This schema writes it as a value inside its dataset, so it has no IRI, and its class lives in this schema's own namespace. The name follows VoID's phrase for it and differs from the classPartition slot's by more than case, so that their pages are two files on a filesystem that ignores case."
@@ -1553,6 +1935,13 @@
     {
       "name": "PropertyBasedPartition",
       "definition_uri": "https://w3id.org/lmodel/void/PropertyBasedPartition",
+      "annotations": [
+        {
+          "tag": "note_section",
+          "value": "4.5",
+          "@type": "Annotation"
+        }
+      ],
       "description": "The slice of a dataset made of the triples whose predicate is one property, written inside that dataset, most often to give counts for it.",
       "comments": [
         "As for a class partition, VoID gives it no class of its own, and this schema writes it as a value inside its dataset."
@@ -1581,8 +1970,8 @@
   ],
   "metamodel_version": "1.12.0",
   "source_file": "void.yaml",
-  "source_file_date": "2026-10-31T18:01:00",
-  "source_file_size": 18431,
+  "source_file_date": "2026-10-31T18:04:28",
+  "source_file_size": 20961,
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/void.context.jsonld",
