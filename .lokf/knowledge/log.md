@@ -2,6 +2,9 @@
 
 ## 2026-10-31
 
+* **Changed**: the security policy says the upstream watch's token can write issues, as `upstream-watch.yaml` grants and SECURITY.md now says, not that it is read-only.
+* **Changed**: validating data says the Pydantic models now check the form of an identifier or a reference, which the schema holds to an IRI or a CURIE, and leave only an address's form unchecked.
+* **Changed**: the schema concept says identifiers and references read as an IRI or a CURIE, and that each element cites its section of the Note, as `src/void/schema/void.yaml` now does.
 * **Prose**: reworded 13 concept bodies in plain English. No fact, link, number or frontmatter changed.
 * **Added**: void LinkML schema.
 * **Added**: Generated artefacts.

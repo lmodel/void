@@ -29,7 +29,7 @@ sources:
     title: the tool.lokf table
 generated:
   by: process:ktl-librarian
-  at: "2026-10-31T15:05:26Z"
+  at: "2026-10-31T18:07:34Z"
 status: draft
 ---
 
@@ -45,7 +45,7 @@ status: draft
 - **`TechnicalFeature`** (`void:TechnicalFeature`) is something a dataset supports, such as an RDF syntax.
 - **`ClassBasedPartition`** and **`PropertyBasedPartition`** are the schema's own value classes, under `void_linkml:`. Each holds the counts for one class or one property inside its dataset, and names that class or property.
 
-Every VoID property keeps its VoID local name and IRI, such as `distinctSubjects` (`void:distinctSubjects`). The Dublin Core, FOAF and RDF Schema slots keep theirs, such as `title` (`dcterms:title`) and `homepage` (`foaf:homepage`). The identifier `id` is the schema's own. Every count is an integer of zero or more.[^void.yaml]
+Every VoID property keeps its VoID local name and IRI, such as `distinctSubjects` (`void:distinctSubjects`). The Dublin Core, FOAF and RDF Schema slots keep theirs, such as `title` (`dcterms:title`) and `homepage` (`foaf:homepage`). The identifier `id` is the schema's own. Every count is an integer of zero or more, and every identifier and every reference to another dataset or feature reads as an IRI or a CURIE. Each class and slot names the section of the Note that explains it in a `note_section` annotation.[^void.yaml]
 
 ## As the bundle's domain schema
 
