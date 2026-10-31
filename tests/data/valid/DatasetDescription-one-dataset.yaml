@@ -1,7 +1,7 @@
 # The metadata of a VoID file about one dataset: its title, who wrote it and
 # when, and the dataset it is mainly about.
 id: http://data.example.org/void.ttl
-title: A VoID description of the Coastal Lighthouses dataset
+title: Metadata for Coastal Lighthouses, in VoID
 creator:
   - http://data.example.org/people/ada
 created: "2026-09-14"
