@@ -101,10 +101,17 @@ def test_valid_examples_pass_the_committed_json_schema(path):
     assert not _committed_errors(_load(path), _class(path))
 
 
+def _pointer(error):
+    return "/" + "/".join(str(part) for part in error.absolute_path)
+
+
 @pytest.mark.parametrize("path", INVALID, ids=lambda p: p.name)
 def test_counter_examples_fail_the_committed_json_schema(path):
-    """The committed project/jsonschema file refuses every counter-example."""
-    assert _committed_errors(_load(path), _class(path))
+    """The committed project/jsonschema file refuses every counter-example at
+    the place its first line names, as the validator does."""
+    errors = _committed_errors(_load(path), _class(path))
+    assert errors, f"{path.name} passed the committed JSON Schema"
+    assert {_pointer(e) for e in errors} == {_fails_at(path)}, [e.message for e in errors]
 
 
 def test_every_class_has_an_example():
@@ -184,6 +191,7 @@ C = "http://data.example.org/void.ttl#C"
     ("record", "fault"),
     [
         ({"target": [A, A]}, "names 1 distinct datasets"),
+        ({"target": [A, A], "subjectsTarget": B}, "repeats a target"),
         (
             {"subjectsTarget": A, "objectsTarget": A},
             "both its subjects' and its objects'",
