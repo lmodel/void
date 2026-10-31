@@ -44,7 +44,7 @@ None beyond VoID: the schema renders one vocabulary, and its release asset and g
 
 The schema borrows from no other vocabulary. Where VoID states how its classes relate to another vocabulary's, a class says so in a mapping:
 
-* `Dataset` names the SPARQL 1.1 Service Description's `sd:Dataset` and `sd:Graph` in `narrow_mappings`, as the Note's section 6.5 says, and DCAT's `dcat:Dataset` in `broad_mappings`, since DCAT's dataset is any collection of data and VoID's holds RDF.
+* `Dataset` names the SPARQL 1.1 Service Description's `sd:Dataset` and `sd:Graph` in `narrow_mappings`, as the Note's section 6.5 says, and DCAT's `dcat:Dataset` in `broad_mappings`, since [DCAT 3](https://www.w3.org/TR/vocab-dcat-3/) offers VoID's properties for a DCAT dataset whose data is RDF, and a DCAT dataset may hold data in any format.
 * `DatasetDescription` names `foaf:Document` in `broad_mappings`, as the vocabulary file states.
 * The two partition classes name `void:Dataset` in `broad_mappings`, since VoID makes a partition a dataset.
 

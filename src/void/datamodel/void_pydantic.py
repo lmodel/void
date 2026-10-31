@@ -148,9 +148,10 @@ class Dataset(ConfiguredBaseModel):
          'narrow_mappings': ['sd:Dataset', 'sd:Graph'],
          'notes': ["The narrow mappings are the Note's own statement (section 6.5) "
                    "that a SPARQL service description's datasets and graphs are VoID "
-                   "datasets. The broad mapping reads DCAT's dataset, any collection "
-                   "of data that one agent publishes, as wider than VoID's, which "
-                   'holds RDF alone.'],
+                   'datasets. The broad mapping follows DCAT 3 (sections 1 and 6.2.1), '
+                   "which offers VoID's properties for the statistics of a DCAT "
+                   'dataset whose data is RDF: a DCAT dataset may hold data in any '
+                   'format, and a VoID dataset holds RDF alone.'],
          'tree_root': True})
 
     id: str = Field(default=..., description="""The IRI of the dataset, document or feature, written in full or as a CURIE.""", json_schema_extra = { "linkml_meta": {'comments': ['VoID has no property for the IRI, which RDF writes as the '

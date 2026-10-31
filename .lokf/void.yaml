@@ -63,9 +63,10 @@ classes:
     broad_mappings:
     - dcat:Dataset
     notes:
-    - The narrow mappings are the Note's own statement (section 6.5) that a SPARQL service description's
-      datasets and graphs are VoID datasets. The broad mapping reads DCAT's dataset, any collection of
-      data that one agent publishes, as wider than VoID's, which holds RDF alone.
+    - 'The narrow mappings are the Note''s own statement (section 6.5) that a SPARQL service description''s
+      datasets and graphs are VoID datasets. The broad mapping follows DCAT 3 (sections 1 and 6.2.1),
+      which offers VoID''s properties for the statistics of a DCAT dataset whose data is RDF: a DCAT dataset
+      may hold data in any format, and a VoID dataset holds RDF alone.'
     slots:
     - id
     - void_title

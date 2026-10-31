@@ -1073,10 +1073,11 @@ classes:
     description: RDF triples from one provider, gathered under an IRI so that a description
       can speak of them as a whole.
     notes:
-    - The narrow mappings are the Note's own statement (section 6.5) that a SPARQL
-      service description's datasets and graphs are VoID datasets. The broad mapping
-      reads DCAT's dataset, any collection of data that one agent publishes, as wider
-      than VoID's, which holds RDF alone.
+    - 'The narrow mappings are the Note''s own statement (section 6.5) that a SPARQL
+      service description''s datasets and graphs are VoID datasets. The broad mapping
+      follows DCAT 3 (sections 1 and 6.2.1), which offers VoID''s properties for the
+      statistics of a DCAT dataset whose data is RDF: a DCAT dataset may hold data
+      in any format, and a VoID dataset holds RDF alone.'
     comments:
     - A dataset is named by an IRI, and the IRI of another dataset is how a subset,
       a linkset's target or a description refers to it.
@@ -1310,6 +1311,6 @@ classes:
     class_uri: void_linkml:PropertyBasedPartition
 metamodel_version: 1.12.0
 source_file: void.yaml
-source_file_date: '2026-10-31T17:58:26'
-source_file_size: 17473
+source_file_date: '2026-10-31T17:59:26'
+source_file_size: 17571
 
