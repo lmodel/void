@@ -22,9 +22,17 @@ status: draft
 
 `SECURITY.md` asks for a vulnerability to be reported through GitHub's private vulnerability reporting, not in a public issue. One person maintains the repository, so a first reply takes days, and there is no bounty. Only the latest release receives fixes.[^security.md]
 
-A release carries the schema and the Python models generated from it; nothing goes to PyPI. When the bundle or the schema changed, the knowledge release attaches three assets, each with its `.sha256` and a build-provenance attestation: the schema's adapt copy, the bundle as a zip and a Microsoft 365 Copilot skill zip. The upstream watch reads W3C's page of the Note and asks the GitHub API about the editors' repository, sending the workflow's read-only token to `api.github.com` alone.
+A release carries the schema and the Python models generated from it. Nothing goes to PyPI. When the bundle or the schema changed, the knowledge release attaches three assets, each with its `.sha256` and a build-provenance attestation: the schema's adapt copy, the bundle as a zip and a Microsoft 365 Copilot skill zip. The upstream watch reads W3C's page of the Note and asks the GitHub API about the editors' repository, sending the workflow's read-only token to `api.github.com` alone.
 
-The policy's table names each workflow and what holds it: read-only pull request checks, a release job only on a push to `main` in the `release` Environment, the Pages scopes on the website's deploy job alone, an upstream watch that writes only issues, and a librarian whose agent holds no write token. Every workflow declares `permissions: {}` at the top and pins its actions to commit hashes, which Dependabot keeps current with the locks, monthly.[^dependabot.yml]
+The policy's table names each workflow and what holds it:
+
+- read-only pull request checks;
+- a release job only on a push to `main`, in the `release` Environment;
+- the Pages scopes on the website's deploy job alone;
+- an upstream watch that writes only issues;
+- a librarian whose agent holds no write token.
+
+Every workflow declares `permissions: {}` at the top and pins its actions to commit hashes, which Dependabot keeps current with the locks, monthly.[^dependabot.yml]
 
 A ruleset on `main` blocks deletion and force-pushes and keeps the history linear. Two settings are not yet in force: required reviewers on the `release` Environment, and secret scanning with push protection.[^security.md]
 

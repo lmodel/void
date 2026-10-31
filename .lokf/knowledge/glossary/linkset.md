@@ -17,6 +17,6 @@ status: draft
 
 # Linkset
 
-A linkset is a `Dataset` of links between two datasets: each link's subject is described in one dataset and its object in the other. It names the two with `target`, or with `subjectsTarget` and `objectsTarget`, and it has at most one `linkPredicate`, such as `owl:sameAs`. The validator checks that two are named; `tests/test_data.py` checks that they differ.[^void.yaml]
+A linkset is a `Dataset` of links between two datasets: each link's subject is described in one dataset and its object in the other. It names the two with `target`, or with `subjectsTarget` and `objectsTarget`, and it has at most one `linkPredicate`, such as `owl:sameAs`. The validator checks that two are named, and `tests/test_data.py` checks that they differ.[^void.yaml]
 
 [^void.yaml]: src/void/schema/void.yaml, the Linkset class

@@ -18,7 +18,7 @@ status: draft
 
 # Adapt copy
 
-An adapt copy is what `lokf adapt` writes from a published LinkML schema, so that a knowledge bundle can use the schema's classes beside LOKF's own. It roots the classes it is given on `Concept`, drops the schema's identifier for LOKF's `id`, and renames each name LOKF also defines, keeping the IRI.[^readme.md] This repository's copy is `.lokf/void.yaml`; `just lokf-adapt` rewrites it and `just lokf-adapt-check` says when it is stale.[^project.justfile] A release attaches it as `schema-<tag>-void.yaml`.
+An adapt copy is what `lokf adapt` writes from a published LinkML schema, so that a knowledge bundle can use the schema's classes beside LOKF's own. It roots the classes it is given on `Concept`, drops the schema's identifier for LOKF's `id`, and renames each name LOKF also defines, keeping the IRI.[^readme.md] This repository's copy is `.lokf/void.yaml`. `just lokf-adapt` rewrites it and `just lokf-adapt-check` says when it is stale.[^project.justfile] A release attaches it as `schema-<tag>-void.yaml`.
 
 [^readme.md]: README.md, the Knowledge Trust Ladder (KTL) section
 [^project.justfile]: project.justfile, the knowledge bundle recipes

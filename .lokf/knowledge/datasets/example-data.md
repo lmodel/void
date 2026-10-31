@@ -31,7 +31,12 @@ status: draft
 - `problem/valid/` holds valid records with a class partition's `class` key, which the generated dataclasses cannot load under LinkML 1.12.1, since `class` is a Python keyword;
 - `invalid/` holds counter-examples, each opening with `# Fails at: <pointer>`.
 
-`tests/test_data.py` holds every valid example to the validator, the committed JSON Schema and the Pydantic model, and loads the ones in `valid/` into the dataclasses. Each counter-example must fail the validator at the place it names and nowhere else. The test also checks two rules no validator states over every valid example: a linkset's targets name two different datasets, and a dataset's example and root resources start with its `uriSpace` and match its `uriRegexPattern`.[^test_data.py] `docs/index.md` lists what the validator checks and what each generated model leaves out.[^index.md]
+`tests/test_data.py` holds every valid example to the validator, the committed JSON Schema and the Pydantic model, and loads the ones in `valid/` into the dataclasses. Each counter-example must fail the validator at the place it names and nowhere else. The test also checks two rules that no validator states, over every valid example:
+
+- a linkset's targets name two different datasets;
+- a dataset's example and root resources start with its `uriSpace` and match its `uriRegexPattern`.[^test_data.py]
+
+`docs/index.md` lists what the validator checks and what each generated model leaves out.[^index.md]
 
 The records describe fictional datasets on `example.org` addresses, in the shapes of the Note's examples, and copy none of the Note's text.
 

@@ -20,7 +20,14 @@ status: draft
 
 # Documentation site
 
-`website/` builds the site that the Knowledge website workflow publishes to GitHub Pages at `https://lmodel.github.io/void/`. The README is its home page, each page under `docs/` a page under `docs/`, each schema page that `gen-doc` writes a page under `schema/`, and each concept a page under `knowledge/`, beside the four files `lokf export` writes.[^website-readme] `cd website && npm ci --ignore-scripts && npm run build` builds it and checks every link.
+`website/` builds the site that the Knowledge website workflow publishes to GitHub Pages at `https://lmodel.github.io/void/`. The site shows:
+
+- the README as its home page;
+- each page under `docs/` as a page under `docs/`;
+- each schema page that `gen-doc` writes as a page under `schema/`;
+- each concept as a page under `knowledge/`, beside the four files `lokf export` writes.[^website-readme]
+
+`cd website && npm ci --ignore-scripts && npm run build` builds it and checks every link.
 
 `site.config.mjs` redirects the retired mkdocs site's addresses: each old element page at the site's root and under `/elements/` to its successor's schema page, or to the schema's index where none exists, and `/about` to `/docs/about/`.[^site-config]
 

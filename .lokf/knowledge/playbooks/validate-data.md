@@ -18,6 +18,9 @@ status: draft
 
 1. Name the class the file holds, such as `Dataset` or `Linkset`, and run `linkml-validate -s src/void/schema/void.yaml -C Dataset dataset.yaml`.[^index.md]
 2. Validate before loading a file into either model in `src/void/datamodel/`. The dataclasses check no pattern, minimum or number of values, and cannot load a class partition's `class` key. The Pydantic models check those, but not an IRI's form or the two rules that ask for one slot or another.
-3. Check by hand, or as `tests/test_data.py` does, what no validator states: a linkset's targets name two different datasets, a `uriRegexPattern` is a regular expression, and each example and root resource starts with the `uriSpace` and matches the `uriRegexPattern`.
+3. Check by hand, or as `tests/test_data.py` does, what no validator states:
+   - a linkset's targets name two different datasets;
+   - a `uriRegexPattern` is a regular expression;
+   - each example and root resource starts with the `uriSpace` and matches the `uriRegexPattern`.
 
 [^index.md]: docs/index.md, the Validating data section

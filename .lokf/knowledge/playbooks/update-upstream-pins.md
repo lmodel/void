@@ -27,7 +27,7 @@ The upstream watch opens or updates one issue when a check needs a person.[^watc
 - **A new edition of the Note.** Read what changed and decide whether the schema moves to it. If it does, move `PINNED_EDITION` and `PINNED_SOURCE` in `scripts/check_upstream_release.py` and the schema header's `version` and `source` together.
 - **The vocabulary file changed or is gone.** Move `PINNED_COMMIT` and `PINNED_BLOBS` in the watch and `VOID_COMMIT` and `VOID_BLOB` in `scripts/extract_void_terms.py`, then run `uv run scripts/extract_void_terms.py`, which refuses any file but the pinned one.[^extract] Move the lists' checksums in `tests/test_upstream.py`'s `TERM_LISTS`, and change the schema where a term changed.[^test_upstream.py]
 - **A licence changed.** Read what the new terms allow, and update NOTICE.
-- **A check could not finish.** Run the watch again; a refused or cut-off request says nothing about the upstream.
+- **A check could not finish.** Run the watch again. A refused or cut-off request says nothing about the upstream.
 
 `just test` holds the header, both scripts' pins and the lists equal.
 

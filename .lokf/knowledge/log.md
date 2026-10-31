@@ -2,6 +2,7 @@
 
 ## 2026-10-31
 
+* **Prose**: reworded 13 concept bodies in plain English. No fact, link, number or frontmatter changed.
 * **Added**: void LinkML schema.
 * **Added**: Generated artefacts.
 * **Added**: The schema's OWL rendering.
