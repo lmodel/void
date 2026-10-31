@@ -335,3 +335,14 @@ def test_edition_of_reads_a_dated_address(watch):
     """The date of a dated version comes from its address."""
     assert watch.edition_of(watch.PINNED_SOURCE) == watch.PINNED_EDITION
     assert watch.edition_of("https://www.w3.org/TR/void/") is None
+
+
+def test_server_text_stays_on_one_line(watch, tmp_path):
+    """A licence name with a blank line and a mention in it stays inside its
+    code span, so the issue mentions no one."""
+    answers = _answers(watch)
+    answers[f"{watch.API}/license"] = {"license": {"spdx_id": "MIT\n\n@someone `x`"}}
+    _stub(watch, answers)
+    code, text = _run(watch, tmp_path)
+    assert code == 1
+    assert "now states a licence, `MIT @someone 'x'`.**" in text

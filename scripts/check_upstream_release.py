@@ -43,10 +43,10 @@ A new commit that leaves the vocabulary file unchanged, and a file the
 editors add beside it, are reported for information only.
 
 Text a server chose, such as an address, a file name or an error message,
-is quoted as code in the report, so the issue the workflow opens from it
-cannot mention anyone. Set ``GITHUB_TOKEN`` to raise the API rate limit.
-The token goes to api.github.com alone, never to W3C and never on to a
-redirect. Usage::
+is quoted as code on one line in the report, so the issue the workflow
+opens from it cannot mention anyone. Set ``GITHUB_TOKEN`` to raise the API
+rate limit. The token goes to api.github.com alone, never to W3C and never
+on to a redirect. Usage::
 
     python scripts/check_upstream_release.py [--report FILE]
 """
@@ -130,8 +130,10 @@ def _json(url: str):
 
 def _code(text: object) -> str:
     """Text a server chose, such as an address or a file name, as a code
-    span, so it cannot mention a person or add a link in the issue."""
-    return "`" + str(text).replace("`", "'") + "`"
+    span on one line, so it cannot mention a person or add a link in the
+    issue. A blank line would end the span, so every run of spaces and line
+    breaks is one space."""
+    return "`" + " ".join(str(text).replace("`", "'").split()) + "`"
 
 
 def _same_address(a: str, b: str) -> bool:
