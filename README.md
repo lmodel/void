@@ -42,9 +42,9 @@ None beyond VoID: the schema renders one vocabulary, and its release asset and g
 
 ## Mappings
 
-The schema borrows from no other vocabulary. Where VoID states how its classes relate to another vocabulary's, a class says so in a mapping:
+The schema maps a class only where VoID, or DCAT for its dataset, states how it relates to another vocabulary's class:
 
-* `Dataset` names the SPARQL 1.1 Service Description's `sd:Dataset` and `sd:Graph` in `narrow_mappings`, as the Note's section 6.5 says, and DCAT's `dcat:Dataset` in `broad_mappings`, since [DCAT 3](https://www.w3.org/TR/vocab-dcat-3/) offers VoID's properties for a DCAT dataset whose data is RDF, and a DCAT dataset may hold data in any format.
+* `Dataset` names the SPARQL 1.1 Service Description's `sd:Dataset` and `sd:Graph` in `narrow_mappings`, as the Note's section 6.5 says. It names DCAT's `dcat:Dataset` in `broad_mappings`, because [DCAT 3](https://www.w3.org/TR/vocab-dcat-3/) offers VoID's properties for a DCAT dataset whose data is RDF, and a DCAT dataset may hold data in any format.
 * `DatasetDescription` names `foaf:Document` in `broad_mappings`, as the vocabulary file states.
 * The two partition classes name `void:Dataset` in `broad_mappings`, since VoID makes a partition a dataset.
 
@@ -76,7 +76,7 @@ Run `just` to list the project's [just](https://github.com/casey/just/) recipes.
 
 `.lokf/` holds this project's [KTL](https://w3id.org/ktl/) knowledge bundle, written in the Linked Open Knowledge Format (LOKF). Its domain schema is `.lokf/void.yaml`, which `lokf adapt` writes from `src/void/schema/void.yaml`. Edit the source, never the copy. A release carries the copy as `schema-<tag>-void.yaml`, on the terms [CONTRIBUTING.md](CONTRIBUTING.md#releasing-maintainers) gives.
 
-`just lokf-adapt` rewrites the copy, and `just lokf-adapt-check` says when it is stale. The copy roots the three classes whose instances VoID names by an IRI on `Concept`, so a concept may name any of these four as its `type`. In Obsidian, add them to the KTL Registrar and KTL Curator plugins' *Known LOKF types* setting:
+`just lokf-adapt` rewrites the copy, and `just lokf-adapt-check` says when it is stale. The copy roots on `Concept` the three classes whose instances VoID names by an IRI: `Dataset`, `DatasetDescription` and `TechnicalFeature`. So a concept may name any of these, or `Linkset`, a kind of dataset, as its `type`. In Obsidian, add them to the KTL Registrar and KTL Curator plugins' *Known LOKF types* setting:
 
 ```text
 VoidDataset, Linkset, DatasetDescription, TechnicalFeature
@@ -86,7 +86,15 @@ The partitions stay values inside a dataset's concept. In the copy, LOKF's `id` 
 
 A host imports the copy beside `lokf.yaml`, and LinkML merges the two into one namespace, where the last definition of a name wins silently. So the copy renames each name LOKF also defines and keeps its IRI: the class `Dataset` becomes `VoidDataset`, and the keys `title`, `description`, `publisher`, `source`, `created`, `license` and `target` take a `void_` prefix, such as `void_title`. A concept's own `title` and `description` are LOKF's.
 
-Five keys are a neighbour copy's too, under another IRI there: `subject` is attack's, in-toto's, oscal's, slsa's, spdx's and stix's; `comment` attack's, spdx's and stix's; `modified` attack's and stix's; `label` oscal's; and `seeAlso` spdx's. In a host that imports both copies, one of them projects under the other's IRI. [lokf #169](https://github.com/nicholsn/lokf/issues/169) asks `adapt` for a `--beside` option to rename them. No class is shared. `tests/test_schema_rules.py` lists every shared name, checks the copy against LOKF and thirteen released neighbours, and fails on a new one.
+Five keys are a neighbour copy's too, under another IRI there:
+
+* `subject`: attack's, in-toto's, oscal's, slsa's, spdx's and stix's;
+* `comment`: attack's, spdx's and stix's;
+* `modified`: attack's and stix's;
+* `label`: oscal's;
+* `seeAlso`: spdx's.
+
+In a host that imports both copies, one of them projects under the other's IRI. [lokf #169](https://github.com/nicholsn/lokf/issues/169) asks `adapt` for a `--beside` option to rename them. No class is shared. `tests/test_schema_rules.py` lists every shared name, checks the copy against LOKF and thirteen released neighbours, and fails on a new one.
 
 ## License
 

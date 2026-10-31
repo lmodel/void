@@ -29,8 +29,9 @@ checks a file against the JSON Schema generated from the schema, and
   `primaryTopic` or among its `topic`s;
 - that each identifier, each reference to another dataset or feature, and
   each `class`, `property` and `linkPredicate` reads as an IRI or a CURIE;
-- that each address, such as a `dataDump`, is an IRI, that each date and
-  count has its form, and that a record holds no key its class lacks.
+- that each address, such as a `dataDump`, is an IRI;
+- that each date and count has its form;
+- that a record holds no key its class lacks.
 
 Validate a file before loading it into either model in `src/void/datamodel/`.
 LinkML 1.12.1 generates models that check less:
@@ -39,8 +40,8 @@ LinkML 1.12.1 generates models that check less:
   or number of values, and they cannot load a class partition's `class` key,
   which is a Python keyword.
 - The Pydantic models load that key and check the patterns, minimums and
-  numbers of values, but not that an address is an IRI, and not the two
-  rules that ask for one slot or another: a linkset's targets and a
+  numbers of values. They check neither that an address is an IRI nor the
+  two rules that ask for one slot or another: a linkset's targets and a
   description's topic.
 
 No validator checks these rules:

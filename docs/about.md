@@ -10,15 +10,15 @@ the data itself, named by an IRI. A `Linkset` is a dataset of links between
 two datasets. A `DatasetDescription` is the document, such as a `void.ttl`
 file, that describes them. A `TechnicalFeature` is something a dataset
 supports, such as an RDF syntax. Two classes of the schema's own,
-`ClassBasedPartition` and `PropertyBasedPartition`, hold the counts for one class or
-one property inside the dataset they belong to.
+`ClassBasedPartition` and `PropertyBasedPartition`, hold the counts for one
+class or one property inside the dataset they belong to.
 
 The names are VoID's own, and so are the IRIs: `void:Dataset` is
 `http://rdfs.org/ns/void#Dataset`, and the slot `distinctSubjects` is
 `void:distinctSubjects`. The general metadata keeps the Dublin Core and FOAF
 names and IRIs the Note uses, such as `title` (`dcterms:title`) and
-`homepage` (`foaf:homepage`). Only what the schema adds, the identifier `id`
-and the two partition classes, is in its own namespace, `void_linkml:`
+`homepage` (`foaf:homepage`). Only what the schema adds (the identifier `id`
+and the two partition classes) is in its own namespace, `void_linkml:`
 (`https://w3id.org/lmodel/void/`). A record refers to another dataset by its
 IRI; a partition sits inside its dataset.
 
