@@ -242,6 +242,21 @@ def test_a_json_list_where_an_object_belongs_could_not_finish(watch, tmp_path):
     assert "states no licence, as pinned" in text
 
 
+def test_a_truncated_tree_could_not_finish(watch, tmp_path):
+    """A file listing GitHub cut short cannot show the vocabulary file is
+    unchanged, so the check says it could not finish."""
+    answers = _answers(watch)
+    answers[f"{watch.API}/git/trees/{watch.PINNED_COMMIT}?recursive=1"] = {
+        "truncated": True,
+        "tree": [],
+    }
+    _stub(watch, answers)
+    code, text = _run(watch, tmp_path)
+    assert code == 1
+    assert "**The vocabulary file check could not finish: `the tree at" in text
+    assert "too large for one listing`.**" in text
+
+
 def test_a_redirect_is_reported_and_quoted(watch, tmp_path):
     """The address that answered is named, as code, when it is not the one
     asked, and a backtick in it cannot end the quotation."""
