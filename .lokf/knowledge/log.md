@@ -2,6 +2,8 @@
 
 ## 2026-10-31
 
+* **Changed**: the linkset and partition entries' descriptions follow their bodies, in the schema's own words rather than the Note's.
+* **Changed**: the linkset and partition entries describe each term from the schema's own descriptions, which no longer follow the Note's wording.
 * **Changed**: the security policy says the upstream watch's token can write issues, as `upstream-watch.yaml` grants and SECURITY.md now says, not that it is read-only.
 * **Changed**: validating data says the Pydantic models now check the form of an identifier or a reference, which the schema holds to an IRI or a CURIE, and leave only an address's form unchecked.
 * **Changed**: the schema concept says identifiers and references read as an IRI or a CURIE, and that each element cites its section of the Note, as `src/void/schema/void.yaml` now does.
