@@ -33,6 +33,12 @@ VALID = LOADABLE + KEYWORD_KEYED
 INVALID = sorted((DATA / "invalid").glob("*.yaml"))
 
 
+def test_the_example_folders_hold_examples():
+    """Each folder the tests below read holds examples, so that no
+    parametrized test passes by running over nothing."""
+    assert LOADABLE and KEYWORD_KEYED and INVALID
+
+
 def _class(path):
     return path.stem.split("-")[0]
 
