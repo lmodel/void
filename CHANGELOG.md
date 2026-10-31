@@ -6,6 +6,8 @@ The `v0.0.0` tag is a baseline, not a release: it marks where versioning starts 
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-10-31
+
 ### Added
 
 - **A LinkML rendering of the Vocabulary of Interlinked Datasets (VoID), as the W3C Interest Group Note of 3 March 2011 explains it.** Its four classes and 27 properties keep VoID's names and IRIs, the Dublin Core, FOAF and RDF Schema terms the Note uses keep theirs, and every description is this project's own.
