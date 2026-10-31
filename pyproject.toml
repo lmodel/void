@@ -1,31 +1,90 @@
-[tool.poetry]
-name = "void"
-version = "0.1.0"
-description = "Vocabulary of Interlinked Datasets (VoID), as linkml model"
-authors = ["Noel McLoughlin <noel.mcloughlin@gmail.com>"]
-license = "Apache Software License 2.0"
+[build-system]
+requires = ["hatchling", "uv-dynamic-versioning"]
+build-backend = "hatchling.build"
+
+[project]
+# Named like lmodel/slsa's slsa-linkml, so the PyPI name says what it holds;
+# the import package stays void. PyPI publishing is off.
+name = "void-linkml"
+description = "Vocabulary of Interlinked Datasets (VoID), W3C Note of 2011 (LinkML)"
+authors = [
+  {name = "Noel McLoughlin", email = "noel.mcloughlin@gmail.com"},
+]
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE"]
 readme = "README.md"
-include = ["README.md", "src/void/schema", "project"]
+requires-python = ">=3.10"
+dynamic = ["version"]
 
-[tool.poetry.dependencies]
-python = "^3.9"
-linkml-runtime = "^1.1.24"
-rdflib = "6.3.2"  # https://github.com/linkml/linkml/issues/1567
+dependencies = [
+  "linkml-runtime >=1.9.4",
+]
 
-[tool.poetry-dynamic-versioning]
-enable = true
+[dependency-groups]
+dev = [
+    "linkml>=1.9.3",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/void"]
+
+# See https://hatch.pypa.io/latest/config/build/#file-selection for how to
+# explicitly include files other than default into the build distributions.
+
+[tool.hatch.version]
+source = "uv-dynamic-versioning"
+
+# Ref.: https://github.com/ninoseki/uv-dynamic-versioning/
+[tool.uv-dynamic-versioning]
 vcs = "git"
 style = "pep440"
+fallback-version = "0.0.0"
 
-[tool.poetry.dev-dependencies]
-linkml = "^1.5.6"
-mkdocs-material = "^8.2.8"
-mkdocs-mermaid2-plugin = "^0.6.0"
-schemasheets = "^0.1.14"
+# Ref.: https://docs.pytest.org/en/stable/reference/reference.html#configuration-options
+[tool.pytest.ini_options]
+testpaths = ["tests"]
 
-[build-system]
-requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning"]
-build-backend = "poetry_dynamic_versioning.backend"
+# https://docs.astral.sh/ruff/configuration/
+[tool.ruff]
+exclude = [
+    "src/void/_version.py",
+]
+# Set oldest supported Python version
+target-version = "py310"
 
-[tool.poetry.extras]
-docs = ["linkml", "mkdocs-material"]
+# Ref.: https://github.com/codespell-project/codespell
+[tool.codespell]
+skip = [
+  "LICENSE",
+  "pyproject.toml",
+  "uv.lock",
+  "project/*",
+  "src/void/datamodel/void_pydantic.py",
+  "src/void/datamodel/void.py",
+  # The neighbours' adapt copies, copied as released, and files copied in by
+  # the KTL sidecar sync or written by npm, not by hand.
+  "tests/neighbours/*",
+  ".lokf/scripts/*",
+  "website/package-lock.json",
+]
+
+# Reminder: words have to be lowercased for the ignore-words-list
+ignore-words-list = "linke"
+quiet-level = 3
+
+# Ref.: https://github.com/crate-ci/typos (spell checker)
+[tool.typos.default.extend-words]
+linke = "linke"
+
+[tool.typos.files]
+extend-exclude = [
+  "LICENSE",
+  "uv.lock",
+  "pyproject.toml",
+  "project/*",
+  "src/void/datamodel/void_pydantic.py",
+  "src/void/datamodel/void.py",
+  "tests/neighbours/*",
+  ".lokf/scripts/*",
+  "website/package-lock.json",
+]

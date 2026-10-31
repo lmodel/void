@@ -1,0 +1,7 @@
+# Playbooks
+
+* [Regenerate and test after a schema change](regenerate-and-test.md) - How to change the void schema: edit `src/void/schema/void.yaml`, run `just lint`, `just gen-project`, `just gen-doc`, `just lokf-adapt` and `just test`, and commit the regenerated files with the change.
+* [Validate data against the void schema](validate-data.md) - How to check a VoID description written as YAML or JSON with `linkml-validate -s src/void/schema/void.yaml -C <Class>`, what the validator checks, what the generated dataclasses and Pydantic models leave out, and the three rules no validator states.
+* [Update the upstream pins](update-upstream-pins.md) - What to do when the upstream watch opens an issue: a new edition of the VoID Note, a changed or dropped vocabulary file, a changed licence, or a check that could not finish; which pins move together (the watch, `scripts/extract_void_terms.py`, the schema header and the term lists' checksums).
+* [Release a version](release.md) - How a version of void is released: entries under `## [Unreleased]` in `CHANGELOG.md`, a releasing commit type (`feat:`, `fix:`, `security:`), semantic-release on a push to `main` from the `v0.0.0` baseline, and the knowledge release that attaches the schema copy, the bundle and the Copilot skill.
+* [Knowledge sources map](knowledge-sources.md) - The librarian's scrape map: every repository location and external source this bundle derives concepts from, the concepts each yields, how to re-check each on a refresh run, and the paths left out on purpose.

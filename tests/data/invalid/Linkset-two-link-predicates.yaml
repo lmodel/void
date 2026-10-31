@@ -1,0 +1,9 @@
+# Fails at: /linkPredicate
+# A linkset's links share one predicate; two predicates make two linksets.
+id: http://data.example.org/void.ttl#LighthousesToPlaces
+target:
+  - http://data.example.org/void.ttl#Lighthouses
+  - http://geo.example.com/void.ttl#Places
+linkPredicate:
+  - owl:sameAs
+  - rdfs:seeAlso

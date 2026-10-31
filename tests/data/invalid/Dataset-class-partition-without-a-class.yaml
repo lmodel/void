@@ -1,0 +1,5 @@
+# Fails at: /classPartition/0
+# A class partition names its one class.
+id: http://data.example.org/void.ttl#Lighthouses
+classPartition:
+  - entities: 300

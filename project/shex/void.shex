@@ -1,14 +1,14 @@
+# metamodel_version: 1.12.0
+# version: 2011-03-03
 BASE <https://w3id.org/lmodel/void/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX void: <http://rdfs.org/ns/void#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX linkml: <https://w3id.org/linkml/>
-PREFIX schema1: <http://schema.org/>
 
-
-<LiteralType> rdf:literal
 
 linkml:String xsd:string
 
@@ -48,66 +48,107 @@ linkml:Jsonpath xsd:string
 
 linkml:Sparqlpath xsd:string
 
+<ClassBasedPartition> CLOSED {
+    (  $<ClassBasedPartition_tes> (  void:class @linkml:Uriorcurie ;
+          void:triples @linkml:Integer ? ;
+          void:entities @linkml:Integer ? ;
+          void:classes @linkml:Integer ? ;
+          void:properties @linkml:Integer ? ;
+          void:distinctSubjects @linkml:Integer ? ;
+          void:distinctObjects @linkml:Integer ? ;
+          void:documents @linkml:Integer ? ;
+          void:propertyPartition @<PropertyBasedPartition> *
+       ) ;
+       rdf:type [ <ClassBasedPartition> ] ?
+    )
+}
+
 <Dataset>  (
     CLOSED {
-       (  $<Dataset_tes> (  &<NamedThing_tes> ;
-             rdf:type [ owl:Thing ] ?
+       (  $<Dataset_tes> (  dcterms:title @linkml:String ? ;
+             dcterms:description @linkml:String ? ;
+             dcterms:creator @linkml:Uri * ;
+             dcterms:contributor @linkml:Uri * ;
+             dcterms:publisher @linkml:Uri ? ;
+             dcterms:source @linkml:Uri * ;
+             dcterms:created @linkml:Date ? ;
+             dcterms:issued @linkml:Date ? ;
+             dcterms:modified @linkml:Date ? ;
+             dcterms:license @linkml:Uri ? ;
+             dcterms:subject @linkml:Uri * ;
+             foaf:homepage @linkml:Uri ? ;
+             foaf:page @linkml:Uri * ;
+             void:feature @<TechnicalFeature> * ;
+             void:sparqlEndpoint @linkml:Uri * ;
+             void:dataDump @linkml:Uri * ;
+             void:uriLookupEndpoint @linkml:Uri * ;
+             void:openSearchDescription @linkml:Uri * ;
+             void:rootResource @linkml:Uri * ;
+             void:exampleResource @linkml:Uri * ;
+             void:uriSpace @linkml:String ? ;
+             void:uriRegexPattern @linkml:String ? ;
+             void:vocabulary @linkml:Uri * ;
+             void:subset @<Dataset> * ;
+             void:classPartition @<ClassBasedPartition> * ;
+             void:propertyPartition @<PropertyBasedPartition> * ;
+             void:triples @linkml:Integer ? ;
+             void:entities @linkml:Integer ? ;
+             void:classes @linkml:Integer ? ;
+             void:properties @linkml:Integer ? ;
+             void:distinctSubjects @linkml:Integer ? ;
+             void:distinctObjects @linkml:Integer ? ;
+             void:documents @linkml:Integer ?
           ) ;
-          rdf:type [ schema1:Dataset ] ?
+          rdf:type [ void:Dataset ]
        )
     } OR @<Linkset>
 )
 
 <DatasetDescription> CLOSED {
-    (  $<DatasetDescription_tes> (  &<Document_tes> ;
-          rdf:type [ foaf:Document ] ?
+    (  $<DatasetDescription_tes> (  dcterms:title @linkml:String ? ;
+          dcterms:description @linkml:String ? ;
+          dcterms:creator @linkml:Uri * ;
+          dcterms:created @linkml:Date ? ;
+          dcterms:modified @linkml:Date ? ;
+          foaf:primaryTopic @<Dataset> ? ;
+          foaf:topic @<Dataset> * ;
+          void:inDataset @<Dataset> ?
        ) ;
-       rdf:type [ <DatasetDescription> ] ?
+       rdf:type [ void:DatasetDescription ]
     )
 }
-
-<Document>  (
-    CLOSED {
-       (  $<Document_tes> (  &<NamedThing_tes> ;
-             rdf:type [ owl:Thing ] ?
-          ) ;
-          rdf:type [ foaf:Document ] ?
-       )
-    } OR @<DatasetDescription>
-)
 
 <Linkset> CLOSED {
     (  $<Linkset_tes> (  &<Dataset_tes> ;
-          rdf:type [ schema1:Dataset ] ?
+          rdf:type [ void:Dataset ] ? ;
+          void:target @<Dataset> * ;
+          void:subjectsTarget @<Dataset> ? ;
+          void:objectsTarget @<Dataset> ? ;
+          void:linkPredicate @linkml:Uriorcurie ?
        ) ;
-       rdf:type [ <Linkset> ] ?
+       rdf:type [ void:Linkset ]
     )
 }
 
-<NamedThing>  (
-    @<Dataset> OR @<Document> OR @<Resource> OR @<TechnicalFeature>
-)
-
-<NamedThing_struct> {
-    (  $<NamedThing_tes> rdf:type . * ;
-       rdf:type [ owl:Thing ] ?
-    )
-}
-
-<Resource> CLOSED {
-    (  $<Resource_tes> (  &<NamedThing_tes> ;
-          rdf:type [ owl:Thing ] ?
+<PropertyBasedPartition> CLOSED {
+    (  $<PropertyBasedPartition_tes> (  void:property @linkml:Uriorcurie ;
+          void:triples @linkml:Integer ? ;
+          void:entities @linkml:Integer ? ;
+          void:classes @linkml:Integer ? ;
+          void:properties @linkml:Integer ? ;
+          void:distinctSubjects @linkml:Integer ? ;
+          void:distinctObjects @linkml:Integer ? ;
+          void:documents @linkml:Integer ?
        ) ;
-       rdf:type [ rdfs:Resource ] ?
+       rdf:type [ <PropertyBasedPartition> ] ?
     )
 }
 
 <TechnicalFeature> CLOSED {
-    (  $<TechnicalFeature_tes> (  &<NamedThing_tes> ;
-          rdf:type [ owl:Thing ] ?
+    (  $<TechnicalFeature_tes> (  rdfs:label @linkml:String ? ;
+          rdfs:comment @linkml:String ? ;
+          rdfs:seeAlso @linkml:Uri *
        ) ;
-       rdf:type [ <TechnicalFeature> ] ?
+       rdf:type [ void:TechnicalFeature ]
     )
 }
-
-

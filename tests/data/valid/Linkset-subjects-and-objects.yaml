@@ -1,0 +1,8 @@
+# A linkset that says which dataset holds the links' subjects and which their
+# objects, and which a third party published apart from both.
+id: http://links.example.net/void.ttl#HarboursInRegions
+subjectsTarget: http://data.example.org/void.ttl#Harbours
+objectsTarget: http://geo.example.com/void.ttl#Regions
+linkPredicate: http://purl.org/dc/terms/spatial
+publisher: http://links.example.net/org/matchers
+triples: 41

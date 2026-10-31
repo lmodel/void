@@ -1,0 +1,226 @@
+syntax = "proto3";
+package void;
+// metamodel_version: 1.12.0
+// version: 2011-03-03
+// The slice of a dataset about the members of one class, written inside that dataset, most often to give counts for it.
+message ClassBasedPartition {
+  // The class whose instances a class partition describes, named by its IRI, such as foaf:Person.
+  string class = 1;
+  // How many triples the dataset holds; for a linkset, how many links.
+  int32 triples = 2;
+  // How many entities, resources with an IRI, the dataset describes.
+  int32 entities = 3;
+  // How many distinct classes the dataset's rdf:type triples name.
+  int32 classes = 4;
+  // How many distinct properties the dataset's triples use as predicates.
+  int32 properties = 5;
+  // How many distinct IRIs and blank nodes the dataset's triples have as subjects.
+  int32 distinctSubjects = 6;
+  // How many distinct IRIs, blank nodes and literals the dataset's triples have as objects.
+  int32 distinctObjects = 7;
+  // How many RDF documents together carry the dataset, for example RDFa web pages.
+  int32 documents = 8;
+  // The dataset's slice for one property, given inside it.
+  repeated PropertyBasedPartition propertyPartition = 9;
+}
+// RDF triples from one provider, gathered under an IRI so that a description can speak of them as a whole.
+message Dataset {
+  // The IRI of the dataset, document or feature, written in full or as a CURIE.
+  string id = 1;
+  // A human-readable name for the dataset or document.
+  string title = 2;
+  // A few sentences of prose saying what the dataset or document contains.
+  string description = 3;
+  // The IRI of the agent, human or not, that chiefly made the dataset or document.
+  repeated string creator = 4;
+  // The IRI of an agent that added to the dataset without being its main maker.
+  repeated string contributor = 5;
+  // The IRI of the agent that releases the dataset for others to use.
+  string publisher = 6;
+  // The IRI of an earlier resource whose content the dataset draws on.
+  repeated string source = 7;
+  // The date the dataset or document was made.
+  string created = 8;
+  // The date the dataset was first published.
+  string issued = 9;
+  // The date the dataset or document last changed.
+  string modified = 10;
+  // The IRI of the licence that sets the terms for using the dataset.
+  string license = 11;
+  // The IRI of a topic the dataset covers, such as a DBpedia resource or a SKOS concept.
+  repeated string subject = 12;
+  // The web page about the dataset itself.
+  string homepage = 13;
+  // Any further web page with information on the dataset, for instance its download page or its catalogue entry.
+  repeated string page = 14;
+  // Something the dataset's server or files support, for instance an RDF syntax, named by its IRI.
+  repeated TechnicalFeature feature = 15;
+  // A SPARQL service whose default graph holds the dataset, for running queries on it.
+  repeated string sparqlEndpoint = 16;
+  // A downloadable RDF file holding all of the dataset or a share of it.
+  repeated string dataDump = 17;
+  // A web address that, with an entity's percent-encoded IRI added to its end, answers an HTTP GET with RDF about that entity.
+  repeated string uriLookupEndpoint = 18;
+  // An OpenSearch file telling a client how to run keyword searches over the dataset.
+  repeated string openSearchDescription = 19;
+  // The IRI of a starting point for crawling the dataset: a resource from which links lead, within a few hops, to all the others.
+  repeated string rootResource = 20;
+  // The IRI of an entity typical of the dataset, for a reader to look up.
+  repeated string exampleResource = 21;
+  // The string every entity IRI in the dataset starts with, such as http://example.org/resource/.
+  string uriSpace = 22;
+  // A regular expression in SPARQL's syntax that each entity IRI of the dataset satisfies.
+  string uriRegexPattern = 23;
+  // The namespace IRI of a vocabulary the dataset uses, as a term's IRI reads without its local name and without a final hash, such as http://xmlns.com/foaf/0.1/.
+  repeated string vocabulary = 24;
+  // Another dataset contained in this one, named by its IRI.
+  repeated Dataset subset = 25;
+  // The dataset's slice for one class, given inside it.
+  repeated ClassBasedPartition classPartition = 26;
+  // The dataset's slice for one property, given inside it.
+  repeated PropertyBasedPartition propertyPartition = 27;
+  // How many triples the dataset holds; for a linkset, how many links.
+  int32 triples = 28;
+  // How many entities, resources with an IRI, the dataset describes.
+  int32 entities = 29;
+  // How many distinct classes the dataset's rdf:type triples name.
+  int32 classes = 30;
+  // How many distinct properties the dataset's triples use as predicates.
+  int32 properties = 31;
+  // How many distinct IRIs and blank nodes the dataset's triples have as subjects.
+  int32 distinctSubjects = 32;
+  // How many distinct IRIs, blank nodes and literals the dataset's triples have as objects.
+  int32 distinctObjects = 33;
+  // How many RDF documents together carry the dataset, for example RDFa web pages.
+  int32 documents = 34;
+}
+// A web document, such as a void.ttl file published beside a dataset, that describes one or more datasets.
+message DatasetDescription {
+  // The IRI of the dataset, document or feature, written in full or as a CURIE.
+  string id = 1;
+  // A human-readable name for the dataset or document.
+  string title = 2;
+  // A few sentences of prose saying what the dataset or document contains.
+  string description = 3;
+  // The IRI of the agent, human or not, that chiefly made the dataset or document.
+  repeated string creator = 4;
+  // The date the dataset or document was made.
+  string created = 5;
+  // The date the dataset or document last changed.
+  string modified = 6;
+  // The dataset a description is about, when it describes one.
+  Dataset primaryTopic = 7;
+  // A dataset a description is about, when it describes several of equal weight.
+  repeated Dataset topic = 8;
+  // The dataset that this document's triples belong to, named by its IRI.
+  Dataset inDataset = 9;
+}
+// A dataset of triples that join two datasets: each triple's subject belongs to one of them and its object to the other.
+message Linkset {
+  // The IRI of the dataset, document or feature, written in full or as a CURIE.
+  string id = 1;
+  // A human-readable name for the dataset or document.
+  string title = 2;
+  // A few sentences of prose saying what the dataset or document contains.
+  string description = 3;
+  // The IRI of the agent, human or not, that chiefly made the dataset or document.
+  repeated string creator = 4;
+  // The IRI of an agent that added to the dataset without being its main maker.
+  repeated string contributor = 5;
+  // The IRI of the agent that releases the dataset for others to use.
+  string publisher = 6;
+  // The IRI of an earlier resource whose content the dataset draws on.
+  repeated string source = 7;
+  // The date the dataset or document was made.
+  string created = 8;
+  // The date the dataset was first published.
+  string issued = 9;
+  // The date the dataset or document last changed.
+  string modified = 10;
+  // The IRI of the licence that sets the terms for using the dataset.
+  string license = 11;
+  // The IRI of a topic the dataset covers, such as a DBpedia resource or a SKOS concept.
+  repeated string subject = 12;
+  // The web page about the dataset itself.
+  string homepage = 13;
+  // Any further web page with information on the dataset, for instance its download page or its catalogue entry.
+  repeated string page = 14;
+  // Something the dataset's server or files support, for instance an RDF syntax, named by its IRI.
+  repeated TechnicalFeature feature = 15;
+  // A SPARQL service whose default graph holds the dataset, for running queries on it.
+  repeated string sparqlEndpoint = 16;
+  // A downloadable RDF file holding all of the dataset or a share of it.
+  repeated string dataDump = 17;
+  // A web address that, with an entity's percent-encoded IRI added to its end, answers an HTTP GET with RDF about that entity.
+  repeated string uriLookupEndpoint = 18;
+  // An OpenSearch file telling a client how to run keyword searches over the dataset.
+  repeated string openSearchDescription = 19;
+  // The IRI of a starting point for crawling the dataset: a resource from which links lead, within a few hops, to all the others.
+  repeated string rootResource = 20;
+  // The IRI of an entity typical of the dataset, for a reader to look up.
+  repeated string exampleResource = 21;
+  // The string every entity IRI in the dataset starts with, such as http://example.org/resource/.
+  string uriSpace = 22;
+  // A regular expression in SPARQL's syntax that each entity IRI of the dataset satisfies.
+  string uriRegexPattern = 23;
+  // The namespace IRI of a vocabulary the dataset uses, as a term's IRI reads without its local name and without a final hash, such as http://xmlns.com/foaf/0.1/.
+  repeated string vocabulary = 24;
+  // Another dataset contained in this one, named by its IRI.
+  repeated Dataset subset = 25;
+  // The dataset's slice for one class, given inside it.
+  repeated ClassBasedPartition classPartition = 26;
+  // The dataset's slice for one property, given inside it.
+  repeated PropertyBasedPartition propertyPartition = 27;
+  // How many triples the dataset holds; for a linkset, how many links.
+  int32 triples = 28;
+  // How many entities, resources with an IRI, the dataset describes.
+  int32 entities = 29;
+  // How many distinct classes the dataset's rdf:type triples name.
+  int32 classes = 30;
+  // How many distinct properties the dataset's triples use as predicates.
+  int32 properties = 31;
+  // How many distinct IRIs and blank nodes the dataset's triples have as subjects.
+  int32 distinctSubjects = 32;
+  // How many distinct IRIs, blank nodes and literals the dataset's triples have as objects.
+  int32 distinctObjects = 33;
+  // How many RDF documents together carry the dataset, for example RDFa web pages.
+  int32 documents = 34;
+  // Either dataset a linkset joins, named by its IRI.
+  repeated Dataset target = 35;
+  // The dataset at the subject end of every link in a linkset, named by its IRI.
+  Dataset subjectsTarget = 36;
+  // The dataset at the object end of every link in a linkset, named by its IRI.
+  Dataset objectsTarget = 37;
+  // The property every link of a linkset has as its predicate, such as owl:sameAs.
+  string linkPredicate = 38;
+}
+// The slice of a dataset made of the triples whose predicate is one property, written inside that dataset, most often to give counts for it.
+message PropertyBasedPartition {
+  // The property whose triples a property partition holds, named by its IRI, such as foaf:name.
+  string property = 1;
+  // How many triples the dataset holds; for a linkset, how many links.
+  int32 triples = 2;
+  // How many entities, resources with an IRI, the dataset describes.
+  int32 entities = 3;
+  // How many distinct classes the dataset's rdf:type triples name.
+  int32 classes = 4;
+  // How many distinct properties the dataset's triples use as predicates.
+  int32 properties = 5;
+  // How many distinct IRIs and blank nodes the dataset's triples have as subjects.
+  int32 distinctSubjects = 6;
+  // How many distinct IRIs, blank nodes and literals the dataset's triples have as objects.
+  int32 distinctObjects = 7;
+  // How many RDF documents together carry the dataset, for example RDFa web pages.
+  int32 documents = 8;
+}
+// A technical property of how a dataset is served, such as an RDF syntax it can be read in or an HTTP feature its server supports.
+message TechnicalFeature {
+  // The IRI of the dataset, document or feature, written in full or as a CURIE.
+  string id = 1;
+  // A short name for the feature.
+  string label = 2;
+  // A sentence or two about the feature.
+  string comment = 3;
+  // A web page that tells more about the feature.
+  repeated string seeAlso = 4;
+}

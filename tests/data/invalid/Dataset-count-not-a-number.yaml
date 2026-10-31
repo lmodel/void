@@ -1,0 +1,4 @@
+# Fails at: /entities
+# A count is a whole number, not a phrase.
+id: http://data.example.org/void.ttl#Lighthouses
+entities: about three hundred

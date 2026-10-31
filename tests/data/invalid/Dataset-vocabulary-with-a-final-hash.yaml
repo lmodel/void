@@ -1,0 +1,5 @@
+# Fails at: /vocabulary/0
+# A vocabulary's IRI drops the final hash of its terms' namespace.
+id: http://data.example.org/void.ttl#Lighthouses
+vocabulary:
+  - http://www.w3.org/2003/01/geo/wgs84_pos#

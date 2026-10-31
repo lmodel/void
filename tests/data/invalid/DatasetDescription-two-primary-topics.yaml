@@ -1,0 +1,6 @@
+# Fails at: /primaryTopic
+# A description has one primary topic; several datasets are its topics.
+id: http://data.example.org/void.ttl
+primaryTopic:
+  - http://data.example.org/void.ttl#Lighthouses
+  - http://data.example.org/void.ttl#Harbours

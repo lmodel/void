@@ -1,28 +1,127 @@
+# metamodel_version: 1.12.0
+# version: 2011-03-03
+type ClassBasedPartition
+  {
+    class: String!
+    triples: Int
+    entities: Int
+    classes: Int
+    properties: Int
+    distinctSubjects: Int
+    distinctObjects: Int
+    documents: Int
+    propertyPartition: [PropertyBasedPartition]
+  }
+
 type Dataset
   {
+    id: String!
+    title: String
+    description: String
+    creator: [String]
+    contributor: [String]
+    publisher: String
+    source: [String]
+    created: String
+    issued: String
+    modified: String
+    license: String
+    subject: [String]
+    homepage: String
+    page: [String]
+    feature: [TechnicalFeature]
+    sparqlEndpoint: [String]
+    dataDump: [String]
+    uriLookupEndpoint: [String]
+    openSearchDescription: [String]
+    rootResource: [String]
+    exampleResource: [String]
+    uriSpace: String
+    uriRegexPattern: String
+    vocabulary: [String]
+    subset: [Dataset]
+    classPartition: [ClassBasedPartition]
+    propertyPartition: [PropertyBasedPartition]
+    triples: Int
+    entities: Int
+    classes: Int
+    properties: Int
+    distinctSubjects: Int
+    distinctObjects: Int
+    documents: Int
   }
 
 type DatasetDescription
   {
-  }
-
-type Document
-  {
+    id: String!
+    title: String
+    description: String
+    creator: [String]
+    created: String
+    modified: String
+    primaryTopic: Dataset
+    topic: [Dataset]
+    inDataset: Dataset
   }
 
 type Linkset
   {
+    id: String!
+    title: String
+    description: String
+    creator: [String]
+    contributor: [String]
+    publisher: String
+    source: [String]
+    created: String
+    issued: String
+    modified: String
+    license: String
+    subject: [String]
+    homepage: String
+    page: [String]
+    feature: [TechnicalFeature]
+    sparqlEndpoint: [String]
+    dataDump: [String]
+    uriLookupEndpoint: [String]
+    openSearchDescription: [String]
+    rootResource: [String]
+    exampleResource: [String]
+    uriSpace: String
+    uriRegexPattern: String
+    vocabulary: [String]
+    subset: [Dataset]
+    classPartition: [ClassBasedPartition]
+    propertyPartition: [PropertyBasedPartition]
+    triples: Int
+    entities: Int
+    classes: Int
+    properties: Int
+    distinctSubjects: Int
+    distinctObjects: Int
+    documents: Int
+    target: [Dataset]
+    subjectsTarget: Dataset
+    objectsTarget: Dataset
+    linkPredicate: String
   }
 
-interface NamedThing
+type PropertyBasedPartition
   {
-  }
-
-type Resource
-  {
+    property: String!
+    triples: Int
+    entities: Int
+    classes: Int
+    properties: Int
+    distinctSubjects: Int
+    distinctObjects: Int
+    documents: Int
   }
 
 type TechnicalFeature
   {
+    id: String!
+    label: String
+    comment: String
+    seeAlso: [String]
   }
-

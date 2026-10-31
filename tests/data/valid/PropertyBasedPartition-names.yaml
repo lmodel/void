@@ -1,0 +1,5 @@
+# The triples of one property, counted on their own.
+property: foaf:name
+triples: 312
+distinctSubjects: 312
+distinctObjects: 309

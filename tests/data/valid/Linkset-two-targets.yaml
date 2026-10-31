@@ -1,0 +1,11 @@
+# A linkset between two datasets, named with two targets, whose links all
+# have owl:sameAs as their predicate.
+id: http://data.example.org/void.ttl#LighthousesToPlaces
+title: Lighthouses matched to places
+target:
+  - http://data.example.org/void.ttl#Lighthouses
+  - http://geo.example.com/void.ttl#Places
+linkPredicate: owl:sameAs
+triples: 290
+exampleResource:
+  - http://data.example.org/lighthouse/north-head

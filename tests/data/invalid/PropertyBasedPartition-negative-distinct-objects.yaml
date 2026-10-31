@@ -1,0 +1,4 @@
+# Fails at: /distinctObjects
+# A count of distinct objects is zero or more.
+property: foaf:name
+distinctObjects: -1

@@ -1,0 +1,6 @@
+# The part of a dataset that describes one class's instances. Under
+# problem/valid for its class key, as Dataset-with-partitions.yaml says.
+class: foaf:Organization
+entities: 12
+triples: 140
+properties: 9

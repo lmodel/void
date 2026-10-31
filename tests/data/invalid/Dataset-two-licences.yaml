@@ -1,0 +1,6 @@
+# Fails at: /license
+# The schema takes one licence for a dataset.
+id: http://data.example.org/void.ttl#Lighthouses
+license:
+  - http://opendatacommons.org/licenses/by/1-0/
+  - http://creativecommons.org/licenses/by/4.0/

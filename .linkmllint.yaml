@@ -1,0 +1,11 @@
+# linkml-lint reads this file from the directory `just lint` runs in.
+# The recommended rules apply, with the naming rule fitted to VoID's names.
+# The slots keep the local names of the VoID, Dublin Core, FOAF and RDF
+# Schema properties they render, so a record's keys are the terms a VoID
+# description in RDF uses: lowerCamelCase (distinctSubjects, primaryTopic,
+# seeAlso). Class names keep the rule's usual form.
+extends: recommended
+rules:
+  standard_naming:
+    level: error
+    slot_pattern: "^[a-z][A-Za-z0-9]*$"

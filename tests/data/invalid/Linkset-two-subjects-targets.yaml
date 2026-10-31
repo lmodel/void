@@ -1,0 +1,7 @@
+# Fails at: /subjectsTarget
+# A linkset's subjects are in one dataset.
+id: http://links.example.net/void.ttl#HarboursInRegions
+subjectsTarget:
+  - http://data.example.org/void.ttl#Harbours
+  - http://data.example.org/void.ttl#Lighthouses
+objectsTarget: http://geo.example.com/void.ttl#Regions

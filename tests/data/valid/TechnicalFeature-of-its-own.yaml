@@ -1,0 +1,6 @@
+# A feature a publisher names in its own namespace and describes.
+id: http://data.example.org/features#ConditionalGet
+label: Conditional requests
+comment: The server answers a GET with If-None-Match from an entity tag.
+seeAlso:
+  - https://www.rfc-editor.org/rfc/rfc9110#name-if-none-match

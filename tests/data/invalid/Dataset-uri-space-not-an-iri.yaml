@@ -1,0 +1,4 @@
+# Fails at: /uriSpace
+# A URI space is the start of an IRI, not a description of one.
+id: http://data.example.org/void.ttl#Lighthouses
+uriSpace: lighthouse pages on data.example.org

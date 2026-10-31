@@ -1,0 +1,4 @@
+# Fails at: /
+# A linkset names its targets, or its subjects' and its objects' target.
+id: http://data.example.org/void.ttl#LighthousesToPlaces
+linkPredicate: owl:sameAs

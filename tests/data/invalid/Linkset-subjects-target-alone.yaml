@@ -1,0 +1,4 @@
+# Fails at: /
+# The subjects' target alone names one of the two datasets.
+id: http://links.example.net/void.ttl#HarboursInRegions
+subjectsTarget: http://data.example.org/void.ttl#Harbours

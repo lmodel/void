@@ -1,0 +1,5 @@
+# Fails at: /
+# Only a linkset has targets.
+id: http://data.example.org/void.ttl#Lighthouses
+target:
+  - http://geo.example.com/void.ttl#Places
