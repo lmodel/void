@@ -10,7 +10,7 @@ import java.util.List;
 import lombok.*;
 
 /**
-  The part of a dataset that holds the triples of one property, given within the dataset it is part of, usually to state counts.
+  The slice of a dataset made of the triples whose predicate is one property, written inside that dataset, most often to give counts for it.
 **/
 @Data
 @EqualsAndHashCode(callSuper=false)

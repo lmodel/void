@@ -7,101 +7,101 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix void: <http://rdfs.org/ns/void#> .
 void:Dataset a sh:NodeShape ;
-	rdfs:comment "A body of RDF data that one party publishes, maintains or gathers, treated as a single resource so that statements can be made about all of it." ;
+	rdfs:comment "RDF triples from one provider, gathered under an IRI so that a description can speak of them as a whole." ;
 	sh:closed true ;
-	sh:ignoredProperties _:c14n5 ;
-	sh:property _:c14n101 , _:c14n102 , _:c14n105 , _:c14n107 , _:c14n108 , _:c14n110 , _:c14n12 , _:c14n13 , _:c14n18 , _:c14n24 , _:c14n29 , _:c14n31 , _:c14n38 , _:c14n40 , _:c14n43 , _:c14n46 , _:c14n47 , _:c14n51 , _:c14n56 , _:c14n6 , _:c14n61 , _:c14n63 , _:c14n66 , _:c14n68 , _:c14n7 , _:c14n73 , _:c14n77 , _:c14n8 , _:c14n81 , _:c14n82 , _:c14n87 , _:c14n88 , _:c14n91 , _:c14n94 ;
+	sh:ignoredProperties _:c14n3 ;
+	sh:property _:c14n103 , _:c14n104 , _:c14n107 , _:c14n111 , _:c14n14 , _:c14n23 , _:c14n28 , _:c14n29 , _:c14n30 , _:c14n32 , _:c14n36 , _:c14n40 , _:c14n43 , _:c14n47 , _:c14n48 , _:c14n49 , _:c14n5 , _:c14n51 , _:c14n6 , _:c14n61 , _:c14n62 , _:c14n65 , _:c14n7 , _:c14n70 , _:c14n72 , _:c14n79 , _:c14n8 , _:c14n83 , _:c14n86 , _:c14n87 , _:c14n88 , _:c14n94 , _:c14n95 , _:c14n96 ;
 	sh:targetClass void:Dataset .
 void:DatasetDescription a sh:NodeShape ;
 	rdfs:comment "A web document, such as a void.ttl file published beside a dataset, that describes one or more datasets." ;
 	sh:closed true ;
-	sh:ignoredProperties _:c14n39 ;
-	sh:property _:c14n22 , _:c14n27 , _:c14n55 , _:c14n60 , _:c14n62 , _:c14n86 , _:c14n9 , _:c14n92 , _:c14n96 ;
+	sh:ignoredProperties _:c14n38 ;
+	sh:property _:c14n100 , _:c14n109 , _:c14n19 , _:c14n24 , _:c14n57 , _:c14n60 , _:c14n63 , _:c14n64 , _:c14n80 ;
 	sh:targetClass void:DatasetDescription .
 void:Linkset a sh:NodeShape ;
-	rdfs:comment "A dataset of RDF links between two datasets: triples whose subjects are described in one of them and whose objects are described in the other." ;
+	rdfs:comment "A dataset of triples that join two datasets: each triple's subject belongs to one of them and its object to the other." ;
 	sh:closed true ;
-	sh:ignoredProperties _:c14n17 ;
-	sh:property _:c14n0 , _:c14n100 , _:c14n103 , _:c14n109 , _:c14n11 , _:c14n14 , _:c14n15 , _:c14n21 , _:c14n23 , _:c14n26 , _:c14n28 , _:c14n3 , _:c14n32 , _:c14n33 , _:c14n35 , _:c14n36 , _:c14n44 , _:c14n45 , _:c14n48 , _:c14n49 , _:c14n53 , _:c14n54 , _:c14n57 , _:c14n59 , _:c14n64 , _:c14n65 , _:c14n70 , _:c14n74 , _:c14n75 , _:c14n76 , _:c14n79 , _:c14n83 , _:c14n84 , _:c14n85 , _:c14n90 , _:c14n93 , _:c14n97 , _:c14n99 ;
+	sh:ignoredProperties _:c14n13 ;
+	sh:property _:c14n0 , _:c14n102 , _:c14n106 , _:c14n108 , _:c14n11 , _:c14n15 , _:c14n17 , _:c14n18 , _:c14n20 , _:c14n22 , _:c14n26 , _:c14n27 , _:c14n33 , _:c14n34 , _:c14n39 , _:c14n4 , _:c14n44 , _:c14n45 , _:c14n46 , _:c14n50 , _:c14n52 , _:c14n55 , _:c14n56 , _:c14n59 , _:c14n66 , _:c14n68 , _:c14n73 , _:c14n74 , _:c14n76 , _:c14n78 , _:c14n82 , _:c14n84 , _:c14n85 , _:c14n89 , _:c14n90 , _:c14n92 , _:c14n93 , _:c14n99 ;
 	sh:targetClass void:Linkset .
 void:TechnicalFeature a sh:NodeShape ;
 	rdfs:comment "A technical property of how a dataset is served, such as an RDF syntax it can be read in or an HTTP feature its server supports." ;
 	sh:closed true ;
 	sh:ignoredProperties _:c14n41 ;
-	sh:property _:c14n30 , _:c14n58 , _:c14n89 , _:c14n95 ;
+	sh:property _:c14n25 , _:c14n58 , _:c14n81 , _:c14n98 ;
 	sh:targetClass void:TechnicalFeature .
 void_linkml:ClassBasedPartition a sh:NodeShape ;
-	rdfs:comment "The part of a dataset that describes the instances of one class, given within the dataset it is part of, usually to state counts." ;
+	rdfs:comment "The slice of a dataset about the members of one class, written inside that dataset, most often to give counts for it." ;
 	sh:closed true ;
 	sh:ignoredProperties _:c14n67 ;
-	sh:property _:c14n106 , _:c14n16 , _:c14n19 , _:c14n34 , _:c14n4 , _:c14n71 , _:c14n72 , _:c14n80 , _:c14n98 ;
+	sh:property _:c14n10 , _:c14n105 , _:c14n12 , _:c14n2 , _:c14n31 , _:c14n37 , _:c14n71 , _:c14n77 , _:c14n91 ;
 	sh:targetClass void_linkml:ClassBasedPartition .
 void_linkml:PropertyBasedPartition a sh:NodeShape ;
-	rdfs:comment "The part of a dataset that holds the triples of one property, given within the dataset it is part of, usually to state counts." ;
+	rdfs:comment "The slice of a dataset made of the triples whose predicate is one property, written inside that dataset, most often to give counts for it." ;
 	sh:closed true ;
-	sh:ignoredProperties _:c14n37 ;
-	sh:property _:c14n1 , _:c14n10 , _:c14n104 , _:c14n111 , _:c14n2 , _:c14n25 , _:c14n52 , _:c14n78 ;
+	sh:ignoredProperties _:c14n35 ;
+	sh:property _:c14n1 , _:c14n101 , _:c14n110 , _:c14n21 , _:c14n54 , _:c14n75 , _:c14n9 , _:c14n97 ;
 	sh:targetClass void_linkml:PropertyBasedPartition .
-_:c14n0 sh:datatype xsd:integer ;
-	sh:description "How many RDF documents the dataset is published as, for a dataset spread over many documents whose triples are hard to count." ;
+_:c14n0 sh:class void:Dataset ;
+	sh:description "The dataset at the object end of every link in a linkset, named by its IRI." ;
+	sh:maxCount 1 ;
+	sh:nodeKind sh:IRI ;
+	sh:order 2 ;
+	sh:path void:objectsTarget .
+_:c14n1 sh:datatype xsd:integer ;
+	sh:description "How many distinct IRIs and blank nodes the dataset's triples have as subjects." ;
 	sh:maxCount 1 ;
 	sh:minInclusive 0 ;
 	sh:nodeKind sh:Literal ;
-	sh:order 37 ;
-	sh:path void:documents .
-_:c14n1 sh:datatype xsd:integer ;
-	sh:description "How many RDF documents the dataset is published as, for a dataset spread over many documents whose triples are hard to count." ;
+	sh:order 5 ;
+	sh:path void:distinctSubjects .
+_:c14n10 sh:datatype xsd:integer ;
+	sh:description "How many RDF documents together carry the dataset, for example RDFa web pages." ;
 	sh:maxCount 1 ;
 	sh:minInclusive 0 ;
 	sh:nodeKind sh:Literal ;
 	sh:order 7 ;
 	sh:path void:documents .
-_:c14n10 sh:datatype xsd:integer ;
-	sh:description "How many distinct properties the dataset's triples use as predicates." ;
+_:c14n100 sh:datatype xsd:string ;
+	sh:description "A few sentences of prose saying what the dataset or document contains." ;
+	sh:maxCount 1 ;
+	sh:nodeKind sh:Literal ;
+	sh:order 2 ;
+	sh:path dcterms:description .
+_:c14n101 sh:datatype xsd:integer ;
+	sh:description "How many RDF documents together carry the dataset, for example RDFa web pages." ;
 	sh:maxCount 1 ;
 	sh:minInclusive 0 ;
 	sh:nodeKind sh:Literal ;
-	sh:order 4 ;
-	sh:path void:properties .
-_:c14n100 sh:datatype xsd:date ;
-	sh:description "The date the dataset or document last changed." ;
-	sh:maxCount 1 ;
-	sh:nodeKind sh:Literal ;
-	sh:order 13 ;
-	sh:path dcterms:modified .
-_:c14n101 sh:description "The IRI of a person, organisation or service mainly responsible for making the dataset or document." ;
-	sh:nodeKind sh:IRI ;
-	sh:order 3 ;
-	sh:path dcterms:creator .
-_:c14n102 sh:description "The IRI of the dataset, document or feature, written in full or as a CURIE." ;
-	sh:maxCount 1 ;
-	sh:nodeKind sh:IRI ;
-	sh:order 0 ;
-	sh:path void_linkml:id .
-_:c14n103 sh:description "The IRI of a resource the dataset was derived from." ;
-	sh:nodeKind sh:IRI ;
-	sh:order 10 ;
-	sh:path dcterms:source .
-_:c14n104 sh:datatype xsd:integer ;
-	sh:description "How many triples the dataset holds; for a linkset, how many links." ;
-	sh:maxCount 1 ;
-	sh:minInclusive 0 ;
-	sh:nodeKind sh:Literal ;
-	sh:order 1 ;
-	sh:path void:triples .
-_:c14n105 sh:datatype xsd:date ;
+	sh:order 7 ;
+	sh:path void:documents .
+_:c14n102 sh:class void_linkml:PropertyBasedPartition ;
+	sh:description "The dataset's slice for one property, given inside it." ;
+	sh:nodeKind sh:BlankNodeOrIRI ;
+	sh:order 30 ;
+	sh:path void:propertyPartition .
+_:c14n103 sh:datatype xsd:date ;
 	sh:description "The date the dataset or document last changed." ;
 	sh:maxCount 1 ;
 	sh:nodeKind sh:Literal ;
 	sh:order 9 ;
 	sh:path dcterms:modified .
-_:c14n106 sh:datatype xsd:integer ;
+_:c14n104 sh:class void:TechnicalFeature ;
+	sh:description "Something the dataset's server or files support, for instance an RDF syntax, named by its IRI." ;
+	sh:nodeKind sh:IRI ;
+	sh:order 14 ;
+	sh:path void:feature .
+_:c14n105 sh:datatype xsd:integer ;
 	sh:description "How many triples the dataset holds; for a linkset, how many links." ;
 	sh:maxCount 1 ;
 	sh:minInclusive 0 ;
 	sh:nodeKind sh:Literal ;
 	sh:order 1 ;
 	sh:path void:triples .
+_:c14n106 sh:description "Any further web page with information on the dataset, for instance its download page or its catalogue entry." ;
+	sh:nodeKind sh:IRI ;
+	sh:order 17 ;
+	sh:path foaf:page .
 _:c14n107 sh:datatype xsd:integer ;
 	sh:description "How many triples the dataset holds; for a linkset, how many links." ;
 	sh:maxCount 1 ;
@@ -110,196 +110,196 @@ _:c14n107 sh:datatype xsd:integer ;
 	sh:order 27 ;
 	sh:path void:triples .
 _:c14n108 sh:datatype xsd:integer ;
-	sh:description "How many RDF documents the dataset is published as, for a dataset spread over many documents whose triples are hard to count." ;
-	sh:maxCount 1 ;
-	sh:minInclusive 0 ;
-	sh:nodeKind sh:Literal ;
-	sh:order 33 ;
-	sh:path void:documents .
-_:c14n109 sh:datatype xsd:integer ;
 	sh:description "How many entities, resources with an IRI, the dataset describes." ;
 	sh:maxCount 1 ;
 	sh:minInclusive 0 ;
 	sh:nodeKind sh:Literal ;
 	sh:order 32 ;
 	sh:path void:entities .
-_:c14n11 sh:description "The IRI of a person, organisation or service that contributed to the dataset." ;
-	sh:nodeKind sh:IRI ;
-	sh:order 8 ;
-	sh:path dcterms:contributor .
-_:c14n110 sh:description "The IRI of a resource the dataset was derived from." ;
-	sh:nodeKind sh:IRI ;
-	sh:order 6 ;
-	sh:path dcterms:source .
-_:c14n111 sh:datatype xsd:integer ;
+_:c14n109 sh:datatype xsd:string ;
+	sh:description "A human-readable name for the dataset or document." ;
+	sh:maxCount 1 ;
+	sh:nodeKind sh:Literal ;
+	sh:order 1 ;
+	sh:path dcterms:title .
+_:c14n11 sh:datatype xsd:date ;
+	sh:description "The date the dataset or document was made." ;
+	sh:maxCount 1 ;
+	sh:nodeKind sh:Literal ;
+	sh:order 11 ;
+	sh:path dcterms:created .
+_:c14n110 sh:datatype xsd:integer ;
 	sh:description "How many distinct IRIs, blank nodes and literals the dataset's triples have as objects." ;
 	sh:maxCount 1 ;
 	sh:minInclusive 0 ;
 	sh:nodeKind sh:Literal ;
 	sh:order 6 ;
 	sh:path void:distinctObjects .
-_:c14n12 sh:description "An address to which the URL-encoded IRI of an entity is appended, so that a GET on the result returns an RDF description of the entity." ;
-	sh:nodeKind sh:IRI ;
-	sh:order 17 ;
-	sh:path void:uriLookupEndpoint .
-_:c14n13 sh:class void:Dataset ;
-	sh:description "A dataset that is part of this one, named by its IRI." ;
-	sh:nodeKind sh:IRI ;
-	sh:order 24 ;
-	sh:path void:subset .
-_:c14n14 sh:datatype xsd:date ;
-	sh:description "The date the dataset or document was made." ;
-	sh:maxCount 1 ;
-	sh:nodeKind sh:Literal ;
-	sh:order 11 ;
-	sh:path dcterms:created .
-_:c14n15 sh:description "The IRI of the person, organisation or service that makes the dataset available." ;
-	sh:maxCount 1 ;
-	sh:nodeKind sh:IRI ;
-	sh:order 9 ;
-	sh:path dcterms:publisher .
-_:c14n16 sh:description "The class whose instances a class partition describes, named by its IRI, such as foaf:Person." ;
+_:c14n111 sh:class void_linkml:PropertyBasedPartition ;
+	sh:description "The dataset's slice for one property, given inside it." ;
+	sh:nodeKind sh:BlankNodeOrIRI ;
+	sh:order 26 ;
+	sh:path void:propertyPartition .
+_:c14n12 sh:description "The class whose instances a class partition describes, named by its IRI, such as foaf:Person." ;
 	sh:maxCount 1 ;
 	sh:minCount 1 ;
 	sh:nodeKind sh:IRI ;
 	sh:order 0 ;
 	sh:path void:class .
-_:c14n17 rdf:first rdf:type ;
+_:c14n13 rdf:first rdf:type ;
 	rdf:rest rdf:nil .
-_:c14n18 sh:datatype xsd:date ;
+_:c14n14 sh:datatype xsd:date ;
 	sh:description "The date the dataset or document was made." ;
 	sh:maxCount 1 ;
 	sh:nodeKind sh:Literal ;
 	sh:order 7 ;
 	sh:path dcterms:created .
-_:c14n19 sh:datatype xsd:integer ;
-	sh:description "How many RDF documents the dataset is published as, for a dataset spread over many documents whose triples are hard to count." ;
-	sh:maxCount 1 ;
-	sh:minInclusive 0 ;
-	sh:nodeKind sh:Literal ;
-	sh:order 7 ;
-	sh:path void:documents .
-_:c14n2 sh:datatype xsd:integer ;
-	sh:description "How many distinct IRIs and blank nodes the dataset's triples have as subjects." ;
-	sh:maxCount 1 ;
-	sh:minInclusive 0 ;
-	sh:nodeKind sh:Literal ;
-	sh:order 5 ;
-	sh:path void:distinctSubjects .
-_:c14n20 rdf:first void:subjectsTarget ;
+_:c14n15 sh:class void:Dataset ;
+	sh:description "Either dataset a linkset joins, named by its IRI." ;
+	sh:maxCount 2 ;
+	sh:minCount 2 ;
+	sh:nodeKind sh:IRI ;
+	sh:order 0 ;
+	sh:path void:target .
+_:c14n16 rdf:first void:subjectsTarget ;
 	rdf:rest _:c14n42 .
-_:c14n21 sh:datatype xsd:date ;
+_:c14n17 sh:datatype xsd:date ;
 	sh:description "The date the dataset was first published." ;
 	sh:maxCount 1 ;
 	sh:nodeKind sh:Literal ;
 	sh:order 12 ;
 	sh:path dcterms:issued .
-_:c14n22 sh:datatype xsd:date ;
+_:c14n18 sh:description "A SPARQL service whose default graph holds the dataset, for running queries on it." ;
+	sh:nodeKind sh:IRI ;
+	sh:order 19 ;
+	sh:path void:sparqlEndpoint .
+_:c14n19 sh:datatype xsd:date ;
 	sh:description "The date the dataset or document last changed." ;
 	sh:maxCount 1 ;
 	sh:nodeKind sh:Literal ;
 	sh:order 5 ;
 	sh:path dcterms:modified .
-_:c14n23 sh:datatype xsd:string ;
-	sh:description "A regular expression, in the syntax SPARQL uses, that matches the IRI of every entity in the dataset." ;
+_:c14n2 sh:datatype xsd:integer ;
+	sh:description "How many distinct IRIs, blank nodes and literals the dataset's triples have as objects." ;
 	sh:maxCount 1 ;
+	sh:minInclusive 0 ;
 	sh:nodeKind sh:Literal ;
-	sh:order 26 ;
-	sh:path void:uriRegexPattern .
-_:c14n24 sh:description "The address of a SPARQL endpoint whose default graph holds the dataset." ;
-	sh:nodeKind sh:IRI ;
-	sh:order 15 ;
-	sh:path void:sparqlEndpoint .
-_:c14n25 sh:description "The property whose triples a property partition holds, named by its IRI, such as foaf:name." ;
+	sh:order 6 ;
+	sh:path void:distinctObjects .
+_:c14n20 sh:datatype xsd:integer ;
+	sh:description "How many RDF documents together carry the dataset, for example RDFa web pages." ;
+	sh:maxCount 1 ;
+	sh:minInclusive 0 ;
+	sh:nodeKind sh:Literal ;
+	sh:order 37 ;
+	sh:path void:documents .
+_:c14n21 sh:description "The property whose triples a property partition holds, named by its IRI, such as foaf:name." ;
 	sh:maxCount 1 ;
 	sh:minCount 1 ;
 	sh:nodeKind sh:IRI ;
 	sh:order 0 ;
 	sh:path void:property .
-_:c14n26 sh:datatype xsd:string ;
-	sh:description "The name of the dataset or document." ;
-	sh:maxCount 1 ;
-	sh:nodeKind sh:Literal ;
-	sh:order 5 ;
-	sh:path dcterms:title .
-_:c14n27 sh:datatype xsd:date ;
+_:c14n22 sh:description "An OpenSearch file telling a client how to run keyword searches over the dataset." ;
+	sh:nodeKind sh:IRI ;
+	sh:order 22 ;
+	sh:path void:openSearchDescription .
+_:c14n23 sh:description "The IRI of a starting point for crawling the dataset: a resource from which links lead, within a few hops, to all the others." ;
+	sh:nodeKind sh:IRI ;
+	sh:order 19 ;
+	sh:path void:rootResource .
+_:c14n24 sh:datatype xsd:date ;
 	sh:description "The date the dataset or document was made." ;
 	sh:maxCount 1 ;
 	sh:nodeKind sh:Literal ;
 	sh:order 4 ;
 	sh:path dcterms:created .
-_:c14n28 sh:description "An address to which the URL-encoded IRI of an entity is appended, so that a GET on the result returns an RDF description of the entity." ;
-	sh:nodeKind sh:IRI ;
-	sh:order 21 ;
-	sh:path void:uriLookupEndpoint .
-_:c14n29 sh:description "The address of an OpenSearch description document for a text search over the dataset." ;
-	sh:nodeKind sh:IRI ;
-	sh:order 18 ;
-	sh:path void:openSearchDescription .
-_:c14n3 sh:description "The address of a file to download that holds the dataset, or a part of it, as RDF." ;
-	sh:nodeKind sh:IRI ;
-	sh:order 20 ;
-	sh:path void:dataDump .
-_:c14n30 sh:datatype xsd:string ;
+_:c14n25 sh:datatype xsd:string ;
 	sh:description "A sentence or two about the feature." ;
 	sh:maxCount 1 ;
 	sh:nodeKind sh:Literal ;
 	sh:order 2 ;
 	sh:path rdfs:comment .
-_:c14n31 sh:datatype xsd:string ;
+_:c14n26 sh:description "The IRI of the licence that sets the terms for using the dataset." ;
+	sh:maxCount 1 ;
+	sh:nodeKind sh:IRI ;
+	sh:order 14 ;
+	sh:path dcterms:license .
+_:c14n27 sh:class void_linkml:ClassBasedPartition ;
+	sh:description "The dataset's slice for one class, given inside it." ;
+	sh:nodeKind sh:BlankNodeOrIRI ;
+	sh:order 29 ;
+	sh:path void:classPartition .
+_:c14n28 sh:datatype xsd:string ;
 	sh:description "The string every entity IRI in the dataset starts with, such as http://example.org/resource/." ;
 	sh:maxCount 1 ;
 	sh:nodeKind sh:Literal ;
 	sh:order 21 ;
 	sh:path void:uriSpace ;
 	sh:pattern "^[A-Za-z][A-Za-z0-9+.-]*:[^\\s]*$" .
-_:c14n32 sh:class void:Dataset ;
-	sh:description "A dataset that is part of this one, named by its IRI." ;
+_:c14n29 sh:description "Any further web page with information on the dataset, for instance its download page or its catalogue entry." ;
 	sh:nodeKind sh:IRI ;
-	sh:order 28 ;
-	sh:path void:subset .
-_:c14n33 sh:class void:TechnicalFeature ;
-	sh:description "A technical feature of the dataset, such as an RDF syntax it is served in, named by the feature's IRI." ;
-	sh:nodeKind sh:IRI ;
-	sh:order 18 ;
-	sh:path void:feature .
-_:c14n34 sh:datatype xsd:integer ;
+	sh:order 13 ;
+	sh:path foaf:page .
+_:c14n3 rdf:first void:linkPredicate ;
+	rdf:rest _:c14n53 .
+_:c14n30 sh:datatype xsd:string ;
+	sh:description "A few sentences of prose saying what the dataset or document contains." ;
+	sh:maxCount 1 ;
+	sh:nodeKind sh:Literal ;
+	sh:order 2 ;
+	sh:path dcterms:description .
+_:c14n31 sh:datatype xsd:integer ;
 	sh:description "How many distinct properties the dataset's triples use as predicates." ;
 	sh:maxCount 1 ;
 	sh:minInclusive 0 ;
 	sh:nodeKind sh:Literal ;
 	sh:order 4 ;
 	sh:path void:properties .
-_:c14n35 sh:description "The IRI of the dataset, document or feature, written in full or as a CURIE." ;
+_:c14n32 sh:description "The IRI of the licence that sets the terms for using the dataset." ;
+	sh:maxCount 1 ;
+	sh:nodeKind sh:IRI ;
+	sh:order 10 ;
+	sh:path dcterms:license .
+_:c14n33 sh:description "The IRI of the dataset, document or feature, written in full or as a CURIE." ;
 	sh:maxCount 1 ;
 	sh:nodeKind sh:IRI ;
 	sh:order 4 ;
 	sh:path void_linkml:id .
-_:c14n36 sh:description "The IRI of a central entity of the dataset, from which every other entity can be reached by following links in a few steps." ;
-	sh:nodeKind sh:IRI ;
-	sh:order 23 ;
-	sh:path void:rootResource .
-_:c14n37 rdf:first rdf:type ;
+_:c14n34 sh:datatype xsd:string ;
+	sh:description "A few sentences of prose saying what the dataset or document contains." ;
+	sh:maxCount 1 ;
+	sh:nodeKind sh:Literal ;
+	sh:order 6 ;
+	sh:path dcterms:description .
+_:c14n35 rdf:first rdf:type ;
 	rdf:rest rdf:nil .
-_:c14n38 sh:datatype xsd:date ;
+_:c14n36 sh:datatype xsd:date ;
 	sh:description "The date the dataset was first published." ;
 	sh:maxCount 1 ;
 	sh:nodeKind sh:Literal ;
 	sh:order 8 ;
 	sh:path dcterms:issued .
-_:c14n39 rdf:first rdf:type ;
+_:c14n37 sh:class void_linkml:PropertyBasedPartition ;
+	sh:description "The dataset's slice for one property, given inside it." ;
+	sh:nodeKind sh:BlankNodeOrIRI ;
+	sh:order 8 ;
+	sh:path void:propertyPartition .
+_:c14n38 rdf:first rdf:type ;
 	rdf:rest rdf:nil .
-_:c14n4 sh:datatype xsd:integer ;
-	sh:description "How many distinct IRIs, blank nodes and literals the dataset's triples have as objects." ;
-	sh:maxCount 1 ;
-	sh:minInclusive 0 ;
-	sh:nodeKind sh:Literal ;
-	sh:order 6 ;
-	sh:path void:distinctObjects .
-_:c14n40 sh:description "The IRI of a person, organisation or service that contributed to the dataset." ;
+_:c14n39 sh:class void:Dataset ;
+	sh:description "Another dataset contained in this one, named by its IRI." ;
 	sh:nodeKind sh:IRI ;
-	sh:order 4 ;
-	sh:path dcterms:contributor .
+	sh:order 28 ;
+	sh:path void:subset .
+_:c14n4 sh:description "The IRI of a starting point for crawling the dataset: a resource from which links lead, within a few hops, to all the others." ;
+	sh:nodeKind sh:IRI ;
+	sh:order 23 ;
+	sh:path void:rootResource .
+_:c14n40 sh:class void:Dataset ;
+	sh:description "Another dataset contained in this one, named by its IRI." ;
+	sh:nodeKind sh:IRI ;
+	sh:order 24 ;
+	sh:path void:subset .
 _:c14n41 rdf:first rdf:type ;
 	rdf:rest rdf:nil .
 _:c14n42 rdf:first void:target ;
@@ -314,74 +314,76 @@ _:c14n44 sh:description "The web page about the dataset itself." ;
 	sh:nodeKind sh:IRI ;
 	sh:order 16 ;
 	sh:path foaf:homepage .
-_:c14n45 sh:datatype xsd:integer ;
+_:c14n45 sh:description "The IRI of a topic the dataset covers, such as a DBpedia resource or a SKOS concept." ;
+	sh:nodeKind sh:IRI ;
+	sh:order 15 ;
+	sh:path dcterms:subject .
+_:c14n46 sh:datatype xsd:integer ;
 	sh:description "How many distinct classes the dataset's rdf:type triples name." ;
 	sh:maxCount 1 ;
 	sh:minInclusive 0 ;
 	sh:nodeKind sh:Literal ;
 	sh:order 33 ;
 	sh:path void:classes .
-_:c14n46 sh:description "The IRI of a central entity of the dataset, from which every other entity can be reached by following links in a few steps." ;
+_:c14n47 sh:description "The IRI of a topic the dataset covers, such as a DBpedia resource or a SKOS concept." ;
 	sh:nodeKind sh:IRI ;
-	sh:order 19 ;
-	sh:path void:rootResource .
-_:c14n47 sh:description "The IRI of an entity typical of the dataset, for a reader to look up." ;
+	sh:order 11 ;
+	sh:path dcterms:subject .
+_:c14n48 sh:description "A downloadable RDF file holding all of the dataset or a share of it." ;
+	sh:nodeKind sh:IRI ;
+	sh:order 16 ;
+	sh:path void:dataDump .
+_:c14n49 sh:description "A web address that, with an entity's percent-encoded IRI added to its end, answers an HTTP GET with RDF about that entity." ;
+	sh:nodeKind sh:IRI ;
+	sh:order 17 ;
+	sh:path void:uriLookupEndpoint .
+_:c14n5 sh:datatype xsd:integer ;
+	sh:description "How many distinct IRIs, blank nodes and literals the dataset's triples have as objects." ;
+	sh:maxCount 1 ;
+	sh:minInclusive 0 ;
+	sh:nodeKind sh:Literal ;
+	sh:order 32 ;
+	sh:path void:distinctObjects .
+_:c14n50 sh:description "A downloadable RDF file holding all of the dataset or a share of it." ;
+	sh:nodeKind sh:IRI ;
+	sh:order 20 ;
+	sh:path void:dataDump .
+_:c14n51 sh:description "The IRI of an entity typical of the dataset, for a reader to look up." ;
 	sh:nodeKind sh:IRI ;
 	sh:order 20 ;
 	sh:path void:exampleResource .
-_:c14n48 sh:datatype xsd:integer ;
+_:c14n52 sh:datatype xsd:integer ;
 	sh:description "How many distinct IRIs, blank nodes and literals the dataset's triples have as objects." ;
 	sh:maxCount 1 ;
 	sh:minInclusive 0 ;
 	sh:nodeKind sh:Literal ;
 	sh:order 36 ;
 	sh:path void:distinctObjects .
-_:c14n49 sh:description "The address of an OpenSearch description document for a text search over the dataset." ;
-	sh:nodeKind sh:IRI ;
-	sh:order 22 ;
-	sh:path void:openSearchDescription .
-_:c14n5 rdf:first void:linkPredicate ;
-	rdf:rest _:c14n50 .
-_:c14n50 rdf:first void:objectsTarget ;
-	rdf:rest _:c14n20 .
-_:c14n51 sh:class void_linkml:ClassBasedPartition ;
-	sh:description "A part of the dataset that describes the instances of one class." ;
-	sh:nodeKind sh:BlankNodeOrIRI ;
-	sh:order 25 ;
-	sh:path void:classPartition .
-_:c14n52 sh:datatype xsd:integer ;
+_:c14n53 rdf:first void:objectsTarget ;
+	rdf:rest _:c14n16 .
+_:c14n54 sh:datatype xsd:integer ;
 	sh:description "How many entities, resources with an IRI, the dataset describes." ;
 	sh:maxCount 1 ;
 	sh:minInclusive 0 ;
 	sh:nodeKind sh:Literal ;
 	sh:order 2 ;
 	sh:path void:entities .
-_:c14n53 sh:datatype xsd:integer ;
+_:c14n55 sh:datatype xsd:integer ;
 	sh:description "How many triples the dataset holds; for a linkset, how many links." ;
 	sh:maxCount 1 ;
 	sh:minInclusive 0 ;
 	sh:nodeKind sh:Literal ;
 	sh:order 31 ;
 	sh:path void:triples .
-_:c14n54 sh:description "The address of a SPARQL endpoint whose default graph holds the dataset." ;
+_:c14n56 sh:description "The IRI of the agent, human or not, that chiefly made the dataset or document." ;
 	sh:nodeKind sh:IRI ;
-	sh:order 19 ;
-	sh:path void:sparqlEndpoint .
-_:c14n55 sh:class void:Dataset ;
+	sh:order 7 ;
+	sh:path dcterms:creator .
+_:c14n57 sh:class void:Dataset ;
 	sh:description "A dataset a description is about, when it describes several of equal weight." ;
 	sh:nodeKind sh:IRI ;
 	sh:order 7 ;
 	sh:path foaf:topic .
-_:c14n56 sh:datatype xsd:string ;
-	sh:description "A regular expression, in the syntax SPARQL uses, that matches the IRI of every entity in the dataset." ;
-	sh:maxCount 1 ;
-	sh:nodeKind sh:Literal ;
-	sh:order 22 ;
-	sh:path void:uriRegexPattern .
-_:c14n57 sh:description "The IRI of a topic the dataset is about, such as a DBpedia resource or a SKOS concept." ;
-	sh:nodeKind sh:IRI ;
-	sh:order 15 ;
-	sh:path dcterms:subject .
 _:c14n58 sh:description "The IRI of the dataset, document or feature, written in full or as a CURIE." ;
 	sh:maxCount 1 ;
 	sh:nodeKind sh:IRI ;
@@ -394,125 +396,122 @@ _:c14n59 sh:datatype xsd:string ;
 	sh:order 25 ;
 	sh:path void:uriSpace ;
 	sh:pattern "^[A-Za-z][A-Za-z0-9+.-]*:[^\\s]*$" .
-_:c14n6 sh:datatype xsd:integer ;
-	sh:description "How many distinct IRIs, blank nodes and literals the dataset's triples have as objects." ;
-	sh:maxCount 1 ;
-	sh:minInclusive 0 ;
-	sh:nodeKind sh:Literal ;
-	sh:order 32 ;
-	sh:path void:distinctObjects .
-_:c14n60 sh:description "The IRI of a person, organisation or service mainly responsible for making the dataset or document." ;
+_:c14n6 sh:description "The IRI of the agent, human or not, that chiefly made the dataset or document." ;
 	sh:nodeKind sh:IRI ;
 	sh:order 3 ;
 	sh:path dcterms:creator .
-_:c14n61 sh:datatype xsd:integer ;
+_:c14n60 sh:class void:Dataset ;
+	sh:description "The dataset that this document's triples belong to, named by its IRI." ;
+	sh:maxCount 1 ;
+	sh:nodeKind sh:IRI ;
+	sh:order 8 ;
+	sh:path void:inDataset .
+_:c14n61 sh:description "The IRI of the agent that releases the dataset for others to use." ;
+	sh:maxCount 1 ;
+	sh:nodeKind sh:IRI ;
+	sh:order 5 ;
+	sh:path dcterms:publisher .
+_:c14n62 sh:datatype xsd:integer ;
 	sh:description "How many entities, resources with an IRI, the dataset describes." ;
 	sh:maxCount 1 ;
 	sh:minInclusive 0 ;
 	sh:nodeKind sh:Literal ;
 	sh:order 28 ;
 	sh:path void:entities .
-_:c14n62 sh:class void:Dataset ;
+_:c14n63 sh:description "The IRI of the agent, human or not, that chiefly made the dataset or document." ;
+	sh:nodeKind sh:IRI ;
+	sh:order 3 ;
+	sh:path dcterms:creator .
+_:c14n64 sh:class void:Dataset ;
 	sh:description "The dataset a description is about, when it describes one." ;
 	sh:maxCount 1 ;
 	sh:nodeKind sh:IRI ;
 	sh:order 6 ;
 	sh:path foaf:primaryTopic .
-_:c14n63 sh:datatype xsd:integer ;
+_:c14n65 sh:datatype xsd:integer ;
 	sh:description "How many distinct classes the dataset's rdf:type triples name." ;
 	sh:maxCount 1 ;
 	sh:minInclusive 0 ;
 	sh:nodeKind sh:Literal ;
 	sh:order 29 ;
 	sh:path void:classes .
-_:c14n64 sh:description "The namespace IRI of a vocabulary the dataset uses, as a term's IRI reads without its local name and without a final hash, such as http://xmlns.com/foaf/0.1/." ;
+_:c14n66 sh:description "The namespace IRI of a vocabulary the dataset uses, as a term's IRI reads without its local name and without a final hash, such as http://xmlns.com/foaf/0.1/." ;
 	sh:nodeKind sh:IRI ;
 	sh:order 27 ;
 	sh:path void:vocabulary ;
 	sh:pattern "[^#]$" .
-_:c14n65 sh:description "The IRI of the licence the dataset is published under." ;
-	sh:maxCount 1 ;
-	sh:nodeKind sh:IRI ;
-	sh:order 14 ;
-	sh:path dcterms:license .
-_:c14n66 sh:description "The IRI of the person, organisation or service that makes the dataset available." ;
-	sh:maxCount 1 ;
-	sh:nodeKind sh:IRI ;
-	sh:order 5 ;
-	sh:path dcterms:publisher .
 _:c14n67 rdf:first rdf:type ;
 	rdf:rest rdf:nil .
-_:c14n68 sh:description "The IRI of the licence the dataset is published under." ;
-	sh:maxCount 1 ;
-	sh:nodeKind sh:IRI ;
-	sh:order 10 ;
-	sh:path dcterms:license .
-_:c14n69 rdf:first rdf:type ;
-	rdf:rest rdf:nil .
-_:c14n7 sh:datatype xsd:string ;
-	sh:description "The name of the dataset or document." ;
+_:c14n68 sh:datatype xsd:string ;
+	sh:description "A human-readable name for the dataset or document." ;
 	sh:maxCount 1 ;
 	sh:nodeKind sh:Literal ;
-	sh:order 1 ;
+	sh:order 5 ;
 	sh:path dcterms:title .
-_:c14n70 sh:class void_linkml:PropertyBasedPartition ;
-	sh:description "A part of the dataset that holds the triples of one property." ;
-	sh:nodeKind sh:BlankNodeOrIRI ;
-	sh:order 30 ;
-	sh:path void:propertyPartition .
-_:c14n71 sh:class void_linkml:PropertyBasedPartition ;
-	sh:description "A part of the dataset that holds the triples of one property." ;
-	sh:nodeKind sh:BlankNodeOrIRI ;
-	sh:order 8 ;
-	sh:path void:propertyPartition .
-_:c14n72 sh:datatype xsd:integer ;
+_:c14n69 rdf:first rdf:type ;
+	rdf:rest rdf:nil .
+_:c14n7 sh:datatype xsd:integer ;
+	sh:description "How many RDF documents together carry the dataset, for example RDFa web pages." ;
+	sh:maxCount 1 ;
+	sh:minInclusive 0 ;
+	sh:nodeKind sh:Literal ;
+	sh:order 33 ;
+	sh:path void:documents .
+_:c14n70 sh:datatype xsd:string ;
+	sh:description "A regular expression in SPARQL's syntax that each entity IRI of the dataset satisfies." ;
+	sh:maxCount 1 ;
+	sh:nodeKind sh:Literal ;
+	sh:order 22 ;
+	sh:path void:uriRegexPattern .
+_:c14n71 sh:datatype xsd:integer ;
 	sh:description "How many distinct IRIs and blank nodes the dataset's triples have as subjects." ;
 	sh:maxCount 1 ;
 	sh:minInclusive 0 ;
 	sh:nodeKind sh:Literal ;
 	sh:order 5 ;
 	sh:path void:distinctSubjects .
-_:c14n73 sh:datatype xsd:integer ;
+_:c14n72 sh:datatype xsd:integer ;
 	sh:description "How many distinct IRIs and blank nodes the dataset's triples have as subjects." ;
 	sh:maxCount 1 ;
 	sh:minInclusive 0 ;
 	sh:nodeKind sh:Literal ;
 	sh:order 31 ;
 	sh:path void:distinctSubjects .
-_:c14n74 sh:class void:Dataset ;
-	sh:description "The dataset that describes the subjects of a linkset's links, named by its IRI." ;
-	sh:maxCount 1 ;
+_:c14n73 sh:description "The IRI of an agent that added to the dataset without being its main maker." ;
 	sh:nodeKind sh:IRI ;
-	sh:order 1 ;
-	sh:path void:subjectsTarget .
-_:c14n75 sh:class void_linkml:ClassBasedPartition ;
-	sh:description "A part of the dataset that describes the instances of one class." ;
-	sh:nodeKind sh:BlankNodeOrIRI ;
-	sh:order 29 ;
-	sh:path void:classPartition .
-_:c14n76 sh:description "The IRI of an entity typical of the dataset, for a reader to look up." ;
+	sh:order 8 ;
+	sh:path dcterms:contributor .
+_:c14n74 sh:description "The IRI of an entity typical of the dataset, for a reader to look up." ;
 	sh:nodeKind sh:IRI ;
 	sh:order 24 ;
 	sh:path void:exampleResource .
-_:c14n77 sh:datatype xsd:string ;
-	sh:description "A short account, in prose, of what the dataset or document holds." ;
-	sh:maxCount 1 ;
-	sh:nodeKind sh:Literal ;
-	sh:order 2 ;
-	sh:path dcterms:description .
-_:c14n78 sh:datatype xsd:integer ;
+_:c14n75 sh:datatype xsd:integer ;
 	sh:description "How many distinct classes the dataset's rdf:type triples name." ;
 	sh:maxCount 1 ;
 	sh:minInclusive 0 ;
 	sh:nodeKind sh:Literal ;
 	sh:order 3 ;
 	sh:path void:classes .
-_:c14n79 sh:class void:Dataset ;
-	sh:description "The dataset that describes the objects of a linkset's links, named by its IRI." ;
-	sh:maxCount 1 ;
+_:c14n76 sh:description "A web address that, with an entity's percent-encoded IRI added to its end, answers an HTTP GET with RDF about that entity." ;
 	sh:nodeKind sh:IRI ;
+	sh:order 21 ;
+	sh:path void:uriLookupEndpoint .
+_:c14n77 sh:datatype xsd:integer ;
+	sh:description "How many entities, resources with an IRI, the dataset describes." ;
+	sh:maxCount 1 ;
+	sh:minInclusive 0 ;
+	sh:nodeKind sh:Literal ;
 	sh:order 2 ;
-	sh:path void:objectsTarget .
+	sh:path void:entities .
+_:c14n78 sh:description "The IRI of an earlier resource whose content the dataset draws on." ;
+	sh:nodeKind sh:IRI ;
+	sh:order 10 ;
+	sh:path dcterms:source .
+_:c14n79 sh:class void_linkml:ClassBasedPartition ;
+	sh:description "The dataset's slice for one class, given inside it." ;
+	sh:nodeKind sh:BlankNodeOrIRI ;
+	sh:order 25 ;
+	sh:path void:classPartition .
 _:c14n8 sh:datatype xsd:integer ;
 	sh:description "How many distinct properties the dataset's triples use as predicates." ;
 	sh:maxCount 1 ;
@@ -520,117 +519,118 @@ _:c14n8 sh:datatype xsd:integer ;
 	sh:nodeKind sh:Literal ;
 	sh:order 30 ;
 	sh:path void:properties .
-_:c14n80 sh:datatype xsd:integer ;
-	sh:description "How many entities, resources with an IRI, the dataset describes." ;
-	sh:maxCount 1 ;
-	sh:minInclusive 0 ;
-	sh:nodeKind sh:Literal ;
-	sh:order 2 ;
-	sh:path void:entities .
-_:c14n81 sh:description "The IRI of a topic the dataset is about, such as a DBpedia resource or a SKOS concept." ;
-	sh:nodeKind sh:IRI ;
-	sh:order 11 ;
-	sh:path dcterms:subject .
-_:c14n82 sh:class void_linkml:PropertyBasedPartition ;
-	sh:description "A part of the dataset that holds the triples of one property." ;
-	sh:nodeKind sh:BlankNodeOrIRI ;
-	sh:order 26 ;
-	sh:path void:propertyPartition .
-_:c14n83 sh:datatype xsd:string ;
-	sh:description "A short account, in prose, of what the dataset or document holds." ;
-	sh:maxCount 1 ;
-	sh:nodeKind sh:Literal ;
-	sh:order 6 ;
-	sh:path dcterms:description .
-_:c14n84 sh:description "The IRI of a person, organisation or service mainly responsible for making the dataset or document." ;
-	sh:nodeKind sh:IRI ;
-	sh:order 7 ;
-	sh:path dcterms:creator .
-_:c14n85 sh:class void:Dataset ;
-	sh:description "One of the two datasets a linkset links, named by its IRI." ;
-	sh:maxCount 2 ;
-	sh:minCount 2 ;
-	sh:nodeKind sh:IRI ;
-	sh:order 0 ;
-	sh:path void:target .
-_:c14n86 sh:description "The IRI of the dataset, document or feature, written in full or as a CURIE." ;
+_:c14n80 sh:description "The IRI of the dataset, document or feature, written in full or as a CURIE." ;
 	sh:maxCount 1 ;
 	sh:nodeKind sh:IRI ;
 	sh:order 0 ;
 	sh:path void_linkml:id .
-_:c14n87 sh:class void:TechnicalFeature ;
-	sh:description "A technical feature of the dataset, such as an RDF syntax it is served in, named by the feature's IRI." ;
-	sh:nodeKind sh:IRI ;
-	sh:order 14 ;
-	sh:path void:feature .
-_:c14n88 sh:description "Another web page about the dataset, such as a download page or a catalogue entry." ;
-	sh:nodeKind sh:IRI ;
-	sh:order 13 ;
-	sh:path foaf:page .
-_:c14n89 sh:datatype xsd:string ;
+_:c14n81 sh:datatype xsd:string ;
 	sh:description "A short name for the feature." ;
 	sh:maxCount 1 ;
 	sh:nodeKind sh:Literal ;
 	sh:order 1 ;
 	sh:path rdfs:label .
-_:c14n9 sh:datatype xsd:string ;
-	sh:description "The name of the dataset or document." ;
+_:c14n82 sh:description "The IRI of the agent that releases the dataset for others to use." ;
+	sh:maxCount 1 ;
+	sh:nodeKind sh:IRI ;
+	sh:order 9 ;
+	sh:path dcterms:publisher .
+_:c14n83 sh:datatype xsd:string ;
+	sh:description "A human-readable name for the dataset or document." ;
 	sh:maxCount 1 ;
 	sh:nodeKind sh:Literal ;
 	sh:order 1 ;
 	sh:path dcterms:title .
-_:c14n90 sh:datatype xsd:integer ;
+_:c14n84 sh:datatype xsd:integer ;
 	sh:description "How many distinct properties the dataset's triples use as predicates." ;
 	sh:maxCount 1 ;
 	sh:minInclusive 0 ;
 	sh:nodeKind sh:Literal ;
 	sh:order 34 ;
 	sh:path void:properties .
-_:c14n91 sh:description "The address of a file to download that holds the dataset, or a part of it, as RDF." ;
+_:c14n85 sh:class void:TechnicalFeature ;
+	sh:description "Something the dataset's server or files support, for instance an RDF syntax, named by its IRI." ;
 	sh:nodeKind sh:IRI ;
-	sh:order 16 ;
-	sh:path void:dataDump .
-_:c14n92 sh:datatype xsd:string ;
-	sh:description "A short account, in prose, of what the dataset or document holds." ;
-	sh:maxCount 1 ;
-	sh:nodeKind sh:Literal ;
-	sh:order 2 ;
-	sh:path dcterms:description .
-_:c14n93 sh:description "Another web page about the dataset, such as a download page or a catalogue entry." ;
+	sh:order 18 ;
+	sh:path void:feature .
+_:c14n86 sh:description "The IRI of an agent that added to the dataset without being its main maker." ;
 	sh:nodeKind sh:IRI ;
-	sh:order 17 ;
-	sh:path foaf:page .
-_:c14n94 sh:description "The web page about the dataset itself." ;
+	sh:order 4 ;
+	sh:path dcterms:contributor .
+_:c14n87 sh:description "An OpenSearch file telling a client how to run keyword searches over the dataset." ;
+	sh:nodeKind sh:IRI ;
+	sh:order 18 ;
+	sh:path void:openSearchDescription .
+_:c14n88 sh:description "The web page about the dataset itself." ;
 	sh:maxCount 1 ;
 	sh:nodeKind sh:IRI ;
 	sh:order 12 ;
 	sh:path foaf:homepage .
-_:c14n95 sh:description "The address of a page with more about the feature." ;
-	sh:nodeKind sh:IRI ;
-	sh:order 3 ;
-	sh:path rdfs:seeAlso .
-_:c14n96 sh:class void:Dataset ;
-	sh:description "The dataset whose data this document is part of, named by its IRI." ;
+_:c14n89 sh:class void:Dataset ;
+	sh:description "The dataset at the subject end of every link in a linkset, named by its IRI." ;
 	sh:maxCount 1 ;
 	sh:nodeKind sh:IRI ;
-	sh:order 8 ;
-	sh:path void:inDataset .
-_:c14n97 sh:datatype xsd:integer ;
+	sh:order 1 ;
+	sh:path void:subjectsTarget .
+_:c14n9 sh:datatype xsd:integer ;
+	sh:description "How many distinct properties the dataset's triples use as predicates." ;
+	sh:maxCount 1 ;
+	sh:minInclusive 0 ;
+	sh:nodeKind sh:Literal ;
+	sh:order 4 ;
+	sh:path void:properties .
+_:c14n90 sh:datatype xsd:integer ;
 	sh:description "How many distinct IRIs and blank nodes the dataset's triples have as subjects." ;
 	sh:maxCount 1 ;
 	sh:minInclusive 0 ;
 	sh:nodeKind sh:Literal ;
 	sh:order 35 ;
 	sh:path void:distinctSubjects .
-_:c14n98 sh:datatype xsd:integer ;
+_:c14n91 sh:datatype xsd:integer ;
 	sh:description "How many distinct classes the dataset's rdf:type triples name." ;
 	sh:maxCount 1 ;
 	sh:minInclusive 0 ;
 	sh:nodeKind sh:Literal ;
 	sh:order 3 ;
 	sh:path void:classes .
-_:c14n99 sh:description "The property every link of a linkset has as its predicate, such as owl:sameAs." ;
+_:c14n92 sh:description "The property every link of a linkset has as its predicate, such as owl:sameAs." ;
 	sh:maxCount 1 ;
 	sh:nodeKind sh:IRI ;
 	sh:order 3 ;
 	sh:path void:linkPredicate .
+_:c14n93 sh:datatype xsd:date ;
+	sh:description "The date the dataset or document last changed." ;
+	sh:maxCount 1 ;
+	sh:nodeKind sh:Literal ;
+	sh:order 13 ;
+	sh:path dcterms:modified .
+_:c14n94 sh:description "The IRI of an earlier resource whose content the dataset draws on." ;
+	sh:nodeKind sh:IRI ;
+	sh:order 6 ;
+	sh:path dcterms:source .
+_:c14n95 sh:description "The IRI of the dataset, document or feature, written in full or as a CURIE." ;
+	sh:maxCount 1 ;
+	sh:nodeKind sh:IRI ;
+	sh:order 0 ;
+	sh:path void_linkml:id .
+_:c14n96 sh:description "A SPARQL service whose default graph holds the dataset, for running queries on it." ;
+	sh:nodeKind sh:IRI ;
+	sh:order 15 ;
+	sh:path void:sparqlEndpoint .
+_:c14n97 sh:datatype xsd:integer ;
+	sh:description "How many triples the dataset holds; for a linkset, how many links." ;
+	sh:maxCount 1 ;
+	sh:minInclusive 0 ;
+	sh:nodeKind sh:Literal ;
+	sh:order 1 ;
+	sh:path void:triples .
+_:c14n98 sh:description "A web page that tells more about the feature." ;
+	sh:nodeKind sh:IRI ;
+	sh:order 3 ;
+	sh:path rdfs:seeAlso .
+_:c14n99 sh:datatype xsd:string ;
+	sh:description "A regular expression in SPARQL's syntax that each entity IRI of the dataset satisfies." ;
+	sh:maxCount 1 ;
+	sh:nodeKind sh:Literal ;
+	sh:order 26 ;
+	sh:path void:uriRegexPattern .

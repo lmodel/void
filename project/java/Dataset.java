@@ -10,7 +10,7 @@ import java.util.List;
 import lombok.*;
 
 /**
-  A body of RDF data that one party publishes, maintains or gathers, treated as a single resource so that statements can be made about all of it.
+  RDF triples from one provider, gathered under an IRI so that a description can speak of them as a whole.
 **/
 @Data
 @EqualsAndHashCode(callSuper=false)

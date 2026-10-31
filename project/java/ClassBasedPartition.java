@@ -10,7 +10,7 @@ import java.util.List;
 import lombok.*;
 
 /**
-  The part of a dataset that describes the instances of one class, given within the dataset it is part of, usually to state counts.
+  The slice of a dataset about the members of one class, written inside that dataset, most often to give counts for it.
 **/
 @Data
 @EqualsAndHashCode(callSuper=false)

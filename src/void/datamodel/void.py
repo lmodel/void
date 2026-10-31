@@ -98,8 +98,7 @@ class TechnicalFeatureId(URIorCURIE):
 @dataclass(repr=False)
 class Dataset(YAMLRoot):
     """
-    A body of RDF data that one party publishes, maintains or gathers, treated as a single resource so that statements
-    can be made about all of it.
+    RDF triples from one provider, gathered under an IRI so that a description can speak of them as a whole.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -266,8 +265,8 @@ class Dataset(YAMLRoot):
 @dataclass(repr=False)
 class Linkset(Dataset):
     """
-    A dataset of RDF links between two datasets: triples whose subjects are described in one of them and whose objects
-    are described in the other.
+    A dataset of triples that join two datasets: each triple's subject belongs to one of them and its object to the
+    other.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -401,8 +400,8 @@ class TechnicalFeature(YAMLRoot):
 @dataclass(repr=False)
 class ClassBasedPartition(YAMLRoot):
     """
-    The part of a dataset that describes the instances of one class, given within the dataset it is part of, usually
-    to state counts.
+    The slice of a dataset about the members of one class, written inside that dataset, most often to give counts for
+    it.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -456,8 +455,8 @@ class ClassBasedPartition(YAMLRoot):
 @dataclass(repr=False)
 class PropertyBasedPartition(YAMLRoot):
     """
-    The part of a dataset that holds the triples of one property, given within the dataset it is part of, usually to
-    state counts.
+    The slice of a dataset made of the triples whose predicate is one property, written inside that dataset, most
+    often to give counts for it.
     """
     _inherited_slots: ClassVar[list[str]] = []
 

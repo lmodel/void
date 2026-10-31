@@ -1,57 +1,57 @@
--- # Class: Dataset Description: A body of RDF data that one party publishes, maintains or gathers, treated as a single resource so that statements can be made about all of it.
+-- # Class: Dataset Description: RDF triples from one provider, gathered under an IRI so that a description can speak of them as a whole.
 --     * Slot: id Description: The IRI of the dataset, document or feature, written in full or as a CURIE.
---     * Slot: title Description: The name of the dataset or document.
---     * Slot: description Description: A short account, in prose, of what the dataset or document holds.
---     * Slot: publisher Description: The IRI of the person, organisation or service that makes the dataset available.
+--     * Slot: title Description: A human-readable name for the dataset or document.
+--     * Slot: description Description: A few sentences of prose saying what the dataset or document contains.
+--     * Slot: publisher Description: The IRI of the agent that releases the dataset for others to use.
 --     * Slot: created Description: The date the dataset or document was made.
 --     * Slot: issued Description: The date the dataset was first published.
 --     * Slot: modified Description: The date the dataset or document last changed.
---     * Slot: license Description: The IRI of the licence the dataset is published under.
+--     * Slot: license Description: The IRI of the licence that sets the terms for using the dataset.
 --     * Slot: homepage Description: The web page about the dataset itself.
 --     * Slot: uriSpace Description: The string every entity IRI in the dataset starts with, such as http://example.org/resource/.
---     * Slot: uriRegexPattern Description: A regular expression, in the syntax SPARQL uses, that matches the IRI of every entity in the dataset.
+--     * Slot: uriRegexPattern Description: A regular expression in SPARQL's syntax that each entity IRI of the dataset satisfies.
 --     * Slot: triples Description: How many triples the dataset holds; for a linkset, how many links.
 --     * Slot: entities Description: How many entities, resources with an IRI, the dataset describes.
 --     * Slot: classes Description: How many distinct classes the dataset's rdf:type triples name.
 --     * Slot: properties Description: How many distinct properties the dataset's triples use as predicates.
 --     * Slot: distinctSubjects Description: How many distinct IRIs and blank nodes the dataset's triples have as subjects.
 --     * Slot: distinctObjects Description: How many distinct IRIs, blank nodes and literals the dataset's triples have as objects.
---     * Slot: documents Description: How many RDF documents the dataset is published as, for a dataset spread over many documents whose triples are hard to count.
--- # Class: Linkset Description: A dataset of RDF links between two datasets: triples whose subjects are described in one of them and whose objects are described in the other.
---     * Slot: subjectsTarget Description: The dataset that describes the subjects of a linkset's links, named by its IRI.
---     * Slot: objectsTarget Description: The dataset that describes the objects of a linkset's links, named by its IRI.
+--     * Slot: documents Description: How many RDF documents together carry the dataset, for example RDFa web pages.
+-- # Class: Linkset Description: A dataset of triples that join two datasets: each triple's subject belongs to one of them and its object to the other.
+--     * Slot: subjectsTarget Description: The dataset at the subject end of every link in a linkset, named by its IRI.
+--     * Slot: objectsTarget Description: The dataset at the object end of every link in a linkset, named by its IRI.
 --     * Slot: linkPredicate Description: The property every link of a linkset has as its predicate, such as owl:sameAs.
 --     * Slot: id Description: The IRI of the dataset, document or feature, written in full or as a CURIE.
---     * Slot: title Description: The name of the dataset or document.
---     * Slot: description Description: A short account, in prose, of what the dataset or document holds.
---     * Slot: publisher Description: The IRI of the person, organisation or service that makes the dataset available.
+--     * Slot: title Description: A human-readable name for the dataset or document.
+--     * Slot: description Description: A few sentences of prose saying what the dataset or document contains.
+--     * Slot: publisher Description: The IRI of the agent that releases the dataset for others to use.
 --     * Slot: created Description: The date the dataset or document was made.
 --     * Slot: issued Description: The date the dataset was first published.
 --     * Slot: modified Description: The date the dataset or document last changed.
---     * Slot: license Description: The IRI of the licence the dataset is published under.
+--     * Slot: license Description: The IRI of the licence that sets the terms for using the dataset.
 --     * Slot: homepage Description: The web page about the dataset itself.
 --     * Slot: uriSpace Description: The string every entity IRI in the dataset starts with, such as http://example.org/resource/.
---     * Slot: uriRegexPattern Description: A regular expression, in the syntax SPARQL uses, that matches the IRI of every entity in the dataset.
+--     * Slot: uriRegexPattern Description: A regular expression in SPARQL's syntax that each entity IRI of the dataset satisfies.
 --     * Slot: triples Description: How many triples the dataset holds; for a linkset, how many links.
 --     * Slot: entities Description: How many entities, resources with an IRI, the dataset describes.
 --     * Slot: classes Description: How many distinct classes the dataset's rdf:type triples name.
 --     * Slot: properties Description: How many distinct properties the dataset's triples use as predicates.
 --     * Slot: distinctSubjects Description: How many distinct IRIs and blank nodes the dataset's triples have as subjects.
 --     * Slot: distinctObjects Description: How many distinct IRIs, blank nodes and literals the dataset's triples have as objects.
---     * Slot: documents Description: How many RDF documents the dataset is published as, for a dataset spread over many documents whose triples are hard to count.
+--     * Slot: documents Description: How many RDF documents together carry the dataset, for example RDFa web pages.
 -- # Class: DatasetDescription Description: A web document, such as a void.ttl file published beside a dataset, that describes one or more datasets.
 --     * Slot: id Description: The IRI of the dataset, document or feature, written in full or as a CURIE.
---     * Slot: title Description: The name of the dataset or document.
---     * Slot: description Description: A short account, in prose, of what the dataset or document holds.
+--     * Slot: title Description: A human-readable name for the dataset or document.
+--     * Slot: description Description: A few sentences of prose saying what the dataset or document contains.
 --     * Slot: created Description: The date the dataset or document was made.
 --     * Slot: modified Description: The date the dataset or document last changed.
 --     * Slot: primaryTopic Description: The dataset a description is about, when it describes one.
---     * Slot: inDataset Description: The dataset whose data this document is part of, named by its IRI.
+--     * Slot: inDataset Description: The dataset that this document's triples belong to, named by its IRI.
 -- # Class: TechnicalFeature Description: A technical property of how a dataset is served, such as an RDF syntax it can be read in or an HTTP feature its server supports.
 --     * Slot: id Description: The IRI of the dataset, document or feature, written in full or as a CURIE.
 --     * Slot: label Description: A short name for the feature.
 --     * Slot: comment Description: A sentence or two about the feature.
--- # Class: ClassBasedPartition Description: The part of a dataset that describes the instances of one class, given within the dataset it is part of, usually to state counts.
+-- # Class: ClassBasedPartition Description: The slice of a dataset about the members of one class, written inside that dataset, most often to give counts for it.
 --     * Slot: id
 --     * Slot: class Description: The class whose instances a class partition describes, named by its IRI, such as foaf:Person.
 --     * Slot: triples Description: How many triples the dataset holds; for a linkset, how many links.
@@ -60,10 +60,10 @@
 --     * Slot: properties Description: How many distinct properties the dataset's triples use as predicates.
 --     * Slot: distinctSubjects Description: How many distinct IRIs and blank nodes the dataset's triples have as subjects.
 --     * Slot: distinctObjects Description: How many distinct IRIs, blank nodes and literals the dataset's triples have as objects.
---     * Slot: documents Description: How many RDF documents the dataset is published as, for a dataset spread over many documents whose triples are hard to count.
+--     * Slot: documents Description: How many RDF documents together carry the dataset, for example RDFa web pages.
 --     * Slot: Dataset_id Description: Autocreated FK slot
 --     * Slot: Linkset_id Description: Autocreated FK slot
--- # Class: PropertyBasedPartition Description: The part of a dataset that holds the triples of one property, given within the dataset it is part of, usually to state counts.
+-- # Class: PropertyBasedPartition Description: The slice of a dataset made of the triples whose predicate is one property, written inside that dataset, most often to give counts for it.
 --     * Slot: id
 --     * Slot: property Description: The property whose triples a property partition holds, named by its IRI, such as foaf:name.
 --     * Slot: triples Description: How many triples the dataset holds; for a linkset, how many links.
@@ -72,43 +72,43 @@
 --     * Slot: properties Description: How many distinct properties the dataset's triples use as predicates.
 --     * Slot: distinctSubjects Description: How many distinct IRIs and blank nodes the dataset's triples have as subjects.
 --     * Slot: distinctObjects Description: How many distinct IRIs, blank nodes and literals the dataset's triples have as objects.
---     * Slot: documents Description: How many RDF documents the dataset is published as, for a dataset spread over many documents whose triples are hard to count.
+--     * Slot: documents Description: How many RDF documents together carry the dataset, for example RDFa web pages.
 --     * Slot: Dataset_id Description: Autocreated FK slot
 --     * Slot: Linkset_id Description: Autocreated FK slot
 --     * Slot: ClassBasedPartition_id Description: Autocreated FK slot
 -- # Class: Dataset_creator
 --     * Slot: Dataset_id Description: Autocreated FK slot
---     * Slot: creator Description: The IRI of a person, organisation or service mainly responsible for making the dataset or document.
+--     * Slot: creator Description: The IRI of the agent, human or not, that chiefly made the dataset or document.
 -- # Class: Dataset_contributor
 --     * Slot: Dataset_id Description: Autocreated FK slot
---     * Slot: contributor Description: The IRI of a person, organisation or service that contributed to the dataset.
+--     * Slot: contributor Description: The IRI of an agent that added to the dataset without being its main maker.
 -- # Class: Dataset_source
 --     * Slot: Dataset_id Description: Autocreated FK slot
---     * Slot: source Description: The IRI of a resource the dataset was derived from.
+--     * Slot: source Description: The IRI of an earlier resource whose content the dataset draws on.
 -- # Class: Dataset_subject
 --     * Slot: Dataset_id Description: Autocreated FK slot
---     * Slot: subject Description: The IRI of a topic the dataset is about, such as a DBpedia resource or a SKOS concept.
+--     * Slot: subject Description: The IRI of a topic the dataset covers, such as a DBpedia resource or a SKOS concept.
 -- # Class: Dataset_page
 --     * Slot: Dataset_id Description: Autocreated FK slot
---     * Slot: page Description: Another web page about the dataset, such as a download page or a catalogue entry.
+--     * Slot: page Description: Any further web page with information on the dataset, for instance its download page or its catalogue entry.
 -- # Class: Dataset_feature
 --     * Slot: Dataset_id Description: Autocreated FK slot
---     * Slot: feature_id Description: A technical feature of the dataset, such as an RDF syntax it is served in, named by the feature's IRI.
+--     * Slot: feature_id Description: Something the dataset's server or files support, for instance an RDF syntax, named by its IRI.
 -- # Class: Dataset_sparqlEndpoint
 --     * Slot: Dataset_id Description: Autocreated FK slot
---     * Slot: sparqlEndpoint Description: The address of a SPARQL endpoint whose default graph holds the dataset.
+--     * Slot: sparqlEndpoint Description: A SPARQL service whose default graph holds the dataset, for running queries on it.
 -- # Class: Dataset_dataDump
 --     * Slot: Dataset_id Description: Autocreated FK slot
---     * Slot: dataDump Description: The address of a file to download that holds the dataset, or a part of it, as RDF.
+--     * Slot: dataDump Description: A downloadable RDF file holding all of the dataset or a share of it.
 -- # Class: Dataset_uriLookupEndpoint
 --     * Slot: Dataset_id Description: Autocreated FK slot
---     * Slot: uriLookupEndpoint Description: An address to which the URL-encoded IRI of an entity is appended, so that a GET on the result returns an RDF description of the entity.
+--     * Slot: uriLookupEndpoint Description: A web address that, with an entity's percent-encoded IRI added to its end, answers an HTTP GET with RDF about that entity.
 -- # Class: Dataset_openSearchDescription
 --     * Slot: Dataset_id Description: Autocreated FK slot
---     * Slot: openSearchDescription Description: The address of an OpenSearch description document for a text search over the dataset.
+--     * Slot: openSearchDescription Description: An OpenSearch file telling a client how to run keyword searches over the dataset.
 -- # Class: Dataset_rootResource
 --     * Slot: Dataset_id Description: Autocreated FK slot
---     * Slot: rootResource Description: The IRI of a central entity of the dataset, from which every other entity can be reached by following links in a few steps.
+--     * Slot: rootResource Description: The IRI of a starting point for crawling the dataset: a resource from which links lead, within a few hops, to all the others.
 -- # Class: Dataset_exampleResource
 --     * Slot: Dataset_id Description: Autocreated FK slot
 --     * Slot: exampleResource Description: The IRI of an entity typical of the dataset, for a reader to look up.
@@ -117,43 +117,43 @@
 --     * Slot: vocabulary Description: The namespace IRI of a vocabulary the dataset uses, as a term's IRI reads without its local name and without a final hash, such as http://xmlns.com/foaf/0.1/.
 -- # Class: Dataset_subset
 --     * Slot: Dataset_id Description: Autocreated FK slot
---     * Slot: subset_id Description: A dataset that is part of this one, named by its IRI.
+--     * Slot: subset_id Description: Another dataset contained in this one, named by its IRI.
 -- # Class: Linkset_target
 --     * Slot: Linkset_id Description: Autocreated FK slot
---     * Slot: target_id Description: One of the two datasets a linkset links, named by its IRI.
+--     * Slot: target_id Description: Either dataset a linkset joins, named by its IRI.
 -- # Class: Linkset_creator
 --     * Slot: Linkset_id Description: Autocreated FK slot
---     * Slot: creator Description: The IRI of a person, organisation or service mainly responsible for making the dataset or document.
+--     * Slot: creator Description: The IRI of the agent, human or not, that chiefly made the dataset or document.
 -- # Class: Linkset_contributor
 --     * Slot: Linkset_id Description: Autocreated FK slot
---     * Slot: contributor Description: The IRI of a person, organisation or service that contributed to the dataset.
+--     * Slot: contributor Description: The IRI of an agent that added to the dataset without being its main maker.
 -- # Class: Linkset_source
 --     * Slot: Linkset_id Description: Autocreated FK slot
---     * Slot: source Description: The IRI of a resource the dataset was derived from.
+--     * Slot: source Description: The IRI of an earlier resource whose content the dataset draws on.
 -- # Class: Linkset_subject
 --     * Slot: Linkset_id Description: Autocreated FK slot
---     * Slot: subject Description: The IRI of a topic the dataset is about, such as a DBpedia resource or a SKOS concept.
+--     * Slot: subject Description: The IRI of a topic the dataset covers, such as a DBpedia resource or a SKOS concept.
 -- # Class: Linkset_page
 --     * Slot: Linkset_id Description: Autocreated FK slot
---     * Slot: page Description: Another web page about the dataset, such as a download page or a catalogue entry.
+--     * Slot: page Description: Any further web page with information on the dataset, for instance its download page or its catalogue entry.
 -- # Class: Linkset_feature
 --     * Slot: Linkset_id Description: Autocreated FK slot
---     * Slot: feature_id Description: A technical feature of the dataset, such as an RDF syntax it is served in, named by the feature's IRI.
+--     * Slot: feature_id Description: Something the dataset's server or files support, for instance an RDF syntax, named by its IRI.
 -- # Class: Linkset_sparqlEndpoint
 --     * Slot: Linkset_id Description: Autocreated FK slot
---     * Slot: sparqlEndpoint Description: The address of a SPARQL endpoint whose default graph holds the dataset.
+--     * Slot: sparqlEndpoint Description: A SPARQL service whose default graph holds the dataset, for running queries on it.
 -- # Class: Linkset_dataDump
 --     * Slot: Linkset_id Description: Autocreated FK slot
---     * Slot: dataDump Description: The address of a file to download that holds the dataset, or a part of it, as RDF.
+--     * Slot: dataDump Description: A downloadable RDF file holding all of the dataset or a share of it.
 -- # Class: Linkset_uriLookupEndpoint
 --     * Slot: Linkset_id Description: Autocreated FK slot
---     * Slot: uriLookupEndpoint Description: An address to which the URL-encoded IRI of an entity is appended, so that a GET on the result returns an RDF description of the entity.
+--     * Slot: uriLookupEndpoint Description: A web address that, with an entity's percent-encoded IRI added to its end, answers an HTTP GET with RDF about that entity.
 -- # Class: Linkset_openSearchDescription
 --     * Slot: Linkset_id Description: Autocreated FK slot
---     * Slot: openSearchDescription Description: The address of an OpenSearch description document for a text search over the dataset.
+--     * Slot: openSearchDescription Description: An OpenSearch file telling a client how to run keyword searches over the dataset.
 -- # Class: Linkset_rootResource
 --     * Slot: Linkset_id Description: Autocreated FK slot
---     * Slot: rootResource Description: The IRI of a central entity of the dataset, from which every other entity can be reached by following links in a few steps.
+--     * Slot: rootResource Description: The IRI of a starting point for crawling the dataset: a resource from which links lead, within a few hops, to all the others.
 -- # Class: Linkset_exampleResource
 --     * Slot: Linkset_id Description: Autocreated FK slot
 --     * Slot: exampleResource Description: The IRI of an entity typical of the dataset, for a reader to look up.
@@ -162,16 +162,16 @@
 --     * Slot: vocabulary Description: The namespace IRI of a vocabulary the dataset uses, as a term's IRI reads without its local name and without a final hash, such as http://xmlns.com/foaf/0.1/.
 -- # Class: Linkset_subset
 --     * Slot: Linkset_id Description: Autocreated FK slot
---     * Slot: subset_id Description: A dataset that is part of this one, named by its IRI.
+--     * Slot: subset_id Description: Another dataset contained in this one, named by its IRI.
 -- # Class: DatasetDescription_creator
 --     * Slot: DatasetDescription_id Description: Autocreated FK slot
---     * Slot: creator Description: The IRI of a person, organisation or service mainly responsible for making the dataset or document.
+--     * Slot: creator Description: The IRI of the agent, human or not, that chiefly made the dataset or document.
 -- # Class: DatasetDescription_topic
 --     * Slot: DatasetDescription_id Description: Autocreated FK slot
 --     * Slot: topic_id Description: A dataset a description is about, when it describes several of equal weight.
 -- # Class: TechnicalFeature_seeAlso
 --     * Slot: TechnicalFeature_id Description: Autocreated FK slot
---     * Slot: seeAlso Description: The address of a page with more about the feature.
+--     * Slot: seeAlso Description: A web page that tells more about the feature.
 
 CREATE TABLE "Dataset" (
 	id TEXT NOT NULL,
@@ -288,8 +288,8 @@ CREATE TABLE "Dataset_page" (
 	PRIMARY KEY ("Dataset_id", page),
 	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id)
 );
-CREATE INDEX "ix_Dataset_page_page" ON "Dataset_page" (page);
 CREATE INDEX "ix_Dataset_page_Dataset_id" ON "Dataset_page" ("Dataset_id");
+CREATE INDEX "ix_Dataset_page_page" ON "Dataset_page" (page);
 
 CREATE TABLE "Dataset_feature" (
 	"Dataset_id" TEXT,
@@ -316,8 +316,8 @@ CREATE TABLE "Dataset_dataDump" (
 	PRIMARY KEY ("Dataset_id", "dataDump"),
 	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id)
 );
-CREATE INDEX "ix_Dataset_dataDump_dataDump" ON "Dataset_dataDump" ("dataDump");
 CREATE INDEX "ix_Dataset_dataDump_Dataset_id" ON "Dataset_dataDump" ("Dataset_id");
+CREATE INDEX "ix_Dataset_dataDump_dataDump" ON "Dataset_dataDump" ("dataDump");
 
 CREATE TABLE "Dataset_uriLookupEndpoint" (
 	"Dataset_id" TEXT,
@@ -343,8 +343,8 @@ CREATE TABLE "Dataset_rootResource" (
 	PRIMARY KEY ("Dataset_id", "rootResource"),
 	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id)
 );
-CREATE INDEX "ix_Dataset_rootResource_Dataset_id" ON "Dataset_rootResource" ("Dataset_id");
 CREATE INDEX "ix_Dataset_rootResource_rootResource" ON "Dataset_rootResource" ("rootResource");
+CREATE INDEX "ix_Dataset_rootResource_Dataset_id" ON "Dataset_rootResource" ("Dataset_id");
 
 CREATE TABLE "Dataset_exampleResource" (
 	"Dataset_id" TEXT,
@@ -417,8 +417,8 @@ CREATE TABLE "Linkset_creator" (
 	PRIMARY KEY ("Linkset_id", creator),
 	FOREIGN KEY("Linkset_id") REFERENCES "Linkset" (id)
 );
-CREATE INDEX "ix_Linkset_creator_Linkset_id" ON "Linkset_creator" ("Linkset_id");
 CREATE INDEX "ix_Linkset_creator_creator" ON "Linkset_creator" (creator);
+CREATE INDEX "ix_Linkset_creator_Linkset_id" ON "Linkset_creator" ("Linkset_id");
 
 CREATE TABLE "Linkset_contributor" (
 	"Linkset_id" TEXT,
@@ -426,8 +426,8 @@ CREATE TABLE "Linkset_contributor" (
 	PRIMARY KEY ("Linkset_id", contributor),
 	FOREIGN KEY("Linkset_id") REFERENCES "Linkset" (id)
 );
-CREATE INDEX "ix_Linkset_contributor_Linkset_id" ON "Linkset_contributor" ("Linkset_id");
 CREATE INDEX "ix_Linkset_contributor_contributor" ON "Linkset_contributor" (contributor);
+CREATE INDEX "ix_Linkset_contributor_Linkset_id" ON "Linkset_contributor" ("Linkset_id");
 
 CREATE TABLE "Linkset_source" (
 	"Linkset_id" TEXT,
@@ -435,8 +435,8 @@ CREATE TABLE "Linkset_source" (
 	PRIMARY KEY ("Linkset_id", source),
 	FOREIGN KEY("Linkset_id") REFERENCES "Linkset" (id)
 );
-CREATE INDEX "ix_Linkset_source_source" ON "Linkset_source" (source);
 CREATE INDEX "ix_Linkset_source_Linkset_id" ON "Linkset_source" ("Linkset_id");
+CREATE INDEX "ix_Linkset_source_source" ON "Linkset_source" (source);
 
 CREATE TABLE "Linkset_subject" (
 	"Linkset_id" TEXT,
@@ -453,8 +453,8 @@ CREATE TABLE "Linkset_page" (
 	PRIMARY KEY ("Linkset_id", page),
 	FOREIGN KEY("Linkset_id") REFERENCES "Linkset" (id)
 );
-CREATE INDEX "ix_Linkset_page_page" ON "Linkset_page" (page);
 CREATE INDEX "ix_Linkset_page_Linkset_id" ON "Linkset_page" ("Linkset_id");
+CREATE INDEX "ix_Linkset_page_page" ON "Linkset_page" (page);
 
 CREATE TABLE "Linkset_feature" (
 	"Linkset_id" TEXT,
@@ -472,8 +472,8 @@ CREATE TABLE "Linkset_sparqlEndpoint" (
 	PRIMARY KEY ("Linkset_id", "sparqlEndpoint"),
 	FOREIGN KEY("Linkset_id") REFERENCES "Linkset" (id)
 );
-CREATE INDEX "ix_Linkset_sparqlEndpoint_sparqlEndpoint" ON "Linkset_sparqlEndpoint" ("sparqlEndpoint");
 CREATE INDEX "ix_Linkset_sparqlEndpoint_Linkset_id" ON "Linkset_sparqlEndpoint" ("Linkset_id");
+CREATE INDEX "ix_Linkset_sparqlEndpoint_sparqlEndpoint" ON "Linkset_sparqlEndpoint" ("sparqlEndpoint");
 
 CREATE TABLE "Linkset_dataDump" (
 	"Linkset_id" TEXT,
@@ -490,8 +490,8 @@ CREATE TABLE "Linkset_uriLookupEndpoint" (
 	PRIMARY KEY ("Linkset_id", "uriLookupEndpoint"),
 	FOREIGN KEY("Linkset_id") REFERENCES "Linkset" (id)
 );
-CREATE INDEX "ix_Linkset_uriLookupEndpoint_uriLookupEndpoint" ON "Linkset_uriLookupEndpoint" ("uriLookupEndpoint");
 CREATE INDEX "ix_Linkset_uriLookupEndpoint_Linkset_id" ON "Linkset_uriLookupEndpoint" ("Linkset_id");
+CREATE INDEX "ix_Linkset_uriLookupEndpoint_uriLookupEndpoint" ON "Linkset_uriLookupEndpoint" ("uriLookupEndpoint");
 
 CREATE TABLE "Linkset_openSearchDescription" (
 	"Linkset_id" TEXT,
@@ -499,8 +499,8 @@ CREATE TABLE "Linkset_openSearchDescription" (
 	PRIMARY KEY ("Linkset_id", "openSearchDescription"),
 	FOREIGN KEY("Linkset_id") REFERENCES "Linkset" (id)
 );
-CREATE INDEX "ix_Linkset_openSearchDescription_openSearchDescription" ON "Linkset_openSearchDescription" ("openSearchDescription");
 CREATE INDEX "ix_Linkset_openSearchDescription_Linkset_id" ON "Linkset_openSearchDescription" ("Linkset_id");
+CREATE INDEX "ix_Linkset_openSearchDescription_openSearchDescription" ON "Linkset_openSearchDescription" ("openSearchDescription");
 
 CREATE TABLE "Linkset_rootResource" (
 	"Linkset_id" TEXT,
@@ -508,8 +508,8 @@ CREATE TABLE "Linkset_rootResource" (
 	PRIMARY KEY ("Linkset_id", "rootResource"),
 	FOREIGN KEY("Linkset_id") REFERENCES "Linkset" (id)
 );
-CREATE INDEX "ix_Linkset_rootResource_rootResource" ON "Linkset_rootResource" ("rootResource");
 CREATE INDEX "ix_Linkset_rootResource_Linkset_id" ON "Linkset_rootResource" ("Linkset_id");
+CREATE INDEX "ix_Linkset_rootResource_rootResource" ON "Linkset_rootResource" ("rootResource");
 
 CREATE TABLE "Linkset_exampleResource" (
 	"Linkset_id" TEXT,
@@ -517,8 +517,8 @@ CREATE TABLE "Linkset_exampleResource" (
 	PRIMARY KEY ("Linkset_id", "exampleResource"),
 	FOREIGN KEY("Linkset_id") REFERENCES "Linkset" (id)
 );
-CREATE INDEX "ix_Linkset_exampleResource_Linkset_id" ON "Linkset_exampleResource" ("Linkset_id");
 CREATE INDEX "ix_Linkset_exampleResource_exampleResource" ON "Linkset_exampleResource" ("exampleResource");
+CREATE INDEX "ix_Linkset_exampleResource_Linkset_id" ON "Linkset_exampleResource" ("Linkset_id");
 
 CREATE TABLE "Linkset_vocabulary" (
 	"Linkset_id" TEXT,
@@ -526,8 +526,8 @@ CREATE TABLE "Linkset_vocabulary" (
 	PRIMARY KEY ("Linkset_id", vocabulary),
 	FOREIGN KEY("Linkset_id") REFERENCES "Linkset" (id)
 );
-CREATE INDEX "ix_Linkset_vocabulary_Linkset_id" ON "Linkset_vocabulary" ("Linkset_id");
 CREATE INDEX "ix_Linkset_vocabulary_vocabulary" ON "Linkset_vocabulary" (vocabulary);
+CREATE INDEX "ix_Linkset_vocabulary_Linkset_id" ON "Linkset_vocabulary" ("Linkset_id");
 
 CREATE TABLE "Linkset_subset" (
 	"Linkset_id" TEXT,
@@ -545,8 +545,8 @@ CREATE TABLE "DatasetDescription_creator" (
 	PRIMARY KEY ("DatasetDescription_id", creator),
 	FOREIGN KEY("DatasetDescription_id") REFERENCES "DatasetDescription" (id)
 );
-CREATE INDEX "ix_DatasetDescription_creator_creator" ON "DatasetDescription_creator" (creator);
 CREATE INDEX "ix_DatasetDescription_creator_DatasetDescription_id" ON "DatasetDescription_creator" ("DatasetDescription_id");
+CREATE INDEX "ix_DatasetDescription_creator_creator" ON "DatasetDescription_creator" (creator);
 
 CREATE TABLE "DatasetDescription_topic" (
 	"DatasetDescription_id" TEXT,

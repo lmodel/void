@@ -10,7 +10,7 @@ import java.util.List;
 import lombok.*;
 
 /**
-  A dataset of RDF links between two datasets: triples whose subjects are described in one of them and whose objects are described in the other.
+  A dataset of triples that join two datasets: each triple's subject belongs to one of them and its object to the other.
 **/
 @Data
 @EqualsAndHashCode(callSuper=false)

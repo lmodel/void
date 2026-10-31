@@ -21,8 +21,8 @@ annotations:
     the vocabulary file states no licence.
 comments:
   - >-
-    The version is the date of the Note's edition, and the source its dated address. The classes and
-    properties are those the vocabulary file declares, as its editors keep it at the commit the
+    The version is the date of the Note's edition, and the source its dated address. The schema renders
+    every class and property that the vocabulary file declares, as its editors keep it at the commit the
     vocabulary_file annotation names; tests/upstream/void-terms.tsv lists them, and the tests hold this
     schema to that list.
   - >-
@@ -61,8 +61,8 @@ classes:
   Dataset:
     class_uri: void:Dataset
     description: >-
-      A body of RDF data that one party publishes, maintains or gathers, treated as a single resource so
-      that statements can be made about all of it.
+      RDF triples from one provider, gathered under an IRI so that a description can speak of them as a
+      whole.
     tree_root: true
     comments:
       - >-
@@ -118,8 +118,8 @@ classes:
     is_a: Dataset
     class_uri: void:Linkset
     description: >-
-      A dataset of RDF links between two datasets: triples whose subjects are described in one of them and
-      whose objects are described in the other.
+      A dataset of triples that join two datasets: each triple's subject belongs to one of them and its
+      object to the other.
     slots:
       - target
       - subjectsTarget
@@ -194,8 +194,8 @@ classes:
   ClassBasedPartition:
     class_uri: void_linkml:ClassBasedPartition
     description: >-
-      The part of a dataset that describes the instances of one class, given within the dataset it is
-      part of, usually to state counts.
+      The slice of a dataset about the members of one class, written inside that dataset, most often to
+      give counts for it.
     broad_mappings:
       - void:Dataset
     comments:
@@ -221,8 +221,8 @@ classes:
   PropertyBasedPartition:
     class_uri: void_linkml:PropertyBasedPartition
     description: >-
-      The part of a dataset that holds the triples of one property, given within the dataset it is part of,
-      usually to state counts.
+      The slice of a dataset made of the triples whose predicate is one property, written inside that
+      dataset, most often to give counts for it.
     broad_mappings:
       - void:Dataset
     comments:
@@ -255,34 +255,34 @@ slots:
 
   title:
     slot_uri: dcterms:title
-    description: The name of the dataset or document.
+    description: A human-readable name for the dataset or document.
 
   description:
     slot_uri: dcterms:description
-    description: A short account, in prose, of what the dataset or document holds.
+    description: A few sentences of prose saying what the dataset or document contains.
 
   creator:
     slot_uri: dcterms:creator
     range: uri
     multivalued: true
-    description: The IRI of a person, organisation or service mainly responsible for making the dataset or document.
+    description: The IRI of the agent, human or not, that chiefly made the dataset or document.
 
   contributor:
     slot_uri: dcterms:contributor
     range: uri
     multivalued: true
-    description: The IRI of a person, organisation or service that contributed to the dataset.
+    description: The IRI of an agent that added to the dataset without being its main maker.
 
   publisher:
     slot_uri: dcterms:publisher
     range: uri
-    description: The IRI of the person, organisation or service that makes the dataset available.
+    description: The IRI of the agent that releases the dataset for others to use.
 
   source:
     slot_uri: dcterms:source
     range: uri
     multivalued: true
-    description: The IRI of a resource the dataset was derived from.
+    description: The IRI of an earlier resource whose content the dataset draws on.
 
   created:
     slot_uri: dcterms:created
@@ -302,13 +302,13 @@ slots:
   license:
     slot_uri: dcterms:license
     range: uri
-    description: The IRI of the licence the dataset is published under.
+    description: The IRI of the licence that sets the terms for using the dataset.
 
   subject:
     slot_uri: dcterms:subject
     range: uri
     multivalued: true
-    description: The IRI of a topic the dataset is about, such as a DBpedia resource or a SKOS concept.
+    description: The IRI of a topic the dataset covers, such as a DBpedia resource or a SKOS concept.
 
   # FOAF terms the Note uses for web pages and for what a description is about.
 
@@ -321,7 +321,7 @@ slots:
     slot_uri: foaf:page
     range: uri
     multivalued: true
-    description: Another web page about the dataset, such as a download page or a catalogue entry.
+    description: Any further web page with information on the dataset, for instance its download page or its catalogue entry.
 
   primaryTopic:
     slot_uri: foaf:primaryTopic
@@ -348,7 +348,7 @@ slots:
     slot_uri: rdfs:seeAlso
     range: uri
     multivalued: true
-    description: The address of a page with more about the feature.
+    description: A web page that tells more about the feature.
 
   # VoID's properties: access to a dataset.
 
@@ -356,19 +356,19 @@ slots:
     slot_uri: void:feature
     range: TechnicalFeature
     multivalued: true
-    description: A technical feature of the dataset, such as an RDF syntax it is served in, named by the feature's IRI.
+    description: Something the dataset's server or files support, for instance an RDF syntax, named by its IRI.
 
   sparqlEndpoint:
     slot_uri: void:sparqlEndpoint
     range: uri
     multivalued: true
-    description: The address of a SPARQL endpoint whose default graph holds the dataset.
+    description: A SPARQL service whose default graph holds the dataset, for running queries on it.
 
   dataDump:
     slot_uri: void:dataDump
     range: uri
     multivalued: true
-    description: The address of a file to download that holds the dataset, or a part of it, as RDF.
+    description: A downloadable RDF file holding all of the dataset or a share of it.
     comments:
       - A page that links to downloads is not a dump; give it as a page instead.
 
@@ -377,22 +377,22 @@ slots:
     range: uri
     multivalued: true
     description: >-
-      An address to which the URL-encoded IRI of an entity is appended, so that a GET on the result returns
-      an RDF description of the entity.
+      A web address that, with an entity's percent-encoded IRI added to its end, answers an HTTP GET with
+      RDF about that entity.
 
   openSearchDescription:
     slot_uri: void:openSearchDescription
     range: uri
     multivalued: true
-    description: The address of an OpenSearch description document for a text search over the dataset.
+    description: An OpenSearch file telling a client how to run keyword searches over the dataset.
 
   rootResource:
     slot_uri: void:rootResource
     range: uri
     multivalued: true
     description: >-
-      The IRI of a central entity of the dataset, from which every other entity can be reached by following
-      links in a few steps.
+      The IRI of a starting point for crawling the dataset: a resource from which links lead, within a
+      few hops, to all the others.
 
   exampleResource:
     slot_uri: void:exampleResource
@@ -411,7 +411,7 @@ slots:
 
   uriRegexPattern:
     slot_uri: void:uriRegexPattern
-    description: A regular expression, in the syntax SPARQL uses, that matches the IRI of every entity in the dataset.
+    description: A regular expression in SPARQL's syntax that each entity IRI of the dataset satisfies.
     comments:
       - The validator checks no regular expression's syntax; tests/test_data.py compiles each one in the examples.
 
@@ -428,7 +428,7 @@ slots:
     slot_uri: void:subset
     range: Dataset
     multivalued: true
-    description: A dataset that is part of this one, named by its IRI.
+    description: Another dataset contained in this one, named by its IRI.
 
   classPartition:
     slot_uri: void:classPartition
@@ -436,7 +436,7 @@ slots:
     multivalued: true
     inlined: true
     inlined_as_list: true
-    description: A part of the dataset that describes the instances of one class.
+    description: The dataset's slice for one class, given inside it.
     comments:
       - VoID makes it a narrower subset; here it is a value, so it does not inherit subset's range.
 
@@ -446,7 +446,7 @@ slots:
     multivalued: true
     inlined: true
     inlined_as_list: true
-    description: A part of the dataset that holds the triples of one property.
+    description: The dataset's slice for one property, given inside it.
     comments:
       - VoID makes it a narrower subset; here it is a value, so it does not inherit subset's range.
 
@@ -503,15 +503,16 @@ slots:
     range: integer
     minimum_value: 0
     description: >-
-      How many RDF documents the dataset is published as, for a dataset spread over many documents whose
-      triples are hard to count.
+      How many RDF documents together carry the dataset, for example RDFa web pages.
+    comments:
+      - Use it where the triples are hard to count; triples and entities say more where they can be given.
 
   # VoID's properties: linksets and documents.
 
   target:
     slot_uri: void:target
     range: Dataset
-    description: One of the two datasets a linkset links, named by its IRI.
+    description: Either dataset a linkset joins, named by its IRI.
     comments:
       - >-
         Linkset makes it a list of two. The slot itself stays single-valued, so that subjectsTarget and
@@ -521,13 +522,13 @@ slots:
     slot_uri: void:subjectsTarget
     is_a: target
     range: Dataset
-    description: The dataset that describes the subjects of a linkset's links, named by its IRI.
+    description: The dataset at the subject end of every link in a linkset, named by its IRI.
 
   objectsTarget:
     slot_uri: void:objectsTarget
     is_a: target
     range: Dataset
-    description: The dataset that describes the objects of a linkset's links, named by its IRI.
+    description: The dataset at the object end of every link in a linkset, named by its IRI.
 
   linkPredicate:
     slot_uri: void:linkPredicate
@@ -539,6 +540,6 @@ slots:
   inDataset:
     slot_uri: void:inDataset
     range: Dataset
-    description: The dataset whose data this document is part of, named by its IRI.
+    description: The dataset that this document's triples belong to, named by its IRI.
     comments:
       - A document names one; a document in two datasets points at a dataset that holds both as subsets.

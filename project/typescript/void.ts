@@ -5,22 +5,22 @@ export type TechnicalFeatureId = string;
 
 
 /**
- * A body of RDF data that one party publishes, maintains or gathers, treated as a single resource so that statements can be made about all of it.
+ * RDF triples from one provider, gathered under an IRI so that a description can speak of them as a whole.
  */
 export interface Dataset {
     /** The IRI of the dataset, document or feature, written in full or as a CURIE. */
     id: string,
-    /** The name of the dataset or document. */
+    /** A human-readable name for the dataset or document. */
     title?: string,
-    /** A short account, in prose, of what the dataset or document holds. */
+    /** A few sentences of prose saying what the dataset or document contains. */
     description?: string,
-    /** The IRI of a person, organisation or service mainly responsible for making the dataset or document. */
+    /** The IRI of the agent, human or not, that chiefly made the dataset or document. */
     creator?: string[],
-    /** The IRI of a person, organisation or service that contributed to the dataset. */
+    /** The IRI of an agent that added to the dataset without being its main maker. */
     contributor?: string[],
-    /** The IRI of the person, organisation or service that makes the dataset available. */
+    /** The IRI of the agent that releases the dataset for others to use. */
     publisher?: string,
-    /** The IRI of a resource the dataset was derived from. */
+    /** The IRI of an earlier resource whose content the dataset draws on. */
     source?: string[],
     /** The date the dataset or document was made. */
     created?: date,
@@ -28,39 +28,39 @@ export interface Dataset {
     issued?: date,
     /** The date the dataset or document last changed. */
     modified?: date,
-    /** The IRI of the licence the dataset is published under. */
+    /** The IRI of the licence that sets the terms for using the dataset. */
     license?: string,
-    /** The IRI of a topic the dataset is about, such as a DBpedia resource or a SKOS concept. */
+    /** The IRI of a topic the dataset covers, such as a DBpedia resource or a SKOS concept. */
     subject?: string[],
     /** The web page about the dataset itself. */
     homepage?: string,
-    /** Another web page about the dataset, such as a download page or a catalogue entry. */
+    /** Any further web page with information on the dataset, for instance its download page or its catalogue entry. */
     page?: string[],
-    /** A technical feature of the dataset, such as an RDF syntax it is served in, named by the feature's IRI. */
+    /** Something the dataset's server or files support, for instance an RDF syntax, named by its IRI. */
     feature?: TechnicalFeatureId[],
-    /** The address of a SPARQL endpoint whose default graph holds the dataset. */
+    /** A SPARQL service whose default graph holds the dataset, for running queries on it. */
     sparqlEndpoint?: string[],
-    /** The address of a file to download that holds the dataset, or a part of it, as RDF. */
+    /** A downloadable RDF file holding all of the dataset or a share of it. */
     dataDump?: string[],
-    /** An address to which the URL-encoded IRI of an entity is appended, so that a GET on the result returns an RDF description of the entity. */
+    /** A web address that, with an entity's percent-encoded IRI added to its end, answers an HTTP GET with RDF about that entity. */
     uriLookupEndpoint?: string[],
-    /** The address of an OpenSearch description document for a text search over the dataset. */
+    /** An OpenSearch file telling a client how to run keyword searches over the dataset. */
     openSearchDescription?: string[],
-    /** The IRI of a central entity of the dataset, from which every other entity can be reached by following links in a few steps. */
+    /** The IRI of a starting point for crawling the dataset: a resource from which links lead, within a few hops, to all the others. */
     rootResource?: string[],
     /** The IRI of an entity typical of the dataset, for a reader to look up. */
     exampleResource?: string[],
     /** The string every entity IRI in the dataset starts with, such as http://example.org/resource/. */
     uriSpace?: string,
-    /** A regular expression, in the syntax SPARQL uses, that matches the IRI of every entity in the dataset. */
+    /** A regular expression in SPARQL's syntax that each entity IRI of the dataset satisfies. */
     uriRegexPattern?: string,
     /** The namespace IRI of a vocabulary the dataset uses, as a term's IRI reads without its local name and without a final hash, such as http://xmlns.com/foaf/0.1/. */
     vocabulary?: string[],
-    /** A dataset that is part of this one, named by its IRI. */
+    /** Another dataset contained in this one, named by its IRI. */
     subset?: DatasetId[],
-    /** A part of the dataset that describes the instances of one class. */
+    /** The dataset's slice for one class, given inside it. */
     classPartition?: ClassBasedPartition[],
-    /** A part of the dataset that holds the triples of one property. */
+    /** The dataset's slice for one property, given inside it. */
     propertyPartition?: PropertyBasedPartition[],
     /** How many triples the dataset holds; for a linkset, how many links. */
     triples?: number,
@@ -74,20 +74,20 @@ export interface Dataset {
     distinctSubjects?: number,
     /** How many distinct IRIs, blank nodes and literals the dataset's triples have as objects. */
     distinctObjects?: number,
-    /** How many RDF documents the dataset is published as, for a dataset spread over many documents whose triples are hard to count. */
+    /** How many RDF documents together carry the dataset, for example RDFa web pages. */
     documents?: number,
 }
 
 
 /**
- * A dataset of RDF links between two datasets: triples whose subjects are described in one of them and whose objects are described in the other.
+ * A dataset of triples that join two datasets: each triple's subject belongs to one of them and its object to the other.
  */
 export interface Linkset extends Dataset {
-    /** One of the two datasets a linkset links, named by its IRI. */
+    /** Either dataset a linkset joins, named by its IRI. */
     target?: DatasetId[],
-    /** The dataset that describes the subjects of a linkset's links, named by its IRI. */
+    /** The dataset at the subject end of every link in a linkset, named by its IRI. */
     subjectsTarget?: DatasetId,
-    /** The dataset that describes the objects of a linkset's links, named by its IRI. */
+    /** The dataset at the object end of every link in a linkset, named by its IRI. */
     objectsTarget?: DatasetId,
     /** The property every link of a linkset has as its predicate, such as owl:sameAs. */
     linkPredicate?: string,
@@ -100,11 +100,11 @@ export interface Linkset extends Dataset {
 export interface DatasetDescription {
     /** The IRI of the dataset, document or feature, written in full or as a CURIE. */
     id: string,
-    /** The name of the dataset or document. */
+    /** A human-readable name for the dataset or document. */
     title?: string,
-    /** A short account, in prose, of what the dataset or document holds. */
+    /** A few sentences of prose saying what the dataset or document contains. */
     description?: string,
-    /** The IRI of a person, organisation or service mainly responsible for making the dataset or document. */
+    /** The IRI of the agent, human or not, that chiefly made the dataset or document. */
     creator?: string[],
     /** The date the dataset or document was made. */
     created?: date,
@@ -114,7 +114,7 @@ export interface DatasetDescription {
     primaryTopic?: DatasetId,
     /** A dataset a description is about, when it describes several of equal weight. */
     topic?: DatasetId[],
-    /** The dataset whose data this document is part of, named by its IRI. */
+    /** The dataset that this document's triples belong to, named by its IRI. */
     inDataset?: DatasetId,
 }
 
@@ -129,13 +129,13 @@ export interface TechnicalFeature {
     label?: string,
     /** A sentence or two about the feature. */
     comment?: string,
-    /** The address of a page with more about the feature. */
+    /** A web page that tells more about the feature. */
     seeAlso?: string[],
 }
 
 
 /**
- * The part of a dataset that describes the instances of one class, given within the dataset it is part of, usually to state counts.
+ * The slice of a dataset about the members of one class, written inside that dataset, most often to give counts for it.
  */
 export interface ClassBasedPartition {
     /** The class whose instances a class partition describes, named by its IRI, such as foaf:Person. */
@@ -152,15 +152,15 @@ export interface ClassBasedPartition {
     distinctSubjects?: number,
     /** How many distinct IRIs, blank nodes and literals the dataset's triples have as objects. */
     distinctObjects?: number,
-    /** How many RDF documents the dataset is published as, for a dataset spread over many documents whose triples are hard to count. */
+    /** How many RDF documents together carry the dataset, for example RDFa web pages. */
     documents?: number,
-    /** A part of the dataset that holds the triples of one property. */
+    /** The dataset's slice for one property, given inside it. */
     propertyPartition?: PropertyBasedPartition[],
 }
 
 
 /**
- * The part of a dataset that holds the triples of one property, given within the dataset it is part of, usually to state counts.
+ * The slice of a dataset made of the triples whose predicate is one property, written inside that dataset, most often to give counts for it.
  */
 export interface PropertyBasedPartition {
     /** The property whose triples a property partition holds, named by its IRI, such as foaf:name. */
@@ -177,7 +177,7 @@ export interface PropertyBasedPartition {
     distinctSubjects?: number,
     /** How many distinct IRIs, blank nodes and literals the dataset's triples have as objects. */
     distinctObjects?: number,
-    /** How many RDF documents the dataset is published as, for a dataset spread over many documents whose triples are hard to count. */
+    /** How many RDF documents together carry the dataset, for example RDFa web pages. */
     documents?: number,
 }
 

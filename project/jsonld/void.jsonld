@@ -17,7 +17,7 @@
   "description": "A LinkML rendering of the Vocabulary of Interlinked Datasets (VoID), the RDF vocabulary for describing datasets of linked data and the links between them, as the W3C Interest Group Note of 3 March 2011 explains it. Every VoID class and property keeps its VoID IRI, and the Dublin Core, FOAF and RDF Schema terms the Note uses in a description keep theirs.",
   "title": "Vocabulary of Interlinked Datasets (VoID)",
   "comments": [
-    "The version is the date of the Note's edition, and the source its dated address. The classes and properties are those the vocabulary file declares, as its editors keep it at the commit the vocabulary_file annotation names; tests/upstream/void-terms.tsv lists them, and the tests hold this schema to that list.",
+    "The version is the date of the Note's edition, and the source its dated address. The schema renders every class and property that the vocabulary file declares, as its editors keep it at the commit the vocabulary_file annotation names; tests/upstream/void-terms.tsv lists them, and the tests hold this schema to that list.",
     "Neither the Note nor the vocabulary file is copied: every description here is this project's own, and NOTICE says why.",
     "Kept from the Note's account of a description: the Dublin Core terms of its sections 2.2, 2.4 and 2.5, FOAF's homepage and page (2.1) and topic and primaryTopic (6.2), and the RDF Schema label, comment and seeAlso of a technical feature (2.6). Left out: dcterms:date, since a slot named date takes the name of LinkML's date type, and the generated Pydantic model then checks none of the dates, while created, issued and modified carry the dates the Note names; the agents a description names, which FOAF describes; the Waiver vocabulary's norms and waiver (2.4); and the SPARQL Service Description terms (6.5), which describe a service rather than a dataset."
   ],
@@ -414,7 +414,7 @@
     {
       "name": "title",
       "definition_uri": "https://w3id.org/lmodel/void/title",
-      "description": "The name of the dataset or document.",
+      "description": "A human-readable name for the dataset or document.",
       "from_schema": "https://w3id.org/lmodel/void",
       "mappings": [
         "http://purl.org/dc/terms/title"
@@ -431,7 +431,7 @@
     {
       "name": "description",
       "definition_uri": "https://w3id.org/lmodel/void/description",
-      "description": "A short account, in prose, of what the dataset or document holds.",
+      "description": "A few sentences of prose saying what the dataset or document contains.",
       "from_schema": "https://w3id.org/lmodel/void",
       "mappings": [
         "http://purl.org/dc/terms/description"
@@ -448,7 +448,7 @@
     {
       "name": "creator",
       "definition_uri": "https://w3id.org/lmodel/void/creator",
-      "description": "The IRI of a person, organisation or service mainly responsible for making the dataset or document.",
+      "description": "The IRI of the agent, human or not, that chiefly made the dataset or document.",
       "from_schema": "https://w3id.org/lmodel/void",
       "mappings": [
         "http://purl.org/dc/terms/creator"
@@ -466,7 +466,7 @@
     {
       "name": "contributor",
       "definition_uri": "https://w3id.org/lmodel/void/contributor",
-      "description": "The IRI of a person, organisation or service that contributed to the dataset.",
+      "description": "The IRI of an agent that added to the dataset without being its main maker.",
       "from_schema": "https://w3id.org/lmodel/void",
       "mappings": [
         "http://purl.org/dc/terms/contributor"
@@ -483,7 +483,7 @@
     {
       "name": "publisher",
       "definition_uri": "https://w3id.org/lmodel/void/publisher",
-      "description": "The IRI of the person, organisation or service that makes the dataset available.",
+      "description": "The IRI of the agent that releases the dataset for others to use.",
       "from_schema": "https://w3id.org/lmodel/void",
       "mappings": [
         "http://purl.org/dc/terms/publisher"
@@ -499,7 +499,7 @@
     {
       "name": "source",
       "definition_uri": "https://w3id.org/lmodel/void/source",
-      "description": "The IRI of a resource the dataset was derived from.",
+      "description": "The IRI of an earlier resource whose content the dataset draws on.",
       "from_schema": "https://w3id.org/lmodel/void",
       "mappings": [
         "http://purl.org/dc/terms/source"
@@ -566,7 +566,7 @@
     {
       "name": "license",
       "definition_uri": "https://w3id.org/lmodel/void/license",
-      "description": "The IRI of the licence the dataset is published under.",
+      "description": "The IRI of the licence that sets the terms for using the dataset.",
       "from_schema": "https://w3id.org/lmodel/void",
       "mappings": [
         "http://purl.org/dc/terms/license"
@@ -582,7 +582,7 @@
     {
       "name": "subject",
       "definition_uri": "https://w3id.org/lmodel/void/subject",
-      "description": "The IRI of a topic the dataset is about, such as a DBpedia resource or a SKOS concept.",
+      "description": "The IRI of a topic the dataset covers, such as a DBpedia resource or a SKOS concept.",
       "from_schema": "https://w3id.org/lmodel/void",
       "mappings": [
         "http://purl.org/dc/terms/subject"
@@ -615,7 +615,7 @@
     {
       "name": "page",
       "definition_uri": "https://w3id.org/lmodel/void/page",
-      "description": "Another web page about the dataset, such as a download page or a catalogue entry.",
+      "description": "Any further web page with information on the dataset, for instance its download page or its catalogue entry.",
       "from_schema": "https://w3id.org/lmodel/void",
       "mappings": [
         "http://xmlns.com/foaf/0.1/page"
@@ -697,7 +697,7 @@
     {
       "name": "seeAlso",
       "definition_uri": "https://w3id.org/lmodel/void/seeAlso",
-      "description": "The address of a page with more about the feature.",
+      "description": "A web page that tells more about the feature.",
       "from_schema": "https://w3id.org/lmodel/void",
       "mappings": [
         "http://www.w3.org/2000/01/rdf-schema#seeAlso"
@@ -714,7 +714,7 @@
     {
       "name": "feature",
       "definition_uri": "https://w3id.org/lmodel/void/feature",
-      "description": "A technical feature of the dataset, such as an RDF syntax it is served in, named by the feature's IRI.",
+      "description": "Something the dataset's server or files support, for instance an RDF syntax, named by its IRI.",
       "from_schema": "https://w3id.org/lmodel/void",
       "mappings": [
         "http://rdfs.org/ns/void#feature"
@@ -731,7 +731,7 @@
     {
       "name": "sparqlEndpoint",
       "definition_uri": "https://w3id.org/lmodel/void/sparqlEndpoint",
-      "description": "The address of a SPARQL endpoint whose default graph holds the dataset.",
+      "description": "A SPARQL service whose default graph holds the dataset, for running queries on it.",
       "from_schema": "https://w3id.org/lmodel/void",
       "mappings": [
         "http://rdfs.org/ns/void#sparqlEndpoint"
@@ -748,7 +748,7 @@
     {
       "name": "dataDump",
       "definition_uri": "https://w3id.org/lmodel/void/dataDump",
-      "description": "The address of a file to download that holds the dataset, or a part of it, as RDF.",
+      "description": "A downloadable RDF file holding all of the dataset or a share of it.",
       "comments": [
         "A page that links to downloads is not a dump; give it as a page instead."
       ],
@@ -768,7 +768,7 @@
     {
       "name": "uriLookupEndpoint",
       "definition_uri": "https://w3id.org/lmodel/void/uriLookupEndpoint",
-      "description": "An address to which the URL-encoded IRI of an entity is appended, so that a GET on the result returns an RDF description of the entity.",
+      "description": "A web address that, with an entity's percent-encoded IRI added to its end, answers an HTTP GET with RDF about that entity.",
       "from_schema": "https://w3id.org/lmodel/void",
       "mappings": [
         "http://rdfs.org/ns/void#uriLookupEndpoint"
@@ -785,7 +785,7 @@
     {
       "name": "openSearchDescription",
       "definition_uri": "https://w3id.org/lmodel/void/openSearchDescription",
-      "description": "The address of an OpenSearch description document for a text search over the dataset.",
+      "description": "An OpenSearch file telling a client how to run keyword searches over the dataset.",
       "from_schema": "https://w3id.org/lmodel/void",
       "mappings": [
         "http://rdfs.org/ns/void#openSearchDescription"
@@ -802,7 +802,7 @@
     {
       "name": "rootResource",
       "definition_uri": "https://w3id.org/lmodel/void/rootResource",
-      "description": "The IRI of a central entity of the dataset, from which every other entity can be reached by following links in a few steps.",
+      "description": "The IRI of a starting point for crawling the dataset: a resource from which links lead, within a few hops, to all the others.",
       "from_schema": "https://w3id.org/lmodel/void",
       "mappings": [
         "http://rdfs.org/ns/void#rootResource"
@@ -856,7 +856,7 @@
     {
       "name": "uriRegexPattern",
       "definition_uri": "https://w3id.org/lmodel/void/uriRegexPattern",
-      "description": "A regular expression, in the syntax SPARQL uses, that matches the IRI of every entity in the dataset.",
+      "description": "A regular expression in SPARQL's syntax that each entity IRI of the dataset satisfies.",
       "comments": [
         "The validator checks no regular expression's syntax; tests/test_data.py compiles each one in the examples."
       ],
@@ -893,7 +893,7 @@
     {
       "name": "subset",
       "definition_uri": "https://w3id.org/lmodel/void/subset",
-      "description": "A dataset that is part of this one, named by its IRI.",
+      "description": "Another dataset contained in this one, named by its IRI.",
       "from_schema": "https://w3id.org/lmodel/void",
       "mappings": [
         "http://rdfs.org/ns/void#subset"
@@ -910,7 +910,7 @@
     {
       "name": "classPartition",
       "definition_uri": "https://w3id.org/lmodel/void/classPartition",
-      "description": "A part of the dataset that describes the instances of one class.",
+      "description": "The dataset's slice for one class, given inside it.",
       "comments": [
         "VoID makes it a narrower subset; here it is a value, so it does not inherit subset's range."
       ],
@@ -932,7 +932,7 @@
     {
       "name": "propertyPartition",
       "definition_uri": "https://w3id.org/lmodel/void/propertyPartition",
-      "description": "A part of the dataset that holds the triples of one property.",
+      "description": "The dataset's slice for one property, given inside it.",
       "comments": [
         "VoID makes it a narrower subset; here it is a value, so it does not inherit subset's range."
       ],
@@ -1101,7 +1101,10 @@
     {
       "name": "documents",
       "definition_uri": "https://w3id.org/lmodel/void/documents",
-      "description": "How many RDF documents the dataset is published as, for a dataset spread over many documents whose triples are hard to count.",
+      "description": "How many RDF documents together carry the dataset, for example RDFa web pages.",
+      "comments": [
+        "Use it where the triples are hard to count; triples and entities say more where they can be given."
+      ],
       "from_schema": "https://w3id.org/lmodel/void",
       "mappings": [
         "http://rdfs.org/ns/void#documents"
@@ -1120,7 +1123,7 @@
     {
       "name": "target",
       "definition_uri": "https://w3id.org/lmodel/void/target",
-      "description": "One of the two datasets a linkset links, named by its IRI.",
+      "description": "Either dataset a linkset joins, named by its IRI.",
       "comments": [
         "Linkset makes it a list of two. The slot itself stays single-valued, so that subjectsTarget and objectsTarget, its narrower slots, inherit one value each."
       ],
@@ -1139,7 +1142,7 @@
     {
       "name": "subjectsTarget",
       "definition_uri": "https://w3id.org/lmodel/void/subjectsTarget",
-      "description": "The dataset that describes the subjects of a linkset's links, named by its IRI.",
+      "description": "The dataset at the subject end of every link in a linkset, named by its IRI.",
       "from_schema": "https://w3id.org/lmodel/void",
       "mappings": [
         "http://rdfs.org/ns/void#subjectsTarget"
@@ -1156,7 +1159,7 @@
     {
       "name": "objectsTarget",
       "definition_uri": "https://w3id.org/lmodel/void/objectsTarget",
-      "description": "The dataset that describes the objects of a linkset's links, named by its IRI.",
+      "description": "The dataset at the object end of every link in a linkset, named by its IRI.",
       "from_schema": "https://w3id.org/lmodel/void",
       "mappings": [
         "http://rdfs.org/ns/void#objectsTarget"
@@ -1192,7 +1195,7 @@
     {
       "name": "inDataset",
       "definition_uri": "https://w3id.org/lmodel/void/inDataset",
-      "description": "The dataset whose data this document is part of, named by its IRI.",
+      "description": "The dataset that this document's triples belong to, named by its IRI.",
       "comments": [
         "A document names one; a document in two datasets points at a dataset that holds both as subsets."
       ],
@@ -1211,7 +1214,7 @@
     {
       "name": "Linkset_target",
       "definition_uri": "https://w3id.org/lmodel/void/target",
-      "description": "One of the two datasets a linkset links, named by its IRI.",
+      "description": "Either dataset a linkset joins, named by its IRI.",
       "comments": [
         "Linkset makes it a list of two. The slot itself stays single-valued, so that subjectsTarget and objectsTarget, its narrower slots, inherit one value each."
       ],
@@ -1284,7 +1287,7 @@
     {
       "name": "Dataset",
       "definition_uri": "https://w3id.org/lmodel/void/Dataset",
-      "description": "A body of RDF data that one party publishes, maintains or gathers, treated as a single resource so that statements can be made about all of it.",
+      "description": "RDF triples from one provider, gathered under an IRI so that a description can speak of them as a whole.",
       "notes": [
         "The narrow mappings are the Note's own statement (section 6.5) that a SPARQL service description's datasets and graphs are VoID datasets. The broad mapping reads DCAT's dataset, any collection of data that one agent publishes, as wider than VoID's, which holds RDF alone."
       ],
@@ -1346,7 +1349,7 @@
     {
       "name": "Linkset",
       "definition_uri": "https://w3id.org/lmodel/void/Linkset",
-      "description": "A dataset of RDF links between two datasets: triples whose subjects are described in one of them and whose objects are described in the other.",
+      "description": "A dataset of triples that join two datasets: each triple's subject belongs to one of them and its object to the other.",
       "comments": [
         "A linkset links exactly two distinct datasets: the targets, the subjects' target and the objects' target together name two. The validator checks that two are named; tests/test_data.py checks that they differ."
       ],
@@ -1505,7 +1508,7 @@
     {
       "name": "ClassBasedPartition",
       "definition_uri": "https://w3id.org/lmodel/void/ClassBasedPartition",
-      "description": "The part of a dataset that describes the instances of one class, given within the dataset it is part of, usually to state counts.",
+      "description": "The slice of a dataset about the members of one class, written inside that dataset, most often to give counts for it.",
       "comments": [
         "VoID gives a partition no class of its own: it is a dataset, usually a blank node. This schema writes it as a value inside its dataset, so it has no IRI, and its class lives in this schema's own namespace. The name follows VoID's phrase for it and differs from the classPartition slot's by more than case, so that their pages are two files on a filesystem that ignores case."
       ],
@@ -1534,7 +1537,7 @@
     {
       "name": "PropertyBasedPartition",
       "definition_uri": "https://w3id.org/lmodel/void/PropertyBasedPartition",
-      "description": "The part of a dataset that holds the triples of one property, given within the dataset it is part of, usually to state counts.",
+      "description": "The slice of a dataset made of the triples whose predicate is one property, written inside that dataset, most often to give counts for it.",
       "comments": [
         "As for a class partition, VoID gives it no class of its own, and this schema writes it as a value inside its dataset."
       ],
@@ -1562,8 +1565,8 @@
   ],
   "metamodel_version": "1.12.0",
   "source_file": "void.yaml",
-  "source_file_date": "2026-10-31T12:46:48",
-  "source_file_size": 17499,
+  "source_file_date": "2026-10-31T17:58:26",
+  "source_file_size": 17473,
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/void.context.jsonld",
