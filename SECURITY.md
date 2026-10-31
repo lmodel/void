@@ -14,7 +14,7 @@ Use GitHub's [private vulnerability reporting](https://github.com/lmodel/void/se
 
 It releases a LinkML schema and the Python datamodel generated from it. Nothing is published to PyPI. When the bundle or the schema has changed, `knowledge-release.yaml` attaches three assets to the release, each with its `.sha256` and a build-provenance attestation: the schema's `lokf adapt` copy, the knowledge bundle as a zip, and a Microsoft 365 Copilot skill zip. A schema is data: loading one from an untrusted source with any LinkML tool is that tool's risk, not this repository's.
 
-`scripts/check_upstream_release.py` runs only in `upstream-watch.yaml`. It reads W3C's public page of the VoID Note and asks the GitHub API about the editors' repository, sending the workflow's read-only token to `api.github.com` alone. It writes nothing but its report. `scripts/extract_void_terms.py` runs only by hand, and refuses any file whose checksum is not the one it pins.
+`scripts/check_upstream_release.py` runs only in `upstream-watch.yaml`. It reads W3C's public page of the VoID Note and asks the GitHub API about the editors' repository, sending the workflow's token, which can write issues, to `api.github.com` alone. It writes nothing but its report. `scripts/extract_void_terms.py` runs only by hand, and refuses any file whose checksum is not the one it pins.
 
 ## What executes here
 
