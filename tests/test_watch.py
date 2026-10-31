@@ -230,6 +230,18 @@ def test_json_of_another_shape_could_not_finish(watch, tmp_path):
     assert "**The licence check could not finish: `" in text
 
 
+def test_a_json_list_where_an_object_belongs_could_not_finish(watch, tmp_path):
+    """An API answer that is a list, where the watch reads an object's key,
+    raises a TypeError, which is a check that could not finish."""
+    answers = _answers(watch)
+    answers[watch.API] = (watch.API, '["master"]')
+    _stub(watch, answers)
+    code, text = _run(watch, tmp_path)
+    assert code == 1
+    assert "**The vocabulary file check could not finish: `list indices" in text
+    assert "states no licence, as pinned" in text
+
+
 def test_a_redirect_is_reported_and_quoted(watch, tmp_path):
     """The address that answered is named, as code, when it is not the one
     asked, and a backtick in it cannot end the quotation."""
