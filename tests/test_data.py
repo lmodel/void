@@ -92,12 +92,27 @@ def test_counter_examples_fail_where_they_say(path):
 
 
 def _committed_errors(instance, class_name):
-    definitions = json.loads(COMMITTED_JSON_SCHEMA.read_text())["$defs"]
-    schema = {"$ref": f"#/$defs/{class_name}", "$defs": definitions}
-    validator = jsonschema.Draft202012Validator(
-        schema, format_checker=jsonschema.FormatChecker()
+    """What the committed project/jsonschema file finds wrong with a record
+    of one class, under the draft the file names."""
+    schema = json.loads(COMMITTED_JSON_SCHEMA.read_text())
+    root = {
+        "$schema": schema["$schema"],
+        "$ref": f"#/$defs/{class_name}",
+        "$defs": schema["$defs"],
+    }
+    validator = jsonschema.validators.validator_for(schema)(
+        root, format_checker=jsonschema.FormatChecker()
     )
     return list(validator.iter_errors(instance))
+
+
+def test_the_committed_json_schema_is_read_under_its_own_draft():
+    """The draft the committed file names is the one its records are checked
+    under, not the newest the jsonschema package knows."""
+    schema = json.loads(COMMITTED_JSON_SCHEMA.read_text())
+    validator = jsonschema.validators.validator_for(schema, default=None)
+    assert validator is not None, schema.get("$schema")
+    assert validator.META_SCHEMA["$id"].rstrip("#") == schema["$schema"].rstrip("#")
 
 
 @pytest.mark.parametrize("path", VALID, ids=lambda p: p.name)
