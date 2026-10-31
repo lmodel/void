@@ -365,7 +365,11 @@ class Linkset(Dataset):
          'comments': ['A linkset links exactly two distinct datasets: the targets, the '
                       "subjects' target and the objects' target together name two. The "
                       'validator checks that two are named; tests/test_data.py checks '
-                      'that they differ.'],
+                      'that they differ.',
+                      'VoID also accepts one target beside one directed target, which '
+                      'together name two datasets. This schema asks for both targets '
+                      'or both directed targets, so such a linkset names the missing '
+                      'one too.'],
          'from_schema': 'https://w3id.org/lmodel/void',
          'slot_usage': {'target': {'maximum_cardinality': 2,
                                    'minimum_cardinality': 2,

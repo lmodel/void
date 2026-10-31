@@ -57,7 +57,7 @@ void_linkml:Linkset a owl:Class ;
 	skos:definition "A dataset of triples that join two datasets: each triple's subject belongs to one of them and its object to the other." ;
 	skos:exactMatch void:Linkset ;
 	skos:inScheme <https://w3id.org/lmodel/void> ;
-	skos:note "A linkset links exactly two distinct datasets: the targets, the subjects' target and the objects' target together name two. The validator checks that two are named; tests/test_data.py checks that they differ." ;
+	skos:note "A linkset links exactly two distinct datasets: the targets, the subjects' target and the objects' target together name two. The validator checks that two are named; tests/test_data.py checks that they differ." , "VoID also accepts one target beside one directed target, which together name two datasets. This schema asks for both targets or both directed targets, so such a linkset names the missing one too." ;
 	void_linkml:note_section "1.4" .
 void_linkml:PropertyBasedPartition a owl:Class ;
 	rdfs:label "PropertyBasedPartition" ;
