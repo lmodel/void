@@ -1,47 +1,1315 @@
 {
     "$defs": {
+        "ClassBasedPartition": {
+            "additionalProperties": false,
+            "description": "The part of a dataset that describes the instances of one class, given within the dataset it is part of, usually to state counts.",
+            "properties": {
+                "class": {
+                    "description": "The class whose instances a class partition describes, named by its IRI, such as foaf:Person.",
+                    "type": "string"
+                },
+                "classes": {
+                    "description": "How many distinct classes the dataset's rdf:type triples name.",
+                    "minimum": 0,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "distinctObjects": {
+                    "description": "How many distinct IRIs, blank nodes and literals the dataset's triples have as objects.",
+                    "minimum": 0,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "distinctSubjects": {
+                    "description": "How many distinct IRIs and blank nodes the dataset's triples have as subjects.",
+                    "minimum": 0,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "documents": {
+                    "description": "How many RDF documents the dataset is published as, for a dataset spread over many documents whose triples are hard to count.",
+                    "minimum": 0,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "entities": {
+                    "description": "How many entities, resources with an IRI, the dataset describes.",
+                    "minimum": 0,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "properties": {
+                    "description": "How many distinct properties the dataset's triples use as predicates.",
+                    "minimum": 0,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "propertyPartition": {
+                    "description": "A part of the dataset that holds the triples of one property.",
+                    "items": {
+                        "$ref": "#/$defs/PropertyBasedPartition"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "triples": {
+                    "description": "How many triples the dataset holds; for a linkset, how many links.",
+                    "minimum": 0,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "class"
+            ],
+            "title": "ClassBasedPartition",
+            "type": "object"
+        },
         "Dataset": {
             "additionalProperties": false,
-            "description": "A set of RDF triples that are published, maintained or aggregated by a single provider.",
+            "description": "A body of RDF data that one party publishes, maintains or gathers, treated as a single resource so that statements can be made about all of it.",
+            "properties": {
+                "classPartition": {
+                    "description": "A part of the dataset that describes the instances of one class.",
+                    "items": {
+                        "$ref": "#/$defs/ClassBasedPartition"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "classes": {
+                    "description": "How many distinct classes the dataset's rdf:type triples name.",
+                    "minimum": 0,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "contributor": {
+                    "description": "The IRI of a person, organisation or service that contributed to the dataset.",
+                    "items": {
+                        "format": "uri",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "created": {
+                    "description": "The date the dataset or document was made.",
+                    "format": "date",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "creator": {
+                    "description": "The IRI of a person, organisation or service mainly responsible for making the dataset or document.",
+                    "items": {
+                        "format": "uri",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "dataDump": {
+                    "description": "The address of a file to download that holds the dataset, or a part of it, as RDF.",
+                    "items": {
+                        "format": "uri",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "A short account, in prose, of what the dataset or document holds.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "distinctObjects": {
+                    "description": "How many distinct IRIs, blank nodes and literals the dataset's triples have as objects.",
+                    "minimum": 0,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "distinctSubjects": {
+                    "description": "How many distinct IRIs and blank nodes the dataset's triples have as subjects.",
+                    "minimum": 0,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "documents": {
+                    "description": "How many RDF documents the dataset is published as, for a dataset spread over many documents whose triples are hard to count.",
+                    "minimum": 0,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "entities": {
+                    "description": "How many entities, resources with an IRI, the dataset describes.",
+                    "minimum": 0,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "exampleResource": {
+                    "description": "The IRI of an entity typical of the dataset, for a reader to look up.",
+                    "items": {
+                        "format": "uri",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "feature": {
+                    "description": "A technical feature of the dataset, such as an RDF syntax it is served in, named by the feature's IRI.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "homepage": {
+                    "description": "The web page about the dataset itself.",
+                    "format": "uri",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "The IRI of the dataset, document or feature, written in full or as a CURIE.",
+                    "type": "string"
+                },
+                "issued": {
+                    "description": "The date the dataset was first published.",
+                    "format": "date",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "license": {
+                    "description": "The IRI of the licence the dataset is published under.",
+                    "format": "uri",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "modified": {
+                    "description": "The date the dataset or document last changed.",
+                    "format": "date",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "openSearchDescription": {
+                    "description": "The address of an OpenSearch description document for a text search over the dataset.",
+                    "items": {
+                        "format": "uri",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "page": {
+                    "description": "Another web page about the dataset, such as a download page or a catalogue entry.",
+                    "items": {
+                        "format": "uri",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "properties": {
+                    "description": "How many distinct properties the dataset's triples use as predicates.",
+                    "minimum": 0,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "propertyPartition": {
+                    "description": "A part of the dataset that holds the triples of one property.",
+                    "items": {
+                        "$ref": "#/$defs/PropertyBasedPartition"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "publisher": {
+                    "description": "The IRI of the person, organisation or service that makes the dataset available.",
+                    "format": "uri",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "rootResource": {
+                    "description": "The IRI of a central entity of the dataset, from which every other entity can be reached by following links in a few steps.",
+                    "items": {
+                        "format": "uri",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "source": {
+                    "description": "The IRI of a resource the dataset was derived from.",
+                    "items": {
+                        "format": "uri",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "sparqlEndpoint": {
+                    "description": "The address of a SPARQL endpoint whose default graph holds the dataset.",
+                    "items": {
+                        "format": "uri",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "subject": {
+                    "description": "The IRI of a topic the dataset is about, such as a DBpedia resource or a SKOS concept.",
+                    "items": {
+                        "format": "uri",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "subset": {
+                    "description": "A dataset that is part of this one, named by its IRI.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "title": {
+                    "description": "The name of the dataset or document.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "triples": {
+                    "description": "How many triples the dataset holds; for a linkset, how many links.",
+                    "minimum": 0,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "uriLookupEndpoint": {
+                    "description": "An address to which the URL-encoded IRI of an entity is appended, so that a GET on the result returns an RDF description of the entity.",
+                    "items": {
+                        "format": "uri",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "uriRegexPattern": {
+                    "description": "A regular expression, in the syntax SPARQL uses, that matches the IRI of every entity in the dataset.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "uriSpace": {
+                    "description": "The string every entity IRI in the dataset starts with, such as http://example.org/resource/.",
+                    "pattern": "^[A-Za-z][A-Za-z0-9+.-]*:[^\\s]*$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "vocabulary": {
+                    "description": "The namespace IRI of a vocabulary the dataset uses, as a term's IRI reads without its local name and without a final hash, such as http://xmlns.com/foaf/0.1/.",
+                    "items": {
+                        "format": "uri",
+                        "pattern": "[^#]$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "id"
+            ],
             "title": "Dataset",
             "type": "object"
         },
         "DatasetDescription": {
             "additionalProperties": false,
-            "description": "A web resource whose foaf:primaryTopic or foaf:topics include void:Datasets.",
+            "anyOf": [
+                {
+                    "properties": {
+                        "primaryTopic": {}
+                    },
+                    "required": [
+                        "primaryTopic"
+                    ]
+                },
+                {
+                    "properties": {
+                        "topic": {
+                            "items": {},
+                            "type": "array"
+                        }
+                    },
+                    "required": [
+                        "topic"
+                    ]
+                }
+            ],
+            "description": "A web document, such as a void.ttl file published beside a dataset, that describes one or more datasets.",
+            "properties": {
+                "created": {
+                    "description": "The date the dataset or document was made.",
+                    "format": "date",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "creator": {
+                    "description": "The IRI of a person, organisation or service mainly responsible for making the dataset or document.",
+                    "items": {
+                        "format": "uri",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "A short account, in prose, of what the dataset or document holds.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "The IRI of the dataset, document or feature, written in full or as a CURIE.",
+                    "type": "string"
+                },
+                "inDataset": {
+                    "description": "The dataset whose data this document is part of, named by its IRI.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "modified": {
+                    "description": "The date the dataset or document last changed.",
+                    "format": "date",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "primaryTopic": {
+                    "description": "The dataset a description is about, when it describes one.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "title": {
+                    "description": "The name of the dataset or document.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "topic": {
+                    "description": "A dataset a description is about, when it describes several of equal weight.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "id"
+            ],
             "title": "DatasetDescription",
-            "type": "object"
-        },
-        "Document": {
-            "additionalProperties": false,
-            "description": "Form for preservation of structured and identified information",
-            "title": "Document",
             "type": "object"
         },
         "Linkset": {
             "additionalProperties": false,
-            "description": "A collection of RDF links between two void:Datasets.",
+            "anyOf": [
+                {
+                    "properties": {
+                        "target": {}
+                    },
+                    "required": [
+                        "target"
+                    ]
+                },
+                {
+                    "properties": {
+                        "objectsTarget": {},
+                        "subjectsTarget": {}
+                    },
+                    "required": [
+                        "subjectsTarget",
+                        "objectsTarget"
+                    ]
+                }
+            ],
+            "description": "A dataset of RDF links between two datasets: triples whose subjects are described in one of them and whose objects are described in the other.",
+            "properties": {
+                "classPartition": {
+                    "description": "A part of the dataset that describes the instances of one class.",
+                    "items": {
+                        "$ref": "#/$defs/ClassBasedPartition"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "classes": {
+                    "description": "How many distinct classes the dataset's rdf:type triples name.",
+                    "minimum": 0,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "contributor": {
+                    "description": "The IRI of a person, organisation or service that contributed to the dataset.",
+                    "items": {
+                        "format": "uri",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "created": {
+                    "description": "The date the dataset or document was made.",
+                    "format": "date",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "creator": {
+                    "description": "The IRI of a person, organisation or service mainly responsible for making the dataset or document.",
+                    "items": {
+                        "format": "uri",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "dataDump": {
+                    "description": "The address of a file to download that holds the dataset, or a part of it, as RDF.",
+                    "items": {
+                        "format": "uri",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "A short account, in prose, of what the dataset or document holds.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "distinctObjects": {
+                    "description": "How many distinct IRIs, blank nodes and literals the dataset's triples have as objects.",
+                    "minimum": 0,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "distinctSubjects": {
+                    "description": "How many distinct IRIs and blank nodes the dataset's triples have as subjects.",
+                    "minimum": 0,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "documents": {
+                    "description": "How many RDF documents the dataset is published as, for a dataset spread over many documents whose triples are hard to count.",
+                    "minimum": 0,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "entities": {
+                    "description": "How many entities, resources with an IRI, the dataset describes.",
+                    "minimum": 0,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "exampleResource": {
+                    "description": "The IRI of an entity typical of the dataset, for a reader to look up.",
+                    "items": {
+                        "format": "uri",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "feature": {
+                    "description": "A technical feature of the dataset, such as an RDF syntax it is served in, named by the feature's IRI.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "homepage": {
+                    "description": "The web page about the dataset itself.",
+                    "format": "uri",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "The IRI of the dataset, document or feature, written in full or as a CURIE.",
+                    "type": "string"
+                },
+                "issued": {
+                    "description": "The date the dataset was first published.",
+                    "format": "date",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "license": {
+                    "description": "The IRI of the licence the dataset is published under.",
+                    "format": "uri",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "linkPredicate": {
+                    "description": "The property every link of a linkset has as its predicate, such as owl:sameAs.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "modified": {
+                    "description": "The date the dataset or document last changed.",
+                    "format": "date",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "objectsTarget": {
+                    "description": "The dataset that describes the objects of a linkset's links, named by its IRI.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "openSearchDescription": {
+                    "description": "The address of an OpenSearch description document for a text search over the dataset.",
+                    "items": {
+                        "format": "uri",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "page": {
+                    "description": "Another web page about the dataset, such as a download page or a catalogue entry.",
+                    "items": {
+                        "format": "uri",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "properties": {
+                    "description": "How many distinct properties the dataset's triples use as predicates.",
+                    "minimum": 0,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "propertyPartition": {
+                    "description": "A part of the dataset that holds the triples of one property.",
+                    "items": {
+                        "$ref": "#/$defs/PropertyBasedPartition"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "publisher": {
+                    "description": "The IRI of the person, organisation or service that makes the dataset available.",
+                    "format": "uri",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "rootResource": {
+                    "description": "The IRI of a central entity of the dataset, from which every other entity can be reached by following links in a few steps.",
+                    "items": {
+                        "format": "uri",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "source": {
+                    "description": "The IRI of a resource the dataset was derived from.",
+                    "items": {
+                        "format": "uri",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "sparqlEndpoint": {
+                    "description": "The address of a SPARQL endpoint whose default graph holds the dataset.",
+                    "items": {
+                        "format": "uri",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "subject": {
+                    "description": "The IRI of a topic the dataset is about, such as a DBpedia resource or a SKOS concept.",
+                    "items": {
+                        "format": "uri",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "subjectsTarget": {
+                    "description": "The dataset that describes the subjects of a linkset's links, named by its IRI.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "subset": {
+                    "description": "A dataset that is part of this one, named by its IRI.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "target": {
+                    "description": "One of the two datasets a linkset links, named by its IRI.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2,
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "title": {
+                    "description": "The name of the dataset or document.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "triples": {
+                    "description": "How many triples the dataset holds; for a linkset, how many links.",
+                    "minimum": 0,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "uriLookupEndpoint": {
+                    "description": "An address to which the URL-encoded IRI of an entity is appended, so that a GET on the result returns an RDF description of the entity.",
+                    "items": {
+                        "format": "uri",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "uriRegexPattern": {
+                    "description": "A regular expression, in the syntax SPARQL uses, that matches the IRI of every entity in the dataset.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "uriSpace": {
+                    "description": "The string every entity IRI in the dataset starts with, such as http://example.org/resource/.",
+                    "pattern": "^[A-Za-z][A-Za-z0-9+.-]*:[^\\s]*$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "vocabulary": {
+                    "description": "The namespace IRI of a vocabulary the dataset uses, as a term's IRI reads without its local name and without a final hash, such as http://xmlns.com/foaf/0.1/.",
+                    "items": {
+                        "format": "uri",
+                        "pattern": "[^#]$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "id"
+            ],
             "title": "Linkset",
             "type": "object"
         },
-        "Resource": {
+        "PropertyBasedPartition": {
             "additionalProperties": false,
-            "description": "source or supply from which benefit is produced",
-            "title": "Resource",
+            "description": "The part of a dataset that holds the triples of one property, given within the dataset it is part of, usually to state counts.",
+            "properties": {
+                "classes": {
+                    "description": "How many distinct classes the dataset's rdf:type triples name.",
+                    "minimum": 0,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "distinctObjects": {
+                    "description": "How many distinct IRIs, blank nodes and literals the dataset's triples have as objects.",
+                    "minimum": 0,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "distinctSubjects": {
+                    "description": "How many distinct IRIs and blank nodes the dataset's triples have as subjects.",
+                    "minimum": 0,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "documents": {
+                    "description": "How many RDF documents the dataset is published as, for a dataset spread over many documents whose triples are hard to count.",
+                    "minimum": 0,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "entities": {
+                    "description": "How many entities, resources with an IRI, the dataset describes.",
+                    "minimum": 0,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "properties": {
+                    "description": "How many distinct properties the dataset's triples use as predicates.",
+                    "minimum": 0,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "property": {
+                    "description": "The property whose triples a property partition holds, named by its IRI, such as foaf:name.",
+                    "type": "string"
+                },
+                "triples": {
+                    "description": "How many triples the dataset holds; for a linkset, how many links.",
+                    "minimum": 0,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "property"
+            ],
+            "title": "PropertyBasedPartition",
             "type": "object"
         },
         "TechnicalFeature": {
             "additionalProperties": false,
-            "description": "A technical feature of a void:Dataset, such as a supported RDF serialization format.",
+            "description": "A technical property of how a dataset is served, such as an RDF syntax it can be read in or an HTTP feature its server supports.",
+            "properties": {
+                "comment": {
+                    "description": "A sentence or two about the feature.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "The IRI of the dataset, document or feature, written in full or as a CURIE.",
+                    "type": "string"
+                },
+                "label": {
+                    "description": "A short name for the feature.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "seeAlso": {
+                    "description": "The address of a page with more about the feature.",
+                    "items": {
+                        "format": "uri",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "id"
+            ],
             "title": "TechnicalFeature",
             "type": "object"
         }
     },
     "$id": "https://w3id.org/lmodel/void",
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "additionalProperties": true,
-    "metamodel_version": "1.7.0",
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "additionalProperties": false,
+    "description": "A body of RDF data that one party publishes, maintains or gathers, treated as a single resource so that statements can be made about all of it.",
+    "metamodel_version": "1.12.0",
+    "properties": {
+        "classPartition": {
+            "description": "A part of the dataset that describes the instances of one class.",
+            "items": {
+                "$ref": "#/$defs/ClassBasedPartition"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "classes": {
+            "description": "How many distinct classes the dataset's rdf:type triples name.",
+            "minimum": 0,
+            "type": [
+                "integer",
+                "null"
+            ]
+        },
+        "contributor": {
+            "description": "The IRI of a person, organisation or service that contributed to the dataset.",
+            "items": {
+                "format": "uri",
+                "type": "string"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "created": {
+            "description": "The date the dataset or document was made.",
+            "format": "date",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "creator": {
+            "description": "The IRI of a person, organisation or service mainly responsible for making the dataset or document.",
+            "items": {
+                "format": "uri",
+                "type": "string"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "dataDump": {
+            "description": "The address of a file to download that holds the dataset, or a part of it, as RDF.",
+            "items": {
+                "format": "uri",
+                "type": "string"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "description": {
+            "description": "A short account, in prose, of what the dataset or document holds.",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "distinctObjects": {
+            "description": "How many distinct IRIs, blank nodes and literals the dataset's triples have as objects.",
+            "minimum": 0,
+            "type": [
+                "integer",
+                "null"
+            ]
+        },
+        "distinctSubjects": {
+            "description": "How many distinct IRIs and blank nodes the dataset's triples have as subjects.",
+            "minimum": 0,
+            "type": [
+                "integer",
+                "null"
+            ]
+        },
+        "documents": {
+            "description": "How many RDF documents the dataset is published as, for a dataset spread over many documents whose triples are hard to count.",
+            "minimum": 0,
+            "type": [
+                "integer",
+                "null"
+            ]
+        },
+        "entities": {
+            "description": "How many entities, resources with an IRI, the dataset describes.",
+            "minimum": 0,
+            "type": [
+                "integer",
+                "null"
+            ]
+        },
+        "exampleResource": {
+            "description": "The IRI of an entity typical of the dataset, for a reader to look up.",
+            "items": {
+                "format": "uri",
+                "type": "string"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "feature": {
+            "description": "A technical feature of the dataset, such as an RDF syntax it is served in, named by the feature's IRI.",
+            "items": {
+                "type": "string"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "homepage": {
+            "description": "The web page about the dataset itself.",
+            "format": "uri",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "id": {
+            "description": "The IRI of the dataset, document or feature, written in full or as a CURIE.",
+            "type": "string"
+        },
+        "issued": {
+            "description": "The date the dataset was first published.",
+            "format": "date",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "license": {
+            "description": "The IRI of the licence the dataset is published under.",
+            "format": "uri",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "modified": {
+            "description": "The date the dataset or document last changed.",
+            "format": "date",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "openSearchDescription": {
+            "description": "The address of an OpenSearch description document for a text search over the dataset.",
+            "items": {
+                "format": "uri",
+                "type": "string"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "page": {
+            "description": "Another web page about the dataset, such as a download page or a catalogue entry.",
+            "items": {
+                "format": "uri",
+                "type": "string"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "properties": {
+            "description": "How many distinct properties the dataset's triples use as predicates.",
+            "minimum": 0,
+            "type": [
+                "integer",
+                "null"
+            ]
+        },
+        "propertyPartition": {
+            "description": "A part of the dataset that holds the triples of one property.",
+            "items": {
+                "$ref": "#/$defs/PropertyBasedPartition"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "publisher": {
+            "description": "The IRI of the person, organisation or service that makes the dataset available.",
+            "format": "uri",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "rootResource": {
+            "description": "The IRI of a central entity of the dataset, from which every other entity can be reached by following links in a few steps.",
+            "items": {
+                "format": "uri",
+                "type": "string"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "source": {
+            "description": "The IRI of a resource the dataset was derived from.",
+            "items": {
+                "format": "uri",
+                "type": "string"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "sparqlEndpoint": {
+            "description": "The address of a SPARQL endpoint whose default graph holds the dataset.",
+            "items": {
+                "format": "uri",
+                "type": "string"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "subject": {
+            "description": "The IRI of a topic the dataset is about, such as a DBpedia resource or a SKOS concept.",
+            "items": {
+                "format": "uri",
+                "type": "string"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "subset": {
+            "description": "A dataset that is part of this one, named by its IRI.",
+            "items": {
+                "type": "string"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "title": {
+            "description": "The name of the dataset or document.",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "triples": {
+            "description": "How many triples the dataset holds; for a linkset, how many links.",
+            "minimum": 0,
+            "type": [
+                "integer",
+                "null"
+            ]
+        },
+        "uriLookupEndpoint": {
+            "description": "An address to which the URL-encoded IRI of an entity is appended, so that a GET on the result returns an RDF description of the entity.",
+            "items": {
+                "format": "uri",
+                "type": "string"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "uriRegexPattern": {
+            "description": "A regular expression, in the syntax SPARQL uses, that matches the IRI of every entity in the dataset.",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "uriSpace": {
+            "description": "The string every entity IRI in the dataset starts with, such as http://example.org/resource/.",
+            "pattern": "^[A-Za-z][A-Za-z0-9+.-]*:[^\\s]*$",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "vocabulary": {
+            "description": "The namespace IRI of a vocabulary the dataset uses, as a term's IRI reads without its local name and without a final hash, such as http://xmlns.com/foaf/0.1/.",
+            "items": {
+                "format": "uri",
+                "pattern": "[^#]$",
+                "type": "string"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        }
+    },
+    "required": [
+        "id"
+    ],
     "title": "void",
     "type": "object",
-    "version": null
+    "version": "2011-03-03"
 }
