@@ -117,7 +117,9 @@ def test_counter_examples_fail_the_committed_json_schema(path):
     the place its first line names, as the validator does."""
     errors = _committed_errors(_load(path), _class(path))
     assert errors, f"{path.name} passed the committed JSON Schema"
-    assert {_pointer(e) for e in errors} == {_fails_at(path)}, [e.message for e in errors]
+    assert {_pointer(e) for e in errors} == {_fails_at(path)}, [
+        e.message for e in errors
+    ]
 
 
 def test_every_class_has_an_example():
