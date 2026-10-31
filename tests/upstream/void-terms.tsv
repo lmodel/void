@@ -1,0 +1,34 @@
+# The terms VoID's vocabulary file declares: rdfs/void.ttl in cygri/void at commit 5b2ca68b7897c2613d4269fd725f1812dce21267,
+# git object 9a7ca133acf83628d7850b0bdff58c507a5504d4, modified 2011-03-06. Written by scripts/extract_void_terms.py.
+# term	kind	functional	domain	range	parent
+http://rdfs.org/ns/void#Dataset	Class	false			
+http://rdfs.org/ns/void#DatasetDescription	Class	false			http://xmlns.com/foaf/0.1/Document
+http://rdfs.org/ns/void#Linkset	Class	false			http://rdfs.org/ns/void#Dataset
+http://rdfs.org/ns/void#TechnicalFeature	Class	false			
+http://rdfs.org/ns/void#class	Property	true	http://rdfs.org/ns/void#Dataset	http://www.w3.org/2000/01/rdf-schema#Class	
+http://rdfs.org/ns/void#classPartition	Property	false	http://rdfs.org/ns/void#Dataset	http://rdfs.org/ns/void#Dataset	http://rdfs.org/ns/void#subset
+http://rdfs.org/ns/void#classes	Property	false	http://rdfs.org/ns/void#Dataset	http://www.w3.org/2001/XMLSchema#integer	
+http://rdfs.org/ns/void#dataDump	Property	false	http://rdfs.org/ns/void#Dataset	http://www.w3.org/2000/01/rdf-schema#Resource	
+http://rdfs.org/ns/void#distinctObjects	Property	false	http://rdfs.org/ns/void#Dataset	http://www.w3.org/2001/XMLSchema#integer	
+http://rdfs.org/ns/void#distinctSubjects	Property	false	http://rdfs.org/ns/void#Dataset	http://www.w3.org/2001/XMLSchema#integer	
+http://rdfs.org/ns/void#documents	Property	false	http://rdfs.org/ns/void#Dataset	http://www.w3.org/2001/XMLSchema#integer	
+http://rdfs.org/ns/void#entities	Property	false	http://rdfs.org/ns/void#Dataset	http://www.w3.org/2001/XMLSchema#integer	
+http://rdfs.org/ns/void#exampleResource	Property	false	http://rdfs.org/ns/void#Dataset	http://www.w3.org/2000/01/rdf-schema#Resource	
+http://rdfs.org/ns/void#feature	Property	false	http://rdfs.org/ns/void#Dataset	http://rdfs.org/ns/void#TechnicalFeature	
+http://rdfs.org/ns/void#inDataset	Property	false	http://xmlns.com/foaf/0.1/Document	http://rdfs.org/ns/void#Dataset	
+http://rdfs.org/ns/void#linkPredicate	Property	false	http://rdfs.org/ns/void#Linkset	http://www.w3.org/1999/02/22-rdf-syntax-ns#Property	
+http://rdfs.org/ns/void#objectsTarget	Property	true	http://rdfs.org/ns/void#Linkset	http://rdfs.org/ns/void#Dataset	http://rdfs.org/ns/void#target
+http://rdfs.org/ns/void#openSearchDescription	Property	false	http://rdfs.org/ns/void#Dataset	http://xmlns.com/foaf/0.1/Document	
+http://rdfs.org/ns/void#properties	Property	false	http://rdfs.org/ns/void#Dataset	http://www.w3.org/2001/XMLSchema#integer	
+http://rdfs.org/ns/void#property	Property	true	http://rdfs.org/ns/void#Dataset	http://www.w3.org/1999/02/22-rdf-syntax-ns#Property	
+http://rdfs.org/ns/void#propertyPartition	Property	false	http://rdfs.org/ns/void#Dataset	http://rdfs.org/ns/void#Dataset	http://rdfs.org/ns/void#subset
+http://rdfs.org/ns/void#rootResource	Property	false	http://rdfs.org/ns/void#Dataset		
+http://rdfs.org/ns/void#sparqlEndpoint	Property	false	http://rdfs.org/ns/void#Dataset		
+http://rdfs.org/ns/void#subjectsTarget	Property	true	http://rdfs.org/ns/void#Linkset	http://rdfs.org/ns/void#Dataset	http://rdfs.org/ns/void#target
+http://rdfs.org/ns/void#subset	Property	false	http://rdfs.org/ns/void#Dataset	http://rdfs.org/ns/void#Dataset	
+http://rdfs.org/ns/void#target	Property	false	http://rdfs.org/ns/void#Linkset	http://rdfs.org/ns/void#Dataset	
+http://rdfs.org/ns/void#triples	Property	false	http://rdfs.org/ns/void#Dataset	http://www.w3.org/2001/XMLSchema#integer	
+http://rdfs.org/ns/void#uriLookupEndpoint	Property	false	http://rdfs.org/ns/void#Dataset		
+http://rdfs.org/ns/void#uriRegexPattern	Property	false	http://rdfs.org/ns/void#Dataset		
+http://rdfs.org/ns/void#uriSpace	Property	false	http://rdfs.org/ns/void#Dataset	http://www.w3.org/2000/01/rdf-schema#Literal	
+http://rdfs.org/ns/void#vocabulary	Property	false	http://rdfs.org/ns/void#Dataset		
