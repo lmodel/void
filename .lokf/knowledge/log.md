@@ -1,5 +1,9 @@
 # Change Log
 
+## 2026-11-06
+
+* **Changed**: `lokf.yaml` and `void.yaml` moved into `.lokf/schema/`, where KTL v0.62.0 keeps a sidecar's schema files, and the concepts that name them follow.
+
 ## 2026-10-31
 
 * **Changed**: the security policy says the upstream watch follows a redirect only over https to W3C's host or the GitHub API, as `scripts/check_upstream_release.py` and SECURITY.md now say.

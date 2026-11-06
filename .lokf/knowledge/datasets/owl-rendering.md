@@ -27,7 +27,7 @@ sources:
     title: the rule for an .owl.ttl address
 generated:
   by: process:ktl-librarian
-  at: "2026-10-31T15:05:26Z"
+  at: "2026-11-06T21:25:55Z"
 status: draft
 ---
 
@@ -35,7 +35,7 @@ status: draft
 
 `project/owl/void.owl.ttl` is the OWL ontology of the schema, in Turtle. The `gen-project` recipe writes it with a last call to gen-owl.[^justfile] It declares an OWL class for each class of the schema and a property for each slot, with the prefixes `owl:`, `rdfs:`, `void:` and `void_linkml:` among others.[^void.owl.ttl]
 
-This concept is typed with the schema's own `VoidDataset`, so its frontmatter says in VoID's terms what the file is: Turtle (`feature`), the vocabularies it uses (`vocabulary`), and the address that serves it (`dataDump`). The w3id rules for lmodel send an address ending in `.owl.ttl` to the file of that name in `project/owl/` on the default branch.[^w3id] It is a check that the domain schema works: `lokf validate` holds this concept to `.lokf/void.yaml`.
+This concept is typed with the schema's own `VoidDataset`, so its frontmatter says in VoID's terms what the file is: Turtle (`feature`), the vocabularies it uses (`vocabulary`), and the address that serves it (`dataDump`). The w3id rules for lmodel send an address ending in `.owl.ttl` to the file of that name in `project/owl/` on the default branch.[^w3id] It is a check that the domain schema works: `lokf validate` holds this concept to `.lokf/schema/void.yaml`.
 
 [^justfile]: justfile, the gen-project recipe
 [^void.owl.ttl]: project/owl/void.owl.ttl, the prefixes

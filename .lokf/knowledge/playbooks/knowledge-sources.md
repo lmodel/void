@@ -12,7 +12,7 @@ sources:
   - resource: src/void/schema
   - resource: src/void/datamodel
   - resource: project.justfile
-  - resource: .lokf/void.yaml
+  - resource: .lokf/schema/void.yaml
   - resource: .lokf/justfile
   - resource: .lokf/pyproject.toml
   - resource: NOTICE
@@ -80,7 +80,7 @@ exclusions:
     reason: The sidecar's link to the bundle.
   - resource: .github/PULL_REQUEST_TEMPLATE
     reason: The sidecar sync's pull request template.
-  - resource: .lokf/lokf.yaml
+  - resource: .lokf/schema/lokf.yaml
     reason: LOKF's schema, pinned by the sidecar.
   - resource: .lokf/scripts
     reason: The sidecar's scripts, which the weekly sync replaces.
@@ -100,7 +100,7 @@ exclusions:
     reason: The sidecar's git settings.
 generated:
   by: process:ktl-librarian
-  at: "2026-10-31T15:05:26Z"
+  at: "2026-11-06T21:25:55Z"
 status: draft
 ---
 
@@ -113,7 +113,7 @@ Each concept derived from a file or folder of this repository names it by its pa
 | Source | Yields | Re-check by |
 | --- | --- | --- |
 | `src/void/schema/void.yaml` | `datasets/void-linkml-schema`, the `glossary/` terms, `explanations/names-and-iris` | re-read the header, the classes, the slots, the mappings and the comments |
-| `project.justfile`, `.lokf/void.yaml`, `.lokf/justfile`, `.lokf/pyproject.toml`, the README's Knowledge Trust Ladder (KTL) section | the domain-schema section of `datasets/void-linkml-schema`, `glossary/adapt-copy` | re-read the `--root`, `--prefix` and `--keep` arguments, the copy's renames, the `schema :=` line and the `[tool.lokf]` table |
+| `project.justfile`, `.lokf/schema/void.yaml`, `.lokf/justfile`, `.lokf/pyproject.toml`, the README's Knowledge Trust Ladder (KTL) section | the domain-schema section of `datasets/void-linkml-schema`, `glossary/adapt-copy` | re-read the `--root`, `--prefix` and `--keep` arguments, the copy's renames, the `schema :=` line and the `[tool.lokf]` table |
 | `scripts/`, `.github/scripts/`, `tests/upstream/` | `playbooks/update-upstream-pins`, `datasets/upstream-term-lists`, `workflows/upstream-watch` | re-read the pins, the docstrings and the lists' header lines |
 | `README.md` (What it models, Influences, Mappings, Not modelled here), `docs/about.md`, `.linkmllint.yaml`, `CHANGELOG.md` | `explanations/scope-and-influences`, `explanations/names-and-iris` | re-read each section and the lint comment |
 | `justfile`, `.linkml/generators.yaml`, `project/`, `src/void/datamodel/`, `docs/schema/`, `docs/elements/` | `datasets/generated-artefacts`, `datasets/owl-rendering` | re-read the `gen-project`, `gen-doc` and `test` recipes and the `excludes`; re-list `project/*/` |
