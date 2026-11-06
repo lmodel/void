@@ -13,8 +13,8 @@ ROOT = Path(__file__).parent.parent
 # the release's .sha256 and its build-provenance attestation, and pinned here
 # by that checksum.
 SOURCE = ROOT / "src" / "void" / "schema" / "void.yaml"
-COPY = ROOT / ".lokf" / "void.yaml"
-LOKF = ROOT / ".lokf" / "lokf.yaml"
+COPY = ROOT / ".lokf" / "schema" / "void.yaml"
+LOKF = ROOT / ".lokf" / "schema" / "lokf.yaml"
 NEIGHBOURS = {
     # lmodel/slsa v0.8.0, schema-v0.8.0-slsa.yaml
     "slsa.yaml": "16a3c50a4592dbeffeeee0e9d3d354efe71ae3efcc8eb272ed9b782117d8a024",
