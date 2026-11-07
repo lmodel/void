@@ -36,7 +36,7 @@ npx skills add noelmcloughlin/knowledge-trust-ladder --skill ktl-curator --yes  
 
 ## Before opening a pull request
 
-- **Edit the schema, then regenerate.** Edit `src/void/schema/void.yaml`, run `just gen-project`, `just gen-doc` and `just lokf-adapt`, and commit the output. `project/`, `src/void/datamodel/`, `docs/schema/` and `.lokf/void.yaml` are generated.
+- **Edit the schema, then regenerate.** Edit `src/void/schema/void.yaml`, run `just gen-project`, `just gen-doc` and `just lokf-adapt`, and commit the output. `project/`, `src/void/datamodel/`, `docs/schema/` and `.lokf/schema/void.yaml` are generated.
 - **Keep VoID's names and IRIs**, and those of the Dublin Core, FOAF and RDF Schema terms. `tests/test_upstream.py` holds the schema to `tests/upstream/void-terms.tsv`, which `scripts/extract_void_terms.py` writes from the pinned vocabulary file. A mapping names a term the pinned term lists hold; a term with no sure match stays unmapped.
 - **Carry none of VoID's text.** No definition, comment or example from the Note or the vocabulary file goes anywhere here, copied or closely paraphrased. Cite the section or the term in the pull request. [NOTICE](NOTICE) states the position; [AI_COVENANT.md](AI_COVENANT.md) says why.
 - **Render the pinned edition.** The schema header and `scripts/check_upstream_release.py` name the same edition, and `tests/test_upstream.py` holds them equal.

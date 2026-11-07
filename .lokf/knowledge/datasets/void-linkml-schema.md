@@ -3,7 +3,7 @@ type: Dataset
 id: https://w3id.org/lmodel/void/knowledge/datasets/void-linkml-schema
 genre: reference
 title: void LinkML schema
-description: "The LinkML schema of the Vocabulary of Interlinked Datasets (VoID), `src/void/schema/void.yaml` (schema id `https://w3id.org/lmodel/void`, version 2011-03-03): VoID's four classes and 27 properties under VoID's own names and IRIs, two partition classes of its own, and the Dublin Core, FOAF and RDF Schema terms a VoID description uses. Its `lokf adapt` copy `.lokf/void.yaml` is the bundle's domain schema."
+description: "The LinkML schema of the Vocabulary of Interlinked Datasets (VoID), `src/void/schema/void.yaml` (schema id `https://w3id.org/lmodel/void`, version 2011-03-03): VoID's four classes and 27 properties under VoID's own names and IRIs, two partition classes of its own, and the Dublin Core, FOAF and RDF Schema terms a VoID description uses. Its `lokf adapt` copy `.lokf/schema/void.yaml` is the bundle's domain schema."
 resource: src/void/schema/void.yaml
 version: "2011-03-03"
 license: Apache-2.0
@@ -18,7 +18,7 @@ sources:
     resource: project.justfile
     title: the lokf-adapt recipes and their roots
   - id: void-copy
-    resource: .lokf/void.yaml
+    resource: .lokf/schema/void.yaml
     title: the copy lokf adapt wrote
   - id: readme.md
     resource: README.md
@@ -29,7 +29,7 @@ sources:
     title: the tool.lokf table
 generated:
   by: process:ktl-librarian
-  at: "2026-10-31T18:07:34Z"
+  at: "2026-11-06T21:25:55Z"
 status: draft
 ---
 
@@ -49,7 +49,7 @@ Every VoID property keeps its VoID local name and IRI, such as `distinctSubjects
 
 ## As the bundle's domain schema
 
-A domain schema of the Linked Open Knowledge Format (LOKF) is a LinkML schema that adds a host's classes beside LOKF's `lokf.yaml`, so that `lokf validate` checks the concepts typed with them. This bundle's domain schema is `.lokf/void.yaml`, which `lokf adapt` writes from the schema. The `schema :=` line of `.lokf/justfile` and the `[tool.lokf]` table of `.lokf/pyproject.toml` both name it.[^readme.md]
+A domain schema of the Linked Open Knowledge Format (LOKF) is a LinkML schema that adds a host's classes beside LOKF's `lokf.yaml`, so that `lokf validate` checks the concepts typed with them. This bundle's domain schema is `.lokf/schema/void.yaml`, which `lokf adapt` writes from the schema. The `schema :=` line of `.lokf/justfile` and the `[tool.lokf]` table of `.lokf/pyproject.toml` both name it.[^readme.md]
 
 `project.justfile` roots the copy on `Dataset`, `DatasetDescription` and `TechnicalFeature`, passes `--prefix void`, and passes `--keep source` to keep `dcterms:source` apart from LOKF's slot of the same IRI.[^project.justfile] In the copy, `Dataset` is `VoidDataset`, and `title`, `description`, `publisher`, `source`, `created`, `license` and `target` carry a `void_` prefix, each with its IRI.[^void-copy] A concept may name `VoidDataset`, `Linkset`, `DatasetDescription` or `TechnicalFeature` as its `type`.
 
@@ -58,4 +58,4 @@ A domain schema of the Linked Open Knowledge Format (LOKF) is a LinkML schema th
 [^void.yaml]: src/void/schema/void.yaml, the header, the classes and the slots
 [^readme.md]: README.md, the Knowledge Trust Ladder (KTL) section
 [^project.justfile]: project.justfile, the knowledge bundle recipes
-[^void-copy]: .lokf/void.yaml, the classes and slots it renames
+[^void-copy]: .lokf/schema/void.yaml, the classes and slots it renames

@@ -6,8 +6,8 @@
 
 # ============ Knowledge bundle: the adapted domain schema ============
 
-# `.lokf/void.yaml` is the copy `lokf adapt` writes from the schema so that it
-# can sit beside `.lokf/lokf.yaml` (`lokf adapt --help` lists the moves). The
+# `.lokf/schema/void.yaml` is the copy `lokf adapt` writes from the schema so that it
+# can sit beside `.lokf/schema/lokf.yaml` (`lokf adapt --help` lists the moves). The
 # roots are the three classes whose instances VoID names by an IRI: a Dataset
 # (and so a Linkset, its subclass), a DatasetDescription, the document that
 # describes datasets, and a TechnicalFeature. A concept may name any of them
@@ -21,12 +21,12 @@
 lokf_cmd := env_var_or_default("LOKF_CMD", "uv run --project .lokf lokf")
 lokf_adapt_roots := "--root Dataset --root DatasetDescription --root TechnicalFeature --prefix void --keep source"
 
-# Rewrite .lokf/void.yaml from the schema (run after every schema change)
+# Rewrite .lokf/schema/void.yaml from the schema (run after every schema change)
 [group('knowledge bundle')]
 lokf-adapt:
-  {{lokf_cmd}} adapt {{source_schema_path}} {{lokf_adapt_roots}} --lokf .lokf/lokf.yaml -o .lokf/void.yaml
+  {{lokf_cmd}} adapt {{source_schema_path}} {{lokf_adapt_roots}} --lokf .lokf/schema/lokf.yaml -o .lokf/schema/void.yaml
 
-# Fail when .lokf/void.yaml is stale against the schema or .lokf/lokf.yaml
+# Fail when .lokf/schema/void.yaml is stale against the schema or .lokf/schema/lokf.yaml
 [group('knowledge bundle')]
 lokf-adapt-check:
-  {{lokf_cmd}} adapt {{source_schema_path}} {{lokf_adapt_roots}} --lokf .lokf/lokf.yaml -o .lokf/void.yaml --check
+  {{lokf_cmd}} adapt {{source_schema_path}} {{lokf_adapt_roots}} --lokf .lokf/schema/lokf.yaml -o .lokf/schema/void.yaml --check
