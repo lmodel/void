@@ -1,0 +1,1070 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix linkml: <https://w3id.org/linkml/> .
+@prefix pav: <http://purl.org/pav/> .
+<https://w3id.org/lmodel/void/ClassBasedPartition> a linkml:ClassDefinition ;
+	skos:broadMatch "void:Dataset"^^xsd:anyURI ;
+	skos:exactMatch "void_linkml:ClassBasedPartition"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/lmodel/void"^^xsd:anyURI ;
+	skos:note "VoID gives a partition no class of its own: it is a dataset, usually a blank node. This schema writes it as a value inside its dataset, so it has no IRI, and its class lives in this schema's own namespace. The name follows VoID's phrase for it and differs from the classPartition slot's by more than case, so that their pages are two files on a filesystem that ignores case." ;
+	linkml:annotations _:c14n19 ;
+	linkml:class_uri "https://w3id.org/lmodel/void/ClassBasedPartition"^^xsd:anyURI ;
+	linkml:definition_uri "https://w3id.org/lmodel/void/ClassBasedPartition"^^xsd:anyURI ;
+	linkml:description "The slice of a dataset about the members of one class, written inside that dataset, most often to give counts for it." ;
+	linkml:slot_usage _:c14n72 ;
+	linkml:slots <https://w3id.org/lmodel/void/ClassBasedPartition_class> , <https://w3id.org/lmodel/void/classes> , <https://w3id.org/lmodel/void/distinctObjects> , <https://w3id.org/lmodel/void/distinctSubjects> , <https://w3id.org/lmodel/void/documents> , <https://w3id.org/lmodel/void/entities> , <https://w3id.org/lmodel/void/properties> , <https://w3id.org/lmodel/void/propertyPartition> , <https://w3id.org/lmodel/void/triples> .
+<https://w3id.org/lmodel/void/ClassBasedPartition_class> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/void"^^xsd:anyURI ;
+	skos:mappingRelation "http://rdfs.org/ns/void#class"^^xsd:anyURI ;
+	skos:prefLabel "class" ;
+	linkml:annotations _:c14n7 ;
+	linkml:definition_uri "https://w3id.org/lmodel/void/class"^^xsd:anyURI ;
+	linkml:description "The class whose instances a class partition describes, named by its IRI, such as foaf:Person." ;
+	linkml:domain <https://w3id.org/lmodel/void/ClassBasedPartition> ;
+	linkml:domain_of <https://w3id.org/lmodel/void/ClassBasedPartition> ;
+	linkml:is_a <https://w3id.org/lmodel/void/class> ;
+	linkml:is_usage_slot true ;
+	linkml:owner <https://w3id.org/lmodel/void/ClassBasedPartition> ;
+	linkml:pattern "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$" ;
+	linkml:range <https://w3id.org/lmodel/void/uriorcurie> ;
+	linkml:required true ;
+	linkml:slot_uri "http://rdfs.org/ns/void#class"^^xsd:anyURI ;
+	linkml:usage_slot_name "class" .
+<https://w3id.org/lmodel/void/Dataset> a linkml:ClassDefinition ;
+	skos:broadMatch "dcat:Dataset"^^xsd:anyURI ;
+	skos:editorialNote "The narrow mappings are the Note's own statement (section 6.5) that a SPARQL service description's datasets and graphs are VoID datasets. The broad mapping follows DCAT 3 (sections 1 and 6.2.1), which offers VoID's properties for the statistics of a DCAT dataset whose data is RDF: a DCAT dataset may hold data in any format, and a VoID dataset holds RDF alone." ;
+	skos:exactMatch "void:Dataset"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/lmodel/void"^^xsd:anyURI ;
+	skos:narrowMatch "sd:Dataset"^^xsd:anyURI , "sd:Graph"^^xsd:anyURI ;
+	skos:note "A dataset is named by an IRI, and the IRI of another dataset is how a subset, a linkset's target or a description refers to it." ;
+	linkml:annotations _:c14n74 ;
+	linkml:class_uri "http://rdfs.org/ns/void#Dataset"^^xsd:anyURI ;
+	linkml:definition_uri "https://w3id.org/lmodel/void/Dataset"^^xsd:anyURI ;
+	linkml:description "RDF triples from one provider, gathered under an IRI so that a description can speak of them as a whole." ;
+	linkml:slot_usage _:c14n43 ;
+	linkml:slots <https://w3id.org/lmodel/void/classPartition> , <https://w3id.org/lmodel/void/classes> , <https://w3id.org/lmodel/void/contributor> , <https://w3id.org/lmodel/void/created> , <https://w3id.org/lmodel/void/creator> , <https://w3id.org/lmodel/void/dataDump> , <https://w3id.org/lmodel/void/description> , <https://w3id.org/lmodel/void/distinctObjects> , <https://w3id.org/lmodel/void/distinctSubjects> , <https://w3id.org/lmodel/void/documents> , <https://w3id.org/lmodel/void/entities> , <https://w3id.org/lmodel/void/exampleResource> , <https://w3id.org/lmodel/void/feature> , <https://w3id.org/lmodel/void/homepage> , <https://w3id.org/lmodel/void/id> , <https://w3id.org/lmodel/void/issued> , <https://w3id.org/lmodel/void/license> , <https://w3id.org/lmodel/void/modified> , <https://w3id.org/lmodel/void/openSearchDescription> , <https://w3id.org/lmodel/void/page> , <https://w3id.org/lmodel/void/properties> , <https://w3id.org/lmodel/void/propertyPartition> , <https://w3id.org/lmodel/void/publisher> , <https://w3id.org/lmodel/void/rootResource> , <https://w3id.org/lmodel/void/source> , <https://w3id.org/lmodel/void/sparqlEndpoint> , <https://w3id.org/lmodel/void/subject> , <https://w3id.org/lmodel/void/subset> , <https://w3id.org/lmodel/void/title> , <https://w3id.org/lmodel/void/triples> , <https://w3id.org/lmodel/void/uriLookupEndpoint> , <https://w3id.org/lmodel/void/uriRegexPattern> , <https://w3id.org/lmodel/void/uriSpace> , <https://w3id.org/lmodel/void/vocabulary> ;
+	linkml:tree_root true .
+<https://w3id.org/lmodel/void/DatasetDescription> a linkml:ClassDefinition ;
+	skos:broadMatch "foaf:Document"^^xsd:anyURI ;
+	skos:editorialNote "The broad mapping is the vocabulary file's own statement that a dataset description is a FOAF document." ;
+	skos:exactMatch "void:DatasetDescription"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/lmodel/void"^^xsd:anyURI ;
+	linkml:annotations _:c14n6 ;
+	linkml:any_of _:c14n31 , _:c14n51 ;
+	linkml:class_uri "http://rdfs.org/ns/void#DatasetDescription"^^xsd:anyURI ;
+	linkml:definition_uri "https://w3id.org/lmodel/void/DatasetDescription"^^xsd:anyURI ;
+	linkml:description "A web document, such as a void.ttl file published beside a dataset, that describes one or more datasets." ;
+	linkml:slot_usage _:c14n24 ;
+	linkml:slots <https://w3id.org/lmodel/void/created> , <https://w3id.org/lmodel/void/creator> , <https://w3id.org/lmodel/void/description> , <https://w3id.org/lmodel/void/id> , <https://w3id.org/lmodel/void/inDataset> , <https://w3id.org/lmodel/void/modified> , <https://w3id.org/lmodel/void/primaryTopic> , <https://w3id.org/lmodel/void/title> , <https://w3id.org/lmodel/void/topic> .
+<https://w3id.org/lmodel/void/Linkset> a linkml:ClassDefinition ;
+	skos:exactMatch "void:Linkset"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/lmodel/void"^^xsd:anyURI ;
+	skos:note "A linkset links exactly two distinct datasets: the targets, the subjects' target and the objects' target together name two. The validator checks that two are named; tests/test_data.py checks that they differ." , "VoID also accepts one target beside one directed target, which together name two datasets. This schema asks for both targets or both directed targets, so such a linkset names the missing one too." ;
+	linkml:annotations _:c14n25 ;
+	linkml:any_of _:c14n41 , _:c14n9 ;
+	linkml:class_uri "http://rdfs.org/ns/void#Linkset"^^xsd:anyURI ;
+	linkml:definition_uri "https://w3id.org/lmodel/void/Linkset"^^xsd:anyURI ;
+	linkml:description "A dataset of triples that join two datasets: each triple's subject belongs to one of them and its object to the other." ;
+	linkml:is_a <https://w3id.org/lmodel/void/Dataset> ;
+	linkml:slot_usage _:c14n3 ;
+	linkml:slots <https://w3id.org/lmodel/void/Linkset_target> , <https://w3id.org/lmodel/void/classPartition> , <https://w3id.org/lmodel/void/classes> , <https://w3id.org/lmodel/void/contributor> , <https://w3id.org/lmodel/void/created> , <https://w3id.org/lmodel/void/creator> , <https://w3id.org/lmodel/void/dataDump> , <https://w3id.org/lmodel/void/description> , <https://w3id.org/lmodel/void/distinctObjects> , <https://w3id.org/lmodel/void/distinctSubjects> , <https://w3id.org/lmodel/void/documents> , <https://w3id.org/lmodel/void/entities> , <https://w3id.org/lmodel/void/exampleResource> , <https://w3id.org/lmodel/void/feature> , <https://w3id.org/lmodel/void/homepage> , <https://w3id.org/lmodel/void/id> , <https://w3id.org/lmodel/void/issued> , <https://w3id.org/lmodel/void/license> , <https://w3id.org/lmodel/void/linkPredicate> , <https://w3id.org/lmodel/void/modified> , <https://w3id.org/lmodel/void/objectsTarget> , <https://w3id.org/lmodel/void/openSearchDescription> , <https://w3id.org/lmodel/void/page> , <https://w3id.org/lmodel/void/properties> , <https://w3id.org/lmodel/void/propertyPartition> , <https://w3id.org/lmodel/void/publisher> , <https://w3id.org/lmodel/void/rootResource> , <https://w3id.org/lmodel/void/source> , <https://w3id.org/lmodel/void/sparqlEndpoint> , <https://w3id.org/lmodel/void/subject> , <https://w3id.org/lmodel/void/subjectsTarget> , <https://w3id.org/lmodel/void/subset> , <https://w3id.org/lmodel/void/title> , <https://w3id.org/lmodel/void/triples> , <https://w3id.org/lmodel/void/uriLookupEndpoint> , <https://w3id.org/lmodel/void/uriRegexPattern> , <https://w3id.org/lmodel/void/uriSpace> , <https://w3id.org/lmodel/void/vocabulary> .
+<https://w3id.org/lmodel/void/Linkset_target> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/void"^^xsd:anyURI ;
+	skos:mappingRelation "http://rdfs.org/ns/void#target"^^xsd:anyURI ;
+	skos:note "Linkset makes it a list of two. The slot itself stays single-valued, so that subjectsTarget and objectsTarget, its narrower slots, inherit one value each." ;
+	skos:prefLabel "target" ;
+	linkml:annotations _:c14n13 ;
+	linkml:definition_uri "https://w3id.org/lmodel/void/target"^^xsd:anyURI ;
+	linkml:description "Either dataset a linkset joins, named by its IRI." ;
+	linkml:domain <https://w3id.org/lmodel/void/Linkset> ;
+	linkml:domain_of <https://w3id.org/lmodel/void/Linkset> ;
+	linkml:is_a <https://w3id.org/lmodel/void/target> ;
+	linkml:is_usage_slot true ;
+	linkml:maximum_cardinality 2 ;
+	linkml:minimum_cardinality 2 ;
+	linkml:multivalued true ;
+	linkml:owner <https://w3id.org/lmodel/void/Linkset> ;
+	linkml:pattern "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$" ;
+	linkml:range <https://w3id.org/lmodel/void/Dataset> ;
+	linkml:slot_uri "http://rdfs.org/ns/void#target"^^xsd:anyURI ;
+	linkml:usage_slot_name "target" .
+<https://w3id.org/lmodel/void/PropertyBasedPartition> a linkml:ClassDefinition ;
+	skos:broadMatch "void:Dataset"^^xsd:anyURI ;
+	skos:exactMatch "void_linkml:PropertyBasedPartition"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/lmodel/void"^^xsd:anyURI ;
+	skos:note "As for a class partition, VoID gives it no class of its own, and this schema writes it as a value inside its dataset." ;
+	linkml:annotations _:c14n69 ;
+	linkml:class_uri "https://w3id.org/lmodel/void/PropertyBasedPartition"^^xsd:anyURI ;
+	linkml:definition_uri "https://w3id.org/lmodel/void/PropertyBasedPartition"^^xsd:anyURI ;
+	linkml:description "The slice of a dataset made of the triples whose predicate is one property, written inside that dataset, most often to give counts for it." ;
+	linkml:slot_usage _:c14n34 ;
+	linkml:slots <https://w3id.org/lmodel/void/PropertyBasedPartition_property> , <https://w3id.org/lmodel/void/classes> , <https://w3id.org/lmodel/void/distinctObjects> , <https://w3id.org/lmodel/void/distinctSubjects> , <https://w3id.org/lmodel/void/documents> , <https://w3id.org/lmodel/void/entities> , <https://w3id.org/lmodel/void/properties> , <https://w3id.org/lmodel/void/triples> .
+<https://w3id.org/lmodel/void/PropertyBasedPartition_property> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/void"^^xsd:anyURI ;
+	skos:mappingRelation "http://rdfs.org/ns/void#property"^^xsd:anyURI ;
+	skos:prefLabel "property" ;
+	linkml:annotations _:c14n22 ;
+	linkml:definition_uri "https://w3id.org/lmodel/void/property"^^xsd:anyURI ;
+	linkml:description "The property whose triples a property partition holds, named by its IRI, such as foaf:name." ;
+	linkml:domain <https://w3id.org/lmodel/void/PropertyBasedPartition> ;
+	linkml:domain_of <https://w3id.org/lmodel/void/PropertyBasedPartition> ;
+	linkml:is_a <https://w3id.org/lmodel/void/property> ;
+	linkml:is_usage_slot true ;
+	linkml:owner <https://w3id.org/lmodel/void/PropertyBasedPartition> ;
+	linkml:pattern "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$" ;
+	linkml:range <https://w3id.org/lmodel/void/uriorcurie> ;
+	linkml:required true ;
+	linkml:slot_uri "http://rdfs.org/ns/void#property"^^xsd:anyURI ;
+	linkml:usage_slot_name "property" .
+<https://w3id.org/lmodel/void/TechnicalFeature> a linkml:ClassDefinition ;
+	skos:exactMatch "void:TechnicalFeature"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/lmodel/void"^^xsd:anyURI ;
+	skos:note "W3C names the RDF syntaxes under http://www.w3.org/ns/formats/, such as http://www.w3.org/ns/formats/Turtle; a feature of another kind takes an IRI of its publisher's own." ;
+	linkml:annotations _:c14n57 ;
+	linkml:class_uri "http://rdfs.org/ns/void#TechnicalFeature"^^xsd:anyURI ;
+	linkml:definition_uri "https://w3id.org/lmodel/void/TechnicalFeature"^^xsd:anyURI ;
+	linkml:description "A technical property of how a dataset is served, such as an RDF syntax it can be read in or an HTTP feature its server supports." ;
+	linkml:slot_usage _:c14n48 ;
+	linkml:slots <https://w3id.org/lmodel/void/comment> , <https://w3id.org/lmodel/void/id> , <https://w3id.org/lmodel/void/label> , <https://w3id.org/lmodel/void/seeAlso> .
+<https://w3id.org/lmodel/void/boolean> a linkml:TypeDefinition ;
+	skos:editorialNote "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"boolean\"." ;
+	skos:exactMatch "schema:Boolean"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/linkml/types"^^xsd:anyURI ;
+	linkml:base "Bool" ;
+	linkml:definition_uri "https://w3id.org/linkml/Boolean"^^xsd:anyURI ;
+	linkml:description "A binary (true or false) value" ;
+	linkml:imported_from "linkml:types" ;
+	linkml:repr "bool" ;
+	linkml:uri "http://www.w3.org/2001/XMLSchema#boolean"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/class> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/void"^^xsd:anyURI ;
+	skos:mappingRelation "http://rdfs.org/ns/void#class"^^xsd:anyURI ;
+	linkml:annotations _:c14n42 ;
+	linkml:definition_uri "https://w3id.org/lmodel/void/class"^^xsd:anyURI ;
+	linkml:description "The class whose instances a class partition describes, named by its IRI, such as foaf:Person." ;
+	linkml:domain_of <https://w3id.org/lmodel/void/ClassBasedPartition> ;
+	linkml:owner <https://w3id.org/lmodel/void/ClassBasedPartition> ;
+	linkml:pattern "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$" ;
+	linkml:range <https://w3id.org/lmodel/void/uriorcurie> ;
+	linkml:slot_uri "http://rdfs.org/ns/void#class"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/classPartition> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/void"^^xsd:anyURI ;
+	skos:mappingRelation "http://rdfs.org/ns/void#classPartition"^^xsd:anyURI ;
+	skos:note "VoID makes it a narrower subset; here it is a value, so it does not inherit subset's range." ;
+	linkml:annotations _:c14n16 ;
+	linkml:definition_uri "https://w3id.org/lmodel/void/classPartition"^^xsd:anyURI ;
+	linkml:description "The dataset's slice for one class, given inside it." ;
+	linkml:domain_of <https://w3id.org/lmodel/void/Dataset> ;
+	linkml:inlined true ;
+	linkml:inlined_as_list true ;
+	linkml:multivalued true ;
+	linkml:owner <https://w3id.org/lmodel/void/Dataset> ;
+	linkml:range <https://w3id.org/lmodel/void/ClassBasedPartition> ;
+	linkml:slot_uri "http://rdfs.org/ns/void#classPartition"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/classes> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/void"^^xsd:anyURI ;
+	skos:mappingRelation "http://rdfs.org/ns/void#classes"^^xsd:anyURI ;
+	linkml:annotations _:c14n73 ;
+	linkml:definition_uri "https://w3id.org/lmodel/void/classes"^^xsd:anyURI ;
+	linkml:description "How many distinct classes the dataset's rdf:type triples name." ;
+	linkml:domain_of <https://w3id.org/lmodel/void/ClassBasedPartition> , <https://w3id.org/lmodel/void/Dataset> , <https://w3id.org/lmodel/void/PropertyBasedPartition> ;
+	linkml:minimum_value "0"^^linkml:\@id ;
+	linkml:owner <https://w3id.org/lmodel/void/PropertyBasedPartition> ;
+	linkml:range <https://w3id.org/lmodel/void/integer> ;
+	linkml:slot_uri "http://rdfs.org/ns/void#classes"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/comment> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/void"^^xsd:anyURI ;
+	skos:mappingRelation "http://www.w3.org/2000/01/rdf-schema#comment"^^xsd:anyURI ;
+	linkml:annotations _:c14n61 ;
+	linkml:definition_uri "https://w3id.org/lmodel/void/comment"^^xsd:anyURI ;
+	linkml:description "A sentence or two about the feature." ;
+	linkml:domain_of <https://w3id.org/lmodel/void/TechnicalFeature> ;
+	linkml:owner <https://w3id.org/lmodel/void/TechnicalFeature> ;
+	linkml:range <https://w3id.org/lmodel/void/string> ;
+	linkml:slot_uri "http://www.w3.org/2000/01/rdf-schema#comment"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/contributor> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/void"^^xsd:anyURI ;
+	skos:mappingRelation "http://purl.org/dc/terms/contributor"^^xsd:anyURI ;
+	linkml:annotations _:c14n21 ;
+	linkml:definition_uri "https://w3id.org/lmodel/void/contributor"^^xsd:anyURI ;
+	linkml:description "The IRI of an agent that added to the dataset without being its main maker." ;
+	linkml:domain_of <https://w3id.org/lmodel/void/Dataset> ;
+	linkml:multivalued true ;
+	linkml:owner <https://w3id.org/lmodel/void/Dataset> ;
+	linkml:range <https://w3id.org/lmodel/void/uri> ;
+	linkml:slot_uri "http://purl.org/dc/terms/contributor"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/created> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/void"^^xsd:anyURI ;
+	skos:mappingRelation "http://purl.org/dc/terms/created"^^xsd:anyURI ;
+	linkml:annotations _:c14n5 ;
+	linkml:definition_uri "https://w3id.org/lmodel/void/created"^^xsd:anyURI ;
+	linkml:description "The date the dataset or document was made." ;
+	linkml:domain_of <https://w3id.org/lmodel/void/Dataset> , <https://w3id.org/lmodel/void/DatasetDescription> ;
+	linkml:owner <https://w3id.org/lmodel/void/DatasetDescription> ;
+	linkml:range <https://w3id.org/lmodel/void/date> ;
+	linkml:slot_uri "http://purl.org/dc/terms/created"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/creator> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/void"^^xsd:anyURI ;
+	skos:mappingRelation "http://purl.org/dc/terms/creator"^^xsd:anyURI ;
+	linkml:annotations _:c14n50 ;
+	linkml:definition_uri "https://w3id.org/lmodel/void/creator"^^xsd:anyURI ;
+	linkml:description "The IRI of the agent, human or not, that chiefly made the dataset or document." ;
+	linkml:domain_of <https://w3id.org/lmodel/void/Dataset> , <https://w3id.org/lmodel/void/DatasetDescription> ;
+	linkml:multivalued true ;
+	linkml:owner <https://w3id.org/lmodel/void/DatasetDescription> ;
+	linkml:range <https://w3id.org/lmodel/void/uri> ;
+	linkml:slot_uri "http://purl.org/dc/terms/creator"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/curie> dcterms:conformsTo "https://www.w3.org/TR/curie/" ;
+	a linkml:TypeDefinition ;
+	skos:editorialNote "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"curie\"." ;
+	skos:inScheme "https://w3id.org/linkml/types"^^xsd:anyURI ;
+	skos:note "in RDF serializations this MUST be expanded to a URI" , "in non-RDF serializations MAY be serialized as the compact representation" ;
+	linkml:base "Curie" ;
+	linkml:definition_uri "https://w3id.org/linkml/Curie"^^xsd:anyURI ;
+	linkml:description "a compact URI" ;
+	linkml:imported_from "linkml:types" ;
+	linkml:repr "str" ;
+	linkml:uri "http://www.w3.org/2001/XMLSchema#string"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/dataDump> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/void"^^xsd:anyURI ;
+	skos:mappingRelation "http://rdfs.org/ns/void#dataDump"^^xsd:anyURI ;
+	skos:note "A page that links to downloads is not a dump; give it as a page instead." ;
+	linkml:annotations _:c14n49 ;
+	linkml:definition_uri "https://w3id.org/lmodel/void/dataDump"^^xsd:anyURI ;
+	linkml:description "A downloadable RDF file holding all of the dataset or a share of it." ;
+	linkml:domain_of <https://w3id.org/lmodel/void/Dataset> ;
+	linkml:multivalued true ;
+	linkml:owner <https://w3id.org/lmodel/void/Dataset> ;
+	linkml:range <https://w3id.org/lmodel/void/uri> ;
+	linkml:slot_uri "http://rdfs.org/ns/void#dataDump"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/date> a linkml:TypeDefinition ;
+	skos:editorialNote "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"date\"." , "URI is dateTime because OWL reasoners don't work with straight date or time" ;
+	skos:exactMatch "schema:Date"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/linkml/types"^^xsd:anyURI ;
+	linkml:base "XSDDate" ;
+	linkml:definition_uri "https://w3id.org/linkml/Date"^^xsd:anyURI ;
+	linkml:description "a date (year, month and day) in an idealized calendar" ;
+	linkml:imported_from "linkml:types" ;
+	linkml:repr "str" ;
+	linkml:uri "http://www.w3.org/2001/XMLSchema#date"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/date_or_datetime> a linkml:TypeDefinition ;
+	skos:editorialNote "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"date_or_datetime\"." ;
+	skos:inScheme "https://w3id.org/linkml/types"^^xsd:anyURI ;
+	linkml:base "str" ;
+	linkml:definition_uri "https://w3id.org/linkml/DateOrDatetime"^^xsd:anyURI ;
+	linkml:description "Either a date or a datetime" ;
+	linkml:imported_from "linkml:types" ;
+	linkml:repr "str" ;
+	linkml:uri "https://w3id.org/linkml/DateOrDatetime"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/datetime> a linkml:TypeDefinition ;
+	skos:editorialNote "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"datetime\"." ;
+	skos:exactMatch "schema:DateTime"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/linkml/types"^^xsd:anyURI ;
+	linkml:base "XSDDateTime" ;
+	linkml:definition_uri "https://w3id.org/linkml/Datetime"^^xsd:anyURI ;
+	linkml:description "The combination of a date and time" ;
+	linkml:imported_from "linkml:types" ;
+	linkml:repr "str" ;
+	linkml:uri "http://www.w3.org/2001/XMLSchema#dateTime"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/decimal> a linkml:TypeDefinition ;
+	skos:broadMatch "schema:Number"^^xsd:anyURI ;
+	skos:editorialNote "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"decimal\"." ;
+	skos:inScheme "https://w3id.org/linkml/types"^^xsd:anyURI ;
+	linkml:base "Decimal" ;
+	linkml:definition_uri "https://w3id.org/linkml/Decimal"^^xsd:anyURI ;
+	linkml:description "A real number with arbitrary precision that conforms to the xsd:decimal specification" ;
+	linkml:imported_from "linkml:types" ;
+	linkml:uri "http://www.w3.org/2001/XMLSchema#decimal"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/description> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/void"^^xsd:anyURI ;
+	skos:mappingRelation "http://purl.org/dc/terms/description"^^xsd:anyURI ;
+	linkml:annotations _:c14n56 ;
+	linkml:definition_uri "https://w3id.org/lmodel/void/description"^^xsd:anyURI ;
+	linkml:description "A few sentences of prose saying what the dataset or document contains." ;
+	linkml:domain_of <https://w3id.org/lmodel/void/Dataset> , <https://w3id.org/lmodel/void/DatasetDescription> ;
+	linkml:owner <https://w3id.org/lmodel/void/DatasetDescription> ;
+	linkml:range <https://w3id.org/lmodel/void/string> ;
+	linkml:slot_uri "http://purl.org/dc/terms/description"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/distinctObjects> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/void"^^xsd:anyURI ;
+	skos:mappingRelation "http://rdfs.org/ns/void#distinctObjects"^^xsd:anyURI ;
+	linkml:annotations _:c14n77 ;
+	linkml:definition_uri "https://w3id.org/lmodel/void/distinctObjects"^^xsd:anyURI ;
+	linkml:description "How many distinct IRIs, blank nodes and literals the dataset's triples have as objects." ;
+	linkml:domain_of <https://w3id.org/lmodel/void/ClassBasedPartition> , <https://w3id.org/lmodel/void/Dataset> , <https://w3id.org/lmodel/void/PropertyBasedPartition> ;
+	linkml:minimum_value "0"^^linkml:\@id ;
+	linkml:owner <https://w3id.org/lmodel/void/PropertyBasedPartition> ;
+	linkml:range <https://w3id.org/lmodel/void/integer> ;
+	linkml:slot_uri "http://rdfs.org/ns/void#distinctObjects"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/distinctSubjects> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/void"^^xsd:anyURI ;
+	skos:mappingRelation "http://rdfs.org/ns/void#distinctSubjects"^^xsd:anyURI ;
+	linkml:annotations _:c14n64 ;
+	linkml:definition_uri "https://w3id.org/lmodel/void/distinctSubjects"^^xsd:anyURI ;
+	linkml:description "How many distinct IRIs and blank nodes the dataset's triples have as subjects." ;
+	linkml:domain_of <https://w3id.org/lmodel/void/ClassBasedPartition> , <https://w3id.org/lmodel/void/Dataset> , <https://w3id.org/lmodel/void/PropertyBasedPartition> ;
+	linkml:minimum_value "0"^^linkml:\@id ;
+	linkml:owner <https://w3id.org/lmodel/void/PropertyBasedPartition> ;
+	linkml:range <https://w3id.org/lmodel/void/integer> ;
+	linkml:slot_uri "http://rdfs.org/ns/void#distinctSubjects"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/documents> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/void"^^xsd:anyURI ;
+	skos:mappingRelation "http://rdfs.org/ns/void#documents"^^xsd:anyURI ;
+	skos:note "Use it where the triples are hard to count; triples and entities say more where they can be given." ;
+	linkml:annotations _:c14n55 ;
+	linkml:definition_uri "https://w3id.org/lmodel/void/documents"^^xsd:anyURI ;
+	linkml:description "How many RDF documents together carry the dataset, for example RDFa web pages." ;
+	linkml:domain_of <https://w3id.org/lmodel/void/ClassBasedPartition> , <https://w3id.org/lmodel/void/Dataset> , <https://w3id.org/lmodel/void/PropertyBasedPartition> ;
+	linkml:minimum_value "0"^^linkml:\@id ;
+	linkml:owner <https://w3id.org/lmodel/void/PropertyBasedPartition> ;
+	linkml:range <https://w3id.org/lmodel/void/integer> ;
+	linkml:slot_uri "http://rdfs.org/ns/void#documents"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/double> a linkml:TypeDefinition ;
+	skos:closeMatch "schema:Float"^^xsd:anyURI ;
+	skos:editorialNote "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"double\"." ;
+	skos:inScheme "https://w3id.org/linkml/types"^^xsd:anyURI ;
+	linkml:base "float" ;
+	linkml:definition_uri "https://w3id.org/linkml/Double"^^xsd:anyURI ;
+	linkml:description "A real number that conforms to the xsd:double specification" ;
+	linkml:imported_from "linkml:types" ;
+	linkml:uri "http://www.w3.org/2001/XMLSchema#double"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/entities> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/void"^^xsd:anyURI ;
+	skos:mappingRelation "http://rdfs.org/ns/void#entities"^^xsd:anyURI ;
+	linkml:annotations _:c14n2 ;
+	linkml:definition_uri "https://w3id.org/lmodel/void/entities"^^xsd:anyURI ;
+	linkml:description "How many entities, resources with an IRI, the dataset describes." ;
+	linkml:domain_of <https://w3id.org/lmodel/void/ClassBasedPartition> , <https://w3id.org/lmodel/void/Dataset> , <https://w3id.org/lmodel/void/PropertyBasedPartition> ;
+	linkml:minimum_value "0"^^linkml:\@id ;
+	linkml:owner <https://w3id.org/lmodel/void/PropertyBasedPartition> ;
+	linkml:range <https://w3id.org/lmodel/void/integer> ;
+	linkml:slot_uri "http://rdfs.org/ns/void#entities"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/exampleResource> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/void"^^xsd:anyURI ;
+	skos:mappingRelation "http://rdfs.org/ns/void#exampleResource"^^xsd:anyURI ;
+	linkml:annotations _:c14n4 ;
+	linkml:definition_uri "https://w3id.org/lmodel/void/exampleResource"^^xsd:anyURI ;
+	linkml:description "The IRI of an entity typical of the dataset, for a reader to look up." ;
+	linkml:domain_of <https://w3id.org/lmodel/void/Dataset> ;
+	linkml:multivalued true ;
+	linkml:owner <https://w3id.org/lmodel/void/Dataset> ;
+	linkml:range <https://w3id.org/lmodel/void/uri> ;
+	linkml:slot_uri "http://rdfs.org/ns/void#exampleResource"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/feature> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/void"^^xsd:anyURI ;
+	skos:mappingRelation "http://rdfs.org/ns/void#feature"^^xsd:anyURI ;
+	linkml:annotations _:c14n76 ;
+	linkml:definition_uri "https://w3id.org/lmodel/void/feature"^^xsd:anyURI ;
+	linkml:description "Something the dataset's server or files support, for instance an RDF syntax, named by its IRI." ;
+	linkml:domain_of <https://w3id.org/lmodel/void/Dataset> ;
+	linkml:multivalued true ;
+	linkml:owner <https://w3id.org/lmodel/void/Dataset> ;
+	linkml:pattern "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$" ;
+	linkml:range <https://w3id.org/lmodel/void/TechnicalFeature> ;
+	linkml:slot_uri "http://rdfs.org/ns/void#feature"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/float> a linkml:TypeDefinition ;
+	skos:editorialNote "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"float\"." ;
+	skos:exactMatch "schema:Float"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/linkml/types"^^xsd:anyURI ;
+	linkml:base "float" ;
+	linkml:definition_uri "https://w3id.org/linkml/Float"^^xsd:anyURI ;
+	linkml:description "A real number that conforms to the xsd:float specification" ;
+	linkml:imported_from "linkml:types" ;
+	linkml:uri "http://www.w3.org/2001/XMLSchema#float"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/homepage> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/void"^^xsd:anyURI ;
+	skos:mappingRelation "http://xmlns.com/foaf/0.1/homepage"^^xsd:anyURI ;
+	linkml:annotations _:c14n60 ;
+	linkml:definition_uri "https://w3id.org/lmodel/void/homepage"^^xsd:anyURI ;
+	linkml:description "The web page about the dataset itself." ;
+	linkml:domain_of <https://w3id.org/lmodel/void/Dataset> ;
+	linkml:owner <https://w3id.org/lmodel/void/Dataset> ;
+	linkml:range <https://w3id.org/lmodel/void/uri> ;
+	linkml:slot_uri "http://xmlns.com/foaf/0.1/homepage"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/id> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/void"^^xsd:anyURI ;
+	skos:note "VoID has no property for the IRI, which RDF writes as the subject, so the key lives in this schema's own namespace." ;
+	linkml:annotations _:c14n70 ;
+	linkml:definition_uri "https://w3id.org/lmodel/void/id"^^xsd:anyURI ;
+	linkml:description "The IRI of the dataset, document or feature, written in full or as a CURIE." ;
+	linkml:domain_of <https://w3id.org/lmodel/void/Dataset> , <https://w3id.org/lmodel/void/DatasetDescription> , <https://w3id.org/lmodel/void/TechnicalFeature> ;
+	linkml:identifier true ;
+	linkml:owner <https://w3id.org/lmodel/void/TechnicalFeature> ;
+	linkml:pattern "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$" ;
+	linkml:range <https://w3id.org/lmodel/void/uriorcurie> ;
+	linkml:required true ;
+	linkml:slot_uri "https://w3id.org/lmodel/void/id"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/inDataset> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/void"^^xsd:anyURI ;
+	skos:mappingRelation "http://rdfs.org/ns/void#inDataset"^^xsd:anyURI ;
+	skos:note "A document names one; a document in two datasets points at a dataset that holds both as subsets." ;
+	linkml:annotations _:c14n54 ;
+	linkml:definition_uri "https://w3id.org/lmodel/void/inDataset"^^xsd:anyURI ;
+	linkml:description "The dataset that this document's triples belong to, named by its IRI." ;
+	linkml:domain_of <https://w3id.org/lmodel/void/DatasetDescription> ;
+	linkml:owner <https://w3id.org/lmodel/void/DatasetDescription> ;
+	linkml:pattern "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$" ;
+	linkml:range <https://w3id.org/lmodel/void/Dataset> ;
+	linkml:slot_uri "http://rdfs.org/ns/void#inDataset"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/integer> a linkml:TypeDefinition ;
+	skos:editorialNote "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"integer\"." ;
+	skos:exactMatch "schema:Integer"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/linkml/types"^^xsd:anyURI ;
+	linkml:base "int" ;
+	linkml:definition_uri "https://w3id.org/linkml/Integer"^^xsd:anyURI ;
+	linkml:description "An integer" ;
+	linkml:imported_from "linkml:types" ;
+	linkml:uri "http://www.w3.org/2001/XMLSchema#integer"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/issued> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/void"^^xsd:anyURI ;
+	skos:mappingRelation "http://purl.org/dc/terms/issued"^^xsd:anyURI ;
+	linkml:annotations _:c14n68 ;
+	linkml:definition_uri "https://w3id.org/lmodel/void/issued"^^xsd:anyURI ;
+	linkml:description "The date the dataset was first published." ;
+	linkml:domain_of <https://w3id.org/lmodel/void/Dataset> ;
+	linkml:owner <https://w3id.org/lmodel/void/Dataset> ;
+	linkml:range <https://w3id.org/lmodel/void/date> ;
+	linkml:slot_uri "http://purl.org/dc/terms/issued"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/jsonpath> dcterms:conformsTo "https://www.ietf.org/archive/id/draft-goessner-dispatch-jsonpath-00.html" ;
+	a linkml:TypeDefinition ;
+	skos:editorialNote "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"jsonpath\"." ;
+	skos:inScheme "https://w3id.org/linkml/types"^^xsd:anyURI ;
+	linkml:base "str" ;
+	linkml:definition_uri "https://w3id.org/linkml/Jsonpath"^^xsd:anyURI ;
+	linkml:description "A string encoding a JSON Path. The value of the string MUST conform to JSON Point syntax and SHOULD dereference to zero or more valid objects within the current instance document when encoded in tree form." ;
+	linkml:imported_from "linkml:types" ;
+	linkml:repr "str" ;
+	linkml:uri "http://www.w3.org/2001/XMLSchema#string"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/jsonpointer> dcterms:conformsTo "https://datatracker.ietf.org/doc/html/rfc6901" ;
+	a linkml:TypeDefinition ;
+	skos:editorialNote "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"jsonpointer\"." ;
+	skos:inScheme "https://w3id.org/linkml/types"^^xsd:anyURI ;
+	linkml:base "str" ;
+	linkml:definition_uri "https://w3id.org/linkml/Jsonpointer"^^xsd:anyURI ;
+	linkml:description "A string encoding a JSON Pointer. The value of the string MUST conform to JSON Point syntax and SHOULD dereference to a valid object within the current instance document when encoded in tree form." ;
+	linkml:imported_from "linkml:types" ;
+	linkml:repr "str" ;
+	linkml:uri "http://www.w3.org/2001/XMLSchema#string"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/label> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/void"^^xsd:anyURI ;
+	skos:mappingRelation "http://www.w3.org/2000/01/rdf-schema#label"^^xsd:anyURI ;
+	linkml:annotations _:c14n59 ;
+	linkml:definition_uri "https://w3id.org/lmodel/void/label"^^xsd:anyURI ;
+	linkml:description "A short name for the feature." ;
+	linkml:domain_of <https://w3id.org/lmodel/void/TechnicalFeature> ;
+	linkml:owner <https://w3id.org/lmodel/void/TechnicalFeature> ;
+	linkml:range <https://w3id.org/lmodel/void/string> ;
+	linkml:slot_uri "http://www.w3.org/2000/01/rdf-schema#label"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/license> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/void"^^xsd:anyURI ;
+	skos:mappingRelation "http://purl.org/dc/terms/license"^^xsd:anyURI ;
+	linkml:annotations _:c14n46 ;
+	linkml:definition_uri "https://w3id.org/lmodel/void/license"^^xsd:anyURI ;
+	linkml:description "The IRI of the licence that sets the terms for using the dataset." ;
+	linkml:domain_of <https://w3id.org/lmodel/void/Dataset> ;
+	linkml:owner <https://w3id.org/lmodel/void/Dataset> ;
+	linkml:range <https://w3id.org/lmodel/void/uri> ;
+	linkml:slot_uri "http://purl.org/dc/terms/license"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/linkPredicate> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/void"^^xsd:anyURI ;
+	skos:mappingRelation "http://rdfs.org/ns/void#linkPredicate"^^xsd:anyURI ;
+	skos:note "A linkset has one; links with two predicates make two linksets." ;
+	linkml:annotations _:c14n15 ;
+	linkml:definition_uri "https://w3id.org/lmodel/void/linkPredicate"^^xsd:anyURI ;
+	linkml:description "The property every link of a linkset has as its predicate, such as owl:sameAs." ;
+	linkml:domain_of <https://w3id.org/lmodel/void/Linkset> ;
+	linkml:owner <https://w3id.org/lmodel/void/Linkset> ;
+	linkml:pattern "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$" ;
+	linkml:range <https://w3id.org/lmodel/void/uriorcurie> ;
+	linkml:slot_uri "http://rdfs.org/ns/void#linkPredicate"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/modified> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/void"^^xsd:anyURI ;
+	skos:mappingRelation "http://purl.org/dc/terms/modified"^^xsd:anyURI ;
+	linkml:annotations _:c14n63 ;
+	linkml:definition_uri "https://w3id.org/lmodel/void/modified"^^xsd:anyURI ;
+	linkml:description "The date the dataset or document last changed." ;
+	linkml:domain_of <https://w3id.org/lmodel/void/Dataset> , <https://w3id.org/lmodel/void/DatasetDescription> ;
+	linkml:owner <https://w3id.org/lmodel/void/DatasetDescription> ;
+	linkml:range <https://w3id.org/lmodel/void/date> ;
+	linkml:slot_uri "http://purl.org/dc/terms/modified"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/ncname> a linkml:TypeDefinition ;
+	skos:editorialNote "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"ncname\"." ;
+	skos:inScheme "https://w3id.org/linkml/types"^^xsd:anyURI ;
+	linkml:base "NCName" ;
+	linkml:definition_uri "https://w3id.org/linkml/Ncname"^^xsd:anyURI ;
+	linkml:description "Prefix part of CURIE" ;
+	linkml:imported_from "linkml:types" ;
+	linkml:repr "str" ;
+	linkml:uri "http://www.w3.org/2001/XMLSchema#string"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/nodeidentifier> a linkml:TypeDefinition ;
+	skos:editorialNote "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"nodeidentifier\"." ;
+	skos:inScheme "https://w3id.org/linkml/types"^^xsd:anyURI ;
+	linkml:base "NodeIdentifier" ;
+	linkml:definition_uri "https://w3id.org/linkml/Nodeidentifier"^^xsd:anyURI ;
+	linkml:description "A URI, CURIE or BNODE that represents a node in a model." ;
+	linkml:imported_from "linkml:types" ;
+	linkml:repr "str" ;
+	linkml:uri "http://www.w3.org/ns/shex#nonLiteral"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/objectidentifier> a linkml:TypeDefinition ;
+	skos:editorialNote "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"objectidentifier\"." ;
+	skos:inScheme "https://w3id.org/linkml/types"^^xsd:anyURI ;
+	skos:note "Used for inheritance and type checking" ;
+	linkml:base "ElementIdentifier" ;
+	linkml:definition_uri "https://w3id.org/linkml/Objectidentifier"^^xsd:anyURI ;
+	linkml:description "A URI or CURIE that represents an object in the model." ;
+	linkml:imported_from "linkml:types" ;
+	linkml:repr "str" ;
+	linkml:uri "http://www.w3.org/ns/shex#iri"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/objectsTarget> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/void"^^xsd:anyURI ;
+	skos:mappingRelation "http://rdfs.org/ns/void#objectsTarget"^^xsd:anyURI ;
+	linkml:annotations _:c14n8 ;
+	linkml:definition_uri "https://w3id.org/lmodel/void/objectsTarget"^^xsd:anyURI ;
+	linkml:description "The dataset at the object end of every link in a linkset, named by its IRI." ;
+	linkml:domain_of <https://w3id.org/lmodel/void/Linkset> ;
+	linkml:is_a <https://w3id.org/lmodel/void/target> ;
+	linkml:owner <https://w3id.org/lmodel/void/Linkset> ;
+	linkml:pattern "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$" ;
+	linkml:range <https://w3id.org/lmodel/void/Dataset> ;
+	linkml:required true ;
+	linkml:slot_uri "http://rdfs.org/ns/void#objectsTarget"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/openSearchDescription> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/void"^^xsd:anyURI ;
+	skos:mappingRelation "http://rdfs.org/ns/void#openSearchDescription"^^xsd:anyURI ;
+	linkml:annotations _:c14n78 ;
+	linkml:definition_uri "https://w3id.org/lmodel/void/openSearchDescription"^^xsd:anyURI ;
+	linkml:description "An OpenSearch file telling a client how to run keyword searches over the dataset." ;
+	linkml:domain_of <https://w3id.org/lmodel/void/Dataset> ;
+	linkml:multivalued true ;
+	linkml:owner <https://w3id.org/lmodel/void/Dataset> ;
+	linkml:range <https://w3id.org/lmodel/void/uri> ;
+	linkml:slot_uri "http://rdfs.org/ns/void#openSearchDescription"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/page> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/void"^^xsd:anyURI ;
+	skos:mappingRelation "http://xmlns.com/foaf/0.1/page"^^xsd:anyURI ;
+	linkml:annotations _:c14n75 ;
+	linkml:definition_uri "https://w3id.org/lmodel/void/page"^^xsd:anyURI ;
+	linkml:description "Any further web page with information on the dataset, for instance its download page or its catalogue entry." ;
+	linkml:domain_of <https://w3id.org/lmodel/void/Dataset> ;
+	linkml:multivalued true ;
+	linkml:owner <https://w3id.org/lmodel/void/Dataset> ;
+	linkml:range <https://w3id.org/lmodel/void/uri> ;
+	linkml:slot_uri "http://xmlns.com/foaf/0.1/page"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/primaryTopic> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/void"^^xsd:anyURI ;
+	skos:mappingRelation "http://xmlns.com/foaf/0.1/primaryTopic"^^xsd:anyURI ;
+	linkml:annotations _:c14n0 ;
+	linkml:definition_uri "https://w3id.org/lmodel/void/primaryTopic"^^xsd:anyURI ;
+	linkml:description "The dataset a description is about, when it describes one." ;
+	linkml:domain_of <https://w3id.org/lmodel/void/DatasetDescription> ;
+	linkml:owner <https://w3id.org/lmodel/void/DatasetDescription> ;
+	linkml:pattern "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$" ;
+	linkml:range <https://w3id.org/lmodel/void/Dataset> ;
+	linkml:required true ;
+	linkml:slot_uri "http://xmlns.com/foaf/0.1/primaryTopic"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/properties> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/void"^^xsd:anyURI ;
+	skos:mappingRelation "http://rdfs.org/ns/void#properties"^^xsd:anyURI ;
+	linkml:annotations _:c14n23 ;
+	linkml:definition_uri "https://w3id.org/lmodel/void/properties"^^xsd:anyURI ;
+	linkml:description "How many distinct properties the dataset's triples use as predicates." ;
+	linkml:domain_of <https://w3id.org/lmodel/void/ClassBasedPartition> , <https://w3id.org/lmodel/void/Dataset> , <https://w3id.org/lmodel/void/PropertyBasedPartition> ;
+	linkml:minimum_value "0"^^linkml:\@id ;
+	linkml:owner <https://w3id.org/lmodel/void/PropertyBasedPartition> ;
+	linkml:range <https://w3id.org/lmodel/void/integer> ;
+	linkml:slot_uri "http://rdfs.org/ns/void#properties"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/property> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/void"^^xsd:anyURI ;
+	skos:mappingRelation "http://rdfs.org/ns/void#property"^^xsd:anyURI ;
+	linkml:annotations _:c14n20 ;
+	linkml:definition_uri "https://w3id.org/lmodel/void/property"^^xsd:anyURI ;
+	linkml:description "The property whose triples a property partition holds, named by its IRI, such as foaf:name." ;
+	linkml:domain_of <https://w3id.org/lmodel/void/PropertyBasedPartition> ;
+	linkml:owner <https://w3id.org/lmodel/void/PropertyBasedPartition> ;
+	linkml:pattern "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$" ;
+	linkml:range <https://w3id.org/lmodel/void/uriorcurie> ;
+	linkml:slot_uri "http://rdfs.org/ns/void#property"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/propertyPartition> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/void"^^xsd:anyURI ;
+	skos:mappingRelation "http://rdfs.org/ns/void#propertyPartition"^^xsd:anyURI ;
+	skos:note "VoID makes it a narrower subset; here it is a value, so it does not inherit subset's range." ;
+	linkml:annotations _:c14n58 ;
+	linkml:definition_uri "https://w3id.org/lmodel/void/propertyPartition"^^xsd:anyURI ;
+	linkml:description "The dataset's slice for one property, given inside it." ;
+	linkml:domain_of <https://w3id.org/lmodel/void/ClassBasedPartition> , <https://w3id.org/lmodel/void/Dataset> ;
+	linkml:inlined true ;
+	linkml:inlined_as_list true ;
+	linkml:multivalued true ;
+	linkml:owner <https://w3id.org/lmodel/void/ClassBasedPartition> ;
+	linkml:range <https://w3id.org/lmodel/void/PropertyBasedPartition> ;
+	linkml:slot_uri "http://rdfs.org/ns/void#propertyPartition"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/publisher> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/void"^^xsd:anyURI ;
+	skos:mappingRelation "http://purl.org/dc/terms/publisher"^^xsd:anyURI ;
+	linkml:annotations _:c14n33 ;
+	linkml:definition_uri "https://w3id.org/lmodel/void/publisher"^^xsd:anyURI ;
+	linkml:description "The IRI of the agent that releases the dataset for others to use." ;
+	linkml:domain_of <https://w3id.org/lmodel/void/Dataset> ;
+	linkml:owner <https://w3id.org/lmodel/void/Dataset> ;
+	linkml:range <https://w3id.org/lmodel/void/uri> ;
+	linkml:slot_uri "http://purl.org/dc/terms/publisher"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/rootResource> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/void"^^xsd:anyURI ;
+	skos:mappingRelation "http://rdfs.org/ns/void#rootResource"^^xsd:anyURI ;
+	linkml:annotations _:c14n65 ;
+	linkml:definition_uri "https://w3id.org/lmodel/void/rootResource"^^xsd:anyURI ;
+	linkml:description "The IRI of a starting point for crawling the dataset: a resource from which links lead, within a few hops, to all the others." ;
+	linkml:domain_of <https://w3id.org/lmodel/void/Dataset> ;
+	linkml:multivalued true ;
+	linkml:owner <https://w3id.org/lmodel/void/Dataset> ;
+	linkml:range <https://w3id.org/lmodel/void/uri> ;
+	linkml:slot_uri "http://rdfs.org/ns/void#rootResource"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/seeAlso> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/void"^^xsd:anyURI ;
+	skos:mappingRelation "http://www.w3.org/2000/01/rdf-schema#seeAlso"^^xsd:anyURI ;
+	linkml:annotations _:c14n62 ;
+	linkml:definition_uri "https://w3id.org/lmodel/void/seeAlso"^^xsd:anyURI ;
+	linkml:description "A web page that tells more about the feature." ;
+	linkml:domain_of <https://w3id.org/lmodel/void/TechnicalFeature> ;
+	linkml:multivalued true ;
+	linkml:owner <https://w3id.org/lmodel/void/TechnicalFeature> ;
+	linkml:range <https://w3id.org/lmodel/void/uri> ;
+	linkml:slot_uri "http://www.w3.org/2000/01/rdf-schema#seeAlso"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/source> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/void"^^xsd:anyURI ;
+	skos:mappingRelation "http://purl.org/dc/terms/source"^^xsd:anyURI ;
+	linkml:annotations _:c14n26 ;
+	linkml:definition_uri "https://w3id.org/lmodel/void/source"^^xsd:anyURI ;
+	linkml:description "The IRI of an earlier resource whose content the dataset draws on." ;
+	linkml:domain_of <https://w3id.org/lmodel/void/Dataset> ;
+	linkml:multivalued true ;
+	linkml:owner <https://w3id.org/lmodel/void/Dataset> ;
+	linkml:range <https://w3id.org/lmodel/void/uri> ;
+	linkml:slot_uri "http://purl.org/dc/terms/source"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/sparqlEndpoint> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/void"^^xsd:anyURI ;
+	skos:mappingRelation "http://rdfs.org/ns/void#sparqlEndpoint"^^xsd:anyURI ;
+	linkml:annotations _:c14n36 ;
+	linkml:definition_uri "https://w3id.org/lmodel/void/sparqlEndpoint"^^xsd:anyURI ;
+	linkml:description "A SPARQL service whose default graph holds the dataset, for running queries on it." ;
+	linkml:domain_of <https://w3id.org/lmodel/void/Dataset> ;
+	linkml:multivalued true ;
+	linkml:owner <https://w3id.org/lmodel/void/Dataset> ;
+	linkml:range <https://w3id.org/lmodel/void/uri> ;
+	linkml:slot_uri "http://rdfs.org/ns/void#sparqlEndpoint"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/sparqlpath> dcterms:conformsTo "https://www.w3.org/TR/sparql11-query/#propertypaths" ;
+	a linkml:TypeDefinition ;
+	skos:editorialNote "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"sparqlpath\"." ;
+	skos:inScheme "https://w3id.org/linkml/types"^^xsd:anyURI ;
+	linkml:base "str" ;
+	linkml:definition_uri "https://w3id.org/linkml/Sparqlpath"^^xsd:anyURI ;
+	linkml:description "A string encoding a SPARQL Property Path. The value of the string MUST conform to SPARQL syntax and SHOULD dereference to zero or more valid objects within the current instance document when encoded as RDF." ;
+	linkml:imported_from "linkml:types" ;
+	linkml:repr "str" ;
+	linkml:uri "http://www.w3.org/2001/XMLSchema#string"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/string> a linkml:TypeDefinition ;
+	skos:editorialNote "In RDF serializations, a slot with range of string is treated as a literal or type xsd:string. If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"string\"." ;
+	skos:exactMatch "schema:Text"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/linkml/types"^^xsd:anyURI ;
+	linkml:base "str" ;
+	linkml:definition_uri "https://w3id.org/linkml/String"^^xsd:anyURI ;
+	linkml:description "A character string" ;
+	linkml:imported_from "linkml:types" ;
+	linkml:uri "http://www.w3.org/2001/XMLSchema#string"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/subject> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/void"^^xsd:anyURI ;
+	skos:mappingRelation "http://purl.org/dc/terms/subject"^^xsd:anyURI ;
+	linkml:annotations _:c14n40 ;
+	linkml:definition_uri "https://w3id.org/lmodel/void/subject"^^xsd:anyURI ;
+	linkml:description "The IRI of a topic the dataset covers, such as a DBpedia resource or a SKOS concept." ;
+	linkml:domain_of <https://w3id.org/lmodel/void/Dataset> ;
+	linkml:multivalued true ;
+	linkml:owner <https://w3id.org/lmodel/void/Dataset> ;
+	linkml:range <https://w3id.org/lmodel/void/uri> ;
+	linkml:slot_uri "http://purl.org/dc/terms/subject"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/subjectsTarget> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/void"^^xsd:anyURI ;
+	skos:mappingRelation "http://rdfs.org/ns/void#subjectsTarget"^^xsd:anyURI ;
+	linkml:annotations _:c14n37 ;
+	linkml:definition_uri "https://w3id.org/lmodel/void/subjectsTarget"^^xsd:anyURI ;
+	linkml:description "The dataset at the subject end of every link in a linkset, named by its IRI." ;
+	linkml:domain_of <https://w3id.org/lmodel/void/Linkset> ;
+	linkml:is_a <https://w3id.org/lmodel/void/target> ;
+	linkml:owner <https://w3id.org/lmodel/void/Linkset> ;
+	linkml:pattern "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$" ;
+	linkml:range <https://w3id.org/lmodel/void/Dataset> ;
+	linkml:required true ;
+	linkml:slot_uri "http://rdfs.org/ns/void#subjectsTarget"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/subset> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/void"^^xsd:anyURI ;
+	skos:mappingRelation "http://rdfs.org/ns/void#subset"^^xsd:anyURI ;
+	linkml:annotations _:c14n38 ;
+	linkml:definition_uri "https://w3id.org/lmodel/void/subset"^^xsd:anyURI ;
+	linkml:description "Another dataset contained in this one, named by its IRI." ;
+	linkml:domain_of <https://w3id.org/lmodel/void/Dataset> ;
+	linkml:multivalued true ;
+	linkml:owner <https://w3id.org/lmodel/void/Dataset> ;
+	linkml:pattern "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$" ;
+	linkml:range <https://w3id.org/lmodel/void/Dataset> ;
+	linkml:slot_uri "http://rdfs.org/ns/void#subset"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/target> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/void"^^xsd:anyURI ;
+	skos:mappingRelation "http://rdfs.org/ns/void#target"^^xsd:anyURI ;
+	skos:note "Linkset makes it a list of two. The slot itself stays single-valued, so that subjectsTarget and objectsTarget, its narrower slots, inherit one value each." ;
+	linkml:annotations _:c14n71 ;
+	linkml:definition_uri "https://w3id.org/lmodel/void/target"^^xsd:anyURI ;
+	linkml:description "Either dataset a linkset joins, named by its IRI." ;
+	linkml:domain_of <https://w3id.org/lmodel/void/Linkset> ;
+	linkml:owner <https://w3id.org/lmodel/void/Linkset> ;
+	linkml:pattern "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$" ;
+	linkml:range <https://w3id.org/lmodel/void/Dataset> ;
+	linkml:required true ;
+	linkml:slot_uri "http://rdfs.org/ns/void#target"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/time> a linkml:TypeDefinition ;
+	skos:editorialNote "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"time\"." , "URI is dateTime because OWL reasoners do not work with straight date or time" ;
+	skos:exactMatch "schema:Time"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/linkml/types"^^xsd:anyURI ;
+	linkml:base "XSDTime" ;
+	linkml:definition_uri "https://w3id.org/linkml/Time"^^xsd:anyURI ;
+	linkml:description "A time object represents a (local) time of day, independent of any particular day" ;
+	linkml:imported_from "linkml:types" ;
+	linkml:repr "str" ;
+	linkml:uri "http://www.w3.org/2001/XMLSchema#time"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/title> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/void"^^xsd:anyURI ;
+	skos:mappingRelation "http://purl.org/dc/terms/title"^^xsd:anyURI ;
+	linkml:annotations _:c14n47 ;
+	linkml:definition_uri "https://w3id.org/lmodel/void/title"^^xsd:anyURI ;
+	linkml:description "A human-readable name for the dataset or document." ;
+	linkml:domain_of <https://w3id.org/lmodel/void/Dataset> , <https://w3id.org/lmodel/void/DatasetDescription> ;
+	linkml:owner <https://w3id.org/lmodel/void/DatasetDescription> ;
+	linkml:range <https://w3id.org/lmodel/void/string> ;
+	linkml:slot_uri "http://purl.org/dc/terms/title"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/topic> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/void"^^xsd:anyURI ;
+	skos:mappingRelation "http://xmlns.com/foaf/0.1/topic"^^xsd:anyURI ;
+	linkml:annotations _:c14n44 ;
+	linkml:definition_uri "https://w3id.org/lmodel/void/topic"^^xsd:anyURI ;
+	linkml:description "A dataset a description is about, when it describes several of equal weight." ;
+	linkml:domain_of <https://w3id.org/lmodel/void/DatasetDescription> ;
+	linkml:multivalued true ;
+	linkml:owner <https://w3id.org/lmodel/void/DatasetDescription> ;
+	linkml:pattern "^[A-Za-z_][A-Za-z0-9_.+-]*:[^\\s]+$" ;
+	linkml:range <https://w3id.org/lmodel/void/Dataset> ;
+	linkml:required true ;
+	linkml:slot_uri "http://xmlns.com/foaf/0.1/topic"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/triples> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/void"^^xsd:anyURI ;
+	skos:mappingRelation "http://rdfs.org/ns/void#triples"^^xsd:anyURI ;
+	linkml:annotations _:c14n79 ;
+	linkml:definition_uri "https://w3id.org/lmodel/void/triples"^^xsd:anyURI ;
+	linkml:description "How many triples the dataset holds; for a linkset, how many links." ;
+	linkml:domain_of <https://w3id.org/lmodel/void/ClassBasedPartition> , <https://w3id.org/lmodel/void/Dataset> , <https://w3id.org/lmodel/void/PropertyBasedPartition> ;
+	linkml:minimum_value "0"^^linkml:\@id ;
+	linkml:owner <https://w3id.org/lmodel/void/PropertyBasedPartition> ;
+	linkml:range <https://w3id.org/lmodel/void/integer> ;
+	linkml:slot_uri "http://rdfs.org/ns/void#triples"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/uri> dcterms:conformsTo "https://www.ietf.org/rfc/rfc3987.txt" ;
+	a linkml:TypeDefinition ;
+	skos:closeMatch "schema:URL"^^xsd:anyURI ;
+	skos:editorialNote "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"uri\"." ;
+	skos:inScheme "https://w3id.org/linkml/types"^^xsd:anyURI ;
+	skos:note "in RDF serializations a slot with range of uri is treated as a literal or type xsd:anyURI unless it is an identifier or a reference to an identifier, in which case it is translated directly to a node" ;
+	linkml:base "URI" ;
+	linkml:definition_uri "https://w3id.org/linkml/Uri"^^xsd:anyURI ;
+	linkml:description "a complete URI" ;
+	linkml:imported_from "linkml:types" ;
+	linkml:repr "str" ;
+	linkml:uri "http://www.w3.org/2001/XMLSchema#anyURI"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/uriLookupEndpoint> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/void"^^xsd:anyURI ;
+	skos:mappingRelation "http://rdfs.org/ns/void#uriLookupEndpoint"^^xsd:anyURI ;
+	linkml:annotations _:c14n14 ;
+	linkml:definition_uri "https://w3id.org/lmodel/void/uriLookupEndpoint"^^xsd:anyURI ;
+	linkml:description "A web address that, with an entity's percent-encoded IRI added to its end, answers an HTTP GET with RDF about that entity." ;
+	linkml:domain_of <https://w3id.org/lmodel/void/Dataset> ;
+	linkml:multivalued true ;
+	linkml:owner <https://w3id.org/lmodel/void/Dataset> ;
+	linkml:range <https://w3id.org/lmodel/void/uri> ;
+	linkml:slot_uri "http://rdfs.org/ns/void#uriLookupEndpoint"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/uriRegexPattern> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/void"^^xsd:anyURI ;
+	skos:mappingRelation "http://rdfs.org/ns/void#uriRegexPattern"^^xsd:anyURI ;
+	skos:note "The validator checks no regular expression's syntax; tests/test_data.py compiles each one in the examples." ;
+	linkml:annotations _:c14n18 ;
+	linkml:definition_uri "https://w3id.org/lmodel/void/uriRegexPattern"^^xsd:anyURI ;
+	linkml:description "A regular expression in SPARQL's syntax that each entity IRI of the dataset satisfies." ;
+	linkml:domain_of <https://w3id.org/lmodel/void/Dataset> ;
+	linkml:owner <https://w3id.org/lmodel/void/Dataset> ;
+	linkml:range <https://w3id.org/lmodel/void/string> ;
+	linkml:slot_uri "http://rdfs.org/ns/void#uriRegexPattern"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/uriSpace> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/void"^^xsd:anyURI ;
+	skos:mappingRelation "http://rdfs.org/ns/void#uriSpace"^^xsd:anyURI ;
+	skos:note "VoID writes it as a literal, not as an IRI, so the range is a string, held to the form of an IRI's start." ;
+	linkml:annotations _:c14n17 ;
+	linkml:definition_uri "https://w3id.org/lmodel/void/uriSpace"^^xsd:anyURI ;
+	linkml:description "The string every entity IRI in the dataset starts with, such as http://example.org/resource/." ;
+	linkml:domain_of <https://w3id.org/lmodel/void/Dataset> ;
+	linkml:owner <https://w3id.org/lmodel/void/Dataset> ;
+	linkml:pattern "^[A-Za-z][A-Za-z0-9+.-]*:[^\\s]*$" ;
+	linkml:range <https://w3id.org/lmodel/void/string> ;
+	linkml:slot_uri "http://rdfs.org/ns/void#uriSpace"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/uriorcurie> a linkml:TypeDefinition ;
+	skos:editorialNote "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"uriorcurie\"." ;
+	skos:inScheme "https://w3id.org/linkml/types"^^xsd:anyURI ;
+	linkml:base "URIorCURIE" ;
+	linkml:definition_uri "https://w3id.org/linkml/Uriorcurie"^^xsd:anyURI ;
+	linkml:description "a URI or a CURIE" ;
+	linkml:imported_from "linkml:types" ;
+	linkml:repr "str" ;
+	linkml:uri "http://www.w3.org/2001/XMLSchema#anyURI"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/vocabulary> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/void"^^xsd:anyURI ;
+	skos:mappingRelation "http://rdfs.org/ns/void#vocabulary"^^xsd:anyURI ;
+	linkml:annotations _:c14n10 ;
+	linkml:definition_uri "https://w3id.org/lmodel/void/vocabulary"^^xsd:anyURI ;
+	linkml:description "The namespace IRI of a vocabulary the dataset uses, as a term's IRI reads without its local name and without a final hash, such as http://xmlns.com/foaf/0.1/." ;
+	linkml:domain_of <https://w3id.org/lmodel/void/Dataset> ;
+	linkml:multivalued true ;
+	linkml:owner <https://w3id.org/lmodel/void/Dataset> ;
+	linkml:pattern "[^#]$" ;
+	linkml:range <https://w3id.org/lmodel/void/uri> ;
+	linkml:slot_uri "http://rdfs.org/ns/void#vocabulary"^^xsd:anyURI .
+<https://w3id.org/lmodel/void/void> dcterms:license "Apache-2.0" ;
+	dcterms:source "https://www.w3.org/TR/2011/NOTE-void-20110303/"^^xsd:anyURI ;
+	dcterms:title "Vocabulary of Interlinked Datasets (VoID)" ;
+	pav:version "2011-03-03" ;
+	a linkml:SchemaDefinition ;
+	rdfs:seeAlso "https://lmodel.github.io/void"^^xsd:anyURI , "https://www.w3.org/TR/void/"^^xsd:anyURI ;
+	skos:note "A slot whose value names a resource by its IRI or a CURIE, such as id, class, subset or target, carries the pattern of a scheme or prefix, a colon and no space. LinkML 1.12.1 renders the uriorcurie type, and a reference to a class, as a JSON Schema string with no format, so without it the validator would pass any text there." , "Each class and slot names, in its note_section annotation, the section of the Note that explains it. The class names are VoID's own, with no prefix of this schema's: no record carries a class name, and the adapt copy renames Dataset, which LOKF also defines, to VoidDataset." , "Kept from the Note's account of a description: the Dublin Core terms of its sections 2.2, 2.4 and 2.5, FOAF's homepage and page (2.1) and topic and primaryTopic (6.2), and the RDF Schema label, comment and seeAlso of a technical feature (2.6). Left out: dcterms:date, since a slot named date takes the name of LinkML's date type, and the generated Pydantic model then checks none of the dates, while created, issued and modified carry the dates the Note names; the agents a description names, which FOAF describes; the Waiver vocabulary's norms and waiver (2.4); and the SPARQL Service Description terms (6.5), which describe a service rather than a dataset." , "Neither the Note nor the vocabulary file is copied: every description here is this project's own, and NOTICE says why." , "The version is the date of the Note's edition, and the source its dated address. The schema renders every class and property that the vocabulary file declares, as its editors keep it at the commit the vocabulary_file annotation names; tests/upstream/void-terms.tsv lists them, and the tests hold this schema to that list." ;
+	sh:declare _:c14n1 , _:c14n11 , _:c14n27 , _:c14n28 , _:c14n29 , _:c14n32 , _:c14n45 , _:c14n52 , _:c14n53 , _:c14n66 , _:c14n67 ;
+	linkml:annotations _:c14n30 , _:c14n35 , _:c14n39 ;
+	linkml:classes <https://w3id.org/lmodel/void/ClassBasedPartition> , <https://w3id.org/lmodel/void/Dataset> , <https://w3id.org/lmodel/void/DatasetDescription> , <https://w3id.org/lmodel/void/Linkset> , <https://w3id.org/lmodel/void/PropertyBasedPartition> , <https://w3id.org/lmodel/void/TechnicalFeature> ;
+	linkml:default_prefix "void_linkml" ;
+	linkml:default_range <https://w3id.org/lmodel/void/string> ;
+	linkml:description "A LinkML rendering of the Vocabulary of Interlinked Datasets (VoID), the RDF vocabulary for describing datasets of linked data and the links between them, as the W3C Interest Group Note of 3 March 2011 explains it. Every VoID class and property keeps its VoID IRI, and the Dublin Core, FOAF and RDF Schema terms the Note uses in a description keep theirs." ;
+	linkml:id "https://w3id.org/lmodel/void"^^xsd:anyURI ;
+	linkml:imports "linkml:types"^^xsd:anyURI ;
+	linkml:metamodel_version "1.12.0" ;
+	linkml:slots <https://w3id.org/lmodel/void/ClassBasedPartition_class> , <https://w3id.org/lmodel/void/Linkset_target> , <https://w3id.org/lmodel/void/PropertyBasedPartition_property> , <https://w3id.org/lmodel/void/class> , <https://w3id.org/lmodel/void/classPartition> , <https://w3id.org/lmodel/void/classes> , <https://w3id.org/lmodel/void/comment> , <https://w3id.org/lmodel/void/contributor> , <https://w3id.org/lmodel/void/created> , <https://w3id.org/lmodel/void/creator> , <https://w3id.org/lmodel/void/dataDump> , <https://w3id.org/lmodel/void/description> , <https://w3id.org/lmodel/void/distinctObjects> , <https://w3id.org/lmodel/void/distinctSubjects> , <https://w3id.org/lmodel/void/documents> , <https://w3id.org/lmodel/void/entities> , <https://w3id.org/lmodel/void/exampleResource> , <https://w3id.org/lmodel/void/feature> , <https://w3id.org/lmodel/void/homepage> , <https://w3id.org/lmodel/void/id> , <https://w3id.org/lmodel/void/inDataset> , <https://w3id.org/lmodel/void/issued> , <https://w3id.org/lmodel/void/label> , <https://w3id.org/lmodel/void/license> , <https://w3id.org/lmodel/void/linkPredicate> , <https://w3id.org/lmodel/void/modified> , <https://w3id.org/lmodel/void/objectsTarget> , <https://w3id.org/lmodel/void/openSearchDescription> , <https://w3id.org/lmodel/void/page> , <https://w3id.org/lmodel/void/primaryTopic> , <https://w3id.org/lmodel/void/properties> , <https://w3id.org/lmodel/void/property> , <https://w3id.org/lmodel/void/propertyPartition> , <https://w3id.org/lmodel/void/publisher> , <https://w3id.org/lmodel/void/rootResource> , <https://w3id.org/lmodel/void/seeAlso> , <https://w3id.org/lmodel/void/source> , <https://w3id.org/lmodel/void/sparqlEndpoint> , <https://w3id.org/lmodel/void/subject> , <https://w3id.org/lmodel/void/subjectsTarget> , <https://w3id.org/lmodel/void/subset> , <https://w3id.org/lmodel/void/target> , <https://w3id.org/lmodel/void/title> , <https://w3id.org/lmodel/void/topic> , <https://w3id.org/lmodel/void/triples> , <https://w3id.org/lmodel/void/uriLookupEndpoint> , <https://w3id.org/lmodel/void/uriRegexPattern> , <https://w3id.org/lmodel/void/uriSpace> , <https://w3id.org/lmodel/void/vocabulary> ;
+	linkml:source_file "void.yaml" ;
+	linkml:source_file_date "2026-11-07T02:04:04"^^xsd:dateTime ;
+	linkml:source_file_size 21184 ;
+	linkml:types <https://w3id.org/lmodel/void/boolean> , <https://w3id.org/lmodel/void/curie> , <https://w3id.org/lmodel/void/date> , <https://w3id.org/lmodel/void/date_or_datetime> , <https://w3id.org/lmodel/void/datetime> , <https://w3id.org/lmodel/void/decimal> , <https://w3id.org/lmodel/void/double> , <https://w3id.org/lmodel/void/float> , <https://w3id.org/lmodel/void/integer> , <https://w3id.org/lmodel/void/jsonpath> , <https://w3id.org/lmodel/void/jsonpointer> , <https://w3id.org/lmodel/void/ncname> , <https://w3id.org/lmodel/void/nodeidentifier> , <https://w3id.org/lmodel/void/objectidentifier> , <https://w3id.org/lmodel/void/sparqlpath> , <https://w3id.org/lmodel/void/string> , <https://w3id.org/lmodel/void/time> , <https://w3id.org/lmodel/void/uri> , <https://w3id.org/lmodel/void/uriorcurie> .
+_:c14n0 a linkml:Annotation ;
+	skos:example "6.2" ;
+	linkml:tag "note_section"^^xsd:anyURI .
+_:c14n1 sh:namespace "https://w3id.org/linkml/"^^xsd:anyURI ;
+	sh:prefix "linkml" .
+_:c14n10 a linkml:Annotation ;
+	skos:example "4.3" ;
+	linkml:tag "note_section"^^xsd:anyURI .
+_:c14n11 sh:namespace "http://www.w3.org/2001/XMLSchema#"^^xsd:anyURI ;
+	sh:prefix "xsd" .
+_:c14n12 skos:example "5.1" ;
+	linkml:annotations _:c14n83 ;
+	linkml:extensions _:c14n87 ;
+	linkml:tag "note_section"^^xsd:anyURI .
+_:c14n13 linkml:note_section _:c14n12 .
+_:c14n14 a linkml:Annotation ;
+	skos:example "3.5" ;
+	linkml:tag "note_section"^^xsd:anyURI .
+_:c14n15 a linkml:Annotation ;
+	skos:example "5.3" ;
+	linkml:tag "note_section"^^xsd:anyURI .
+_:c14n16 a linkml:Annotation ;
+	skos:example "4.5" ;
+	linkml:tag "note_section"^^xsd:anyURI .
+_:c14n17 a linkml:Annotation ;
+	skos:example "4.2" ;
+	linkml:tag "note_section"^^xsd:anyURI .
+_:c14n18 a linkml:Annotation ;
+	skos:example "4.2" ;
+	linkml:tag "note_section"^^xsd:anyURI .
+_:c14n19 a linkml:Annotation ;
+	skos:example "4.5" ;
+	linkml:tag "note_section"^^xsd:anyURI .
+_:c14n2 a linkml:Annotation ;
+	skos:example "4.6" ;
+	linkml:tag "note_section"^^xsd:anyURI .
+_:c14n20 a linkml:Annotation ;
+	skos:example "4.5" ;
+	linkml:tag "note_section"^^xsd:anyURI .
+_:c14n21 a linkml:Annotation ;
+	skos:example "2.2" ;
+	linkml:tag "note_section"^^xsd:anyURI .
+_:c14n22 linkml:note_section _:c14n85 .
+_:c14n23 a linkml:Annotation ;
+	skos:example "4.6" ;
+	linkml:tag "note_section"^^xsd:anyURI .
+_:c14n25 a linkml:Annotation ;
+	skos:example "1.4" ;
+	linkml:tag "note_section"^^xsd:anyURI .
+_:c14n26 a linkml:Annotation ;
+	skos:example "2.2" ;
+	linkml:tag "note_section"^^xsd:anyURI .
+_:c14n27 sh:namespace "https://w3id.org/lmodel/void/"^^xsd:anyURI ;
+	sh:prefix "void_linkml" .
+_:c14n28 sh:namespace "http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI ;
+	sh:prefix "rdf" .
+_:c14n29 sh:namespace "http://purl.org/dc/terms/"^^xsd:anyURI ;
+	sh:prefix "dcterms" .
+_:c14n30 skos:example "2011-03-06" ;
+	linkml:tag "vocabulary_modified"^^xsd:anyURI .
+_:c14n31 a linkml:AnonymousClassExpression ;
+	linkml:description "The one dataset the description is about." ;
+	linkml:slot_conditions <https://w3id.org/lmodel/void/primaryTopic> .
+_:c14n32 sh:namespace "http://www.w3.org/ns/dcat#"^^xsd:anyURI ;
+	sh:prefix "dcat" .
+_:c14n33 a linkml:Annotation ;
+	skos:example "2.2" ;
+	linkml:tag "note_section"^^xsd:anyURI .
+_:c14n35 skos:example "The Note is under the W3C Document License (https://www.w3.org/Consortium/Legal/copyright-documents); the vocabulary file states no licence." ;
+	linkml:tag "upstream_license"^^xsd:anyURI .
+_:c14n36 a linkml:Annotation ;
+	skos:example "3.2" ;
+	linkml:tag "note_section"^^xsd:anyURI .
+_:c14n37 a linkml:Annotation ;
+	skos:example "5.1" ;
+	linkml:tag "note_section"^^xsd:anyURI .
+_:c14n38 a linkml:Annotation ;
+	skos:example "4.4" ;
+	linkml:tag "note_section"^^xsd:anyURI .
+_:c14n39 skos:example "https://github.com/cygri/void/blob/5b2ca68b7897c2613d4269fd725f1812dce21267/rdfs/void.ttl" ;
+	linkml:tag "vocabulary_file"^^xsd:anyURI .
+_:c14n4 a linkml:Annotation ;
+	skos:example "4.1" ;
+	linkml:tag "note_section"^^xsd:anyURI .
+_:c14n40 a linkml:Annotation ;
+	skos:example "2.5" ;
+	linkml:tag "note_section"^^xsd:anyURI .
+_:c14n41 a linkml:AnonymousClassExpression ;
+	linkml:description "Two targets, named with target." ;
+	linkml:slot_conditions <https://w3id.org/lmodel/void/target> .
+_:c14n42 a linkml:Annotation ;
+	skos:example "4.5" ;
+	linkml:tag "note_section"^^xsd:anyURI .
+_:c14n44 a linkml:Annotation ;
+	skos:example "6.2" ;
+	linkml:tag "note_section"^^xsd:anyURI .
+_:c14n45 sh:namespace "http://www.w3.org/ns/sparql-service-description#"^^xsd:anyURI ;
+	sh:prefix "sd" .
+_:c14n46 a linkml:Annotation ;
+	skos:example "2.4" ;
+	linkml:tag "note_section"^^xsd:anyURI .
+_:c14n47 a linkml:Annotation ;
+	skos:example "2.2" ;
+	linkml:tag "note_section"^^xsd:anyURI .
+_:c14n49 a linkml:Annotation ;
+	skos:example "3.3" ;
+	linkml:tag "note_section"^^xsd:anyURI .
+_:c14n5 a linkml:Annotation ;
+	skos:example "2.2" ;
+	linkml:tag "note_section"^^xsd:anyURI .
+_:c14n50 a linkml:Annotation ;
+	skos:example "2.2" ;
+	linkml:tag "note_section"^^xsd:anyURI .
+_:c14n51 a linkml:AnonymousClassExpression ;
+	linkml:description "The datasets the description is about." ;
+	linkml:slot_conditions <https://w3id.org/lmodel/void/topic> .
+_:c14n52 sh:namespace "http://www.w3.org/2000/01/rdf-schema#"^^xsd:anyURI ;
+	sh:prefix "rdfs" .
+_:c14n53 sh:namespace "http://rdfs.org/ns/void#"^^xsd:anyURI ;
+	sh:prefix "void" .
+_:c14n54 a linkml:Annotation ;
+	skos:example "6.3" ;
+	linkml:tag "note_section"^^xsd:anyURI .
+_:c14n55 a linkml:Annotation ;
+	skos:example "4.6" ;
+	linkml:tag "note_section"^^xsd:anyURI .
+_:c14n56 a linkml:Annotation ;
+	skos:example "2.2" ;
+	linkml:tag "note_section"^^xsd:anyURI .
+_:c14n57 a linkml:Annotation ;
+	skos:example "2.6" ;
+	linkml:tag "note_section"^^xsd:anyURI .
+_:c14n58 a linkml:Annotation ;
+	skos:example "4.5" ;
+	linkml:tag "note_section"^^xsd:anyURI .
+_:c14n59 a linkml:Annotation ;
+	skos:example "2.6" ;
+	linkml:tag "note_section"^^xsd:anyURI .
+_:c14n6 a linkml:Annotation ;
+	skos:example "6.2" ;
+	linkml:tag "note_section"^^xsd:anyURI .
+_:c14n60 a linkml:Annotation ;
+	skos:example "2.1" ;
+	linkml:tag "note_section"^^xsd:anyURI .
+_:c14n61 a linkml:Annotation ;
+	skos:example "2.6" ;
+	linkml:tag "note_section"^^xsd:anyURI .
+_:c14n62 a linkml:Annotation ;
+	skos:example "2.6" ;
+	linkml:tag "note_section"^^xsd:anyURI .
+_:c14n63 a linkml:Annotation ;
+	skos:example "2.2" ;
+	linkml:tag "note_section"^^xsd:anyURI .
+_:c14n64 a linkml:Annotation ;
+	skos:example "4.6" ;
+	linkml:tag "note_section"^^xsd:anyURI .
+_:c14n65 a linkml:Annotation ;
+	skos:example "3.4" ;
+	linkml:tag "note_section"^^xsd:anyURI .
+_:c14n66 sh:namespace "http://xmlns.com/foaf/0.1/"^^xsd:anyURI ;
+	sh:prefix "foaf" .
+_:c14n67 sh:namespace "http://www.w3.org/2002/07/owl#"^^xsd:anyURI ;
+	sh:prefix "owl" .
+_:c14n68 a linkml:Annotation ;
+	skos:example "2.2" ;
+	linkml:tag "note_section"^^xsd:anyURI .
+_:c14n69 a linkml:Annotation ;
+	skos:example "4.5" ;
+	linkml:tag "note_section"^^xsd:anyURI .
+_:c14n7 linkml:note_section _:c14n81 .
+_:c14n70 a linkml:Annotation ;
+	skos:example "6.1" ;
+	linkml:tag "note_section"^^xsd:anyURI .
+_:c14n71 a linkml:Annotation ;
+	skos:example "5.1" ;
+	linkml:tag "note_section"^^xsd:anyURI .
+_:c14n73 a linkml:Annotation ;
+	skos:example "4.6" ;
+	linkml:tag "note_section"^^xsd:anyURI .
+_:c14n74 a linkml:Annotation ;
+	skos:example "1.3" ;
+	linkml:tag "note_section"^^xsd:anyURI .
+_:c14n75 a linkml:Annotation ;
+	skos:example "2.1" ;
+	linkml:tag "note_section"^^xsd:anyURI .
+_:c14n76 a linkml:Annotation ;
+	skos:example "2.6" ;
+	linkml:tag "note_section"^^xsd:anyURI .
+_:c14n77 a linkml:Annotation ;
+	skos:example "4.6" ;
+	linkml:tag "note_section"^^xsd:anyURI .
+_:c14n78 a linkml:Annotation ;
+	skos:example "3.6" ;
+	linkml:tag "note_section"^^xsd:anyURI .
+_:c14n79 a linkml:Annotation ;
+	skos:example "4.6" ;
+	linkml:tag "note_section"^^xsd:anyURI .
+_:c14n8 a linkml:Annotation ;
+	skos:example "5.1" ;
+	linkml:tag "note_section"^^xsd:anyURI .
+_:c14n81 skos:example "4.5" ;
+	linkml:annotations _:c14n80 ;
+	linkml:extensions _:c14n82 ;
+	linkml:tag "note_section"^^xsd:anyURI .
+_:c14n85 skos:example "4.5" ;
+	linkml:annotations _:c14n84 ;
+	linkml:extensions _:c14n86 ;
+	linkml:tag "note_section"^^xsd:anyURI .
+_:c14n9 a linkml:AnonymousClassExpression ;
+	linkml:description "The subjects' target and the objects' target." ;
+	linkml:slot_conditions <https://w3id.org/lmodel/void/objectsTarget> , <https://w3id.org/lmodel/void/subjectsTarget> .
+
