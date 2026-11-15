@@ -18,7 +18,7 @@ A [LOKF](https://lokf.nolan-nichols.com) knowledge base for void. Every Markdown
 
 # Services
 
-* [Documentation site](services/documentation-site.md) - The knowledge website in `website/`, an Astro Starlight site that the Knowledge website workflow publishes to GitHub Pages at `https://lmodel.github.io/void/`: the README as its home page, `docs/`, the schema's pages, a page per concept and the four `lokf export` files, with redirects from the retired mkdocs site's addresses.
+* [Documentation site](services/documentation-site.md) - The knowledge website in `website/`, a Hugo site that the Knowledge website workflow publishes to GitHub Pages at `https://lmodel.github.io/void/`: the README as its home page, `docs/`, the schema's pages, a page per concept and the four `lokf export` files, with redirects from the retired mkdocs site's addresses.
 
 # Datasets
 
@@ -62,7 +62,7 @@ A [LOKF](https://lokf.nolan-nichols.com) knowledge base for void. Every Markdown
 
 # Workflows
 
-* [Build and test (main.yaml)](workflows/main.md) - The Build and test workflow, `.github/workflows/main.yaml`: on every pull request and push to `main`, its test job runs `just test` on Python 3.10 to 3.14, and on 3.13 also `just lint` and `just lokf-adapt-check`, with `uv sync --locked`.
+* [Build and test (main.yaml)](workflows/main.md) - The Build and test workflow, `.github/workflows/main.yaml`: on every pull request and push to `main`, its test job runs `just test` on Python 3.11 to 3.14, and on 3.13 also `just lint` and `just lokf-adapt-check`, with `uv sync --locked`.
 * [Lint & docs (lint-and-docs.yaml)](workflows/lint-and-docs.md) - The Lint & docs workflow, `.github/workflows/lint-and-docs.yaml`: on pull requests, pushes to `main`, Mondays and by hand, it runs ShellCheck, actionlint, the word budgets of CONTRIBUTING.md (1000) and SECURITY.md (900), markdownlint, lychee and codespell.
 * [Upstream watch (upstream-watch.yaml)](workflows/upstream-watch.md) - The Upstream watch workflow, `.github/workflows/upstream-watch.yaml`: every Monday at 07:00 UTC and by hand, its void-sources job runs `scripts/check_upstream_release.py` against the VoID Note's page and the editors' repository, and on a finding opens or updates the issue titled Upstream watch: the VoID Note or vocabulary file has changed.
 * [Semantic release (semantic-release.yml)](workflows/semantic-release.md) - The Semantic release workflow, `.github/workflows/semantic-release.yml`: on a pull request to `main` its plan job says what the merge would release; on a push to `main` its release job, in the `release` Environment, runs semantic-release from `.github/release/package-lock.json` and dispatches the knowledge release.

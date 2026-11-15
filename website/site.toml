@@ -1,0 +1,396 @@
+# This repository's own values for the knowledge website. hugo.toml beside
+# this file holds everything that is the same on every site. The ktl-website
+# skill wrote this file once and never replaces it.
+
+# The site's address: the owner's GitHub Pages domain and the repository's
+# name under it. A user site (the <owner>.github.io repository) or a custom
+# domain has no name after the domain: "https://docs.example.org/".
+baseURL = "https://lmodel.github.io/void/"
+
+# The site's title, in the header and on every social card.
+title = "void"
+
+[params]
+# One sentence, for search engines and link previews.
+description = "Vocabulary of Interlinked Datasets (VoID), W3C Note of 2011 (LinkML)"
+# The repository. Links to files that are not pages go here.
+repo = "https://github.com/lmodel/void"
+
+# Everything below is optional. The site finds the README, the docs, the
+# figures, the changelog, a LinkML schema and a workspace by itself.
+
+# The default branch, when it is not main, and the tag a release carries,
+# when it is not v<version>.
+# branch = "master"
+# releaseTag = "{version}"
+
+# A logo of the repository's own, as files under .assets/. Left out, the
+# site shows the Knowledge Trust Ladder logo.
+# logo = ".assets/logo.svg"
+# logoDark = ".assets/logo-dark.svg"
+
+# The data: a folder of SQLite databases and their Datasette metadata, from
+# the repository's root, served under browse/ with a page that opens each in
+# Datasette Lite, and the command that writes the folder when it holds no
+# database. The databases go on the public site, so none is served until
+# this is set.
+# browse = "my-project/browse"
+# browseBuild = "just build-browse"
+
+# More folders under docs/ that are not pages.
+# docsExclude = ["templates-linkml", "elements", "drafts"]
+
+# The docs pages in groups of your choosing, each page by its path under
+# docs/ without .md. Left out, the pages at the top of docs/ are one group
+# and each folder is a group of its own. With groups, the build stops when
+# one names a missing page or a page is in no group.
+# [[params.docsGroups]]
+# label = "Start here"
+# pages = ["install", "usage"]
+
+# Old addresses, each sent on to the page built from a repository file. One
+# ending in /* stands for every page of the schema. Hugo lowercases a
+# table's keys, so an address with capitals takes the list form below.
+# [params.redirects]
+# "about" = "docs/about.md"
+# "elements/*" = "schema/*"
+#
+# [[params.redirects]]
+# from = "elements/OldName"
+# to = "website/generated/schema/classes/NewName.md"
+
+[[params.redirects]]
+from = "Boolean"
+to = "website/generated/schema/types/Boolean.md"
+
+[[params.redirects]]
+from = "Curie"
+to = "website/generated/schema/types/Curie.md"
+
+[[params.redirects]]
+from = "Dataset"
+to = "website/generated/schema/classes/Dataset.md"
+
+[[params.redirects]]
+from = "DatasetDescription"
+to = "website/generated/schema/classes/DatasetDescription.md"
+
+[[params.redirects]]
+from = "DatatypeProperties"
+to = "website/generated/schema/_index.md"
+
+[[params.redirects]]
+from = "Date"
+to = "website/generated/schema/types/Date.md"
+
+[[params.redirects]]
+from = "DateOrDatetime"
+to = "website/generated/schema/types/DateOrDatetime.md"
+
+[[params.redirects]]
+from = "Datetime"
+to = "website/generated/schema/types/Datetime.md"
+
+[[params.redirects]]
+from = "Decimal"
+to = "website/generated/schema/types/Decimal.md"
+
+[[params.redirects]]
+from = "Document"
+to = "website/generated/schema/_index.md"
+
+[[params.redirects]]
+from = "Double"
+to = "website/generated/schema/types/Double.md"
+
+[[params.redirects]]
+from = "Float"
+to = "website/generated/schema/types/Float.md"
+
+[[params.redirects]]
+from = "FunctionalProperties"
+to = "website/generated/schema/_index.md"
+
+[[params.redirects]]
+from = "Integer"
+to = "website/generated/schema/types/Integer.md"
+
+[[params.redirects]]
+from = "Linkset"
+to = "website/generated/schema/classes/Linkset.md"
+
+[[params.redirects]]
+from = "LiteralType"
+to = "website/generated/schema/_index.md"
+
+[[params.redirects]]
+from = "NamedThing"
+to = "website/generated/schema/_index.md"
+
+[[params.redirects]]
+from = "Ncname"
+to = "website/generated/schema/types/Ncname.md"
+
+[[params.redirects]]
+from = "Nodeidentifier"
+to = "website/generated/schema/types/Nodeidentifier.md"
+
+[[params.redirects]]
+from = "ObjectProperties"
+to = "website/generated/schema/_index.md"
+
+[[params.redirects]]
+from = "Objectidentifier"
+to = "website/generated/schema/types/Objectidentifier.md"
+
+[[params.redirects]]
+from = "Resource"
+to = "website/generated/schema/_index.md"
+
+[[params.redirects]]
+from = "String"
+to = "website/generated/schema/types/String.md"
+
+[[params.redirects]]
+from = "TechnicalFeature"
+to = "website/generated/schema/classes/TechnicalFeature.md"
+
+[[params.redirects]]
+from = "Time"
+to = "website/generated/schema/types/Time.md"
+
+[[params.redirects]]
+from = "URI_space"
+to = "website/generated/schema/slots/uriSpace.md"
+
+[[params.redirects]]
+from = "Uri"
+to = "website/generated/schema/types/Uri.md"
+
+[[params.redirects]]
+from = "Uriorcurie"
+to = "website/generated/schema/types/Uriorcurie.md"
+
+[[params.redirects]]
+from = "a_link_predicate"
+to = "website/generated/schema/slots/linkPredicate.md"
+
+[[params.redirects]]
+from = "about"
+to = "docs/about.md"
+
+[[params.redirects]]
+from = "class"
+to = "website/generated/schema/slots/class.md"
+
+[[params.redirects]]
+from = "class_partition"
+to = "website/generated/schema/slots/classPartition.md"
+
+[[params.redirects]]
+from = "classes"
+to = "website/generated/schema/slots/classes.md"
+
+[[params.redirects]]
+from = "data_dump"
+to = "website/generated/schema/slots/dataDump.md"
+
+[[params.redirects]]
+from = "distinct_objects"
+to = "website/generated/schema/slots/distinctObjects.md"
+
+[[params.redirects]]
+from = "distinct_subjects"
+to = "website/generated/schema/slots/distinctSubjects.md"
+
+[[params.redirects]]
+from = "elements/DatatypeProperties"
+to = "website/generated/schema/_index.md"
+
+[[params.redirects]]
+from = "elements/Document"
+to = "website/generated/schema/_index.md"
+
+[[params.redirects]]
+from = "elements/FunctionalProperties"
+to = "website/generated/schema/_index.md"
+
+[[params.redirects]]
+from = "elements/LiteralType"
+to = "website/generated/schema/_index.md"
+
+[[params.redirects]]
+from = "elements/NamedThing"
+to = "website/generated/schema/_index.md"
+
+[[params.redirects]]
+from = "elements/ObjectProperties"
+to = "website/generated/schema/_index.md"
+
+[[params.redirects]]
+from = "elements/Resource"
+to = "website/generated/schema/_index.md"
+
+[[params.redirects]]
+from = "elements/URI_space"
+to = "website/generated/schema/slots/uriSpace.md"
+
+[[params.redirects]]
+from = "elements/a_link_predicate"
+to = "website/generated/schema/slots/linkPredicate.md"
+
+[[params.redirects]]
+from = "elements/class_partition"
+to = "website/generated/schema/slots/classPartition.md"
+
+[[params.redirects]]
+from = "elements/data_dump"
+to = "website/generated/schema/slots/dataDump.md"
+
+[[params.redirects]]
+from = "elements/distinct_objects"
+to = "website/generated/schema/slots/distinctObjects.md"
+
+[[params.redirects]]
+from = "elements/distinct_subjects"
+to = "website/generated/schema/slots/distinctSubjects.md"
+
+[[params.redirects]]
+from = "elements/example_resource_of_dataset"
+to = "website/generated/schema/slots/exampleResource.md"
+
+[[params.redirects]]
+from = "elements/has_a_SPARQL_endpoint_at"
+to = "website/generated/schema/slots/sparqlEndpoint.md"
+
+[[params.redirects]]
+from = "elements/has_an_URI_look_up_endpoint_at"
+to = "website/generated/schema/slots/uriLookupEndpoint.md"
+
+[[params.redirects]]
+from = "elements/has_subset"
+to = "website/generated/schema/slots/subset.md"
+
+[[params.redirects]]
+from = "elements/in_dataset"
+to = "website/generated/schema/slots/inDataset.md"
+
+[[params.redirects]]
+from = "elements/number_of_documents"
+to = "website/generated/schema/slots/documents.md"
+
+[[params.redirects]]
+from = "elements/number_of_entities"
+to = "website/generated/schema/slots/entities.md"
+
+[[params.redirects]]
+from = "elements/number_of_properties"
+to = "website/generated/schema/slots/properties.md"
+
+[[params.redirects]]
+from = "elements/number_of_triples"
+to = "website/generated/schema/slots/triples.md"
+
+[[params.redirects]]
+from = "elements/objects_target"
+to = "website/generated/schema/slots/objectsTarget.md"
+
+[[params.redirects]]
+from = "elements/open_search_description"
+to = "website/generated/schema/slots/openSearchDescription.md"
+
+[[params.redirects]]
+from = "elements/property_partition"
+to = "website/generated/schema/slots/propertyPartition.md"
+
+[[params.redirects]]
+from = "elements/root_resource"
+to = "website/generated/schema/slots/rootResource.md"
+
+[[params.redirects]]
+from = "elements/subjects_target"
+to = "website/generated/schema/slots/subjectsTarget.md"
+
+[[params.redirects]]
+from = "elements/void"
+to = "website/generated/schema/_index.md"
+
+[[params.redirects]]
+from = "example_resource_of_dataset"
+to = "website/generated/schema/slots/exampleResource.md"
+
+[[params.redirects]]
+from = "feature"
+to = "website/generated/schema/slots/feature.md"
+
+[[params.redirects]]
+from = "has_a_SPARQL_endpoint_at"
+to = "website/generated/schema/slots/sparqlEndpoint.md"
+
+[[params.redirects]]
+from = "has_an_URI_look_up_endpoint_at"
+to = "website/generated/schema/slots/uriLookupEndpoint.md"
+
+[[params.redirects]]
+from = "has_subset"
+to = "website/generated/schema/slots/subset.md"
+
+[[params.redirects]]
+from = "in_dataset"
+to = "website/generated/schema/slots/inDataset.md"
+
+[[params.redirects]]
+from = "number_of_documents"
+to = "website/generated/schema/slots/documents.md"
+
+[[params.redirects]]
+from = "number_of_entities"
+to = "website/generated/schema/slots/entities.md"
+
+[[params.redirects]]
+from = "number_of_properties"
+to = "website/generated/schema/slots/properties.md"
+
+[[params.redirects]]
+from = "number_of_triples"
+to = "website/generated/schema/slots/triples.md"
+
+[[params.redirects]]
+from = "objects_target"
+to = "website/generated/schema/slots/objectsTarget.md"
+
+[[params.redirects]]
+from = "open_search_description"
+to = "website/generated/schema/slots/openSearchDescription.md"
+
+[[params.redirects]]
+from = "property"
+to = "website/generated/schema/slots/property.md"
+
+[[params.redirects]]
+from = "property_partition"
+to = "website/generated/schema/slots/propertyPartition.md"
+
+[[params.redirects]]
+from = "root_resource"
+to = "website/generated/schema/slots/rootResource.md"
+
+[[params.redirects]]
+from = "schema/*"
+to = "schema/*"
+
+[[params.redirects]]
+from = "subjects_target"
+to = "website/generated/schema/slots/subjectsTarget.md"
+
+[[params.redirects]]
+from = "target"
+to = "website/generated/schema/slots/target.md"
+
+[[params.redirects]]
+from = "vocabulary"
+to = "website/generated/schema/slots/vocabulary.md"
+
+[[params.redirects]]
+from = "void"
+to = "website/generated/schema/_index.md"

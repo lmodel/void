@@ -2,6 +2,11 @@
 
 # void
 
+[![Build and test](https://github.com/lmodel/void/actions/workflows/main.yaml/badge.svg)](https://github.com/lmodel/void/actions/workflows/main.yaml)
+[![Licence](https://img.shields.io/github/license/lmodel/void?label=licence)](LICENSE)
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/lmodel/void/badge)](https://scorecard.dev/viewer/?uri=github.com/lmodel/void)
+[![KTL scorecard](https://img.shields.io/endpoint?url=https://lmodel.github.io/void/badge.json)](https://lmodel.github.io/void/health/)
+
 Vocabulary of Interlinked Datasets (VoID), W3C Note of 2011 (LinkML)
 
 > **Only want to ask?** Install `ktl-docent` into any agent you use, by a route from [the install page](https://w3id.org/ktl/docs/install/), and ask it about this project. It answers from the bundle and says how far each answer has been checked.
@@ -46,7 +51,7 @@ Every VoID class and property keeps its VoID name and Internationalized Resource
 * [src/void/schema/](src/void/schema): the LinkML schema, `void.yaml` (edit this)
 * [src/void/datamodel/](src/void/datamodel): the generated Python datamodel
 * [tests/](tests/): Python tests, with example data in [data/](tests/data), the term lists in [upstream/](tests/upstream) and the neighbours' adapt copies in [neighbours/](tests/neighbours)
-* [website/](website/): the Astro Starlight site built from the README, `docs/`, the schema's pages and the knowledge bundle
+* [website/](website/): the Hugo site built from the README, `docs/`, the schema's pages and the knowledge bundle
 
 ## Developer Tools
 

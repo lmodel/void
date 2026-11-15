@@ -14,11 +14,9 @@ sources:
   - id: readme.md
     resource: README.md
     title: the License section
-  - resource: website/NOTICE
-    title: the adapted graph explorer
 generated:
   by: process:ktl-librarian
-  at: "2026-10-31T15:05:26Z"
+  at: "2026-11-15T02:50:31Z"
 status: draft
 ---
 
