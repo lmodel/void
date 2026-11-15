@@ -24,7 +24,7 @@ sources:
     title: the schema pages gen-doc writes
 generated:
   by: process:ktl-librarian
-  at: "2026-10-31T15:05:26Z"
+  at: "2026-11-15T03:10:46Z"
 status: draft
 ---
 
@@ -35,7 +35,7 @@ status: draft
 - `project/`, with a folder per projection: `excel/`, `graphql/`, `java/`, `jsonld/`, `jsonschema/`, `owl/`, `prefixmap/`, `protobuf/`, `shacl/`, `shex/`, `sqlschema/` and `typescript/`;
 - `src/void/datamodel/void.py`, the dataclasses, and `void_pydantic.py`, the Pydantic models.
 
-`just gen-doc` writes the merged schema to `docs/schema/void.yaml` and a page per element to `docs/elements/`, which git ignores and the website shows under `schema/`. The generators' settings skip the Markdown generator in gen-project.[^generators.yaml]
+`just gen-doc` writes the merged schema to `docs/schema/void.yaml` and a page per element to `docs/elements/`, which git ignores. The generators' settings skip the Markdown generator in gen-project.[^generators.yaml]
 
 All of these are generated: change the schema, then run the recipes again. The OWL rendering in `project/owl/void.owl.ttl` is described on its own in [The schema's OWL rendering](owl-rendering.md).
 
