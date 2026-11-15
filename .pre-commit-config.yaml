@@ -13,7 +13,7 @@ exclude: >-
     docs/schema/|
     \.lokf/(scripts|m365)/|
     \.lokf/schema/(lokf|void)\.yaml$|
-    \.github/release/package-lock\.json$|
+    \.release/package-lock\.json$|
     tests/neighbours/|
     tests/upstream/
   )
