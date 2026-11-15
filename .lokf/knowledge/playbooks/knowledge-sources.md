@@ -21,7 +21,7 @@ sources:
   - resource: .github/scripts
   - resource: .github/workflows
   - resource: .github/dependabot.yml
-  - resource: .github/release
+  - resource: .release
   - resource: justfile
   - resource: .linkml/generators.yaml
   - resource: .linkmllint.yaml
@@ -100,7 +100,7 @@ exclusions:
     reason: The sidecar's git settings.
 generated:
   by: process:ktl-librarian
-  at: "2026-11-15T02:50:31Z"
+  at: "2026-11-15T21:02:25Z"
 status: draft
 ---
 
@@ -120,7 +120,7 @@ Each concept derived from a file or folder of this repository names it by its pa
 | `tests/` | `datasets/example-data`, `datasets/neighbour-copies` | re-count `valid/`, `problem/valid/` and `invalid/`; re-read the tests and the neighbours' checksums |
 | the Validating data section of `docs/index.md` | `playbooks/validate-data` | re-read the section |
 | `CONTRIBUTING.md`, the `lint`, `gen-project`, `gen-doc` and `test` recipes | `playbooks/regenerate-and-test` | confirm the setup, the checklist and the recipes |
-| `.releaserc.json`, `.github/release/`, `CHANGELOG.md`, the Releasing section of `CONTRIBUTING.md` | `playbooks/release`, `workflows/semantic-release` | re-read the release rules, the commands and the baseline paragraph |
+| `.releaserc.json`, `.release/`, `CHANGELOG.md`, the Releasing section of `CONTRIBUTING.md` | `playbooks/release`, `workflows/semantic-release` | re-read the release rules, the commands and the baseline paragraph |
 | the nine files in `.github/workflows/` | the nine `workflows/` concepts | re-read each file's `on` keys, its jobs' permissions and environments, and the variables it reads |
 | `website/` | `services/documentation-site` | re-read `site.toml` and `website/README.md` |
 | `NOTICE`, `LICENSE`, the License section of `README.md` | `policies/license-and-attribution` | re-read each third-party entry |
